@@ -1,7 +1,6 @@
 package com.example.smartcity.controller;
 
 import com.example.smartcity.model.DB;
-import com.example.smartcity.model.LoginDao;
 import com.example.smartcity.model.AccessoLogin;
 
 import jakarta.servlet.*;
@@ -21,13 +20,13 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
-        String username = request.getParameter("username");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
 
         //LoginDao loginDao = new LoginDao();
         //AccessoLogin accessoLogIn = loginDao.logIn(username, password);
 
-        AccessoLogin accessoLogIn = DB.getIstanza().logIn(username, password);
+        AccessoLogin accessoLogIn = DB.getIstanza().logIn(email, password);
         switch (accessoLogIn) {
             case UTENTE_INESISTENTE:
                 request.setAttribute("stato", "UTENTE_INESISTENTE");
@@ -39,7 +38,7 @@ public class LoginServlet extends HttpServlet {
                 break;
             case SUCCESSO:
                 request.setAttribute("stato", "SUCCESSO");
-                request.setAttribute("users", username);
+                request.setAttribute("users", email);
                 request.getRequestDispatcher("profilo.jsp").forward(request, response);
                 response.sendRedirect(getServletContext().getContextPath());
                 break;
