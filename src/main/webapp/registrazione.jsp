@@ -73,16 +73,12 @@
           <p>Inserisci le tue informazioni necessarie per la creazione del tuo profilo</p>
         </div>
         <div class="card-body">
-          <form action="${pageContext.request.contextPath}/registrazione.jsp" method="post">
-            <label for="name">Nome</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Es. Mario" required>
+          <form action="${pageContext.request.contextPath}/registration" method="post">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Es. Mario" required>
             <div class="form-group">
-              <label for="surname">Cognome</label>
-              <input type="text" class="form-control" id="surname" name="surname" placeholder="Es. Rossi" required>
-            </div>
-            <div class="form-group">
-              <label for="username">Username</label>
-              <input type="text" class="form-control" id="username" name="username" placeholder="Es. mario.rossi" required>
+              <label for="cognome">Cognome</label>
+              <input type="text" class="form-control" id="cognome" name="cognome" placeholder="Es. Rossi" required>
             </div>
             <div class="form-group">
               <label for="email">Email</label>
@@ -91,19 +87,6 @@
             <div class="form-group">
               <label for="password">Password</label>
               <input type="password" class="form-control" id="password" name="password" placeholder="Es. password123" required>
-            </div>
-            <div class="form-group">
-              <label for="vehicleType">Tipo veicolo</label>
-              <select class="form-control" id="vehicleType" name="vehicleType" required>
-                <option>Seleziona il tipo di veicolo</option>
-                <option value="Auto">Auto</option>
-                <option value="Moto">Moto</option>
-                <option value="Furgone">Furgone</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="vehiclePlate">Targa del veicolo</label>
-              <input type="text" class="form-control" id="vehiclePlate" name="vehiclePlate" placeholder="Es. AA000ZZ" required>
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-primary btn-lg">Register</button>
@@ -149,9 +132,6 @@
 </footer>
 
 
-
-</body>
-</html>
 
 </body>
 </html>

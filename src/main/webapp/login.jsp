@@ -36,6 +36,12 @@
       display: block;
       text-align: center;
     }
+    footer {
+      background-color: #333;
+      width: 100%;
+      bottom: 0;
+      position: fixed;
+    }
   </style>
 
 </head>
@@ -75,8 +81,8 @@
         <div class="card-body">
           <form action="${pageContext.request.contextPath}/login" method="post">
             <div class="form-group ">
-              <label for="username">Username</label>
-              <input type="text" class="form-control border-0 rounded-0 bg-light" id="username" name="username" required>
+              <label for="email">Email</label>
+              <input type="text" class="form-control border-0 rounded-0 bg-light" id="email" name="email" required>
             </div>
             <div class="form-group">
               <label for="password">Password</label>
@@ -126,7 +132,5 @@
     <p class="text-center">&copy; 2023 ApPost - Tutti i diritti riservati</p>
   </div>
 </footer>
-
-
 </body>
 </html>
