@@ -49,7 +49,7 @@ public class DB {
     public boolean controllaLogin(String username){
         try {
             con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
-            PreparedStatement stmt = con.prepareStatement("SELECT email FROM Utenti WHERE email = (?)");
+            PreparedStatement stmt = con.prepareStatement("SELECT email  FROM Utenti WHERE email = (?)");
             stmt.setString(1, username);
             ResultSet result = stmt.executeQuery();
             return result.next();
@@ -81,19 +81,21 @@ public class DB {
 
 
     //Registrazione
-    public boolean addUtente(String username, String password)
+    public boolean addUtente(String nome, String cognome, String email, String password)
     {
         try {
             con = DriverManager.getConnection(url,"vincenzo", "vincenzo");
             PreparedStatement stmt = con.prepareStatement("SELECT email FROM Utenti WHERE (?)");
-            stmt.setString(1,username);
+            stmt.setString(1,email);
             ResultSet result = stmt.executeQuery();
             if (result.next()){
                 return false;
             }else {
-                PreparedStatement query = con.prepareStatement("INSERT INTO Utenti (nome,cognome,email,password,isAdmin) VALUES(?, ?, ?, ?, ?)");
-                query.setString(1,username);
-                query.setString(2,password);
+                PreparedStatement query = con.prepareStatement("INSERT INTO Utenti (nome, cognome, email,password) VALUES(?, ?, ?, ?)");
+                query.setString(1,nome);
+                query.setString(2,cognome);
+                query.setString(3, email);
+                query.setString(4, password);
                 query.execute();
                 return true;
             }
