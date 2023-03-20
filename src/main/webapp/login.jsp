@@ -82,7 +82,7 @@
           <form action="${pageContext.request.contextPath}/login" method="post">
             <div class="form-group ">
               <label for="email">Email</label>
-              <input type="text" class="form-control border-0 rounded-0 bg-light" id="email" name="email" required>
+              <input type="email" class="form-control border-0 rounded-0 bg-light" id="email" name="email" required>
             </div>
             <div class="form-group">
               <label for="password">Password</label>

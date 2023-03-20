@@ -82,6 +82,12 @@
         border-radius: 50px;
       }
     }
+    footer {
+      background-color: #333;
+      width: 100%;
+      bottom: 0;
+      position: fixed;
+    }
     /* body section */
     .icon-height {
       height: 28px;

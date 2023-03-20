@@ -36,12 +36,17 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("stato", "PASSWORD_ERRATA");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 break;
-            case SUCCESSO:
-                request.setAttribute("stato", "SUCCESSO");
+            case SUCCESSO_ADMIN:
+                request.setAttribute("stato", "SUCCESSO_ADMIN");
                 request.setAttribute("users", email);
-                request.getRequestDispatcher("profilo.jsp").forward(request, response);
+                request.getRequestDispatcher("profilo_admin.jsp").forward(request, response);
                 response.sendRedirect(getServletContext().getContextPath());
                 break;
+            case SUCCESSO:
+                request.setAttribute("stato", "SUCCESSO");
+                //request.setAttribute("users", email);
+                request.getRequestDispatcher("profilo_utente.jsp").forward(request, response);
+
             default:
                 request.setAttribute("stato", "ERRORE");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
