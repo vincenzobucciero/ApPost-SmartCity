@@ -7,6 +7,7 @@ public class LoginDao {
     public DB users;
 
     public LoginDao() {
+
         users = DB.getIstanza();
     }
 }
