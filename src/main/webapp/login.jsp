@@ -6,93 +6,66 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Login Page</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
-
-  <style>
-    .logo {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background-color: green;
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-weight: bold;
-      font-size: 15px;
-      font-style:italic;
-    }
-    .logo span {
-      display: block;
-      text-align: center;
-    }
-    footer {
-      background-color: #333;
-      width: 100%;
-      bottom: 0;
-      position: fixed;
-    }
-  </style>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>ApPost-Login</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="img/iconMoney.png" />
+  <link rel="icon" type="image/x-icon" href="img/wallpaperCar.jpg" />
+  <!-- Bootstrap Icons-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+  <!-- SimpleLightbox plugin CSS-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link rel="stylesheet" href="css/styleProva.css">
+  <link rel="stylesheet" href="css/styleLogin.css">
+  <link rel="stylesheet" href="img">
 </head>
-<body>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-  <div class="logo">
-    <span>ApPost</span>
-  </div>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="descrizioneApp.jsp">Chi siamo</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="assistenza.jsp">Help</a>
-      </li>
-    </ul>
+<body id="page-top">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+  <div class="container px-4 px-lg-5">
+    <a class="navbar-brand" href="index.jsp">ApPost</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto my-2 my-lg-0">
+        <li class="nav-item"><a class="navbar-light" href="about.jsp">Chi siamo</a></li>
+        <li class="nav-item"><a class="navbar-light" href="#services">Servizi</a></li>
+        <a href="registrazione.jsp" class="navbar-light">Registrati ora</a>
+      </ul>
+    </div>
   </div>
 </nav>
 
-<div class="container">
-  <div class="row justify-content-center align-items-center">
-    <div class="col-sm-7 col-md-5 mb-3 mt-3">
-      <div class="card rounded-0">
-        <div class="card-header">
-          <h3 class="text-center">Accedi alla tua area personale</h3>
-        </div>
-        <div class="card-body">
-          <form action="${pageContext.request.contextPath}/login" method="post">
-            <div class="form-group ">
-              <label for="email">Email</label>
-              <input type="email" class="form-control border-0 rounded-0 bg-light" id="email" name="email" required>
+<!-- Form-->
+<div class="form-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="form-container">
+          <div class="form-icon"><i class="fa fa-user"></i></div>
+          <h3 class="title">Effettua l'accesso</h3>
+          <form class="form-horizontal" action="${pageContext.request.contextPath}/login" method="post">
+            <div class="form-group">
+              <label>email</label>
+              <input class="form-control" type="email" name="email" placeholder="email address">
             </div>
             <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control border-0 rounded-0 bg-light" id="password" name="password" required>
+              <label>password</label>
+              <input class="form-control" type="password" name="password" placeholder="password">
             </div>
-            <div class="d-flex flex-column align-items-center">
-              <button type="submit" class="btn btn-primary btn-lg mb-3">Accedi</button>
-              <a href="registrazione.jsp" class="text-secondary">Registrati ora</a>
-            </div>
-
+            <button type="submit" class="btn btn-default">Entra</button>
+            <a href="registrazione.jsp" class="text-secondary">Registrati ora</a>
           </form>
         </div>
       </div>
@@ -100,37 +73,5 @@
   </div>
 </div>
 
-<footer class="bg-dark text-light py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <h3>Contatti</h3>
-        <ul class="list-unstyled">
-          <li><i class="fas fa-map-marker-alt"></i> Via Roma 123, 00100 Roma</li>
-          <li><i class="fas fa-phone"></i> +39 06 12345678</li>
-          <li><i class="fas fa-envelope"></i> info@esempio.it</li>
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <h3>Links utili</h3>
-        <ul class="list-unstyled">
-          <li><a href="#">Termini e condizioni</a></li>
-          <li><a href="#">Privacy policy</a></li>
-          <li><a href="#">Cookie policy</a></li>
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <h3>Social media</h3>
-        <ul class="list-unstyled">
-          <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-          <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-        </ul>
-      </div>
-    </div>
-    <hr>
-    <p class="text-center">&copy; 2023 ApPost - Tutti i diritti riservati</p>
-  </div>
-</footer>
 </body>
 </html>

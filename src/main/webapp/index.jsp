@@ -1,164 +1,194 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
-    <title>ApPost</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="https://bootstrapmade.com/selecao-bootstrap-template/"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
-
-    <style>
-        .logo {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: green;
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-weight: bold;
-            font-size: 15px;
-            font-style:italic;
-        }
-        .logo span {
-            display: block;
-            text-align: center;
-        }
-        body {
-            background: #31343f;
-        }
-        .brand {
-            color: #40ad33;
-        }
-        .border-hover {
-            border-top: 5px solid transparent;
-            transform: translateY(-4px);
-        }
-        .border-hover:hover {
-            border-top: 5px solid #40ad33;
-            transform: translateY(-4px);
-        }
-        #sign-in {
-            background: #40ad33;
-            border-top-left-radius: 50px;
-            border-bottom-left-radius: 50px;
-        }
-        .navbar-toggler {
-            border: 1px solid #40ad33;
-        }
-        .navbar-toggler-icon {
-            background-image: url(/static_files/svgs3/list.svg)
-        }
-        .navbar-toggler:focus {
-            box-shadow: none;
-        }
-        #nav-length {
-            width: 40%;
-        }
-        @media screen and (max-width : 992px) {
-            #nav-length {
-                width: 100%;
-            }
-            .border-hover {
-                border-top: 0;
-            }
-            .border-hover:hover {
-                border-top: 0;
-            }
-            #sign-in {
-                border-radius: 50px;
-            }
-        }
-        /* body section */
-        .icon-height {
-            height: 28px;
-            width: 28px;
-        }
-        .icon-container {
-            background: #FF9138;
-        }
-        .dark-background {
-            background: #2b3944;
-        }
-    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>ApPost-Smart Parking</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="img/iconMoney.png" />
+    <link rel="icon" type="image/x-icon" href="img/wallpaperCar.jpg" />
+    <!-- Bootstrap Icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+    <!-- SimpleLightbox plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="css/styleProva.css">
+    <link rel="stylesheet" href="img">
 </head>
-<body>
-<nav>
-    <div class="navbar navbar-expand-lg pt-4">
-        <div class="container-fluid">
-            <a href="#" class="brand text-decoration-none d-block d-lg-none fw-bold fs-1 ">LOGO</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                <ul id="nav-length" class="navbar-nav justify-content-between border-top border-2 text-center">
-                    <li class="nav-item">
-                        <a href="descrizioneApp.jsp" class="nav-link border-hover py-3 text-white">Chi siamo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link border-hover py-3 text-white">Contatti</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="registrazione.jsp" class="nav-link border-hover py-3 text-white">Registrati</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="login.jsp" id="sign-in" class="nav-link my-2 px-4 text-white">
-                            Entra
-                        </a>
-                    </li>
-                </ul>
-            </div>
+<body id="page-top">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="index.jsp">ApPost</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                <li class="nav-item"><a class="nav-link" href="about.jsp">Chi siamo</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">Servizi</a></li>
+                <li class="nav-item"><a class="nav-link" href="registrazione.jsp">Registrati</a></li>
+                <li class="nav-item"><a class="nav-link" href="loginA.jsp">Accedi</a></li>
+            </ul>
         </div>
     </div>
 </nav>
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container px-4 px-lg-5 h-100">
+        <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-8 align-self-end">
+                <h1 class="text-white font-weight-bold">Trova parcheggio in facilità nella tua città con l'app di parcheggio smart!</h1>
+                <hr class="divider" />
+            </div>
+            <div class="col-lg-8 align-self-baseline">
+                <p class="text-white-75 mb-5">Grazie alla nostra app, parcheggiare non è mai stato così facile. Con un solo click, potrai trovare il parcheggio più vicino a te, risparmiando tempo e fatica.</p>
+                <div class="d-flex justify-content-center align-items-center">
+                    <a class="btn btn-primary btn-xl me-2" href="registrazione.jsp">Registrati</a> <!-- Bottone registra-->
+                    <a class="btn btn-primary btn-xl me-2" href="login.jsp">Accedi ora</a> <!-- Bottone Accedi-->
+                </div>
+                <a class="btn btn-primary btn-xl mt-3" href="about.jsp">Scopri di più</a> <!-- Bottone Scopri di piu-->
+            </div>
+        </div>
+    </div>
+</header>
 
-<div class="container mt-5">
-    <div class="jumbotron">
-        <h1 class="display-4">ApPost</h1>
-        <p>Con l'app di parcheggi smart, non dovrai più preoccuparti di cercare un parcheggio.
-            Trova il parcheggio più vicino a te, prenotazione e pagamento in completa autonomia,
-            e naviga verso la tua destinazione senza stress.</p>
-        <hr class="my-4">
+<!-- Services-->
+<section class="page-section" id="services">
+    <div class="container px-4 px-lg-5">
+        <h2 class="text-center mt-0">I nostri servizi</h2>
+        <hr class="divider" />
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <!-- <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div> -->
+                    <div><img height="50" width="50" src="img/prenotazione.png"></div>
+                    <h3 class="h4 mb-2">Prenotazioni</h3>
+                    <p class="text-muted mb-0">Prenota il tuo posto auto in anticipo
+                        per evitare l'ansia del parcheggio dell'ultimo minuto.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <!-- <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div> -->
+                    <div><img height="50" width="50" src="img/pagamento.png"></div>
+                    <h3 class="h4 mb-2">Pagamenti</h3>
+                    <p class="text-muted mb-0">Paga il parcheggio direttamente
+                        dall'app, senza dover cercare il cambio o la carta di credito.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <!-- <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div> -->
+                    <div><img height="50" width="50" src="img/risparmia.png"></div>
+                    <h3 class="h4 mb-2">Risparmia</h3>
+                    <p class="text-muted mb-0">Risparmia tempo, fatica e
+                        denaro grazie alla nostra app di parcheggio smart.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <!-- <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div> -->
+                    <div><img height="50" width="50" src="img/parcheggio.png"></div>
+                    <h3 class="h4 mb-2">Parcheggio</h3>
+                    <p class="text-muted mb-0">Trova il parcheggio più vicino a te
+                        con un solo click, senza dover girare a vuoto in cerca di un posto auto disponibile.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-        <a class="btn btn-secondary btn-lg ml-2" href="${pageContext.request.contextPath}/registrazione.jsp"
-           role="button">Registrati ora</a>
-        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/login.jsp"
-           role="button">Accedi</a>
+<!-- Portfolio-->
+<div id="portfolio">
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="img/8.jpg" title="Project Name">
+                    <img class="img-fluid" src="img/park8.jpg" alt="..." />
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">SmartPark City</div>
+                        <div class="project-name">Via dei Parcheggiatori 10, Milano</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="img/park2.jpg" title="Project Name">
+                    <img class="img-fluid" src="img/park2.jpg" alt="..." />
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">TechGarage</div>
+                        <div class="project-name">Via dell'Innovazione 20, Torino</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="img/park3.jpg" title="Project Name">
+                    <img class="img-fluid" src="img/park3.jpg" alt="..." />
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">AutoHaven</div>
+                        <div class="project-name">Via degli Automobilisti 5, Roma</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="img/park5.jpg" title="Project Name">
+                    <img class="img-fluid" src="img/park5.jpg" alt="..." />
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">ParkEase</div>
+                        <div class="project-name">Via del Parcheggio Facile 15, Firenze</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="img/park6.jpg" title="Project Name">
+                    <img class="img-fluid" src="img/park6.jpg" alt="..." />
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">QuickPark</div>
+                        <div class="project-name">Via del Parcheggio Veloce 8, Bologna</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="img/park7.jpg" title="Project Name">
+                    <img class="img-fluid" src="img/park7.jpg" alt="..." />
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">CitySpot</div>
+                        <div class="project-name">Via del Posto in Città 4, Napoli</div>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+<!-- Call to action-->
+<section class="page-section bg-dark text-white">
+    <div class="container px-4 px-lg-5 text-center">
+        <h2 class="mb-4">Inizia subito a parcheggiare con facilità</h2>
+        <a class="btn btn-light btn-xl" href="https://startbootstrap.com/theme/creative/">Download Now!</a>
+    </div>
+</section>
 
-<div class>
-    <footer class="bg-dark text-center text-white">
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2023 Copyright:
-            <a class="text-white" href="index.jsp">ApPost.com</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
-</div>
-
-
+<!-- Footer-->
+<footer class="bg-light py-5">
+    <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2022 - Company Name</div></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- SimpleLightbox plugin JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<!-- * *                               SB Forms JS                               * *-->
+<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>
