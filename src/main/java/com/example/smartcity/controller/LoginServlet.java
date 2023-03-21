@@ -1,6 +1,6 @@
 package com.example.smartcity.controller;
 
-import com.example.smartcity.model.DB;
+import com.example.smartcity.dao.DB;
 import com.example.smartcity.model.AccessoLogin;
 
 import jakarta.servlet.*;

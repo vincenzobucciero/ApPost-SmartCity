@@ -1,7 +1,9 @@
 
-package com.example.smartcity.model;
+package com.example.smartcity.dao;
 
 
+import com.example.smartcity.model.AccessoLogin;
+import com.example.smartcity.model.UsersBean;
 import com.example.smartcity.service.AuthService;
 import com.example.smartcity.handler.Handler;
 import com.example.smartcity.handler.MailHandler;
@@ -22,6 +24,11 @@ public class DB {
         return istanza;
     }
 
+    public static Connection getConnect() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection connection = DriverManager.getConnection(DB.getIstanza().url, "vincenzo", "vincenzo");
+        return connection;
+    }
 
     public boolean controllaDB(String username, String password){
         try {
@@ -46,11 +53,11 @@ public class DB {
         return false;
     }
 
-    public boolean controllaLogin(String username){
+    public boolean controllaLogin(String email){
         try {
             con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
             PreparedStatement stmt = con.prepareStatement("SELECT email  FROM Utenti WHERE email = (?)");
-            stmt.setString(1, username);
+            stmt.setString(1, email);
             ResultSet result = stmt.executeQuery();
             return result.next();
         }
@@ -81,21 +88,21 @@ public class DB {
 
 
     //Registrazione
-    public boolean addUtente(String nome, String cognome, String email, String password)
+    public boolean addUtente(UsersBean usersBean)
     {
         try {
             con = DriverManager.getConnection(url,"vincenzo", "vincenzo");
             PreparedStatement stmt = con.prepareStatement("SELECT email FROM Utenti WHERE (?)");
-            stmt.setString(1,email);
+            stmt.setString(1,usersBean.getEmail());
             ResultSet result = stmt.executeQuery();
             if (result.next()){
                 return false;
             }else {
-                PreparedStatement query = con.prepareStatement("INSERT INTO Utenti (nome, cognome, email,password) VALUES(?, ?, ?, ?)");
-                query.setString(1,nome);
-                query.setString(2,cognome);
-                query.setString(3, email);
-                query.setString(4, password);
+                PreparedStatement query = con.prepareStatement("INSERT INTO Utenti (nome, cognome, email, password) VALUES(?, ?, ?, ?)");
+                query.setString(1, usersBean.getNome());
+                query.setString(2, usersBean.getCognome());
+                query.setString(3, usersBean.getEmail());
+                query.setString(4, usersBean.getPassword());
                 query.execute();
                 return true;
             }

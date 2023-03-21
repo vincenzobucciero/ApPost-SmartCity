@@ -1,6 +1,7 @@
 package com.example.smartcity.controller;
 
-import com.example.smartcity.model.DB;
+import com.example.smartcity.model.UsersBean;
+import com.example.smartcity.service.RegService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -23,9 +24,21 @@ public class RegistrationServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        if (DB.getIstanza().addUtente(nome, cognome, email, password)) {
+        UsersBean usersBean = new UsersBean();
+        usersBean.setNome(nome);
+        usersBean.setCognome(cognome);
+        usersBean.setEmail(email);
+        usersBean.setPassword(password);
+
+        /*if (DB.getIstanza().addRegistrazione(name, surname, email, password)){
             System.out.println("Successo");
-            request.getRequestDispatcher("registrazioneSuccesso.jsp").forward(request, response);
+            request.getRequestDispatcher("profilo.jsp").forward(request, response);
+        }*/
+        if (RegService.registration(usersBean)){
+            request.setAttribute("userBean", usersBean);
+            request.getRequestDispatcher("profilo_utente.jsp").forward(request, response);
+        } else {
+            request.getRequestDispatcher("registrazione.jsp").forward(request, response);
         }
     }
 }

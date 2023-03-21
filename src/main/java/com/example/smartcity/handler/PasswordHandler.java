@@ -1,10 +1,7 @@
 package com.example.smartcity.handler;
 
 import com.example.smartcity.model.AccessoLogin;
-import com.example.smartcity.model.DB;
-import com.example.smartcity.model.LoginDao;
-
-import java.util.Map;
+import com.example.smartcity.dao.DB;
 
 public class PasswordHandler extends Handler{
    /* private final Map<String, String> database;
