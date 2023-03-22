@@ -1,13 +1,18 @@
 package com.example.smartcity.controller;
 
-import com.example.smartcity.dao.DB;
+import com.example.smartcity.dao.LoginDAO;
 import com.example.smartcity.model.AccessoLogin;
 
+import com.example.smartcity.model.ParcheggioBean;
+import com.example.smartcity.model.UsersBean;
+import com.example.smartcity.service.LogService;
+import com.example.smartcity.service.ParcheggioService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
@@ -23,10 +28,15 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        //LoginDao loginDao = new LoginDao();
+        //LoginDAO loginDao = new LoginDAO();
         //AccessoLogin accessoLogIn = loginDao.logIn(username, password);
 
-        AccessoLogin accessoLogIn = DB.getIstanza().logIn(email, password);
+        //AccessoLogin accessoLogIn = LoginDAO.getIstanza().logIn();
+        LoginDAO loginDAO = LoginDAO.getIstanza();
+        UsersBean usersBean = loginDAO.getUserBean(email);
+
+        AccessoLogin accessoLogIn = LogService.logHandler(usersBean);
+
         switch (accessoLogIn) {
             case UTENTE_INESISTENTE:
                 request.setAttribute("stato", "UTENTE_INESISTENTE");
@@ -38,15 +48,26 @@ public class LoginServlet extends HttpServlet {
                 break;
             case SUCCESSO_ADMIN:
                 request.setAttribute("stato", "SUCCESSO_ADMIN");
-                request.setAttribute("users", email);
+                List<ParcheggioBean> list = ParcheggioService.getAllParkings();
+                request.setAttribute("list", list);
                 request.getRequestDispatcher("profilo_admin.jsp").forward(request, response);
-                response.sendRedirect(getServletContext().getContextPath());
                 break;
             case SUCCESSO:
-                request.setAttribute("stato", "SUCCESSO");
-                //request.setAttribute("users", email);
-                request.getRequestDispatcher("profilo_utente.jsp").forward(request, response);
+                HttpSession oldSession = request.getSession();
 
+                if (oldSession != null) {
+                    oldSession.invalidate();
+                }
+
+                HttpSession newSession = request.getSession();
+                newSession.setMaxInactiveInterval(20*60);
+
+                newSession.setAttribute("usersBean", usersBean);
+                newSession.setAttribute("isLog", 0);
+                request.setAttribute("loggato", 1);
+                request.setAttribute("stato", "SUCCESSO");
+                request.setAttribute("usersBean", usersBean);
+                request.getRequestDispatcher("profilo_utente.jsp").forward(request, response);
             default:
                 request.setAttribute("stato", "ERRORE");
                 request.getRequestDispatcher("login.jsp").forward(request, response);

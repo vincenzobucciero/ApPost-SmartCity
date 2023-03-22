@@ -7,7 +7,6 @@
     <meta name="author" content="" />
     <title>ApPost-Smart Parking</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <link rel="icon" type="image/x-icon" href="img/iconMoney.png" />
     <link rel="icon" type="image/x-icon" href="img/wallpaperCar.jpg" />
     <!-- Bootstrap Icons-->
@@ -31,10 +30,10 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                <li class="nav-item"><a class="nav-link" href="about.jsp">Chi siamo</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">Chi siamo</a></li>
                 <li class="nav-item"><a class="nav-link" href="#services">Servizi</a></li>
                 <li class="nav-item"><a class="nav-link" href="registrazione.jsp">Registrati</a></li>
-                <li class="nav-item"><a class="nav-link" href="loginA.jsp">Accedi</a></li>
+                <li class="nav-item"><a class="nav-link" href="login.jsp">Accedi</a></li>
             </ul>
         </div>
     </div>
@@ -67,7 +66,7 @@
         <div class="row gx-4 gx-lg-5">
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
-                    <!-- <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div> -->
+                    <!--<div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>-->
                     <div><img height="50" width="50" src="img/prenotazione.png"></div>
                     <h3 class="h4 mb-2">Prenotazioni</h3>
                     <p class="text-muted mb-0">Prenota il tuo posto auto in anticipo
@@ -76,7 +75,7 @@
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
-                    <!-- <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div> -->
+                    <!--<div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>-->
                     <div><img height="50" width="50" src="img/pagamento.png"></div>
                     <h3 class="h4 mb-2">Pagamenti</h3>
                     <p class="text-muted mb-0">Paga il parcheggio direttamente
@@ -85,7 +84,7 @@
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
-                    <!-- <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div> -->
+                    <!--<div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>-->
                     <div><img height="50" width="50" src="img/risparmia.png"></div>
                     <h3 class="h4 mb-2">Risparmia</h3>
                     <p class="text-muted mb-0">Risparmia tempo, fatica e
@@ -94,7 +93,7 @@
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
-                    <!-- <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div> -->
+                    <!--<div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>-->
                     <div><img height="50" width="50" src="img/parcheggio.png"></div>
                     <h3 class="h4 mb-2">Parcheggio</h3>
                     <p class="text-muted mb-0">Trova il parcheggio più vicino a te
@@ -103,6 +102,39 @@
             </div>
         </div>
     </div>
+</section>
+
+<!--About-->
+<section class="page-section" id="about">
+    <div class="container px-4 px-lg-5">
+        <h2 class="text-center mt-0">Chi siamo</h2>
+        <hr class="divider" />
+        <div class="row gx-4 gx-lg-5">
+            <!--<div class="col-lg-3 col-md-6 text-center">-->
+            <div class="mt-5">
+                <p class="text-muted mb-0">Quest'app di parcheggi smart è la soluzione perfetta
+                    per tutti coloro che cercano un modo semplice ed efficace per trovare il parcheggio
+                    perfetto. Con la tua app, puoi prenotare il parcheggio in anticipo e risparmiare
+                    tempo ed energia nella ricerca di un posto auto.
+                    Quest'app di parcheggi smart ti consente di cercare parcheggi nelle vicinanze della
+                    tua destinazione e di visualizzare il prezzo e la disponibilità in tempo reale.
+                    Puoi scegliere il parcheggio più conveniente e prenotarlo direttamente dall'app,
+                    senza dover cercare parcheggi a caso.
+                    Una volta parcheggiato, la nostra app ti consente di monitorare il tempo di parcheggio
+                    e di ricevere avvisi quando il tuo tempo sta per scadere. In questo modo, puoi
+                    evitare multe e ulteriori spese, e rimanere tranquillo durante la tua permanenza.
+                    Inoltre, la nostra app di parcheggi smart ti permette di guadagnare punti ogni volta
+                    che utilizzi la piattaforma. Questi punti possono essere convertiti in sconti sui
+                    tuoi prossimi parcheggi o altri premi, rendendo l'esperienza di parcheggio ancora
+                    più conveniente e gratificante.
+                    In definitiva, la nostra app di parcheggi smart è la soluzione ideale per tutti coloro
+                    che cercano un modo semplice e veloce per parcheggiare. Con la sua capacità di
+                    trovare parcheggi vicini, di prenotare in anticipo e di monitorare il tempo di
+                    parcheggio, questa app è un must-have per ogni automobilista moderno.</p>
+            </div>
+        </div>
+    </div>
+    <!--</div>-->
 </section>
 
 <!-- Portfolio-->
@@ -171,7 +203,7 @@
 <section class="page-section bg-dark text-white">
     <div class="container px-4 px-lg-5 text-center">
         <h2 class="mb-4">Inizia subito a parcheggiare con facilità</h2>
-        <a class="btn btn-light btn-xl" href="https://startbootstrap.com/theme/creative/">Download Now!</a>
+        <a class="btn btn-light btn-xl" href="login.jsp">Download Now!</a>
     </div>
 </section>
 

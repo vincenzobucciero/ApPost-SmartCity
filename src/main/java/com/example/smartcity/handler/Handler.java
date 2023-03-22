@@ -1,6 +1,7 @@
 package com.example.smartcity.handler;
 
 import com.example.smartcity.model.AccessoLogin;
+import com.example.smartcity.model.UsersBean;
 
 public abstract class Handler {
     private Handler next;
@@ -13,13 +14,13 @@ public abstract class Handler {
         return next;
     }
 
-    public abstract AccessoLogin handle(String username, String password);
+    public abstract AccessoLogin handle(UsersBean usersBean);
 
-    protected AccessoLogin handlerNext(String username, String password){
+    protected AccessoLogin handlerNext(UsersBean usersBean){
         if(this.next == null){
             return AccessoLogin.SUCCESSO;
         }
-        return next.handle(username, password);
+        return next.handle(usersBean);
     }
 
     //public abstract boolean handle(String username, String password);

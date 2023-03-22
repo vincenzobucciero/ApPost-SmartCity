@@ -5,22 +5,16 @@
   Time: 9:41 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%--
-  Created by IntelliJ IDEA.
-  User: carmine
-  Date: 18/03/23
-  Time: 17:05
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <title>ApPost-Registrazione</title>
+  <title>ApPost-Mio Profilo</title>
   <!-- Favicon-->
   <link rel="icon" type="image/x-icon" href="img/iconMoney.png" />
   <link rel="icon" type="image/x-icon" href="img/wallpaperCar.jpg" />
@@ -32,10 +26,10 @@
   <!-- SimpleLightbox plugin CSS-->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
-  <link rel="stylesheet" href="css/styleProva.css">
-  <link rel="stylesheet" href="css/styleLogin.css">
+  <link rel="stylesheet" href="CSS/styleProva.css">
   <link rel="stylesheet" href="img">
 </head>
+
 <body id="page-top">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
@@ -46,86 +40,59 @@
             aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ms-auto my-2 my-lg-0">
+        <li class="nav-item"><a class="nav-link" href="profilo.jsp">Torna alla home</a></li>
         <li class="nav-item"><a class="nav-link" href="about.jsp">Chi siamo</a></li>
         <li class="nav-item"><a class="nav-link" href="#services">Servizi</a></li>
-        <li class="nav-item"><a class="nav-link" href="login.jsp">Accedi</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.jsp">Esci</a></li>
       </ul>
     </div>
   </div>
 </nav>
-<!-- Masthead-->
+
+<!--Masthead-->
 <header class="masthead">
-  <div class="container px-4 px-lg-5 h-100">
-    <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center"></div>
-  </div>
-</header>
-
-<!--<div class="container">
-    <div class="row">
-        <div class="col-md-6 offset-md-3 mt-5">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="text-center">Registrati</h3>
-                    <p>Inserisci le tue informazioni necessarie per la creazione del tuo profilo</p>
-                </div>
-                <div class="card-body">
-                    <form action="${pageContext.request.contextPath}/registrazione.jsp" method="post">
-                        <label for="name">Nome</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Es. Mario" required>
-                        <div class="form-group">
-                            <label for="surname">Cognome</label>
-                            <input type="text" class="form-control" id="surname" name="surname" placeholder="Es. Rossi" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Es. email@esempio.it" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Es. password123" required>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-lg">Register</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+  <div class="row">
+    <div class="my-5 card bg-light mx-auto" style="width: 20rem;">
+      <img src="https://i2.res.24o.it/images2010/Editrice/ILSOLE24ORE/PLUS24/2022/10/01/Plus24/Immagini/Trattate/AdobeStock_279423926-kkY--1020x533@IlSole24Ore-Web.jpeg?r=540x283"
+           alt="100">
+      <div class="card-body">
+        <h5 class="card-title">Dati personali</h5>
+        <p class="card-text">Qui vengono visualizzati i dati personali di </p>
+        <c:choose>
+          <c:when test="${usersBean != null}">
+            <h4 class="dark-background">
+                ${usersBean.getNome()}
+                ${usersBean.getCognome()}</h4>
+          </c:when>
+        </c:choose>
+        <a href="personal.jsp" class="btn btn-primary">Visualizza</a>
+      </div>
     </div>
-</div>-->
 
-<!-- Form-->
-<div class="form-bg">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 col-md-offset-4">
-        <div class="form-container">
-          <div class="form-icon"><i class="fa fa-user"></i></div>
-          <h3 class="title">Crea un account</h3>
-          <form class="form-horizontal" action="${pageContext.request.contextPath}/registration" method="post">
-            <div class="form-group">
-              <label>Nome</label>
-              <input name="nome" class="form-control" id="nome" type="text" placeholder="es. Mario" required>
-            </div>
-            <div class="form-group">
-              <label>Cognome</label>
-              <input name="cognome" class="form-control" id="cognome" type="text" placeholder="es. Rossi" required>
-            </div>
-            <div class="form-group">
-              <label>E-mail</label>
-              <input name="email" class="form-control" id="email" type="email" placeholder="es. mariorossi@gmail.com" required>
-            </div>
-            <div class="form-group">
-              <label>Password</label>
-              <input name="password" class="form-control" id="password" type="password" placeholder="es. password123" required>
-            </div>
-            <button type="submit" class="btn btn-default">Registrati</button>
-          </form>
-        </div>
+    <div class="my-5 card bg-light mx-auto" style="width: 20rem;">
+      <img src="https://www.comunicazione21.com/wp-content/uploads/2018/09/plugin-prenotazioni-copertina.jpg"
+           alt="50">
+      <div class="card-body">
+        <h5 class="card-title">Prenotazioni</h5>
+        <p class="card-text">Qui vengono visualizzate le prenotazioni effettuate,
+          con informazioni come la data, l'ora, il luogo, ecc.</p>
+        <a href="#" class="btn btn-primary">Visualizza tutto</a>
+      </div>
+    </div>
+
+    <div class="my-5 card mx-auto bg-light" style="width: 20rem;">
+      <img src="https://motori.virgilio.it/wp-content/uploads/sites/4/2021/07/auto-parcheggiate.jpg"
+           class="card-img-top"
+           alt="100">
+      <div class="card-body">
+        <h5 class="card-title">I miei veicoli</h5>
+        <p class="card-text">Qui vengono visualizzati i veicoli posseduti,
+          con informazioni come la marca, il modello, l'anno di produzione, ecc.</p>
+        <a href="#" class="btn btn-primary">Aggiungi nuovo veicolo</a>
       </div>
     </div>
   </div>
-</div>
+</header>
 
 <!-- Footer-->
 <footer class="bg-light py-5">
@@ -137,14 +104,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<!-- * *                               SB Forms JS                               * *-->
-<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
-
 
 </body>
 </html>
-

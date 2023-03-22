@@ -5,18 +5,30 @@
   Time: 10:29 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType = "text/html;charset=UTF-8" language = "java" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- Bootstrap Icons-->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-<!-- Google fonts-->
-<link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
-<!-- SimpleLightbox plugin CSS-->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
-<!-- Core theme CSS (includes Bootstrap)-->
-<link rel="stylesheet" href="CSS/styleProva.css">
-<link rel="stylesheet" href="img">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>ApPost-Smart Parking</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="img/iconMoney.png" />
+    <link rel="icon" type="image/x-icon" href="img/wallpaperCar.jpg" />
+    <!-- Bootstrap Icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+    <!-- SimpleLightbox plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="css/styleProva.css">
+    <link rel="stylesheet" href="img">
 </head>
 <body id="page-top">
 <!-- Navigation-->
@@ -25,10 +37,11 @@
         <a class="navbar-brand" href="index.jsp">ApPost</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                <li class="nav-item"><a class="nav-link" href="profilo_utente.jsp">Torna alla home</a></li>
+                <li class="nav-item"><a class="nav-link" href="profilo.jsp">Torna alla home</a></li>
                 <li class="nav-item"><a class="nav-link" href="about.jsp">Chi siamo</a></li>
                 <li class="nav-item"><a class="nav-link" href="#services">Servizi</a></li>
                 <li class="nav-item"><a class="nav-link" href="index.jsp">Esci</a></li>
@@ -36,16 +49,17 @@
         </div>
     </div>
 </nav>
+
 <!-- Masthead-->
 <header class="masthead">
     <!--Barra Home/Mio Profilo -->
-    <section style="background-color: #eee;">
+    <section style="background-color: #ffffff;">
         <div class="container py-5">
             <div class="row">
                 <div class="col">
                     <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
                         <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="profilo_utente.jsp">Home</a></li>
+                            <li class="breadcrumb-item"><a href="profilo.jsp">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Il mio profilo</li>
                         </ol>
                     </nav>
@@ -66,14 +80,15 @@
                                     </c:when>
                                 </c:choose>
                             </h5>
-                            <p class="text-muted mb-1">Lavoratore</p>
+                            <!--<p class="text-muted mb-1">Lavoratore</p>
                             <p class="text-muted mb-4">Via Giacomo Leopardi, Pomigliano, NA</p>
-                            <!--<div class="d-flex justify-content-center mb-2">
+                            <div class="d-flex justify-content-center mb-2">
                                 <button type="button" class="btn btn-primary">Follow</button>
                                 <button type="button" class="btn btn-outline-primary ms-1">Message</button>
                             </div>-->
                         </div>
                     </div>
+
                     <!-- Riquadro degli indirizzi-->
                     <div class="card mb-4 mb-lg-0">
                         <div class="card-body p-0">
@@ -103,7 +118,7 @@
                     </div>
                 </div>
 
-                <!-- -->
+                <!--Info utneti-->
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body">
@@ -115,7 +130,7 @@
                                     <p class="text-muted mb-0">
                                         <c:choose>
                                         <c:when test="${usersBean != null}">
-                                    <h4 class="mb-0">${usersBean.getNome()}</h4>
+                                    <h4 class="dark-background">${usersBean.getNome()}</h4>
                                     </c:when>
                                     </c:choose>
                                     </p>
@@ -128,7 +143,12 @@
                                     <p class="mb-0">Cognome</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">...</p>
+                                    <p class="text-muted mb-0">
+                                        <c:choose>
+                                        <c:when test="${usersBean != null}">
+                                    <h4 class="dark-background">${usersBean.getCognome()}</h4>
+                                    </c:when>
+                                    </c:choose></p>
                                 </div>
                             </div>
                             <hr>
@@ -137,7 +157,13 @@
                                     <p class="mb-0">Email</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">...</p>
+                                    <p class="text-muted mb-0">
+                                        <c:choose>
+                                        <c:when test="${usersBean != null}">
+                                    <h4 class="dark-background">${usersBean.getEmail()}</h4>
+                                    </c:when>
+                                    </c:choose>
+                                    </p>
                                 </div>
                             </div>
                             <hr>

@@ -1,7 +1,7 @@
 package com.example.smartcity.controller;
 
 import com.example.smartcity.model.UsersBean;
-import com.example.smartcity.service.RegService;
+import com.example.smartcity.service.LogService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -30,11 +30,11 @@ public class RegistrationServlet extends HttpServlet {
         usersBean.setEmail(email);
         usersBean.setPassword(password);
 
-        /*if (DB.getIstanza().addRegistrazione(name, surname, email, password)){
+        /*if (LoginDAO.getIstanza().addRegistrazione(name, surname, email, password)){
             System.out.println("Successo");
             request.getRequestDispatcher("profilo.jsp").forward(request, response);
         }*/
-        if (RegService.registration(usersBean)){
+        if (LogService.registration(usersBean)){
             request.setAttribute("userBean", usersBean);
             request.getRequestDispatcher("profilo_utente.jsp").forward(request, response);
         } else {

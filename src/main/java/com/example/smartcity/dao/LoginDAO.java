@@ -9,33 +9,32 @@ import com.example.smartcity.handler.Handler;
 import com.example.smartcity.handler.MailHandler;
 import com.example.smartcity.handler.PasswordHandler;
 import com.example.smartcity.handler.RoleHandler;
+import jakarta.jws.soap.SOAPBinding;
 
 import java.sql.*;
 
-public class DB {
-    private static DB istanza;
+public class LoginDAO {
+    private static LoginDAO istanza;
     private final String url = "jdbc:mysql://localhost:3306/smartcity";
     Connection con;
-    private DB(){}
-    public static DB getIstanza(){
+    private LoginDAO(){
+
+    }
+
+    public static LoginDAO getIstanza(){
         if (istanza == null){
-            istanza = new DB();
+            istanza = new LoginDAO();
         }
         return istanza;
     }
 
-    public static Connection getConnect() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection(DB.getIstanza().url, "vincenzo", "vincenzo");
-        return connection;
-    }
 
-    public boolean controllaDB(String username, String password){
+    public boolean controllaDB(UsersBean usersBean){
         try {
             con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
             PreparedStatement stmt = con.prepareStatement("SELECT email, password FROM Utenti WHERE email = (?) AND password = (?)");
-            stmt.setString(1, username);
-            stmt.setString(2, password);
+            stmt.setString(1, usersBean.getEmail());
+            stmt.setString(2, usersBean.getPassword());
             ResultSet result = stmt.executeQuery();
             return result.next();
         }
@@ -53,11 +52,11 @@ public class DB {
         return false;
     }
 
-    public boolean controllaLogin(String email){
+    public boolean controllaLogin(UsersBean usersBean){
         try {
             con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
             PreparedStatement stmt = con.prepareStatement("SELECT email  FROM Utenti WHERE email = (?)");
-            stmt.setString(1, email);
+            stmt.setString(1, usersBean.getEmail());
             ResultSet result = stmt.executeQuery();
             return result.next();
         }
@@ -76,28 +75,54 @@ public class DB {
         return false;
     }
 
-    public AccessoLogin logIn(String mail, String password){
-        DB users = DB.getIstanza();
+    public AccessoLogin logIn(UsersBean usersBean){
+        LoginDAO users = LoginDAO.getIstanza();
         Handler handler = new MailHandler(users);
         handler.setNextHandler(new PasswordHandler(users)).setNextHandler(new RoleHandler());
 
 
         AuthService authService = new AuthService(handler);
-        return authService.logIn(mail,password);
+        return authService.logIn(usersBean);
+    }
+
+    public UsersBean getUserBean(String email) {
+        UsersBean usersBean = new UsersBean();
+        try {
+            con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM Utenti WHERE email = (?)");
+            stmt.setString(1, email);
+            ResultSet result = stmt.executeQuery();
+            if (result.next()) {
+                usersBean.setNome(result.getString("nome"));
+                usersBean.setCognome(result.getString("cognome"));
+                usersBean.setEmail(result.getString("email"));
+                usersBean.setPassword(result.getString("password"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();;
+        } finally {
+            try {
+                if (con != null)
+                    con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return usersBean;
     }
 
 
+
     //Registrazione
-    public boolean addUtente(UsersBean usersBean)
-    {
+    public boolean addUtente(UsersBean usersBean) {
         try {
-            con = DriverManager.getConnection(url,"vincenzo", "vincenzo");
+            con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
             PreparedStatement stmt = con.prepareStatement("SELECT email FROM Utenti WHERE (?)");
-            stmt.setString(1,usersBean.getEmail());
+            stmt.setString(1, usersBean.getEmail());
             ResultSet result = stmt.executeQuery();
-            if (result.next()){
+            if (result.next()) {
                 return false;
-            }else {
+            } else {
                 PreparedStatement query = con.prepareStatement("INSERT INTO Utenti (nome, cognome, email, password) VALUES(?, ?, ?, ?)");
                 query.setString(1, usersBean.getNome());
                 query.setString(2, usersBean.getCognome());
@@ -106,16 +131,13 @@ public class DB {
                 query.execute();
                 return true;
             }
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             try {
-                if (con!=null)
+                if (con != null)
                     con.close();
-            }
-            catch (SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
