@@ -47,10 +47,23 @@ public class LoginServlet extends HttpServlet {
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 break;
             case SUCCESSO_ADMIN:
+                HttpSession oldSessionAd = request.getSession();
+
+                if (oldSessionAd != null) {
+                    oldSessionAd.invalidate();
+                }
+
+                HttpSession newSessionAd = request.getSession();
+                newSessionAd.setMaxInactiveInterval(20*60);
+
+                newSessionAd.setAttribute("usersBean", usersBean);
+                newSessionAd.setAttribute("isLog", 1);
+                request.setAttribute("loggato", 1);
                 request.setAttribute("stato", "SUCCESSO_ADMIN");
+                request.setAttribute("usersBean", usersBean);
                 List<ParcheggioBean> list = ParcheggioService.getAllParkings();
                 request.setAttribute("list", list);
-                request.getRequestDispatcher("profilo_admin.jsp").forward(request, response);
+                request.getRequestDispatcher("adminHomePage.jsp").forward(request, response);
                 break;
             case SUCCESSO:
                 HttpSession oldSession = request.getSession();
@@ -63,11 +76,11 @@ public class LoginServlet extends HttpServlet {
                 newSession.setMaxInactiveInterval(20*60);
 
                 newSession.setAttribute("usersBean", usersBean);
-                newSession.setAttribute("isLog", 0);
+                newSession.setAttribute("isLog", 1);
                 request.setAttribute("loggato", 1);
                 request.setAttribute("stato", "SUCCESSO");
                 request.setAttribute("usersBean", usersBean);
-                request.getRequestDispatcher("profilo_utente.jsp").forward(request, response);
+                request.getRequestDispatcher("userHomePage.jsp").forward(request, response);
             default:
                 request.setAttribute("stato", "ERRORE");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
