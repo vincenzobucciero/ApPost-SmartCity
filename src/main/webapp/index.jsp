@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: vincenzo
+  Date: 20/03/23
+  Time: 22:13
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -17,7 +24,7 @@
     <!-- SimpleLightbox plugin CSS-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link rel="stylesheet" href="css/styleProva.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="img">
 </head>
 <body id="page-top">
@@ -52,7 +59,7 @@
                     <a class="btn btn-primary btn-xl me-2" href="registrazione.jsp">Registrati</a> <!-- Bottone registra-->
                     <a class="btn btn-primary btn-xl me-2" href="login.jsp">Accedi ora</a> <!-- Bottone Accedi-->
                 </div>
-                <a class="btn btn-primary btn-xl mt-3" href="about.jsp">Scopri di più</a> <!-- Bottone Scopri di piu-->
+                <a class="btn btn-primary btn-xl mt-3" href="#about">Scopri di più</a> <!-- Bottone Scopri di piu-->
             </div>
         </div>
     </div>
@@ -224,3 +231,4 @@
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>
+

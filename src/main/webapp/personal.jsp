@@ -6,8 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +27,7 @@
     <!-- SimpleLightbox plugin CSS-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link rel="stylesheet" href="css/styleProva.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="img">
 </head>
 <body id="page-top">
@@ -41,7 +41,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                <li class="nav-item"><a class="nav-link" href="profilo.jsp">Torna alla home</a></li>
+                <li class="nav-item"><a class="nav-link" href="userHomePage.jsp">Torna alla home</a></li>
                 <li class="nav-item"><a class="nav-link" href="about.jsp">Chi siamo</a></li>
                 <li class="nav-item"><a class="nav-link" href="#services">Servizi</a></li>
                 <li class="nav-item"><a class="nav-link" href="index.jsp">Esci</a></li>
@@ -59,7 +59,7 @@
                 <div class="col">
                     <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
                         <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="profilo.jsp">Home</a></li>
+                            <li class="breadcrumb-item"><a href="userHomePage.jsp">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Il mio profilo</li>
                         </ol>
                     </nav>
@@ -76,7 +76,7 @@
                             <h5 class="my-3">
                                 <c:choose>
                                     <c:when test="${usersBean != null}">
-                                        <h4 class="dark-background">${usersBean.getNome()}</h4>
+                                        <p class="text-muted mb-0">${usersBean.getNome()}</p>
                                     </c:when>
                                 </c:choose>
                             </h5>
@@ -129,10 +129,10 @@
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">
                                         <c:choose>
-                                        <c:when test="${usersBean != null}">
-                                    <h4 class="dark-background">${usersBean.getNome()}</h4>
-                                    </c:when>
-                                    </c:choose>
+                                            <c:when test="${usersBean != null}">
+                                                ${usersBean.getNome()}
+                                            </c:when>
+                                        </c:choose>
                                     </p>
                                 </div>
                             </div>
@@ -145,10 +145,10 @@
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">
                                         <c:choose>
-                                        <c:when test="${usersBean != null}">
-                                    <h4 class="dark-background">${usersBean.getCognome()}</h4>
-                                    </c:when>
-                                    </c:choose></p>
+                                            <c:when test="${usersBean != null}">
+                                                ${usersBean.getCognome()}
+                                            </c:when>
+                                        </c:choose></p>
                                 </div>
                             </div>
                             <hr>
@@ -159,10 +159,10 @@
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">
                                         <c:choose>
-                                        <c:when test="${usersBean != null}">
-                                    <h4 class="dark-background">${usersBean.getEmail()}</h4>
-                                    </c:when>
-                                    </c:choose>
+                                            <c:when test="${usersBean != null}">
+                                                ${usersBean.getEmail()}
+                                            </c:when>
+                                        </c:choose>
                                     </p>
                                 </div>
                             </div>
