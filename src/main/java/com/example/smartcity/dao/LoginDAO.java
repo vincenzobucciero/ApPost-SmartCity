@@ -123,7 +123,7 @@ public class LoginDAO {
             if (result.next()) {
                 return false;
             } else {
-                PreparedStatement query = con.prepareStatement("INSERT INTO Utenti (nome, cognome, email, password) VALUES(?, ?, ?, ?)");
+                PreparedStatement query = con.prepareStatement("INSERT INTO Utenti (nome, cognome, email, password, num_telefono, indirizzo) VALUES(?, ?, ?, ?, ?, ?)");
                 query.setString(1, usersBean.getNome());
                 query.setString(2, usersBean.getCognome());
                 query.setString(3, usersBean.getEmail());
