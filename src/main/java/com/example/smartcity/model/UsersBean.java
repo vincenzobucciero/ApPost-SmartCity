@@ -9,7 +9,8 @@ public class UsersBean implements Serializable {
     private String email;
     private String password;
 
-    public UsersBean(){}
+    public UsersBean() {
+    }
 
     public String getNome() {
         return nome;
@@ -23,7 +24,9 @@ public class UsersBean implements Serializable {
         return cognome;
     }
 
-    public void setCognome(String cognome) { this.cognome = cognome; }
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
 
     public String getEmail() {
         return email;
