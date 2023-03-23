@@ -608,7 +608,7 @@ progress {
     padding: 0.25rem;
     background-color: #fff;
     border: 1px solid #dee2e6;
-    border-radius: 0.25rem;
+    border-radius: 2.3rem;
     max-width: 100%;
     height: auto;
 }
@@ -4518,7 +4518,7 @@ textarea.form-control-lg {
     background-color: #fff;
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 2.3rem;
+    border-radius: 5px;
 }
 .card > hr {
     margin-right: 0;
@@ -7294,6 +7294,7 @@ textarea.form-control-lg {
 .my-5 {
     margin-top: 5rem !important;
     margin-bottom: 3rem !important;
+    border-radius: 5px !important;
 }
 
 .my-auto {

@@ -76,7 +76,7 @@
   <div class="row">
     <!-- Inizio Prima Card-->
     <div class="my-5 card bg-light" style="width: 20rem;">
-      <img src="img/imgCard/personalData.jpg">
+      <img src="img/imgCard/personalData.jpg" >
       <div class="card-body">
         <h4 class="card-title">Dati personali</h4>
         <p class="card-text">Qui vengono visualizzati i dati personali di </p>
