@@ -18,9 +18,9 @@ public class HomeServlet extends HttpServlet {
          } else {
              isLog = (int) session.getAttribute("isLog");
          }
-         request.setAttribute("loggato", isLog);
          response.setContentType("text/html");
          request.setAttribute("users", "LogIn");
+         request.setAttribute("loggato", isLog);
          request.getRequestDispatcher("homepage.jsp").forward(request, response);
     }
 

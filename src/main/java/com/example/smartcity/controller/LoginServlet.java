@@ -32,10 +32,10 @@ public class LoginServlet extends HttpServlet {
         //AccessoLogin accessoLogIn = loginDao.logIn(username, password);
 
         //AccessoLogin accessoLogIn = LoginDAO.getIstanza().logIn();
-        LoginDAO loginDAO = LoginDAO.getIstanza();
-        UsersBean usersBean = loginDAO.getUserBean(email);
+        //LoginDAO loginDAO = LoginDAO.getIstanza().getUserBean(email);
+        UsersBean usersBean = LoginDAO.getIstanza().getUserBean(email);
 
-        AccessoLogin accessoLogIn = LogService.logHandler(usersBean);
+        AccessoLogin accessoLogIn = LogService.logHandler(email, password);
 
         switch (accessoLogIn) {
             case UTENTE_INESISTENTE:
@@ -47,29 +47,30 @@ public class LoginServlet extends HttpServlet {
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 break;
             case SUCCESSO_ADMIN:
-                HttpSession oldSessionAd = request.getSession();
+                HttpSession vecchiaSessionAd = request.getSession();
 
-                if (oldSessionAd != null) {
-                    oldSessionAd.invalidate();
+                if (vecchiaSessionAd != null) {
+                    vecchiaSessionAd.invalidate();
                 }
 
                 HttpSession newSessionAd = request.getSession();
                 newSessionAd.setMaxInactiveInterval(20*60);
 
                 newSessionAd.setAttribute("usersBean", usersBean);
-                newSessionAd.setAttribute("isLog", 1);
-                request.setAttribute("loggato", 1);
+                newSessionAd.setAttribute("isLog", 2);
+                request.setAttribute("loggato", 2);
+
                 request.setAttribute("stato", "SUCCESSO_ADMIN");
-                request.setAttribute("usersBean", usersBean);
+                //request.setAttribute("usersBean", usersBean);
                 List<ParcheggioBean> list = ParcheggioService.getAllParkings();
                 request.setAttribute("list", list);
                 request.getRequestDispatcher("adminHomePage.jsp").forward(request, response);
                 break;
             case SUCCESSO:
-                HttpSession oldSession = request.getSession();
+                HttpSession vecchiaSession = request.getSession();
 
-                if (oldSession != null) {
-                    oldSession.invalidate();
+                if (vecchiaSession != null) {
+                    vecchiaSession.invalidate();
                 }
 
                 HttpSession newSession = request.getSession();

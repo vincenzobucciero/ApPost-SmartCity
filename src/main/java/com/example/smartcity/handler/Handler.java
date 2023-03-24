@@ -14,13 +14,13 @@ public abstract class Handler {
         return next;
     }
 
-    public abstract AccessoLogin handle(UsersBean usersBean);
+    public abstract AccessoLogin handle(String username, String password);
 
-    protected AccessoLogin handlerNext(UsersBean usersBean){
+    protected AccessoLogin handleNext(String username, String password){
         if(this.next == null){
             return AccessoLogin.SUCCESSO;
         }
-        return next.handle(usersBean);
+        return next.handle(username, password);
     }
 
     //public abstract boolean handle(String username, String password);

@@ -9,14 +9,14 @@ import com.example.smartcity.handler.Handler;
 import com.example.smartcity.handler.MailHandler;
 import com.example.smartcity.handler.PasswordHandler;
 import com.example.smartcity.handler.RoleHandler;
-import jakarta.jws.soap.SOAPBinding;
+
 
 import java.sql.*;
 
 public class LoginDAO {
     private static LoginDAO istanza;
-    private final String url = "jdbc:mysql://localhost:3306/smartcity";
-    Connection con;
+    private static final String url = "jdbc:mysql://localhost:3306/smartcity";
+    private static Connection con;
     private LoginDAO(){
 
     }
@@ -29,12 +29,12 @@ public class LoginDAO {
     }
 
 
-    public boolean controllaDB(UsersBean usersBean){
+    public static boolean controllaDB(String email, String password){
         try {
             con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
             PreparedStatement stmt = con.prepareStatement("SELECT email, password FROM Utenti WHERE email = (?) AND password = (?)");
-            stmt.setString(1, usersBean.getEmail());
-            stmt.setString(2, usersBean.getPassword());
+            stmt.setString(1, email);
+            stmt.setString(2, password);
             ResultSet result = stmt.executeQuery();
             return result.next();
         }
@@ -52,11 +52,11 @@ public class LoginDAO {
         return false;
     }
 
-    public boolean controllaLogin(UsersBean usersBean){
+    public static boolean controllaLogin(String email){
         try {
             con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
             PreparedStatement stmt = con.prepareStatement("SELECT email  FROM Utenti WHERE email = (?)");
-            stmt.setString(1, usersBean.getEmail());
+            stmt.setString(1, email);
             ResultSet result = stmt.executeQuery();
             return result.next();
         }
@@ -75,15 +75,20 @@ public class LoginDAO {
         return false;
     }
 
-    public AccessoLogin logIn(UsersBean usersBean){
+    /*
+
+    public AccessoLogin logIn(String email, String password){
         LoginDAO users = LoginDAO.getIstanza();
         Handler handler = new MailHandler(users);
         handler.setNextHandler(new PasswordHandler(users)).setNextHandler(new RoleHandler());
 
 
         AuthService authService = new AuthService(handler);
-        return authService.logIn(usersBean);
+        return authService.logIn(email, password);
     }
+
+    */
+
 
     public UsersBean getUserBean(String email) {
         UsersBean usersBean = new UsersBean();
@@ -123,7 +128,7 @@ public class LoginDAO {
             if (result.next()) {
                 return false;
             } else {
-                PreparedStatement query = con.prepareStatement("INSERT INTO Utenti (nome, cognome, email, password, num_telefono, indirizzo) VALUES(?, ?, ?, ?, ?, ?)");
+                PreparedStatement query = con.prepareStatement("INSERT INTO Utenti (nome, cognome, email, password) VALUES(?, ?, ?, ?)");
                 query.setString(1, usersBean.getNome());
                 query.setString(2, usersBean.getCognome());
                 query.setString(3, usersBean.getEmail());

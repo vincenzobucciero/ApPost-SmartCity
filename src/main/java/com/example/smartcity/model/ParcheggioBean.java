@@ -35,11 +35,11 @@ public class ParcheggioBean implements Serializable {
         this.nomeParcheggio = nomeParcheggio;
     }
 
-    public int getIdParcheggio() {
+    public int getID_parcheggio() {
         return idParcheggio;
     }
 
-    public void setIdParcheggio(int idParcheggio) {
+    public void setId_Parcheggio(int idParcheggio) {
         this.idParcheggio = idParcheggio;
     }
 }
