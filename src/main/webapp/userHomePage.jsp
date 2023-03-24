@@ -6,6 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 
+
+<%--
+  Created by IntelliJ IDEA.
+  User: carmine
+  Date: 22/03/23
+  Time: 16:27
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -76,7 +84,7 @@
   <div class="row">
     <!-- Inizio Prima Card-->
     <div class="my-5 card bg-light" style="width: 20rem;">
-      <img src="img/imgCard/personalData.jpg" >
+      <img src="img/imgCard/personalData.jpg">
       <div class="card-body">
         <h4 class="card-title">Dati personali</h4>
         <p class="card-text">Qui vengono visualizzati i dati personali di </p>
@@ -119,4 +127,3 @@
 </header> <!-- Fine MasterHead-->
 </body>
 </html>
-

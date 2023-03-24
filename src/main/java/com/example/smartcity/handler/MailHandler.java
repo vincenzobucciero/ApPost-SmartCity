@@ -33,7 +33,7 @@ public class MailHandler extends Handler {
             System.out.println("Registrati ora");
             return AccessoLogin.UTENTE_INESISTENTE;
         }
-        return this.handleNext(email,password);
+        return handleNext(email,password);
     }
 
 

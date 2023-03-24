@@ -9,8 +9,11 @@ public class ParcheggioService {
     public static List<ParcheggioBean> getAllParkings() {
         ParcheggioDAO parcheggioDAO = ParcheggioDAO.getIstanza();
 
-        List<ParcheggioBean> parcheggioBean = ParcheggioDAO.getIstanza().getParkings();
-
-        return parcheggioBean;
+        return ParcheggioDAO.getIstanza().getParkings();
     }
+
+        public static void modifyTariffa(int id, double tariffa){
+            ParcheggioDAO.getIstanza().modifyTariffa(id,tariffa);
+        }
 }
+
