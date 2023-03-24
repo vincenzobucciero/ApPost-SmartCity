@@ -6,6 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 
+<%--
+  Created by IntelliJ IDEA.
+  User: carmine
+  Date: 19/03/23
+  Time: 12:09
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -40,7 +47,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
                 <li class="nav-item"><a class="nav-link" href="adminHomePage.jsp">Torna alla home</a></li>
-                <li class="nav-item"><a class="nav-link" href="index.jsp  ">Esci</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.jsp">Esci</a></li>
             </ul>
         </div>
     </div>
@@ -49,58 +56,34 @@
 <!-- Masthead-->
 <header class="masthead">
 
-    <div class="row">
-        <div class="col-lg-7">
-            <div class="card mb-4">
+    <div class="row"> <!-- Inizio Card-->
+        <c:forEach items="${list}" var="record"> <!--Ciclo FOR -->
+            <div class="my-5 card bg-light mx-auto" style="width: 20rem;">
                 <div class="card-body">
-                    <h3 class="card-title">Informazioni Parcheggi</h3>
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <h4 class="mb-2">Nome Parcheggio</h4> <!--Nome Parcheggio -->
-                            <!--Qui devi fare la stampa per il nome -->
-                            <p>......</p>
-                        </div>
-                        <hr>
-                        <div class="col-sm-5"><!--Indirizzo Parcheggio -->
-                            <h4 class="mb-0">Indirizzo Parcheggio</h4>
-                            <!--Qui devi fare la stampa per l'indirizzo -->
-                            <p>......</p>
-                        </div>
-                        <hr>
-                        <div class="col-sm-5"><!--Posti parcheggio -->
-                            <h4 class="mb-0">Numero Posti</h4>
-                            <!--Qui devi fare la stampa per i posti -->
-                            <p>......</p>
-                        </div>
-                        <hr>
-                        <div class="col-sm-5"><!--Id Parcheggio -->
-                            <h4 class="mb-0">Id Parcheggio</h4>
-                            <!--Qui devi fare la stampa per l'Id -->
-                            <p>......</p>
-                        </div>
-                        <hr>
+                    <p class="text-muted mb-0 fs-4">
+                    <td>
+                            ${record.getNomeParcheggio()}
+                    </td>
+                    <hr>
+                    </p><!-- Fine Nome-->
+                    <h5 class="card-text">
+                        <td>
+                                ${record.getIndirizzo()}<br>
+                            Numero Posti: ${record.getNumPosti()}
+                        </td>
+                    </h5> <!-- Fine Indirizzo-->
 
+                    <div> <!--Bottone modifica -->
+                        <form action="/ModifyServlet" method="post">
+                            <input type="hidden" name="idparking" value="<td>${record.getID_parcheggio()}</td>">
+                            <button class="btn btn-primary">Modifica</button>
+                        </form>
                     </div>
-
-
                 </div>
-                <hr>
-            </div>
-        </div>
-    </div>
-    </div> <!--Fine CARD INFO -->
-
-
-
-    <!-- <h3>Sono un admin</h3>
-        Stampo tutti i nomi dei parcheggi
-        <c:forEach items="${list}" var="record">
-            <tr>
-                <td>${record.getNomeParcheggio()}</td><br>
-            </tr>
-        </c:forEach> -->
+            </div><!-- Fine Card-->
+        </c:forEach>
+    </div><!-- FINE SEZIONE CARD-->
 </header>
-
 
 <!-- Footer-->
 <footer class="bg-light py-5">
