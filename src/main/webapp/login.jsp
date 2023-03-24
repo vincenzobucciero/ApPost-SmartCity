@@ -66,11 +66,22 @@
               <label>email</label>
               <input name="email" class="form-control" type="email" placeholder="Email">
             </div>
+
+            <c:if test="${not empty erroreEmail}">
+              <span style="font-family: 'Cascadia Code'; color: red; text-shadow: red">${erroreEmail}</span>
+            </c:if> <hr>
+
             <div class="form-group">
               <label>password</label>
               <input name="password" class="form-control" type="password" placeholder="Password">
             </div>
+
+            <c:if test="${errorePassword != null}">
+              <span style="font-family: 'Cascadia Code'; color: red; text-shadow: red">${errorePassword}</span>
+            </c:if> <hr>
+
             <button type="submit" class="btn btn-default">Entra</button>
+
             <div class="text-center">
               <a href="registrazione.jsp" class="text-secondary">Registrati ora</a>
             </div>

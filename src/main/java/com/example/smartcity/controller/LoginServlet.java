@@ -39,11 +39,11 @@ public class LoginServlet extends HttpServlet {
 
         switch (accessoLogIn) {
             case UTENTE_INESISTENTE:
-                request.setAttribute("stato", "UTENTE_INESISTENTE");
+                request.setAttribute("erroreEmail", "L'email inserita non esiste, riprova");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 break;
             case PASSWORD_ERRATA:
-                request.setAttribute("stato", "PASSWORD_ERRATA");
+                request.setAttribute("errorePassword", "La password inserita non è corretta");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 break;
             case SUCCESSO_ADMIN:
@@ -83,7 +83,7 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("usersBean", usersBean);
                 request.getRequestDispatcher("userHomePage.jsp").forward(request, response);
             default:
-                request.setAttribute("stato", "ERRORE");
+                request.setAttribute("stato", "Email o password inseriti non sono corretti");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 break;
         }
