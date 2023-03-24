@@ -21,6 +21,6 @@ public class ModifyServlet extends HttpServlet {
         String idparking = request.getParameter("idparking");
 
 
-        request.getRequestDispatcher("personal.jsp").forward(request, response);
+        request.getRequestDispatcher("infoUtente.jsp").forward(request, response);
     }
 }

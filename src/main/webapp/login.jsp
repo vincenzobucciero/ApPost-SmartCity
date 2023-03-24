@@ -6,13 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%--
-  Created by IntelliJ IDEA.
-  User: carmine
-  Date: 21/03/23
-  Time: 00:02
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -33,7 +26,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/styleLogin.css">
+  <link rel="stylesheet" href="css/styleFormLogin.css">
   <link rel="stylesheet" href="img">
 </head>
 
