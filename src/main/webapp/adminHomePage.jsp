@@ -75,7 +75,7 @@
 
                     <div> <!--Bottone modifica -->
                         <form action="/ModifyServlet" method="post">
-                            <input type="hidden" name="idparking" value="<td>${record.getID_parcheggio()}</td>">
+                            <input type="hidden" name="idparking" value="<td>${record.getIdParcheggio()}</td>">
                             <button class="btn btn-primary">Modifica</button>
                         </form>
                     </div>

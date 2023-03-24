@@ -31,7 +31,7 @@ public class ParcheggioDAO {
             ResultSet resultSet = stmt.executeQuery();
             while(resultSet.next()){
                 ParcheggioBean ParcheggioBean = new ParcheggioBean();
-                ParcheggioBean.setId_Parcheggio(resultSet.getInt(1));
+                ParcheggioBean.setIdParcheggio(resultSet.getInt(1));
                 ParcheggioBean.setNomeParcheggio(resultSet.getString(2));
                 ParcheggioBean.setIndirizzo(resultSet.getString(3));
                 ParcheggioBean.setNumPosti(resultSet.getInt(4));
@@ -59,7 +59,7 @@ public class ParcheggioDAO {
             PreparedStatement stmt = con.prepareStatement("UPDATE Parcheggio SET tariffa=(?) WHERE ID_parcheggio = (?)");
             stmt.setDouble(1, tariffa);
             stmt.setInt(2, id);
-            stmt.execute();
+            stmt.executeUpdate();
         }
         catch (SQLException e){
             e.printStackTrace();

@@ -21,7 +21,7 @@ public class MailHandler extends Handler {
     }*/
 
     private String email;
-    private String password;
+    // private String password;
     public MailHandler(String email){
         this.email = email;
         //this.password = password;

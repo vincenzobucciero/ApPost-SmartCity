@@ -2,7 +2,7 @@ package com.example.smartcity.handler;
 
 import com.example.smartcity.dao.LoginDAO;
 import com.example.smartcity.model.AccessoLogin;
-import com.example.smartcity.model.UsersBean;
+// import com.example.smartcity.model.UsersBean;
 
 public class PasswordHandler extends Handler{
     private String email;

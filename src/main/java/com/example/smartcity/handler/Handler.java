@@ -14,13 +14,13 @@ public abstract class Handler {
         return next;
     }
 
-    public abstract AccessoLogin handle(String username, String password);
+    public abstract AccessoLogin handle(String email, String password);
 
-    protected AccessoLogin handleNext(String username, String password){
+    protected AccessoLogin handleNext(String email, String password){
         if(this.next == null){
             return AccessoLogin.SUCCESSO;
         }
-        return next.handle(username, password);
+        return next.handle(email, password);
     }
 
     //public abstract boolean handle(String username, String password);
