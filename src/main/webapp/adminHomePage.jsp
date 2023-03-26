@@ -74,10 +74,12 @@
                     </h5> <!-- Fine Indirizzo-->
 
                     <div> <!--Bottone modifica -->
-                        <form action="/ModifyServlet" method="post">
-                            <input type="hidden" name="idparking" value="<td>${record.getIdParcheggio()}</td>">
-                            <button class="btn btn-primary">Modifica</button>
+
+                        <form action="ModifyServlet" method="post">
+                            <input type="hidden" name="idparking" value="${record.getIdParcheggio()}">
+                            <button  class="btn btn-primary"> Modifica</button>
                         </form>
+
                     </div>
                 </div>
             </div><!-- Fine Card-->

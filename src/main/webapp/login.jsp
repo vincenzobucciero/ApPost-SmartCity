@@ -1,3 +1,4 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: vincenzo
@@ -67,6 +68,7 @@
               <input name="email" class="form-control" type="email" placeholder="Email">
             </div>
 
+            <!-- Messaggio di errore se l'email inserita non è corretta -->
             <c:if test="${not empty erroreEmail}">
               <span style="font-family: 'Cascadia Code'; color: red; text-shadow: red">${erroreEmail}</span>
             </c:if> <hr>

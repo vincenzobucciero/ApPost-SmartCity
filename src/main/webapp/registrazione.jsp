@@ -65,11 +65,11 @@
           <form class="form-horizontal" action="${pageContext.request.contextPath}/registration" method="post">
             <div class="form-group">
               <label>nome</label>
-              <input name="name" class="form-control" id="name" type="text" placeholder="es. Mario" required>
+              <input name="nome" class="form-control" id="nome" type="text" placeholder="es. Mario" required>
             </div>
             <div class="form-group">
               <label>cognome</label>
-              <input name="surname" class="form-control" id="surname" type="text" placeholder="es. Rossi" required>
+              <input name="cognome" class="form-control" id="cognome" type="text" placeholder="es. Rossi" required>
             </div>
             <div class="form-group">
               <label>email</label>
