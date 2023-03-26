@@ -2,7 +2,7 @@ package com.example.smartcity.model;
 
 import java.io.Serializable;
 
-public class ParcheggioBean implements Serializable {
+public class ParkingBean implements Serializable {
 
     private int idParcheggio;
     private String nomeParcheggio;
@@ -10,7 +10,7 @@ public class ParcheggioBean implements Serializable {
     private int numPosti;
     private double tariffa;
 
-    public ParcheggioBean(){}
+    public ParkingBean(){}
 
     public int getNumPosti() {
         return numPosti;

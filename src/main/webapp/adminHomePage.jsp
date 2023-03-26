@@ -65,7 +65,6 @@
                             ${record.getNomeParcheggio()}
                     </td>
                     <hr>
-                    </p><!-- Fine Nome-->
                     <h5 class="card-text">
                         <td>
                                 ${record.getIndirizzo()}<br>

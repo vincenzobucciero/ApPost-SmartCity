@@ -5,17 +5,17 @@ import com.example.smartcity.model.UsersBean;
 
 import java.sql.*;
 
-public class LoginDAO {
-    private static LoginDAO istanza;
+public class LoginDao {
+    private static LoginDao istanza;
     private static final String url = "jdbc:mysql://localhost:3306/smartcity";
     private static Connection con;
-    private LoginDAO(){
+    private LoginDao(){
 
     }
 
-    public static LoginDAO getIstanza(){
+    public static LoginDao getIstanza(){
         if (istanza == null){
-            istanza = new LoginDAO();
+            istanza = new LoginDao();
         }
         return istanza;
     }
@@ -70,7 +70,7 @@ public class LoginDAO {
     /*
 
     public AccessoLogin logIn(String email, String password){
-        LoginDAO users = LoginDAO.getIstanza();
+        LoginDao users = LoginDao.getIstanza();
         Handler handler = new MailHandler(users);
         handler.setNextHandler(new PasswordHandler(users)).setNextHandler(new RoleHandler());
 

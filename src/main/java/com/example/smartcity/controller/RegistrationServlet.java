@@ -30,15 +30,29 @@ public class RegistrationServlet extends HttpServlet {
         usersBean.setEmail(email);
         usersBean.setPassword(password);
 
-        /*if (LoginDAO.getIstanza().addRegistrazione(name, surname, email, password)){
+        /*if (LoginDao.getIstanza().addRegistrazione(name, surname, email, password)){
             System.out.println("Successo");
             request.getRequestDispatcher("profilo.jsp").forward(request, response);
         }*/
 
+
         if (LogService.registration(usersBean)){
-            request.setAttribute("userBean", usersBean);
+            HttpSession vecchiaSession = request.getSession();
+
+            if (vecchiaSession != null){
+                vecchiaSession.invalidate();
+            }
+            HttpSession newSession = request.getSession();
+            newSession.setMaxInactiveInterval(20*60);
+
+            newSession.setAttribute("usersBean",usersBean);
+            newSession.setAttribute("isLog",1);     //1 = sono un utente normale
+            request.setAttribute("loggato",1);
+            request.setAttribute("usersBean", usersBean);
             request.getRequestDispatcher("userHomePage.jsp").forward(request, response);
-        } else {
+
+        }
+        else {
             request.getRequestDispatcher("registrazione.jsp").forward(request, response);
         }
     }

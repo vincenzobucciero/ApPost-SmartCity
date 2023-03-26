@@ -1,15 +1,13 @@
 package com.example.smartcity.controller;
 
 
-import com.example.smartcity.dao.ParcheggioDAO;
-import com.example.smartcity.model.ParcheggioBean;
-import com.example.smartcity.service.ModifyService;
+import com.example.smartcity.dao.ParkingDao;
+import com.example.smartcity.model.ParkingBean;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(name = "ModifyServlet", value = "/ModifyServlet")
 public class ModifyServlet extends HttpServlet {
@@ -43,9 +41,9 @@ public class ModifyServlet extends HttpServlet {
         ModifyService.modifyTariffa(Integer.parseInt(idparking), Double.parseDouble(tariffa));
         ModifyService.modifyNumPosti(Integer.parseInt(idparking), Integer.parseInt(numPosti));
 
-        ParcheggioBean parcheggioBean = ParcheggioDAO.getIstanza().getparcheggioBean(Integer.parseInt(idparking));
+        ParkingBean parkingBean = ParkingDao.getIstanza().getparcheggioBean(Integer.parseInt(idparking));
         request.getRequestDispatcher("modificaTariffa.jsp").forward(request, response);
-        request.setAttribute("parkingBean", parcheggioBean);
+        request.setAttribute("parkingBean", parkingBean);
 
     }
 
@@ -53,7 +51,7 @@ public class ModifyServlet extends HttpServlet {
 
 
         String idparking = request.getParameter("idparking");
-        ParcheggioBean parcheggioBean = ParcheggioDAO.getIstanza().getparcheggioBean(Integer.parseInt(idparking));
+        ParkingBean parkingBean = ParkingDao.getIstanza().getparcheggioBean(Integer.parseInt(idparking));
 
         HttpSession vecchiaSession = request.getSession();
         if (vecchiaSession != null){
@@ -62,10 +60,10 @@ public class ModifyServlet extends HttpServlet {
         HttpSession newSession = request.getSession();
         newSession.setMaxInactiveInterval(20*60);
 
-        newSession.setAttribute("parcheggioBean",parcheggioBean);
+        newSession.setAttribute("parcheggioBean", parkingBean);
         newSession.setAttribute("isLog",2);
         request.setAttribute("loggato",2);
-        request.setAttribute("parcheggioBean", parcheggioBean);
+        request.setAttribute("parcheggioBean", parkingBean);
         request.getRequestDispatcher("modificaTariffa.jsp").forward(request, response);
     }
 }

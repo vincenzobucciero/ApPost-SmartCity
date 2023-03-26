@@ -5,25 +5,18 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+public class ModifyDao {
 
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
-public class ModifyDAO {
-
-    private static ModifyDAO istanza;
+    private static ModifyDao istanza;
     private static final String url = "jdbc:mysql://localhost:3306/smartcity";
     private static Connection con;
 
-    private ModifyDAO() {
+    private ModifyDao() {
     }
 
-    public static ModifyDAO getIstanza() {
+    public static ModifyDao getIstanza() {
         if (istanza == null) {
-            istanza = new ModifyDAO();
+            istanza = new ModifyDao();
         }
         return istanza;
     }

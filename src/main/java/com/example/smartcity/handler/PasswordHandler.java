@@ -1,6 +1,6 @@
 package com.example.smartcity.handler;
 
-import com.example.smartcity.dao.LoginDAO;
+import com.example.smartcity.dao.LoginDao;
 import com.example.smartcity.model.AccessoLogin;
 // import com.example.smartcity.model.UsersBean;
 
@@ -27,7 +27,7 @@ public class PasswordHandler extends Handler{
 
     @Override
     public AccessoLogin handle(String email, String password) {
-        if(!LoginDAO.controllaDB(email, password)){
+        if(!LoginDao.controllaDB(email, password)){
             System.out.println("Password errata");
             System.out.println("Riprova");
             return AccessoLogin.PASSWORD_ERRATA;

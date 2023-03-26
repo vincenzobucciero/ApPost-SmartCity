@@ -56,7 +56,7 @@
             <div class="container">
                   <div class="row">
                         <c:choose>
-                              <c:when test="${parcheggioBean != null}">
+                              <c:when test="${parkingBean != null}">
                                     <div class="col-md-4 col-md-offset-4">
                                           <div class="form-container">
                                                 <h3 class="title">
@@ -66,22 +66,22 @@
                                                       <div class="form-group">
                                                             <label name="nomeParcheggio">Nome parcheggio:</label>
                                                             <input type="text" class="form-control" name="nomeParcheggio"
-                                                                   value="${parcheggioBean.getNomeParcheggio()}" /><br />
+                                                                   value="${parkingBean.getNomeParcheggio()}" /><br />
                                                       </div>
                                                       <div class="form-group">
                                                             <label name="indirizzo">Indirizzo:</label>
                                                             <input type="text" class="form-control" name="indirizzo"
-                                                                   value="${parcheggioBean.getIndirizzo()}" /><br />
+                                                                   value="${parkingBean.getIndirizzo()}" /><br />
                                                       </div>
                                                       <div class="form-group">
                                                             <label name="tariffa">Tariffa:</label>
                                                             <input type="number" class="form-control" id="tariffa" name="tariffa"
-                                                                   value="${parcheggioBean.getTariffa()}">
+                                                                   value="${parkingBean.getTariffa()}">
                                                       </div>
                                                       <div class="form-group">
                                                             <label name="numPosti">Numero di posti:</label>
                                                             <input type="number" class="form-control" id="numPosti" name="numPosti"
-                                                                   value="${parcheggioBean.getNumPosti()}">
+                                                                   value="${parkingBean.getNumPosti()}">
                                                       </div>
                                                       <button type="submit" class="btn btn-primary btn-lg">
                                                             Modifica

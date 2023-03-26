@@ -1,12 +1,12 @@
 package com.example.smartcity.controller;
 
-import com.example.smartcity.dao.LoginDAO;
+import com.example.smartcity.dao.LoginDao;
 import com.example.smartcity.model.AccessoLogin;
 
-import com.example.smartcity.model.ParcheggioBean;
+import com.example.smartcity.model.ParkingBean;
 import com.example.smartcity.model.UsersBean;
 import com.example.smartcity.service.LogService;
-import com.example.smartcity.service.ParcheggioService;
+import com.example.smartcity.service.ParkingService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -28,12 +28,12 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        //LoginDAO loginDao = new LoginDAO();
+        //LoginDao loginDao = new LoginDao();
         //AccessoLogin accessoLogIn = loginDao.logIn(username, password);
 
-        //AccessoLogin accessoLogIn = LoginDAO.getIstanza().logIn();
-        //LoginDAO loginDAO = LoginDAO.getIstanza().getUserBean(email);
-        UsersBean usersBean = LoginDAO.getIstanza().getUserBean(email);
+        //AccessoLogin accessoLogIn = LoginDao.getIstanza().logIn();
+        //LoginDao loginDAO = LoginDao.getIstanza().getUserBean(email);
+        UsersBean usersBean = LoginDao.getIstanza().getUserBean(email);
 
         AccessoLogin accessoLogIn = LogService.logHandler(email, password);
 
@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
 
                 request.setAttribute("stato", "SUCCESSO_ADMIN");
                 //request.setAttribute("usersBean", usersBean);
-                List<ParcheggioBean> list = ParcheggioService.getAllParkings();
+                List<ParkingBean> list = ParkingService.getAllParkings();
                 request.setAttribute("list", list);
                 request.getRequestDispatcher("adminHomePage.jsp").forward(request, response);
                 break;

@@ -1,8 +1,7 @@
 package com.example.smartcity.handler;
 
-import com.example.smartcity.dao.LoginDAO;
+import com.example.smartcity.dao.LoginDao;
 import com.example.smartcity.model.AccessoLogin;
-import com.example.smartcity.model.UsersBean;
 
 public class MailHandler extends Handler {
     //private LoginDao database;
@@ -28,7 +27,7 @@ public class MailHandler extends Handler {
     }
 
     public AccessoLogin handle(String email, String password){
-        if(!LoginDAO.controllaLogin(email)){
+        if(!LoginDao.controllaLogin(email)){
             System.out.println("Non sei registrato");
             System.out.println("Registrati ora");
             return AccessoLogin.UTENTE_INESISTENTE;
