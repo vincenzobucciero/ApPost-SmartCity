@@ -34,6 +34,7 @@ public class RegistrationServlet extends HttpServlet {
             System.out.println("Successo");
             request.getRequestDispatcher("profilo.jsp").forward(request, response);
         }*/
+
         if (LogService.registration(usersBean)){
             request.setAttribute("userBean", usersBean);
             request.getRequestDispatcher("userHomePage.jsp").forward(request, response);

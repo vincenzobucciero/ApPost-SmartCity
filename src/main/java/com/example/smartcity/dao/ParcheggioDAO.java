@@ -53,26 +53,30 @@ public class ParcheggioDAO {
         return list;
     }
 
-    public void modifyTariffa(int id, double tariffa) {
+    public ParcheggioBean getparcheggioBean(int id){
+        ParcheggioBean parcheggioBean = new ParcheggioBean();
         try {
-            con = DriverManager.getConnection(url, "camilla", "camilla");
-            PreparedStatement stmt = con.prepareStatement("UPDATE Parcheggio SET tariffa=(?) WHERE ID_parcheggio = (?)");
-            stmt.setDouble(1, tariffa);
-            stmt.setInt(2, id);
-            stmt.executeUpdate();
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
-        finally {
-            try{
-                if (con!=null)
-                    con.close();
+            con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM Parcheggio WHERE ID_parcheggio = (?) ");
+            stmt.setInt(1, id);
+            ResultSet result = stmt.executeQuery();
+            if (result.next()) {
+                parcheggioBean.setNomeParcheggio(result.getString("nomeParcheggio"));
+                parcheggioBean.setIndirizzo(result.getString("indirizzo"));
+                parcheggioBean.setTariffa(result.getDouble("tariffa"));
+                parcheggioBean.setNumPosti(result.getInt("numPosti"));
             }
-            catch (SQLException e){
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (con != null)
+                    con.close();
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
+        return parcheggioBean;
     }
 
 

@@ -8,6 +8,7 @@ public class ParcheggioBean implements Serializable {
     private String nomeParcheggio;
     private String indirizzo;
     private int numPosti;
+    private double tariffa;
 
     public ParcheggioBean(){}
 
@@ -41,5 +42,13 @@ public class ParcheggioBean implements Serializable {
 
     public void setIdParcheggio(int idParcheggio) {
         this.idParcheggio = idParcheggio;
+    }
+
+    public double getTariffa() {
+        return tariffa;
+    }
+
+    public void setTariffa(double tariffa) {
+        this.tariffa = tariffa;
     }
 }
