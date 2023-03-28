@@ -13,20 +13,20 @@ public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
-        request.getRequestDispatcher("registrazione.jsp");
+        request.getRequestDispatcher("registrazione.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
-        String nome = request.getParameter("nome");
-        String cognome = request.getParameter("cognome");
+        String name = request.getParameter("name");
+        String surname = request.getParameter("surname");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
         UsersBean usersBean = new UsersBean();
-        usersBean.setNome(nome);
-        usersBean.setCognome(cognome);
+        usersBean.setNome(name);
+        usersBean.setCognome(surname);
         usersBean.setEmail(email);
         usersBean.setPassword(password);
 

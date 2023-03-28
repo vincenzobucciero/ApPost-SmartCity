@@ -9,6 +9,7 @@ public class LoginDao {
     private static LoginDao istanza;
     private static final String url = "jdbc:mysql://localhost:3306/smartcity";
     private static Connection con;
+
     private LoginDao(){
 
     }
@@ -111,10 +112,10 @@ public class LoginDao {
 
 
     //Registrazione
-    public boolean addUtente(UsersBean usersBean) {
+    public boolean addRegistrazione(UsersBean usersBean) {
         try {
             con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
-            PreparedStatement stmt = con.prepareStatement("SELECT email FROM Utenti WHERE (?)");
+            PreparedStatement stmt = con.prepareStatement("SELECT email FROM Utenti WHERE email = (?)");
             stmt.setString(1, usersBean.getEmail());
             ResultSet result = stmt.executeQuery();
             if (result.next()) {

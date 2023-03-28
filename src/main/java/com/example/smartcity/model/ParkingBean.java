@@ -1,6 +1,9 @@
 package com.example.smartcity.model;
 
+import java.beans.JavaBean;
 import java.io.Serializable;
+
+@JavaBean
 
 public class ParkingBean implements Serializable {
 

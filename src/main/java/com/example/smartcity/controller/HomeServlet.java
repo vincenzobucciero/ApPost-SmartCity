@@ -19,9 +19,9 @@ public class HomeServlet extends HttpServlet {
              isLog = (int) session.getAttribute("isLog");
          }
          response.setContentType("text/html");
-         request.setAttribute("users", "LogIn");
          request.setAttribute("loggato", isLog);
-         request.getRequestDispatcher("homepage.jsp").forward(request, response);
+         request.setAttribute("users", "LogIn");
+         request.getRequestDispatcher("userHomePage.jsp").forward(request, response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{

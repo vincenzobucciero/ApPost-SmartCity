@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet {
                 HttpSession newSessionAd = request.getSession();
                 newSessionAd.setMaxInactiveInterval(20*60);
 
-                newSessionAd.setAttribute("usersBean", usersBean);
+                //newSessionAd.setAttribute("usersBean", usersBean);
                 newSessionAd.setAttribute("isLog", 2);
                 request.setAttribute("loggato", 2);
 

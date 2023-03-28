@@ -13,6 +13,7 @@ public class ParkingDao {
     Connection con;
 
     private ParkingDao() {
+
     }
 
     public static ParkingDao getIstanza() {
@@ -30,12 +31,12 @@ public class ParkingDao {
             PreparedStatement stmt = con.prepareStatement("SELECT ID_parcheggio, nomeParcheggio, indirizzo, numPosti FROM Parcheggio ");
             ResultSet resultSet = stmt.executeQuery();
             while(resultSet.next()){
-                ParkingBean ParkingBean = new ParkingBean();
-                ParkingBean.setIdParcheggio(resultSet.getInt(1));
-                ParkingBean.setNomeParcheggio(resultSet.getString(2));
-                ParkingBean.setIndirizzo(resultSet.getString(3));
-                ParkingBean.setNumPosti(resultSet.getInt(4));
-                list.add(ParkingBean);
+                ParkingBean parkingBean = new ParkingBean();
+                parkingBean.setIdParcheggio(resultSet.getInt(1));
+                parkingBean.setNomeParcheggio(resultSet.getString(2));
+                parkingBean.setIndirizzo(resultSet.getString(3));
+                parkingBean.setNumPosti(resultSet.getInt(4));
+                list.add(parkingBean);
             }
             return list;
         }
@@ -53,7 +54,7 @@ public class ParkingDao {
         return list;
     }
 
-    public ParkingBean getparcheggioBean(int id){
+    public ParkingBean getParkingBean(int id){
         ParkingBean parkingBean = new ParkingBean();
         try {
             con = DriverManager.getConnection(url, "vincenzo", "vincenzo");

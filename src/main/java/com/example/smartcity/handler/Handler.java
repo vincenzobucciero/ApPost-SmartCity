@@ -10,17 +10,15 @@ public abstract class Handler {
         return  next;
     }
 
-    public Handler getNext() {
-        return next;
-    }
+    // public Handler getNext() { return next; }
 
-    public abstract AccessoLogin handle(String email, String password);
+    public abstract AccessoLogin handle(String username, String password);
 
-    protected AccessoLogin handleNext(String email, String password){
+    protected AccessoLogin handleNext(String username, String password){
         if(this.next == null){
             return AccessoLogin.SUCCESSO;
         }
-        return next.handle(email, password);
+        return next.handle(username, password);
     }
 
     //public abstract boolean handle(String username, String password);

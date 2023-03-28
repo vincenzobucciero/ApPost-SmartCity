@@ -10,7 +10,7 @@ import com.example.smartcity.model.UsersBean;
 
 public class LogService {
     public static boolean registration(UsersBean usersBean){
-        return LoginDao.getIstanza().addUtente(usersBean);
+        return LoginDao.getIstanza().addRegistrazione(usersBean);
     }
 
     public static AccessoLogin logHandler(String email, String password) {
