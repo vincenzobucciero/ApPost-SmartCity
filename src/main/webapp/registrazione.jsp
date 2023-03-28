@@ -27,7 +27,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/styleFormLogin.css">
+  <link rel="stylesheet" href="css/styleFormLog.css">
   <link rel="stylesheet" href="img">
 </head>
 <body id="page-top">
@@ -65,11 +65,11 @@
           <form class="form-horizontal" action="${pageContext.request.contextPath}/registration" method="post">
             <div class="form-group">
               <label>nome</label>
-              <input name="nome" class="form-control" id="nome" type="text" placeholder="es. Mario" required>
+              <input name="name" class="form-control" id="name" type="text" placeholder="es. Mario" required>
             </div>
             <div class="form-group">
               <label>cognome</label>
-              <input name="cognome" class="form-control" id="cognome" type="text" placeholder="es. Rossi" required>
+              <input name="surname" class="form-control" id="surname" type="text" placeholder="es. Rossi" required>
             </div>
             <div class="form-group">
               <label>email</label>

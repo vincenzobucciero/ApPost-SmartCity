@@ -29,7 +29,7 @@
       <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
       <!-- Core theme CSS (includes Bootstrap)-->
       <link rel="stylesheet" href="css/style.css">
-      <link rel="stylesheet" href="css/styleFormLogin.css">
+      <link rel="stylesheet" href="css/styleFormLog.css">
       <link rel="stylesheet" href="img">
 </head>
 <body id="page-top">
@@ -62,30 +62,25 @@
                                                 <h3 class="title">
                                                       Modifica i dati <br> del parcheggio
                                                 </h3>
-                                                <form class="form-horizontal">
+                                                <form class="form-horizontal" action="ModifyServlet" method="post">
                                                       <div class="form-group">
-                                                            <label name="nomeParcheggio">Nome parcheggio:</label>
-                                                            <input type="text" class="form-control" name="nomeParcheggio"
-                                                                   value="${parkingBean.getNomeParcheggio()}" /><br />
+                                                            <label name="nome">Nome parcheggio:</label>
+                                                            <input type="text" class="form-control" name="nome" value="${parkingBean.getNomeParcheggio()}"><br />
                                                       </div>
                                                       <div class="form-group">
                                                             <label name="indirizzo">Indirizzo:</label>
-                                                            <input type="text" class="form-control" name="indirizzo"
-                                                                   value="${parkingBean.getIndirizzo()}" /><br />
+                                                            <input type="text" class="form-control" name="indirizzo" value="${parkingBean.getIndirizzo()}"><br />
                                                       </div>
                                                       <div class="form-group">
                                                             <label name="tariffa">Tariffa:</label>
-                                                            <input type="number" class="form-control" id="tariffa" name="tariffa"
-                                                                   value="${parkingBean.getTariffa()}">
+                                                            <input type="number" class="form-control" id="tariffa" name="tariffa" value="${parkingBean.getTariffa()}">
                                                       </div>
                                                       <div class="form-group">
                                                             <label name="numPosti">Numero di posti:</label>
-                                                            <input type="number" class="form-control" id="numPosti" name="numPosti"
-                                                                   value="${parkingBean.getNumPosti()}">
+                                                            <input type="number" class="form-control" id="numPosti" name="numPosti"value="${parkingBean.getNumPosti()}">
                                                       </div>
-                                                      <button type="submit" class="btn btn-primary btn-lg">
-                                                            Modifica
-                                                      </button>
+                                                      <input type="hidden" name="id" value="${parkingBean.getIdParcheggio()}" >
+                                                      <button  type="submit" class="btn btn-primary btn-lg"> Modifica </button>
                                                 </form>
                                           </div>
                                     </div>

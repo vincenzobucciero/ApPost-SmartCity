@@ -65,6 +65,7 @@
                             ${record.getNomeParcheggio()}
                     </td>
                     <hr>
+                    </p><!-- Fine Nome-->
                     <h5 class="card-text">
                         <td>
                                 ${record.getIndirizzo()}<br>
@@ -74,9 +75,12 @@
 
                     <div> <!--Bottone modifica -->
 
-                        <form action="ModifyServlet" method="post">
+                        <!--                            <a href="ModifyServlet" class="btn btn-primary">Modifica</a>-->
+
+
+                        <form action="InfoParkingServlet" method="post">
                             <input type="hidden" name="idparking" value="${record.getIdParcheggio()}">
-                            <button  class="btn btn-primary"> Modifica</button>
+                            <button type="submit" class="btn btn-primary"> Modifica</button>
                         </form>
 
                     </div>
