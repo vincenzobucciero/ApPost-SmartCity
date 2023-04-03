@@ -97,7 +97,7 @@ public class LoginDao {
                 usersBean.setPassword(result.getString("password"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();;
+            e.printStackTrace();
         } finally {
             try {
                 if (con != null)

@@ -5,8 +5,8 @@ import com.example.smartcity.model.AccessoLogin;
 // import com.example.smartcity.model.UsersBean;
 
 public class PasswordHandler extends Handler{
-    private String email;
-    private String password;
+    private final String email;
+    private final String password;
 
     //public PasswordHandler(LoginDao database){this.database = database;}
 

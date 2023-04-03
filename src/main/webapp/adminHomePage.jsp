@@ -6,13 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%--
-  Created by IntelliJ IDEA.
-  User: carmine
-  Date: 19/03/23
-  Time: 12:09
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -75,7 +68,7 @@
 
                     <div> <!--Bottone modifica -->
 
-                        <!--                            <a href="ModifyServlet" class="btn btn-primary">Modifica</a>-->
+                        <!-- <a href="ModifyServlet" class="btn btn-primary">Modifica</a>-->
 
 
                         <form action="InfoParkingServlet" method="post">

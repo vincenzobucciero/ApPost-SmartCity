@@ -19,7 +19,7 @@ public class MailHandler extends Handler {
         return handlerNext(usersBean);
     }*/
 
-    private String email;
+    private final String email;
     private String password;
     public MailHandler(String email){
         this.email = email;

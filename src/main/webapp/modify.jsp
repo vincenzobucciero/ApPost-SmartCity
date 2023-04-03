@@ -80,7 +80,7 @@
                                                             <input type="number" class="form-control" id="numPosti" name="numPosti"value="${parkingBean.getNumPosti()}">
                                                       </div>
                                                       <input type="hidden" name="id" value="${parkingBean.getIdParcheggio()}" >
-                                                      <button  type="submit" class="btn btn-primary btn-lg"> Modifica </button>
+                                                      <button  type="submit" class="btn btn-primary btn-lg "> Modifica </button>
                                                 </form>
                                           </div>
                                     </div>

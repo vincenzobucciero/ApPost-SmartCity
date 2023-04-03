@@ -27,7 +27,7 @@
   <title>ApPost - My Home</title>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
-  <link rel="stylesheet" type="text/css" href="CSS/styleMap.css" />
+  <link rel="stylesheet" type="text/css" href="css/styleMap.css" />
   <script type="module" src="js/jsMap.js"></script>
   <script type="module" src="TySc/tyS.ts"></script>
 </head>
@@ -100,7 +100,7 @@
         <h4 class="card-title">Prenotazioni</h4>
         <p class="card-text">Qui vengono visualizzate le prenotazioni effettuate,
           con informazioni come la data, l'ora, il luogo.</p>
-        <a href="#" class="btn btn-primary">Visualizza tutto</a>
+        <a href="PathServlet" class="btn btn-primary">Visualizza tutto</a>
       </div>
     </div><!-- Fine Seconda Card-->
 

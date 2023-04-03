@@ -1,6 +1,8 @@
-package com.example.smartcity.service.algorithm;
+package com.example.smartcity.Algoritmo;
+
 
 import java.util.*;
+
 public class AStar {
 
     private static final int DEFAULT_HV_COST = 10; // Costo Orizzontale e Verticale
@@ -15,10 +17,12 @@ public class AStar {
     private Nodo nodoIniziale;
     private Nodo nodoFinale;
 
+    private Nodo nodoParcheggio;
+
     /*
         Il codice fornisce due costruttori per la classe AStar:
-         1. Uno che accetta tutti i parametri necessari,
-         2. Uno che utilizza i valori predefiniti per i costi orizzontali/verticali e diagonali.
+         1.Uno che accetta tutti i parametri necessari,
+         2.Uno che utilizza i valori predefiniti per i costi orizzontali/verticali e diagonali.
     */
 
     //Primo Costruttore:
@@ -43,7 +47,7 @@ public class AStar {
         this(rows, cols, nodoIniziale, nodoFinale, DEFAULT_HV_COST, DEFAULT_DIAGONAL_COST);
     }
 
-    /*   SetNodi():
+    /*  SetNodi():
          Viene utilizzato per creare e impostare la matrice di nodi searchArea.
          Questa matrice rappresenta la griglia rettangolare di nodi in cui viene
          effettuata la ricerca.
@@ -69,23 +73,24 @@ public class AStar {
         nella griglia. In altre parole, questi sono i nodi attraverso i quali il percorso non può passare.
      */
     public void setBlocchi(int[][] blocksArray){
-        for (int[] ints : blocksArray) {
-            int row = ints[0];
-            int col = ints[1];
-            setBlock(row, col);
+        for (int i = 0; i < blocksArray.length; i++){
+            int row = blocksArray[i][0];
+            int col = blocksArray[i][1];
+            setBlock(row,col);
         }
     }
 
 
     public void setParking(int[][] blocksParking){
-        for (int[] ints : blocksParking) {
-            int row = ints[0];
-            int col = ints[1];
+        for(int i = 0; i < blocksParking.length; i++){
+            int row = blocksParking[i][0];
+            int col = blocksParking[i][1];
             setPark(row, col);
         }
     }
 
-    /*  ricercaPercorso():
+    /*
+        ricercaPercorso():
         Viene utilizzato per eseguire l'algoritmo di ricerca del percorso A*.
         Inizia con l'aggiunta del nodo iniziale all'elenco aperto (openList).
         Successivamente, viene eseguito un ciclo finché openList non è vuoto.
@@ -98,17 +103,13 @@ public class AStar {
     public List<Nodo> ricercaPercorso() {
         openList.add(nodoIniziale);
         while (!isEmpty(openList)) {
-
-            //  Il metodo poll() recupera il valore del primo elemento della coda rimuovendolo
-            //  dalla coda stessa. A ogni invocazione rimuove il primo elemento della lista
-            //  e se la lista è già vuota ritorna null ma non scatena nessuna eccezione
             Nodo nodoCorrente = openList.poll();
-
             closedSet.add(nodoCorrente);
-            assert nodoCorrente != null;
             if (isFinalNode(nodoCorrente)) {
+                //Location loc = new Location();
+                //loc.setParkIndirizzo();
                 return getPercorso(nodoCorrente);
-            } else {
+            }  else {
                 addNodiAdiacente(nodoCorrente);
             }
         }
@@ -179,11 +180,12 @@ public class AStar {
     private void addAdjacentMiddleRow(Nodo nodoCorrente) {
         int row = nodoCorrente.getRow();
         int col = nodoCorrente.getCol();
+        int middleRow = row;
         if (col - 1 >= 0) {
-            checkNodo(nodoCorrente, col - 1, row, getHVCosto());
+            checkNodo(nodoCorrente, col - 1, middleRow, getHVCosto());
         }
         if (col + 1 < getSearchArea()[0].length) {
-            checkNodo(nodoCorrente, col + 1, row, getHVCosto());
+            checkNodo(nodoCorrente, col + 1, middleRow, getHVCosto());
         }
     }
 
@@ -243,6 +245,7 @@ public class AStar {
         }
 
     }
+
 
 
     //Metodi di Set& Get
@@ -317,5 +320,14 @@ public class AStar {
 
     public void setNodoFinale(Nodo nodoFinale) {
         this.nodoFinale = nodoFinale;
+    }
+
+
+    public Nodo getNodoParcheggio() {
+        return nodoParcheggio;
+    }
+
+    public void setNodoParcheggio(Nodo nodoParcheggio) {
+        this.nodoParcheggio = nodoParcheggio;
     }
 }

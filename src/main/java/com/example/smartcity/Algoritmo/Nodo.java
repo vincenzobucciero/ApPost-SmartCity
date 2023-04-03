@@ -1,11 +1,6 @@
-
-package com.example.smartcity.service.algorithm;
-
+package com.example.smartcity.Algoritmo;
 public class Nodo {
-
     private int g, f, h , row, col;
-
-
     private boolean isBlock;
     private boolean isPark;
     private Nodo parent;
@@ -15,7 +10,8 @@ public class Nodo {
 
     //Costruttore
 
-    public Nodo(){};
+    public Nodo(){}
+
     public Nodo(int row, int col) {
         super();
         this.row = row;
@@ -23,10 +19,9 @@ public class Nodo {
     }
 
 
-    /*  calcoloEuristica(Nodo nodoFinale):
-        Questo metodo calcola l'euristica del nodo in base alla posizione
-        del nodo finale specificato. L'euristica viene calcolata come la
-        distanza di Manhattan tra la posizione corrente del nodo e la posizione finale.
+    /* Questo metodo calcola l'euristica del nodo in base alla posizione
+    del nodo finale specificato. L'euristica viene calcolata come la
+    distanza di Manhattan tra la posizione corrente del nodo e la posizione finale.
     */
 
     public void calcoloEuristica(Nodo nodoFinale){
@@ -159,4 +154,6 @@ public class Nodo {
     public void setIndirizzo(String indirizzo) {
         this.indirizzo = indirizzo;
     }
+
+
 }
