@@ -66,14 +66,7 @@
         </h3>
 
         <form class="form-horizontal" action="BookingServlet" method="post">
-          <div class="form-group">
-            <label name="nomePark">Parcheggio</label>
-            <input name="nomePark" class="form-control" type="text"> <!--Non ho inserito required perche non so se ci vuole la prenotazione-->
-          </div>
-          <div class="form-group">
-            <label name="emailUser">Email</label>
-            <input name="emailUser" class="form-control" type="email"> <!--Non ho inserito required perche non so se ci vuole la prenotazione-->
-          </div>
+
 
           <div class="form-group">
             <label name="targa">Targa Veicolo</label>
@@ -87,17 +80,24 @@
 
           <div class = "form-group-row">
             <div class="col-md-4">
-              <label name="oraP">Orario</label>
-              <input name="oraP" class="form-control" type="time" required>
+              <label name="oraI">Orario</label>
+              <input name="oraI" class="form-control" type="time" required>
             </div>
 
-            <div class="col-md-5">
-              <label name="oraP">Orario Fine</label>
-              <input name="oraP" class="form-control" type="time" required>
+            <div class = "form-group-row">
+              <div class="col-md-4">
+                <label name="tipoV">Veicolo</label>
+                <input name="tipoV" class="form-control" type="text" required>
+              </div>
+
+              <div class="col-md-5">
+                <label name="oraF">Orario Fine</label>
+                <input name="oraF" class="form-control" type="time" required>
+              </div>
             </div>
+            <input type="hidden" name="email" value="${email}">
+            <button type="submit" class="btn btn-primary btn-lg text-white">Prenota</button>
           </div>
-
-          <button type="submit" class="btn btn-primary btn-lg text-white">Prenota</button>
         </form>
       </div><!--Fine form container-->
     </div>
