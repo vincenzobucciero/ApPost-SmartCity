@@ -13,6 +13,11 @@ public class BookingServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/html");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         HttpSession session = request.getSession(false);
         if ( session == null ) {
             session.setAttribute("isLog",1);
@@ -21,10 +26,7 @@ public class BookingServlet extends HttpServlet {
             UsersBean usersBean = (UsersBean) session.getAttribute("usersBean");
             request.setAttribute("usersBean",usersBean);
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
         request.getRequestDispatcher("prenotazione.jsp").forward(request,response);
 
     }

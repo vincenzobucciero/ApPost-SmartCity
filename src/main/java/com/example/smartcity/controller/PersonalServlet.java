@@ -11,11 +11,6 @@ import java.io.IOException;
 public class PersonalServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         if ( session == null ) {
             session.setAttribute("isLog",0);
@@ -25,5 +20,10 @@ public class PersonalServlet extends HttpServlet {
             request.setAttribute("usersBean",usersBean);
             request.getRequestDispatcher("infoUtente.jsp").forward(request,response);
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 }

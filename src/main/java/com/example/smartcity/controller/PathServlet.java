@@ -31,16 +31,14 @@ public class PathServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         if (session == null) {
             session.setAttribute("isLog",0);
+            //HttpSession currentSession = request.getSession();
+            //currentSession.setMaxInactiveInterval(5*60);
             request.getRequestDispatcher("login.jsp").forward(request,response);
         } else {
             UsersBean usersBean = (UsersBean) session.getAttribute("usersBean");
             request.setAttribute("usersBean",usersBean);
         }
 
-        HttpSession currentSession = request.getSession();
-        currentSession.setAttribute("start",startIndirizzo);
-        currentSession.setAttribute("dest",endIndirizzo);
-        currentSession.setMaxInactiveInterval(5*60);
 
         Location start = new Location();
 

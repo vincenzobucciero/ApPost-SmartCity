@@ -20,7 +20,9 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/styleFormLogin.css">
+  <link rel="stylesheet" href="css/styleFormLog.css">
+  <link rel="stylesheet" href="css/styleBooking.css">
+
 
   <script type="module" src="js/scripts.js"></script>
   <script type="module" src="TySc/tyS.ts"></script>
@@ -83,10 +85,18 @@
             <input name="dataP" class="form-control" type="date" required>
           </div>
 
-          <div class="form-group">
-            <label name="oraP">Orario</label>
-            <input name="oraP" class="form-control" type="time" required>
+          <div class = "form-group-row">
+            <div class="col-md-4">
+              <label name="oraP">Orario</label>
+              <input name="oraP" class="form-control" type="time" required>
+            </div>
+
+            <div class="col-md-5">
+              <label name="oraP">Orario Fine</label>
+              <input name="oraP" class="form-control" type="time" required>
+            </div>
           </div>
+
           <button type="submit" class="btn btn-primary btn-lg text-white">Prenota</button>
         </form>
       </div><!--Fine form container-->
