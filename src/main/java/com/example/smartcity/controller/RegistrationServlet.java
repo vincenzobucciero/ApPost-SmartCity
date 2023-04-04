@@ -37,6 +37,7 @@ public class RegistrationServlet extends HttpServlet {
 
 
         if (LogService.registration(usersBean)){
+
             HttpSession vecchiaSession = request.getSession();
 
             if (vecchiaSession != null){

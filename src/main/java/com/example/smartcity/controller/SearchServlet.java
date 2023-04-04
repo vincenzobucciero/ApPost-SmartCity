@@ -1,5 +1,8 @@
+
+
 package com.example.smartcity.controller;
 
+import com.example.smartcity.model.UsersBean;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -13,7 +16,17 @@ public class SearchServlet extends HttpServlet {
 
         response.setContentType("text/html");
 
-        request.getRequestDispatcher("prenotaParcheggio.jsp").forward(request,response);
+        HttpSession session = request.getSession(false);
+        if ( session == null ) {
+            session.setAttribute("isLog",0);
+            request.getRequestDispatcher("login.jsp").forward(request,response);
+        } else {
+            UsersBean usersBean = (UsersBean) session.getAttribute("usersBean");
+            request.setAttribute("usersBean",usersBean);
+            request.getRequestDispatcher("findPath.jsp").forward(request,response);
+        }
+
+        //request.getRequestDispatcher("findPath.jsp").forward(request,response);
     }
 
     @Override
@@ -28,3 +41,4 @@ public class SearchServlet extends HttpServlet {
 
     }
 }
+

@@ -1,7 +1,13 @@
-<%@ page import="com.example.smartcity.Algoritmo.Location" %>
-<%@ page import="com.example.smartcity.Algoritmo.Nodo" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: vincenzo
+  Date: 4/4/23
+  Time: 9:42 AM
+  To change this template use File | Settings | File Templates.
+--%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
   <link rel="icon" type="image/x-icon" href="img/wallpaperCar.jpg" />
@@ -14,9 +20,9 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/stylePrenotazione.css">
-  <link rel="stylesheet" type="text/css" href="css/styleMap.css" />
-  <script type="module" src="js/jsMap.js"></script>
+  <link rel="stylesheet" href="css/styleFormLogin.css">
+
+  <script type="module" src="js/scripts.js"></script>
   <script type="module" src="TySc/tyS.ts"></script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -25,8 +31,9 @@
 
   <title>ApPost - Prenotazione</title>
 </head>
-<body>
 
+<body body id="page-top">
+<!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
   <div class="container px-4 px-lg-5">
     <a class="navbar-brand" href="index.jsp">ApPost</a>
@@ -41,67 +48,61 @@
     </div>
   </div>
 </nav>
-
+<!-- Navigation-->
 <header class="masthead">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="my-5 card bg-light mx-auto" style="width:30rem;">
-          <div class="card-body">
-            <div id="map"></div> <!-- Qua esce la mappa-->
-          </div>
-        </div>
-      </div>
-      <div class="col-md-5 col-md-offset-5" style="width:50rem;">
-        <div class="card-body">
-          <div class="form-container">
-            <form class="form-horizontal" action="PathServlet" method="post">
-              <div class="form-group">
-                <label  name = "start">Partenza </label>
-                <select required class= "form-control" name="start">
-                  <option value="">--scegli--</option>
-                  <% Location start = new Location();
-                    for(Nodo nodo:start.getStart()){
-                  %>
-                  <option type="hidden" name="start" value="<%=nodo.getIndirizzo() %>"> <%=nodo.getIndirizzo()%></option>
-                  <%
-                    }%>
-                </select>
-              </div>
-              <div class="form-group">
-                <label name = "dest">Destinazione</label>
-                <select required class= "form-control" name="dest">
-                  <option value="">--scegli--</option>
-                  <%
-                    for(Nodo nodo:start.getEnd()){
-                  %>
-                  <option type="hidden" name="dest" value="<%=nodo.getIndirizzo() %>"> <%=nodo.getIndirizzo()%></option>
-                  <%
-                    }%>
-                </select>
-              </div>
-              <div>
-                <button type="submit" class="btn btn-outline-primary text-white">Cerca Percorso</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="container px-4 px-lg-5 h-50">
+    <div class="row gx-4 gx-lg-5 h-50 align-items-center justify-content-center text-center"></div>
   </div>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA23kxKNlGB1Gw7UQdz4zbemqIZSG93JUQ&callback=initMap"></script>
 </header>
 
+<div class="form-bg">
+  <div class="container">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="form-container">
+        <h3 class="title">
+          Effettua la<br>prenotazione
+        </h3>
 
-<!--Footer-->
+        <form class="form-horizontal" action="BookingServlet" method="post">
+          <div class="form-group">
+            <label name="nomePark">Parcheggio</label>
+            <input name="nomePark" class="form-control" type="text"> <!--Non ho inserito required perche non so se ci vuole la prenotazione-->
+          </div>
+          <div class="form-group">
+            <label name="emailUser">Email</label>
+            <input name="emailUser" class="form-control" type="email"> <!--Non ho inserito required perche non so se ci vuole la prenotazione-->
+          </div>
+
+          <div class="form-group">
+            <label name="targa">Targa Veicolo</label>
+            <input name="targa" class="form-control" type="text" required>
+          </div>
+
+          <div class="form-group">
+            <label name="dataP">Data Prenotazione</label>
+            <input name="dataP" class="form-control" type="date" required>
+          </div>
+
+          <div class="form-group">
+            <label name="oraP">Orario</label>
+            <input name="oraP" class="form-control" type="time" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg text-white">Prenota</button>
+        </form>
+      </div><!--Fine form container-->
+    </div>
+  </div>
+</div>
+
 <!-- Footer-->
 <footer class="bg-light py-5">
   <div class="container px-4 px-lg-5">
     <div class="small text-center text-muted">
-      Copyright &copy; 2023 - Company Name
+      Copyright &copy; 2022 - Company Name
     </div>
   </div>
 </footer>
+
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- SimpleLightbox plugin JS-->
@@ -109,9 +110,6 @@
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
-
-
 
 </body>
 </html>

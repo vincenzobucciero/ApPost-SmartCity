@@ -100,7 +100,7 @@
         <h4 class="card-title">Prenotazioni</h4>
         <p class="card-text">Qui vengono visualizzate le prenotazioni effettuate,
           con informazioni come la data, l'ora, il luogo.</p>
-        <a href="PathServlet" class="btn btn-primary">Visualizza tutto</a>
+        <a href="SearchServlet" class="btn btn-primary">Visualizza tutto</a>
       </div>
     </div><!-- Fine Seconda Card-->
 

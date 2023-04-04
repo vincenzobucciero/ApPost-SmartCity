@@ -6,10 +6,10 @@ import com.example.smartcity.dao.ParkingDao;
 import java.util.*;
 public class Location {
 
-    private final List<Nodo> start = new ArrayList<>();
-    private final List<Nodo> end = new ArrayList<>();
+    private List<Nodo> start = new ArrayList<>();
+    private List<Nodo> end = new ArrayList<>();
 
-    private final List<Nodo> nodopark = new ArrayList<>();
+    private List<Nodo> nodopark = new ArrayList<>();
 
 
     //private int[][]blocksParking;
@@ -110,22 +110,23 @@ public class Location {
     }
 
 
-    public List<ParkingBean> getNodoParkIndirizzo(Nodo nodo){
-        List<ParkingBean> listaParcheggi = new ArrayList<>();
+    public ParkingBean getNodoParkIndirizzo(Nodo nodo){
+        //List<ParkingBean> listaParcheggi = new ArrayList<>();
 
         //per ogni nodo appartenente alla lista dei nodi parcheggi che ho istanziato controllo se è un nodo del percorso trovato
         for (Nodo nodop:nodopark) {
             if(nodo.equals(nodop)) {
                 //se la condizione è vera allora cerco i parcheggi associati a quel nodo
-                listaParcheggi = getParcheggiDisp(nodop);
+                //listaParcheggi = getParcheggiDisp(nodop);
+                return getParcheggiDisp(nodop);
                 // System.out.println("Parcheggio trovato alle coordinte " + nodop.getRow() + " " + nodop.getCol() + " indirizzo " + nodop.getIndirizzo());
             }
         }
-        return listaParcheggi;
+        return null;
     }
 
-    public List<ParkingBean> getParcheggiDisp(Nodo nodoP){
-
+    public ParkingBean getParcheggiDisp(Nodo nodoP){
+        System.out.println(nodoP.getIndirizzo());
         List<ParkingBean> parkingBeanList = ParkingDao.getIstanza().getParkings();
         List<ParkingBean> parkDisp = new ArrayList<>();
 
@@ -133,12 +134,13 @@ public class Location {
         //un nodo parcheggio e lo metto in una lista
         for (ParkingBean parkingBean: parkingBeanList) {
             if(parkingBean.getIndirizzo().equals(nodoP.getIndirizzo())) {
-                parkDisp.add(parkingBean);
+                //parkDisp.add(parkingBean);
                 System.out.println("Parcheggio disponibile: "+ parkingBean.getIndirizzo());
+                return parkingBean;
             }
 
         }
-        return parkDisp;
+        return null;
     }
 
 

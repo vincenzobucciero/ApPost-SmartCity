@@ -5,8 +5,8 @@ import java.util.*;
 
 public class AStar {
 
-    private static final int DEFAULT_HV_COST = 10; // Costo Orizzontale e Verticale
-    private static final int DEFAULT_DIAGONAL_COST = 14; //Costo Diagionale
+    private static int DEFAULT_HV_COST = 10; // Costo Orizzontale e Verticale
+    private static int DEFAULT_DIAGONAL_COST = 14; //Costo Diagionale
 
     private int HVCosto;
     private int costoDiagonale;

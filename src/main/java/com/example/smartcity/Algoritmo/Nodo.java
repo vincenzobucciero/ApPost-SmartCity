@@ -10,8 +10,7 @@ public class Nodo {
 
     //Costruttore
 
-    public Nodo(){}
-
+    public Nodo(){};
     public Nodo(int row, int col) {
         super();
         this.row = row;
