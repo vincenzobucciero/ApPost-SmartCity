@@ -1,7 +1,9 @@
 package com.example.smartcity.controller;
 
 
+import com.example.smartcity.dao.ParkingDao;
 import com.example.smartcity.model.BookingBean;
+import com.example.smartcity.model.ParkingBean;
 import com.example.smartcity.model.UsersBean;
 import com.example.smartcity.service.BookingService;
 import jakarta.servlet.*;
@@ -16,7 +18,11 @@ public class BookingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
+
         int id = Integer.parseInt(request.getParameter("id"));
+        ParkingBean parkingBean = ParkingDao.getIstanza().getParkingBean(id);
+        request.setAttribute("parkingBean", parkingBean);
+
         String email = request.getParameter("email");
         System.out.println(email);
 

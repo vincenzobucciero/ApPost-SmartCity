@@ -8,6 +8,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
   <link rel="icon" type="image/x-icon" href="img/wallpaperCar.jpg" />
@@ -62,44 +63,67 @@
     <div class="col-md-4 col-md-offset-4">
       <div class="form-container">
         <h3 class="title">
-          Effettua la<br>prenotazione
+          Effettua la prenotazione
         </h3>
 
+        <c:choose>
+        <c:when test="${parkingBean != null}">
         <form class="form-horizontal" action="BookingServlet" method="post">
-
-
-          <div class="form-group">
-            <label name="targa">Targa Veicolo</label>
-            <input name="targa" class="form-control" type="text" required>
-          </div>
-
-          <div class="form-group">
-            <label name="dataP">Data Prenotazione</label>
-            <input name="dataP" class="form-control" type="date" required>
-          </div>
-
-          <div class = "form-group-row">
-            <div class="col-md-4">
-              <label name="oraI">Orario</label>
-              <input name="oraI" class="form-control" type="time" required>
+          <div class="form-group row">
+            <div class="col-md-5">
+              <label name="nomePark">Parcheggio</label>
+              <input name="nomePark" class="form-control" type="text" placeholder="${parkingBean.getNomeParcheggio()}" readonly>
             </div>
 
-            <div class = "form-group-row">
-              <div class="col-md-4">
-                <label name="tipoV">Veicolo</label>
-                <input name="tipoV" class="form-control" type="text" required>
+            <div class="col-md-5">
+              <label name="email">Email</label>
+              <input name="email" class="form-control" type="text" placeholder="${email}" readonly>
+            </div>
+          </div>
+
+
+
+            <div class = "form-group row">
+              <div class="col-md-5">
+                <label name="targa">Targa Veicolo</label>
+                <input name="targa" class="form-control" type="text" placeholder="es. ED503NL" required>
               </div>
 
               <div class="col-md-5">
-                <label name="oraF">Orario Fine</label>
+                <label name="tipoV">Tipo Veicolo</label>
+                <select class= "form-control" name="tipoV" required>
+                  <option value="">--scegli--</option>
+                  <option type="hidden" name="tipoV">Auto</option>
+                  <option type="hidden" name="tipoV">Furgone</option>
+                  <option type="hidden" name="tipoV">Moto</option>
+                </select>
+              </div>
+            </div>
+
+            <div class = "form-group row">
+              <div class="col-md-4">
+                <label name="dataP">Data Prenotazione</label>
+                <input name="dataP" class="form-control" type="date" required>
+              </div>
+
+              <div class="col-md-4">
+                <label name="oraI">Orario ingresso</label>
+                <input name="oraI" class="form-control" type="time" required>
+              </div>
+
+              <div class="col-md-4">
+                <label name="oraF">Orario uscita</label>
                 <input name="oraF" class="form-control" type="time" required>
               </div>
             </div>
             <input type="hidden" name="email" value="${email}">
             <button type="submit" class="btn btn-primary btn-lg text-white">Prenota</button>
-          </div>
         </form>
       </div><!--Fine form container-->
+
+      </c:when>
+      </c:choose>
+
     </div>
   </div>
 </div>
