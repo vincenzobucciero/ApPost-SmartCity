@@ -1,9 +1,9 @@
 package com.example.smartcity.controller;
 
 
-import com.example.smartcity.dao.ParkingDao;
 import com.example.smartcity.model.BookingBean;
 import com.example.smartcity.model.ParkingBean;
+import com.example.smartcity.dao.ParkingDao;
 import com.example.smartcity.model.UsersBean;
 import com.example.smartcity.service.BookingService;
 import jakarta.servlet.*;
@@ -18,13 +18,11 @@ public class BookingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
-
         int id = Integer.parseInt(request.getParameter("id"));
-        ParkingBean parkingBean = ParkingDao.getIstanza().getParkingBean(id);
-        request.setAttribute("parkingBean", parkingBean);
+        ParkingBean parkingBean = ParkingDao.getIstanza().getParkingBean(id); //Per portarci il nome del parcheggio su prenotazione.jsp
+        request.setAttribute("parkingBean",parkingBean);
 
         String email = request.getParameter("email");
-        System.out.println(email);
 
         HttpSession session = request.getSession(false);
         if ( session == null ) {
@@ -50,7 +48,8 @@ public class BookingServlet extends HttpServlet {
         String tipoVeicolo = request.getParameter("tipoV");
 
         System.out.println("Data: "+ dataPrenotazione);
-        System.out.println(orarioInizio + orarioFine);
+        System.out.println("Utente: " + email);
+        System.out.println(orarioInizio + " " + orarioFine);
 
         BookingBean bookingBean = new BookingBean();
         bookingBean.setData_prenotazione( dataPrenotazione );
@@ -62,10 +61,6 @@ public class BookingServlet extends HttpServlet {
 
         BookingService.Booking(bookingBean);
 
-        UsersBean usersBean = (UsersBean) request.getSession().getAttribute("usersBean");
-        request.setAttribute("usersBean", usersBean);
-        request.setAttribute( "email", usersBean.getEmail() );
-        request.getRequestDispatcher("prenotazione.jsp").forward(request, response);
         request.getRequestDispatcher("prenotazione.jsp").forward(request, response);
 
     }

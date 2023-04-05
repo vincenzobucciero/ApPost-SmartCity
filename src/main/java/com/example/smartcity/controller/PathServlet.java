@@ -1,10 +1,11 @@
 package com.example.smartcity.controller;
-
 import com.example.smartcity.Algoritmo.AStar;
 import com.example.smartcity.Algoritmo.Location;
 import com.example.smartcity.Algoritmo.Nodo;
 import com.example.smartcity.model.ParkingBean;
+import com.example.smartcity.dao.ParkingDao;
 import com.example.smartcity.model.UsersBean;
+import com.example.smartcity.service.ParkingService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -27,18 +28,14 @@ public class PathServlet extends HttpServlet {
         String endIndirizzo = request.getParameter("dest");
         System.out.println("Indirizzi: "+ startIndirizzo + endIndirizzo);
 
-        //Recuperiamo la sessione corrente
         HttpSession session = request.getSession(false);
-        if (session == null) {
+        if ( session == null ) {
             session.setAttribute("isLog",0);
-            //HttpSession currentSession = request.getSession();
-            //currentSession.setMaxInactiveInterval(5*60);
             request.getRequestDispatcher("login.jsp").forward(request,response);
         } else {
             UsersBean usersBean = (UsersBean) session.getAttribute("usersBean");
             request.setAttribute("usersBean",usersBean);
         }
-
 
         Location start = new Location();
 

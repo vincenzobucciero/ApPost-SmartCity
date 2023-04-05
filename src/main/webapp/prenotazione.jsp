@@ -6,9 +6,16 @@
   To change this template use File | Settings | File Templates.
 --%>
 
+<%--
+  Created by IntelliJ IDEA.
+  User: carmine
+  Date: 4/4/23
+  Time: 9:42 AM
+  To change this template use File | Settings | File Templates.
+--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <html>
 <head>
   <link rel="icon" type="image/x-icon" href="img/wallpaperCar.jpg" />
@@ -21,7 +28,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/styleFormLog.css">
+  <link rel="stylesheet" href="css/styleFormLogin.css">
   <link rel="stylesheet" href="css/styleBooking.css">
 
 
@@ -65,65 +72,59 @@
         <h3 class="title">
           Effettua la prenotazione
         </h3>
-
         <c:choose>
         <c:when test="${parkingBean != null}">
-        <form class="form-horizontal" action="BookingServlet" method="post">
-          <div class="form-group row">
+        <form id="bookingForm" class="form-horizontal" action="BookingServlet" method="post">
+          <div class = "form-group row">
             <div class="col-md-5">
-              <label name="nomePark">Parcheggio</label>
+              <label name="nomePark">Nome parcheggio</label>
               <input name="nomePark" class="form-control" type="text" placeholder="${parkingBean.getNomeParcheggio()}" readonly>
             </div>
 
             <div class="col-md-5">
-              <label name="email">Email</label>
-              <input name="email" class="form-control" type="text" placeholder="${email}" readonly>
+              <label name="emailS">Email</label>
+              <input name="emailS" class="form-control" type="text" placeholder="${email}" readonly>
+            </div>
+          </div>
+          <div class = "form-group row">
+            <div class="col-md-5">
+              <label name="targa">Targa Veicolo</label>
+              <input name="targa" class="form-control" type="text" placeholder="es. DC104RT" required>
+            </div>
+
+            <div class="col-md-5">
+              <label name="tipoV">Tipo Veicolo</label>
+              <select class= "form-control" name="tipoV" required>
+                <option value="">--scegli--</option>
+                <option type="hidden" name="tipoV">Auto</option>
+                <option type="hidden" name="tipoV">Furgone</option>
+                <option type="hidden" name="tipoV">Moto</option>
+              </select>
             </div>
           </div>
 
-
-
-            <div class = "form-group row">
-              <div class="col-md-5">
-                <label name="targa">Targa Veicolo</label>
-                <input name="targa" class="form-control" type="text" placeholder="es. ED503NL" required>
-              </div>
-
-              <div class="col-md-5">
-                <label name="tipoV">Tipo Veicolo</label>
-                <select class= "form-control" name="tipoV" required>
-                  <option value="">--scegli--</option>
-                  <option type="hidden" name="tipoV">Auto</option>
-                  <option type="hidden" name="tipoV">Furgone</option>
-                  <option type="hidden" name="tipoV">Moto</option>
-                </select>
-              </div>
+          <div class = "form-group row">
+            <div class="col-md-4">
+              <label name="dataP">Data Prenotazione</label>
+              <input name="dataP" class="form-control" type="date" required>
             </div>
 
-            <div class = "form-group row">
-              <div class="col-md-4">
-                <label name="dataP">Data Prenotazione</label>
-                <input name="dataP" class="form-control" type="date" required>
-              </div>
-
-              <div class="col-md-4">
-                <label name="oraI">Orario ingresso</label>
-                <input name="oraI" class="form-control" type="time" required>
-              </div>
-
-              <div class="col-md-4">
-                <label name="oraF">Orario uscita</label>
-                <input name="oraF" class="form-control" type="time" required>
-              </div>
+            <div class="col-md-4">
+              <label name="oraI">Orario ingresso</label>
+              <input name="oraI" class="form-control" type="time" required>
             </div>
-            <input type="hidden" name="email" value="${email}">
-            <button type="submit" class="btn btn-primary btn-lg text-white">Prenota</button>
+
+            <div class="col-md-4">
+              <label name="oraF">Orario uscita</label>
+              <input name="oraF" class="form-control" type="time" required>
+            </div>
+          </div>
+          <input type="hidden" name="email" value="${email}">
+          <button type="submit" class="btn btn-primary btn-lg text-white">Prenota</button>
         </form>
       </div><!--Fine form container-->
-
       </c:when>
       </c:choose>
-
     </div>
   </div>
 </div>

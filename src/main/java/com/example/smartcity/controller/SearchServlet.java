@@ -32,12 +32,7 @@ public class SearchServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        //Location start = new Location();
-        //String startIndirizzo = request.getParameter("indirizzoS");
-        //System.out.println("Indirizzo preso: " + startIndirizzo);
-        //Nodo finalNode = start.chooseEnd("Napoli");
-
-        System.out.println("Sono dopo findPath");
+        
 
     }
 }

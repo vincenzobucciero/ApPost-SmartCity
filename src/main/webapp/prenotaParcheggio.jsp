@@ -7,6 +7,13 @@
 --%>
 
 
+<%--
+  Created by IntelliJ IDEA.
+  User: carmine
+  Date: 02/04/23
+  Time: 12:56
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -111,10 +118,9 @@
                                 <form action="BookingServlet" method="get">
                                   <input type="hidden" name="id" value="${record.getIdParcheggio()}">
                                   <input type="hidden" name="email" value="${usersBean.getEmail()}">
-
                                   <div class="text-center">
-                                    <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-geo-alt"></i></button>
-                                    <button type="submit" class="btn btn-outline-primary">Prenota</button>
+                                    <button type="submit" class="btn btn-primary btn-sm "><i class="bi bi-geo-alt"></i></button>
+                                    <button type="submit" class="btn btn-primary btn-sm ">Prenota</button>
                                   </div>
                                 </form>
                               </div>
