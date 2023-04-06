@@ -1,11 +1,10 @@
 package com.example.smartcity.controller;
-import com.example.smartcity.Algoritmo.AStar;
-import com.example.smartcity.Algoritmo.Location;
-import com.example.smartcity.Algoritmo.Nodo;
+import com.example.smartcity.service.Algoritmo.AStar;
+import com.example.smartcity.service.Algoritmo.Location;
+import com.example.smartcity.service.Algoritmo.Nodo;
 import com.example.smartcity.model.ParkingBean;
-import com.example.smartcity.dao.ParkingDao;
+import com.example.smartcity.model.ParkingDao;
 import com.example.smartcity.model.UsersBean;
-import com.example.smartcity.service.ParkingService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;

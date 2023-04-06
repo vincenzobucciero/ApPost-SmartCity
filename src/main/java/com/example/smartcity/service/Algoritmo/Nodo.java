@@ -1,4 +1,4 @@
-package com.example.smartcity.Algoritmo;
+package com.example.smartcity.service.Algoritmo;
 public class Nodo {
     private int g, f, h , row, col;
     private boolean isBlock;

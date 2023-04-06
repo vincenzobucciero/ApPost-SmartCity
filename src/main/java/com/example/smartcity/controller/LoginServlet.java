@@ -1,6 +1,6 @@
 package com.example.smartcity.controller;
 
-import com.example.smartcity.dao.LoginDao;
+import com.example.smartcity.model.LoginDao;
 import com.example.smartcity.model.AccessoLogin;
 
 import com.example.smartcity.model.ParkingBean;

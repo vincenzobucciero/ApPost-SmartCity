@@ -1,5 +1,5 @@
-
-package com.example.smartcity.Algoritmo;
+/*
+package com.example.smartcity.service.Algoritmo;
 
 import com.example.smartcity.model.ParkingBean;
 
@@ -95,3 +95,6 @@ public class TestAlgoritmo {
         // 5    -   -   -   -   -   -   -
     }
 }
+
+
+ */

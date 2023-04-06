@@ -1,6 +1,6 @@
 package com.example.smartcity.handler;
 
-import com.example.smartcity.dao.LoginDao;
+import com.example.smartcity.model.LoginDao;
 import com.example.smartcity.model.AccessoLogin;
 
 public class MailHandler extends Handler {

@@ -1,7 +1,5 @@
 
-package com.example.smartcity.dao;
-
-import com.example.smartcity.model.UsersBean;
+package com.example.smartcity.model;
 
 import java.sql.*;
 

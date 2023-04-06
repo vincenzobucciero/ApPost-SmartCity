@@ -1,6 +1,6 @@
 package com.example.smartcity.controller;
 
-import com.example.smartcity.dao.ParkingDao;
+import com.example.smartcity.model.ParkingDao;
 import com.example.smartcity.model.ParkingBean;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;

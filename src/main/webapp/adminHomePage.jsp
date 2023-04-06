@@ -6,17 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>ApPost-Smart Parking</title>
+    <title>ApPost-Home Page</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="img/iconMoney.png" />
+    <link rel="icon" type="image/x-icon" href="img/AppostLogo.png" />
     <link rel="icon" type="image/x-icon" href="img/wallpaperCar.jpg" />
     <!-- Bootstrap Icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
@@ -49,38 +50,57 @@
 <!-- Masthead-->
 <header class="masthead">
 
+    <!--Card di sfondo per i parcheggi-->
+    <!--<div class="my-5 card text-light mx-auto" style="width: 70rem;
+                background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 80%), url('img/imgCard/CardAdmin.jpg'); background-size: cover;">
+        <div class="card-title">
+            <h3 style="font-weight:bold; text-align:left;">
+                Qui puoi visualizzare i tuoi parcheggi:
+            </h3>
+        </div>-->
     <div class="row"> <!-- Inizio Card-->
         <c:forEach items="${list}" var="record"> <!--Ciclo FOR -->
-            <div class="my-5 card bg-light mx-auto" style="width: 20rem;">
+            <div class="my-4 card bg-light mx-auto" style="width: 20rem;">
                 <div class="card-body">
-                    <p class="text-muted mb-0 fs-4">
+                    <p class="text-muted mb-0 fs-3">
                     <td>
                             ${record.getNomeParcheggio()}
                     </td>
-                    <hr>
-                    </p><!-- Fine Nome-->
-                    <h5 class="card-text">
+                    <hr class="text-black">
+                    <!-- Fine Nome Parcheggio-->
+                    <h5 class="card-text-">
+                        <p class="text-black">
                         <td>
                                 ${record.getIndirizzo()}<br>
-                            Numero Posti: ${record.getNumPosti()}
+                            Numero Posti Auto: ${record.getPostiAuto()}<br>
+                            Numero Posti Furgone: ${record.getPostiFurgone()}<br>
+                            Numero Posti Moto: ${record.getPostiMoto()}<br>
+
                         </td>
-                    </h5> <!-- Fine Indirizzo-->
-
-                    <div> <!--Bottone modifica -->
-
-                        <!-- <a href="ModifyServlet" class="btn btn-primary">Modifica</a>-->
-
-
+                    </h5> <!-- Fine Indirizzo&NumPosti-->
+                    <div>
                         <form action="InfoParkingServlet" method="post">
                             <input type="hidden" name="idparking" value="${record.getIdParcheggio()}">
-                            <button type="submit" class="btn btn-primary"> Modifica</button>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-outline-primary">Modifica</button>
+                            </div>
                         </form>
 
                     </div>
                 </div>
             </div><!-- Fine Card-->
         </c:forEach>
-    </div><!-- FINE SEZIONE CARD-->
+    </div> <!-- FINE SEZIONE CARD-->
+
+
+    <div class="my-5 card text-black mx-auto" style="width: 60rem">
+        <div class="card-title">
+            <h4 style="font-weight:bold; text-align:left;">
+                Qui puoi visualizzare le statistiche:
+            </h4>
+        </div>
+    </div>
 </header>
 
 <!-- Footer-->

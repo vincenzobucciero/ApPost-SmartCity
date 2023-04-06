@@ -1,6 +1,6 @@
 package com.example.smartcity.service;
 
-import com.example.smartcity.dao.LoginDao;
+import com.example.smartcity.model.LoginDao;
 import com.example.smartcity.handler.Handler;
 import com.example.smartcity.handler.MailHandler;
 import com.example.smartcity.handler.PasswordHandler;

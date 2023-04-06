@@ -1,7 +1,7 @@
 package com.example.smartcity.service;
 
 import com.example.smartcity.model.BookingBean;
-import com.example.smartcity.dao.BookingDao;
+import com.example.smartcity.model.BookingDao;
 
 public class BookingService {
 

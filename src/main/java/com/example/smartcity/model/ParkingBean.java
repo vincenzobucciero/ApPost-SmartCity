@@ -1,26 +1,26 @@
 package com.example.smartcity.model;
 
-import java.beans.JavaBean;
 import java.io.Serializable;
-
-@JavaBean
 
 public class ParkingBean implements Serializable {
 
     private int idParcheggio;
     private String nomeParcheggio;
     private String indirizzo;
-    private int numPosti;
-    private double tariffa;
+    private int postiAuto;
+    private int postiFurgone;
+    private int postiMoto;
+    private double tariffaAF;
+    private double tariffaM;
 
     public ParkingBean(){}
 
-    public int getNumPosti() {
-        return numPosti;
+    public int getPostiAuto() {
+        return postiAuto;
     }
 
-    public void setNumPosti(int numPosti) {
-        this.numPosti = numPosti;
+    public void setPostiAuto(int postiAuto) {
+        this.postiAuto = postiAuto;
     }
 
     public String getIndirizzo() {
@@ -47,11 +47,35 @@ public class ParkingBean implements Serializable {
         this.idParcheggio = idParcheggio;
     }
 
-    public double getTariffa() {
-        return tariffa;
+    public void setTariffaAF(double tariffaAF) {
+        this.tariffaAF = tariffaAF;
+    }
+    public double getTariffaM() {
+        return tariffaM;
     }
 
-    public void setTariffa(double tariffa) {
-        this.tariffa = tariffa;
+    public void setTariffaM(double tariffaM) {
+        this.tariffaM = tariffaM;
     }
+    public double getTariffaAF() {
+        return tariffaAF;
+    }
+
+    public int getPostiFurgone() {
+        return postiFurgone;
+    }
+
+    public void setPostiFurgone(int postiFurgone) {
+        this.postiFurgone = postiFurgone;
+    }
+
+    public int getPostiMoto() {
+        return postiMoto;
+    }
+
+    public void setPostiMoto(int postiMoto) {
+        this.postiMoto = postiMoto;
+    }
+
+
 }

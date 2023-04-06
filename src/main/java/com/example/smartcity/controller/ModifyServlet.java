@@ -19,16 +19,26 @@ public class ModifyServlet extends HttpServlet {
         response.setContentType("text/html");
 
         int id = Integer.parseInt(request.getParameter("id"));
+
         String nome = request.getParameter("nome");
         String indirizzo = request.getParameter("indirizzo");
-        String tariffa = request.getParameter("tariffa");
-        String numPosti = request.getParameter("numPosti");
+        String tariffaAF = request.getParameter("tariffaAF");
+        String tariffaM = request.getParameter("tariffaM");
+        String postiAuto = request.getParameter("postiAuto");
+        String postiFurgone = request.getParameter("postiFurgone");
+        String postiMoto = request.getParameter("postiMoto");
 
         ModifyService.modifyNome(id, nome);
         ModifyService.modifyIndirizzo(id, indirizzo);
-        ModifyService.modifyTariffa(id, Double.parseDouble(tariffa));
-        ModifyService.modifyNumPosti(id, Integer.parseInt(numPosti));
+        ModifyService.modifyTariffaAF(id, Double.parseDouble(tariffaAF));
+        ModifyService.modifyTariffaM(id, Double.parseDouble(tariffaM));
+        ModifyService.modifyPostiAuto(id, Integer.parseInt(postiAuto));
+        ModifyService.modifyPostiFurgone(id, Integer.parseInt(postiFurgone));
+        ModifyService.modifyPostiMoto(id, Integer.parseInt(postiMoto));
+
         request.getRequestDispatcher("modify.jsp").forward(request, response);
+
+
 
     }
 

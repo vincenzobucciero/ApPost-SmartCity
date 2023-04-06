@@ -1,7 +1,7 @@
-package com.example.smartcity.Algoritmo;
+package com.example.smartcity.service.Algoritmo;
 
 import com.example.smartcity.model.ParkingBean;
-import com.example.smartcity.dao.ParkingDao;
+import com.example.smartcity.model.ParkingDao;
 
 import java.util.*;
 public class Location {

@@ -1,5 +1,5 @@
-<%@ page import="com.example.smartcity.Algoritmo.Location" %>
-<%@ page import="com.example.smartcity.Algoritmo.Nodo" %>
+<%@ page import="com.example.smartcity.service.Algoritmo.Location" %>
+<%@ page import="com.example.smartcity.service.Algoritmo.Nodo" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -109,9 +109,6 @@
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
-
-
 
 </body>
 </html>

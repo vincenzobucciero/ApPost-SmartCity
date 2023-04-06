@@ -1,8 +1,9 @@
-package com.example.smartcity.dao;
+package com.example.smartcity.model;
 
-import com.example.smartcity.model.BookingBean;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class BookingDao {
     private static BookingDao istanza;
