@@ -7,14 +7,7 @@
   Time: 4:18 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: camilla
-  Date: 31/03/23
-  Time: 10:38
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -50,7 +43,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                   <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link" href="login">Torna alla Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.jsp">Esci</a></li>
+                        <li class="nav-item"><a class="nav-link" href="logout">Esci</a></li>
                   </ul>
             </div>
       </div>
@@ -70,13 +63,15 @@
                                                       Modifica i dati <br> del parcheggio
                                                 </h3>
                                                 <form class="form-horizontal" action="ModifyServlet" method="post">
-                                                      <div class="form-group">
-                                                            <label name="nome">Nome parcheggio:</label>
-                                                            <input type="text" class="form-control" name="nome" value="${parkingBean.getNomeParcheggio()}"><br />
-                                                      </div>
-                                                      <div class="form-group">
-                                                            <label name="indirizzo">Indirizzo:</label>
-                                                            <input type="text" class="form-control" name="indirizzo" value="${parkingBean.getIndirizzo()}"><br />
+                                                      <div class="form-group row">
+                                                            <div class="col-md-4">
+                                                                  <label name="nome">Nome parcheggio:</label>
+                                                                  <input type="text" class="form-control" name="nome" value="${parkingBean.getNomeParcheggio()}"><br />
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                  <label name="indirizzo">Indirizzo:</label>
+                                                                  <input type="text" class="form-control" name="indirizzo" value="${parkingBean.getIndirizzo()}"><br />
+                                                            </div>
                                                       </div>
                                                       <div class="form-group">
                                                             <label name="tariffaAF">Tariffa Auto/Furgone:</label>
@@ -86,22 +81,24 @@
                                                             <label name="tariffaM">Tariffa Moto:</label>
                                                             <input type="number" class="form-control" id="tariffaM" name="tariffaM" value="${parkingBean.getTariffaM()}">
                                                       </div>
-
-                                                      <div class="form-group">
-                                                            <label name="numPosti">Posti Auto:</label>
-                                                            <input type="postiAuto" class="form-control" id="postiAuto" name="postiAuto"value="${parkingBean.getPostiAuto()}">
-                                                      </div>
-                                                      <div class="form-group">
-                                                            <label name="numPosti">Posti Furgone:</label>
-                                                            <input type="postiFurgone" class="form-control" id="postiFurgone" name="postiFurgone"value="${parkingBean.getPostiFurgone()}">
-                                                      </div>
-                                                      <div class="form-group">
-                                                            <label name="numPosti">Posti Moto:</label>
-                                                            <input type="postiMoto" class="form-control" id="postiMoto" name="postiMoto"value="${parkingBean.getPostiMoto()}">
+                                                      <div class="form-group row">
+                                                            <div class="col-md-4">
+                                                                  <label name="numPosti">Posti Auto:</label>
+                                                                  <input type="postiAuto" class="form-control" id="postiAuto" name="postiAuto"value="${parkingBean.getPostiAuto()}">
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                  <label name="numPosti">Posti Furgone:</label>
+                                                                  <input type="postiFurgone" class="form-control" id="postiFurgone" name="postiFurgone"value="${parkingBean.getPostiFurgone()}">
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                  <label name="numPosti">Posti Moto:</label>
+                                                                  <input type="postiMoto" class="form-control" id="postiMoto" name="postiMoto"value="${parkingBean.getPostiMoto()}">
+                                                            </div>
                                                       </div>
                                                       <input type="hidden" name="id" value="${parkingBean.getIdParcheggio()}" >
-                                                      <button  type="submit" class="btn btn-primary btn-lg"> Modifica </button>
+                                                      <button  type="submit" class="btn btn-primary btn-lg "> Modifica </button>
                                                 </form>
+
                                           </div>
                                     </div>
                               </c:when>

@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -67,7 +66,7 @@
                             ${record.getNomeParcheggio()}
                     </td>
                     <hr class="text-black">
-                    <!-- Fine Nome Parcheggio-->
+                    </p><!-- Fine Nome Parcheggio-->
                     <h5 class="card-text-">
                         <p class="text-black">
                         <td>
@@ -77,6 +76,7 @@
                             Numero Posti Moto: ${record.getPostiMoto()}<br>
 
                         </td>
+                        </p>
                     </h5> <!-- Fine Indirizzo&NumPosti-->
                     <div>
                         <form action="InfoParkingServlet" method="post">
@@ -91,7 +91,8 @@
                 </div>
             </div><!-- Fine Card-->
         </c:forEach>
-    </div> <!-- FINE SEZIONE CARD-->
+    </div>
+    </div><!-- FINE SEZIONE CARD-->
 
 
     <div class="my-5 card text-black mx-auto" style="width: 60rem">
@@ -100,7 +101,6 @@
                 Qui puoi visualizzare le statistiche:
             </h4>
         </div>
-    </div>
 </header>
 
 <!-- Footer-->

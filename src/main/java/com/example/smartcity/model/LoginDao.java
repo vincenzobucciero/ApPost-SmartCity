@@ -140,4 +140,29 @@ public class LoginDao {
         return false;
 
     }
+
+
+    //Metodo per modificare il nome dell'utente
+    public void modifyNomeUtente(String email, String nome){
+        try {
+            con = DriverManager.getConnection(url, "root", "password");
+            PreparedStatement stmt = con.prepareStatement("UPDATE Utenti SET nome=(?) WHERE email = (?)");
+            stmt.setString(1, nome);
+            stmt.setString(2, email);
+            stmt.executeUpdate();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (con!=null)
+                    con.close();
+            }
+            catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+
+    }
 }

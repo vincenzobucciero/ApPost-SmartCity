@@ -12,7 +12,6 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
-import java.sql.Date;
 
 @WebServlet(name = "BookingServlet", value = "/BookingServlet")
 public class BookingServlet extends HttpServlet {
@@ -34,6 +33,7 @@ public class BookingServlet extends HttpServlet {
             request.setAttribute( "email", usersBean.getEmail() );
             request.setAttribute("parkingBean", parkingBean);
             request.setAttribute("id", id);
+            request.setAttribute("feedback",false);
             request.getRequestDispatcher("prenotazione.jsp").forward(request, response);
 
         }
@@ -53,12 +53,13 @@ public class BookingServlet extends HttpServlet {
         String tipoVeicolo = request.getParameter("tipoV");
 
         System.out.println(email);
-        System.out.println("id: " + id);
+        System.out.println("idParcheggio: " + id);
         System.out.println("parking: " + parkingBean.getNomeParcheggio());
         System.out.println("Data: "+ dataPrenotazione);
-        System.out.println(orarioInizio +" "+ orarioFine);
+        System.out.println("Orari: " + orarioInizio +" "+ orarioFine);
 
         BookingBean bookingBean = new BookingBean();
+        bookingBean.setID_prenotazione( id );
         bookingBean.setData_prenotazione( dataPrenotazione );
         bookingBean.setOrario_inizio( orarioInizio );
         bookingBean.setOrario_fine( orarioFine );
@@ -66,7 +67,7 @@ public class BookingServlet extends HttpServlet {
         bookingBean.setTipoVeicolo( tipoVeicolo );
         bookingBean.setEmail( email );
 
-        BookingService.Booking(bookingBean);
+        //BookingService.Booking(bookingBean);
 
         //UsersBean usersBean = (UsersBean) request.getSession().getAttribute("usersBean");
         //request.setAttribute("usersBean", usersBean);
@@ -93,7 +94,8 @@ public class BookingServlet extends HttpServlet {
                 break;
         }
 
-        request.getRequestDispatcher("prenotazione.jsp").forward(request, response);
+        request.setAttribute("bookingBean",bookingBean);
 
+        request.getRequestDispatcher("prenotazione.jsp").forward(request, response);
     }
 }

@@ -99,9 +99,9 @@
                                                                 <td>
                                                                     ${record.getIndirizzo()}<br>
                                                                     <i class="bi bi-cash-stack"></i>
-                                                                    ${record.getTariffaAF()}<br>
+                                                                    ${record.getTariffaAF()}€/h <br>
                                                                     <i class="bi bi-cash-stack"></i>
-                                                                    ${record.getTariffaM()}<br>
+                                                                    ${record.getTariffaM()}€/h
                                                                 </td>
                                                             </span>
                               </div>
@@ -113,10 +113,9 @@
                                 <form action="BookingServlet" method="get">
                                   <input type="hidden" name="id" value="${record.getIdParcheggio()}">
                                   <input type="hidden" name="email" value="${usersBean.getEmail()}">
-
                                   <div class="text-center">
-                                    <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-geo-alt"></i></button>
-                                    <button type="submit" class="btn btn-outline-primary">Prenota</button>
+                                    <button type="submit" class="btn btn-primary btn-sm "><i class="bi bi-geo-alt"></i></button>
+                                    <button type="submit" class="btn btn-primary btn-sm ">Prenota</button>
                                   </div>
                                 </form>
                               </div>
@@ -137,6 +136,22 @@
   </div>
 </header>
 
+<!-- Footer-->
+<footer class="bg-light py-5">
+  <div class="container px-4 px-lg-5">
+    <div class="small text-center text-muted">
+      Copyright &copy; 2023 - Company Name
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- SimpleLightbox plugin JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
 
 </body>

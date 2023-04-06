@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ParkingDao {
     private static ParkingDao istanza;
-    private final String url = "jdbc:mysql://127.0.0.1:3306/SmartCity";
+    private final String url = "jdbc:mysql://localhost:3306/smartcity";
 
     Connection con;
 
@@ -24,7 +24,7 @@ public class ParkingDao {
         List<ParkingBean> list = new ArrayList<ParkingBean>();
 
         try{
-            con = DriverManager.getConnection(url, "camilla", "camilla");
+            con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
             PreparedStatement stmt = con.prepareStatement("SELECT ID_parcheggio, nomeParcheggio, indirizzo, tariffaAF, tariffaM, postiAuto, postiFurgone, postiMoto  FROM Parcheggio ");
             ResultSet resultSet = stmt.executeQuery();
             while(resultSet.next()){
@@ -44,8 +44,7 @@ public class ParkingDao {
         }
         catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             try {
                 if(con != null)
                     con.close();
@@ -60,7 +59,7 @@ public class ParkingDao {
     public ParkingBean getParkingBean(int id){
         ParkingBean parkingBean = new ParkingBean();
         try {
-            con = DriverManager.getConnection(url, "camilla", "camilla");
+            con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
             PreparedStatement stmt = con.prepareStatement("SELECT * FROM Parcheggio WHERE ID_parcheggio = (?) ");
             stmt.setInt(1, id);
             ResultSet result = stmt.executeQuery();

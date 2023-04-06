@@ -6,9 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,9 +43,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
                 <li class="nav-item"><a class="nav-link" href="userHomePage.jsp">Torna alla home</a></li>
-                <li class="nav-item"><a class="nav-link" href="about.jsp">Chi siamo</a></li>
-                <li class="nav-item"><a class="nav-link" href="#services">Servizi</a></li>
-                <li class="nav-item"><a class="nav-link" href="index.jsp">Esci</a></li>
+                <li class="nav-item"><a class="nav-link" href="logout">Esci</a></li>
             </ul>
         </div>
     </div>
@@ -125,11 +123,26 @@
                                 </p>
                             </div>
                         </div>
+
+                        <div>
+                            <form action="ModifyUserServlet" method="post">
+                                <input type="hidden" name="idparking" value="${record.getIdParcheggio()}">
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-outline-primary">Modifica</button>
+                                </div>
+                            </form>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
+
 </header>
 
 
@@ -143,10 +156,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<!-- * *                               SB Forms JS                               * *-->
-<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
 

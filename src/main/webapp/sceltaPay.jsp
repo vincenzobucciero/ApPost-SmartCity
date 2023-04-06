@@ -1,5 +1,10 @@
-<%@ page import="com.example.smartcity.service.Algoritmo.Location" %>
-<%@ page import="com.example.smartcity.service.Algoritmo.Nodo" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: vincenzo
+  Date: 4/6/23
+  Time: 4:51 PM
+  To change this template use File | Settings | File Templates.
+--%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -14,19 +19,21 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/stylePrenotazione.css">
-  <link rel="stylesheet" type="text/css" href="css/styleMap.css" />
-  <script type="module" src="js/jsMap.js"></script>
+  <link rel="stylesheet" href="css/styleSceltaPay.css">
+
+  <script type="module" src="js/scripts.js"></script>
   <script type="module" src="TySc/tyS.ts"></script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
   <link rel="stylesheet" href="img">
 
-  <title>ApPost - Prenotazione</title>
+  <title>ApPost - Scelta Pagamento</title>
 </head>
+
 <body>
 
+<!--Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
   <div class="container px-4 px-lg-5">
     <a class="navbar-brand" href="index.jsp">ApPost</a>
@@ -42,54 +49,22 @@
   </div>
 </nav>
 
+
+
+<!--Masthead-->
 <header class="masthead">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="my-5 card bg-light mx-auto" style="width:30rem;">
-          <div class="card-body">
-            <div id="map"></div> <!-- Qua esce la mappa-->
-          </div>
-        </div>
-      </div>
-      <div class="col-md-5 col-md-offset-5" style="width:50rem;">
-        <div class="card-body">
-          <div class="form-container">
-            <form class="form-horizontal" action="PathServlet" method="post">
-              <div class="form-group">
-                <label  name = "start">Partenza </label>
-                <select required class= "form-control" name="start">
-                  <option value="">--scegli--</option>
-                  <% Location start = new Location();
-                    for(Nodo nodo:start.getStart()){
-                  %>
-                  <option type="hidden" name="start" value="<%=nodo.getIndirizzo() %>"> <%=nodo.getIndirizzo()%></option>
-                  <%
-                    }%>
-                </select>
-              </div>
-              <div class="form-group">
-                <label name = "dest">Destinazione</label>
-                <select required class= "form-control" name="dest">
-                  <option value="">--scegli--</option>
-                  <%
-                    for(Nodo nodo:start.getEnd()){
-                  %>
-                  <option type="hidden" name="dest" value="<%=nodo.getIndirizzo() %>"> <%=nodo.getIndirizzo()%></option>
-                  <%
-                    }%>
-                </select>
-              </div>
-              <div>
-                <button type="submit" class="btn btn-outline-primary text-white">Cerca Percorso</button>
-              </div>
-            </form>
-          </div>
-        </div>
+  <div class="container px-4 px-lg-5 h-100">
+    <div class="my-5 card bg-light mx-auto" style="width:70rem;">
+      <h3 class="card-title text-black">Scegli la tua modalità di pagamento</h3>
+      <h5 class="text-muted small"> Qui puoi selezionare il metodo di pagamento che preferisci,
+        <br> cosi per completare il pagamento.</h5>
+      <div class="payment-options">
+        <button class="credit-card" href="">Carta di Credito</button>
+        <button class="debit-card" href="">Carta di Debito</button>
+        <button class="cash" href="">Contanti</button>
       </div>
     </div>
   </div>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA23kxKNlGB1Gw7UQdz4zbemqIZSG93JUQ&callback=initMap"></script>
 </header>
 
 
