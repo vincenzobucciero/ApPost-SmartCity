@@ -126,8 +126,7 @@
 
                         <div>
                             <form action="ModifyUserServlet" method="post">
-                                <input type="hidden" name="idparking" value="${record.getIdParcheggio()}">
-
+                                <input type="hidden" name="email" value="${usersBean.getEmail()}">
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-outline-primary">Modifica</button>
                                 </div>
