@@ -43,7 +43,7 @@
             aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ms-auto my-2 my-lg-0">
-        <li class="nav-item"><a class="nav-link" href="login">Torna alla Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="ModifyUserServlet">Torna alla Home</a></li>
         <li class="nav-item"><a class="nav-link" href="logout">Esci</a></li>
       </ul>
     </div>

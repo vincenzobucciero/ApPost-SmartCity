@@ -29,7 +29,7 @@ public class PathServlet extends HttpServlet {
 
         HttpSession session = request.getSession(false);
         if ( session == null ) {
-            session.setAttribute("isLog",0);
+            session.setAttribute("isLog",1);
             request.getRequestDispatcher("login.jsp").forward(request,response);
         } else {
             UsersBean usersBean = (UsersBean) session.getAttribute("usersBean");
