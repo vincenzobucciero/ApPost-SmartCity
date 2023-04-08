@@ -6,8 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -16,7 +17,7 @@
     <meta name="author" content="" />
     <title>ApPost-Home Page</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="img/AppostLogo.png" />
+    <link rel="icon" type="image/x-icon" href="img/iconMoney.png" />
     <link rel="icon" type="image/x-icon" href="img/wallpaperCar.jpg" />
     <!-- Bootstrap Icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
@@ -40,7 +41,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
                 <li class="nav-item"><a class="nav-link" href="adminHomePage.jsp">Torna alla home</a></li>
-                <li class="nav-item"><a class="nav-link" href="index.jsp">Esci</a></li>
+                <li class="nav-item"><a class="nav-link" href="logout">Esci</a></li>
             </ul>
         </div>
     </div>
@@ -57,40 +58,42 @@
                 Qui puoi visualizzare i tuoi parcheggi:
             </h3>
         </div>-->
-    <div class="row"> <!-- Inizio Card-->
-        <c:forEach items="${list}" var="record"> <!--Ciclo FOR -->
-            <div class="my-4 card bg-light mx-auto" style="width: 20rem;">
-                <div class="card-body">
-                    <p class="text-muted mb-0 fs-3">
-                    <td>
-                            ${record.getNomeParcheggio()}
-                    </td>
-                    <hr class="text-black">
-                    </p><!-- Fine Nome Parcheggio-->
-                    <h5 class="card-text-">
-                        <p class="text-black">
+    <div class="my-5 card text-black mx-auto" style="width: 70rem">
+        <div class="row"> <!-- Inizio Card-->
+            <c:forEach items="${list}" var="record"> <!--Ciclo FOR -->
+                <div class="my-4 card bg-light mx-auto" style="width: 20rem;">
+                    <div class="card-body">
+                        <p class="text-muted mb-0 fs-3">
                         <td>
-                                ${record.getIndirizzo()}<br>
-                            Numero Posti Auto: ${record.getPostiAuto()}<br>
-                            Numero Posti Furgone: ${record.getPostiFurgone()}<br>
-                            Numero Posti Moto: ${record.getPostiMoto()}<br>
-
+                                ${record.getNomeParcheggio()}
                         </td>
-                        </p>
-                    </h5> <!-- Fine Indirizzo&NumPosti-->
-                    <div>
-                        <form action="InfoParkingServlet" method="post">
-                            <input type="hidden" name="idparking" value="${record.getIdParcheggio()}">
+                        <hr class="text-black">
+                        </p><!-- Fine Nome Parcheggio-->
+                        <h5 class="card-text-">
+                            <p class="text-black">
+                            <td>
+                                    ${record.getIndirizzo()}<br>
+                                Numero Posti Auto: ${record.getPostiAuto()}<br>
+                                Numero Posti Furgone: ${record.getPostiFurgone()}<br>
+                                Numero Posti Moto: ${record.getPostiMoto()}<br>
 
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-outline-primary">Modifica</button>
-                            </div>
-                        </form>
+                            </td>
+                            </p>
+                        </h5> <!-- Fine Indirizzo&NumPosti-->
+                        <div>
+                            <form action="InfoParkingServlet" method="post">
+                                <input type="hidden" name="idparking" value="${record.getIdParcheggio()}">
 
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-outline-primary">Modifica</button>
+                                </div>
+                            </form>
+
+                        </div>
                     </div>
-                </div>
-            </div><!-- Fine Card-->
-        </c:forEach>
+                </div><!-- Fine Card-->
+            </c:forEach>
+        </div>
     </div>
     </div><!-- FINE SEZIONE CARD-->
 
@@ -101,6 +104,7 @@
                 Qui puoi visualizzare le statistiche:
             </h4>
         </div>
+    </div>
 </header>
 
 <!-- Footer-->

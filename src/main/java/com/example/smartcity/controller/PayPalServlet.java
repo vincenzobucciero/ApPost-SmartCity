@@ -1,17 +1,20 @@
 package com.example.smartcity.controller;
 
-import com.example.smartcity.model.*;
+import com.example.smartcity.model.BookingBean;
+import com.example.smartcity.model.ParkingBean;
+import com.example.smartcity.model.ParkingDao;
 import com.example.smartcity.service.BookingService;
 import com.example.smartcity.service.Factory.*;
-import com.example.smartcity.service.Strategy.*;
+import com.example.smartcity.service.Strategy.PaypalStrategy;
+import com.example.smartcity.service.Strategy.PaymentStrategy;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "PayServlet", value = "/PayServlet")
-public class PayServlet extends HttpServlet {
+@WebServlet(name = "PayPalServlet", value = "/PayPalServlet")
+public class PayPalServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
@@ -23,15 +26,9 @@ public class PayServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         ParkingBean parkingBean = ParkingDao.getIstanza().getParkingBean(id);
 
-        //String idBooking = request.getParameter("idBooking"); //controlla se cancellare
         String email = request.getParameter("email");
-        String nome = request.getParameter("intestatario");
-        String numeroCarta = request.getParameter("numCarta");
-        String cvv = request.getParameter("cvv");
-        String meseScadenza = request.getParameter("MM");
-        String annoScadenza = request.getParameter("YY");
-
-        String dataScadenza = annoScadenza + "-" + meseScadenza;
+        String emailPP = request.getParameter("emailPP");
+        String passwordPP = request.getParameter("passwordPP");
 
         HttpSession session = request.getSession(false);
         if ( session == null ) {
@@ -40,13 +37,12 @@ public class PayServlet extends HttpServlet {
         } else {
             BookingBean bookingBean = (BookingBean) session.getAttribute("bookingBean");
 
-            PaymentStrategy paymentMethod = new CreditCardStrategy(nome, numeroCarta, cvv,dataScadenza );
+            PaymentStrategy paymentMethod = new PaypalStrategy(emailPP, passwordPP);
 
             String tipoVeicolo = bookingBean.getTipoVeicolo();
             System.out.println("veicolo " + tipoVeicolo);
             switch (tipoVeicolo){
                 case "Auto":
-                    //bookingBean.setPrezzo(parkingBean.getTariffaAF() + 1.99);
                     paymentMethod.pay(bookingBean.getPrezzo());
                     FactoryPosto factoryAuto = new FactoryPostoAuto();
                     Posto auto = factoryAuto.getPosto(id, parkingBean);
@@ -55,7 +51,6 @@ public class PayServlet extends HttpServlet {
                     BookingService.Booking(bookingBean);
                     break;
                 case "Furgone":
-                    //bookingBean.setPrezzo(parkingBean.getTariffaAF() + 1.99);
                     paymentMethod.pay(bookingBean.getPrezzo());
                     FactoryPosto factoryFurgone = new FactoryPostoFurgone();
                     Posto furgone = factoryFurgone.getPosto(id, parkingBean);
@@ -64,7 +59,6 @@ public class PayServlet extends HttpServlet {
                     BookingService.Booking(bookingBean);
                     break;
                 case "Moto":
-                    //bookingBean.setPrezzo(parkingBean.getTariffaM() + 1.99);
                     paymentMethod.pay(bookingBean.getPrezzo());
                     FactoryPosto factoryMoto = new FactoryPostoMoto();
                     Posto moto = factoryMoto.getPosto(id, parkingBean);

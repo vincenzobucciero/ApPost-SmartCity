@@ -1,10 +1,11 @@
 <%--
   Created by IntelliJ IDEA.
   User: vincenzo
-  Date: 3/21/23
-  Time: 10:29 PM
+  Date: 4/8/23
+  Time: 12:23 PM
   To change this template use File | Settings | File Templates.
 --%>
+
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -19,6 +20,9 @@
   <!-- SimpleLightbox plugin CSS-->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/stylePrenotazione.css">
   <link rel="stylesheet" type="text/css" href="css/styleMap.css" />
@@ -30,8 +34,7 @@
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
   <link rel="stylesheet" href="img">
-
-  <title>ApPost - Prenotazione</title>
+  <title>ApPost - Prenotazioni</title>
 </head>
 <body>
 
@@ -57,7 +60,7 @@
         <div class="my-5 card bg-light mx-auto" style="width:60rem;">
           <div class="card-body">
             <h5 class="text-muted">
-              Questi sono i parcheggi disponibili per il percorso scelto:
+              Queste sono le tue prenotazioni:
             </h5>
 
             <!-- Qui inizia il div per la lista dei parcheggi-->
@@ -67,13 +70,8 @@
                 <div class="col-md-12">
                   <div class="d-flex justify-content-between align-items-center activity">
                     <div>
-                                            <span class="activity-done">
-                                                Parcheggi(${size})
-                                            </span>
-                    </div>
-                    <div>
                                             <span class="m-lg-4">
-                                                (Da ${start} a ${dest}):
+                                                Prenotazioni(${size}):
                                             </span>
                     </div>
                     <div class="icons">
@@ -82,26 +80,38 @@
                     </div>
                   </div>
                   <div class="mt-3">
-                    <c:forEach items="${parcheggioDisp}" var="record"> <!--Ciclo FOR -->
+                    <c:forEach items="${list}" var="record"> <!--Ciclo FOR -->
                       <ul class="list list-inline">
                         <li class="d-flex justify-content-between">
                           <div class="d-flex flex-row align-items-center">
-                            <div class="ml-3">
+                            <div class="ml-3"><!--ID Prenotazione-->
                               <h6 class="mb-0">
                                 <td>
-                                    ${record.getNomeParcheggio()}
+                                  Id Prenotazione: "${record.getID_prenotazione()}"
                                 </td>
                               </h6>
                               <div class="d-flex flex-row mt-1 text-black-50 date-time">
-                                                            <span class="ml-2"> <!--22 May 2023-->
-                                                                <i class="bi bi-geo-fill"></i>
-                                                                <td>
-                                                                    ${record.getIndirizzo()}<br>
-                                                                    <i class="bi bi-cash-stack"></i>
-                                                                    Auto/Furgone:${record.getTariffaAF()}€/h <br>
-                                                                    <i class="bi bi-cash-stack"></i>
-                                                                    Moto:${record.getTariffaM()}€/h
-                                                                </td>
+                                                            <span class="ml-2">
+                                                                <i class="bi bi-calendar-check-fill"></i><!--Data-->
+                                                                    <td>
+                                                                        ${record.getData_prenotazione()}<br>
+                                                                    </td>
+                                                                <i class="bi bi-clock-fill"></i><!--Orario-->
+                                                                    <td>
+                                                                        ${record.getOrario_inizio()} - ${record.getOrario_fine()}<br>
+                                                                    </td>
+                                                                <i class="fas fa-car-side"></i><!--Targa-->
+                                                                    <td>
+                                                                        ${record.getTargaVeicolo()}<br>
+                                                                    </td>
+                                                                <i class="bi bi-currency-exchange"></i><!--Prezzo-->
+                                                                    <td>
+                                                                        ${record.getPrezzo()}€<br>
+                                                                    </td>
+                                                               <i class="bi bi-credit-card-2-back-fill"></i>/<i class="fab fa-paypal mr-2"></i><!--TipoPagamento-->
+                                                                    <td>
+                                                                        ${record.getPagamento()}<br>
+                                                                    </td>
                                                             </span>
                               </div>
                             </div>
@@ -109,12 +119,10 @@
                           <div class="d-flex flex-row align-items-center">
                             <div class="d-flex flex-column mr-2">
                               <div class="profile-image">
-                                <form action="BookingServlet" method="get">
-                                  <input type="hidden" name="id" value="${record.getIdParcheggio()}">
-                                  <input type="hidden" name="email" value="${usersBean.getEmail()}">
+                                <form action="" method="get">
                                   <div class="text-center">
-                                    <button type="submit" class="btn btn-primary btn-sm "><i class="bi bi-geo-alt"></i></button>
-                                    <button type="submit" class="btn btn-primary btn-sm ">Prenota</button>
+                                    <button type="submit" class="btn btn-success btn-sm "><i class="bi bi-currency-dollar"></i></button>
+                                    <button type="submit" class="btn btn-danger btn-sm "><i class="bi bi-trash"></i></button>
                                   </div>
                                 </form>
                               </div>

@@ -28,15 +28,17 @@ public class BookingDao {
     public void addBooking(BookingBean bookingBean) {
         try {
             con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
-            PreparedStatement query = con.prepareStatement("INSERT INTO Prenotazione (data_prenotazione, orario_inizio, orario_fine, targaVeicolo, tipoVeicolo, email) " +
-                    "VALUES(?, ?, ?, ?, ?, ?)");
-            query.setString(1, bookingBean.getData_prenotazione());
-            query.setString(2, bookingBean.getOrario_inizio());
-            query.setString(3, bookingBean.getOrario_fine());
-            query.setString(4, bookingBean.getTargaVeicolo());
-            query.setString(5, bookingBean.getTipoVeicolo());
-            query.setString(6, bookingBean.getEmail());
-            query.execute();
+            PreparedStatement query = con.prepareStatement("INSERT INTO Prenotazione (Id_prenotazione, data_prenotazione, orario_inizio, orario_fine, targa_veicolo, tipoVeicolo, email, prezzo, pagamento) " +
+                    "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            query.setString(1, bookingBean.getID_prenotazione());
+            query.setString(2, bookingBean.getData_prenotazione());
+            query.setString(3, bookingBean.getOrario_inizio());
+            query.setString(4, bookingBean.getOrario_fine());
+            query.setString(5, bookingBean.getTargaVeicolo());
+            query.setString(6, bookingBean.getTipoVeicolo());
+            query.setString(7, bookingBean.getEmail());
+            query.setDouble(8, bookingBean.getPrezzo());
+            query.setString(9, bookingBean.getPagamento());
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -64,7 +66,7 @@ public class BookingDao {
             list = new ArrayList<>();
             while (result.next()) {
                 BookingBean bookingBean = new BookingBean();
-                bookingBean.setID_prenotazione(result.getInt("Id_prenotazione"));
+                bookingBean.setID_prenotazione(result.getString("Id_prenotazione"));
                 bookingBean.setData_prenotazione(result.getString("data_prenotazione"));
                 bookingBean.setOrario_inizio(result.getString("orario_inizio"));
                 bookingBean.setOrario_fine(result.getString("orario_fine"));
@@ -72,6 +74,7 @@ public class BookingDao {
                 bookingBean.setTipoVeicolo(result.getString("tipoVeicolo"));
                 bookingBean.setEmail(result.getString("email"));
                 bookingBean.setPrezzo(result.getDouble("prezzo"));
+                bookingBean.setPagamento(result.getString("pagamento"));
 
                 //System.out.println(bookingBean.getID_prenotazione() + " "+ bookingBean.getData_prenotazione());
 
@@ -103,7 +106,7 @@ public class BookingDao {
             stmt.setInt(1, id);
             ResultSet result = stmt.executeQuery();
             if (result.next()) {
-                bookingBean.setID_prenotazione(result.getInt("Id_prenotazione"));
+                bookingBean.setID_prenotazione(result.getString("Id_prenotazione"));
                 bookingBean.setData_prenotazione(result.getString("data_prenotazione"));
                 bookingBean.setOrario_inizio(result.getString("orario_inizio"));
                 bookingBean.setOrario_fine(result.getString("orario_fine"));
@@ -111,6 +114,7 @@ public class BookingDao {
                 bookingBean.setTipoVeicolo(result.getString("tipoVeicolo"));
                 bookingBean.setEmail(result.getString("email"));
                 bookingBean.setPrezzo(result.getDouble("prezzo"));
+                bookingBean.setPagamento(result.getString("pagamento"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

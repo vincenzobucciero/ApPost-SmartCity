@@ -1,13 +1,16 @@
 package com.example.smartcity.service.Strategy;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class CreditCardStrategy implements PaymentStrategy {
     private String nome;
     private String numeroCarta;
     private String cvv;
-    private LocalDate dataScadenza;
-    public CreditCardStrategy(String nome, String numeroCarta, String cvv, LocalDate dataScadenza){
+    //private LocalDate dataScadenza;
+    private String dataScadenza;
+    public CreditCardStrategy(String nome, String numeroCarta, String cvv, String dataScadenza){
         this.nome = nome;
         this.numeroCarta = numeroCarta;
         this.cvv = cvv;
@@ -29,7 +32,21 @@ public class CreditCardStrategy implements PaymentStrategy {
 
     //controlla che la carta non sia scaduta
     private boolean checkCreditCardExpirationDate() {
-        return dataScadenza.isAfter(LocalDate.now());
+        SimpleDateFormat f = new SimpleDateFormat("yy-MM");
+        String oggi = f.format(new Date());
+
+        //compare to ritorna un numero > di 0 se data scadenza è contenuta nella data di oggi
+        // < 0 il contrario
+        // = 0 uguali (l'ho considerato come scaduta)
+        //compareToIgnoreCase ignora i caratteri tra le stringhe
+        if(oggi.compareToIgnoreCase(dataScadenza) > 0 ){
+            System.out.println("Scaduta");
+            return false;
+        }
+        else
+            System.out.println("Valida");
+        return true;
+
     }
 
     //controlla che il cvv sia valido
@@ -44,7 +61,7 @@ public class CreditCardStrategy implements PaymentStrategy {
         return !creditCardCVVMatcher.find();
     }
 
-    public boolean checkPaymentMethodData() {
+    private boolean checkPaymentMethodData() {
 
         if (!checkCreditCardNumber()) return false;
         if (!checkCreditCardExpirationDate()) return false;

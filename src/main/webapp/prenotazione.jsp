@@ -7,6 +7,7 @@
 --%>
 
 
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -21,9 +22,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/styleFormLogin.css">
   <link rel="stylesheet" href="css/styleBooking.css">
-
 
   <script type="module" src="js/scripts.js"></script>
   <script type="module" src="TySc/tyS.ts"></script>
@@ -35,7 +34,8 @@
   <title>ApPost - Prenotazione</title>
 </head>
 
-<body body id="page-top">
+<body id="page-top">
+
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
   <div class="container px-4 px-lg-5">
@@ -51,6 +51,7 @@
     </div>
   </div>
 </nav>
+
 <!-- Masthead-->
 <header class="masthead">
   <div class="container px-4 px-lg-5 h-100">
@@ -79,13 +80,33 @@
               <input name="emailS" class="form-control" type="text" placeholder="${email}" readonly>
             </div>
           </div>
+          <hr>
           <div class = "form-group row">
-            <div class="col-md-5">
+
+            <div class="col-md-4">
+              <label name="dataP">Data</label>
+              <input name="dataP"  class="form-control" type="date" required>
+            </div>
+
+            <div class="col-md-4">
+              <label name="oraI">Orario ingresso</label>
+              <input name="oraI" value="07:00" class="form-control" type="time" min="07:00" required>
+            </div>
+
+            <div class="col-md-4">
+              <label name="oraF">Orario uscita</label>
+              <input name="oraF" value="23:00" class="form-control" type="time" max="23:00" required>
+            </div>
+          </div>
+          <hr>
+          <div class = "form-group row">
+
+            <div class="col-md-4">
               <label name="targa">Targa Veicolo</label>
               <input name="targa" class="form-control" type="text" placeholder="es. DC104RT" required>
             </div>
 
-            <div class="col-md-5">
+            <div class="col-md-4">
               <label name="tipoV">Tipo Veicolo</label>
               <select class= "form-control" name="tipoV" required>
                 <option value="">--scegli--</option>
@@ -94,28 +115,21 @@
                 <option type="hidden" name="tipoV">Moto</option>
               </select>
             </div>
-          </div>
-
-          <div class = "form-group row">
-            <div class="col-md-4">
-              <label name="dataP">Data</label>
-              <input name="dataP" class="form-control" type="date" required>
-            </div>
 
             <div class="col-md-4">
-              <label name="oraI">Orario ingresso</label>
-              <input name="oraI" class="form-control" type="time" required>
+              <label name="sceltaP">Metodo di pagamento</label>
+              <select class= "form-control" name="sceltaP" required>
+                <option value="">--scegli--</option>
+                <option type="hidden" name="cartaC">Carta di Credito/PayPal</option>
+                <option type="hidden" name="contanti">Al parcheggio</option>
+              </select>
             </div>
 
-            <div class="col-md-4">
-              <label name="oraF">Orario uscita</label>
-              <input name="oraF" class="form-control" type="time" required>
-            </div>
           </div>
           <input type="hidden" name="email" value="${email}">
           <input type="hidden" name="id" value="${id}">
-
           <input type="hidden" name="bookingBean" value="${bookingBean}">
+
           <button type="submit" class="btn btn-primary btn-lg text-white">Pagamento
             <br><i class="bi bi-credit-card-2-back-fill"></i>
           </button>

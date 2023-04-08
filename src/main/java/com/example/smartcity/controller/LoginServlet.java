@@ -24,15 +24,11 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         response.setContentType("text/html");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        //LoginDao loginDao = new LoginDao();
-        //AccessoLogin accessoLogIn = loginDao.logIn(username, password);
-
-        //AccessoLogin accessoLogIn = LoginDao.getIstanza().logIn();
-        //LoginDao loginDAO = LoginDao.getIstanza().getUserBean(email);
         UsersBean usersBean = LoginDao.getIstanza().getUserBean(email);
 
         AccessoLogin accessoLogIn = LogService.logHandler(email, password);

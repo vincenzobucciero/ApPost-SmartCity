@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 
 public class BookingBean implements Serializable {
-    private int ID_prenotazione;
+    private String ID_prenotazione;
     private String data_prenotazione;
     private String orario_inizio;
     private String orario_fine;
@@ -13,11 +13,13 @@ public class BookingBean implements Serializable {
     private String tipoVeicolo;
     private double prezzo;
 
-    public int getID_prenotazione() {
+    private String pagamento;
+
+    public String getID_prenotazione() {
         return ID_prenotazione;
     }
 
-    public void setID_prenotazione(int ID_prenotazione) {
+    public void setID_prenotazione(String ID_prenotazione) {
         this.ID_prenotazione = ID_prenotazione;
     }
 
@@ -76,5 +78,13 @@ public class BookingBean implements Serializable {
 
     public void setPrezzo(double prezzo) {
         this.prezzo = prezzo;
+    }
+
+    public String getPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(String pagamento) {
+        this.pagamento = pagamento;
     }
 }
