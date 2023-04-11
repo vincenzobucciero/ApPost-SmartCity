@@ -76,7 +76,7 @@
                   </div>
                   <div class="form-group">
                     <label name="tariffaAF">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" value="${usersBean.getEmail()}">
+                    <input type="text" class="form-control" id="email" name="email" value="${usersBean.getEmail()}" readonly >
                   </div>
                   <div class="form-group">
                     <label name="tariffaAF">Password</label>
