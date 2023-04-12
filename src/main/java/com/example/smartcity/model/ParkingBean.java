@@ -3,8 +3,6 @@ package com.example.smartcity.model;
 import java.io.Serializable;
 
 public class ParkingBean implements Serializable {
-
-    private int idParcheggio;
     private String nomeParcheggio;
     private String indirizzo;
     private int postiAuto;
@@ -39,13 +37,6 @@ public class ParkingBean implements Serializable {
         this.nomeParcheggio = nomeParcheggio;
     }
 
-    public int getIdParcheggio() {
-        return idParcheggio;
-    }
-
-    public void setIdParcheggio(int idParcheggio) {
-        this.idParcheggio = idParcheggio;
-    }
 
     public void setTariffaAF(double tariffaAF) {
         this.tariffaAF = tariffaAF;

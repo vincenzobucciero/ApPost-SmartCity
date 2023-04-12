@@ -1,5 +1,10 @@
 package com.example.smartcity.service.Strategy;
 
+import com.example.smartcity.model.BookingBean;
+import com.example.smartcity.service.BookingService;
+
 public interface PaymentStrategy {
-    public void pay(double amount);
+    public boolean pay(double amount);
+
+
 }

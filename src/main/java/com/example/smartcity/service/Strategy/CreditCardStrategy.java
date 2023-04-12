@@ -1,6 +1,5 @@
 package com.example.smartcity.service.Strategy;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -8,8 +7,10 @@ public class CreditCardStrategy implements PaymentStrategy {
     private String nome;
     private String numeroCarta;
     private String cvv;
-    //private LocalDate dataScadenza;
     private String dataScadenza;
+
+
+
     public CreditCardStrategy(String nome, String numeroCarta, String cvv, String dataScadenza){
         this.nome = nome;
         this.numeroCarta = numeroCarta;
@@ -70,10 +71,14 @@ public class CreditCardStrategy implements PaymentStrategy {
     }
 
     @Override
-    public void pay(double amount) {
-        if (checkPaymentMethodData())
+    public boolean pay(double amount) {
+        if (checkPaymentMethodData()) {
             System.out.println(amount + " pagamento con successo con carta di credito");
-        else
+            return true;
+        }
+        else {
             System.out.println("credenziali non valide");
+            return false;
+        }
     }
 }

@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -26,6 +25,8 @@
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
     <!-- SimpleLightbox plugin CSS-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="img">
@@ -41,6 +42,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
                 <li class="nav-item"><a class="nav-link" href="adminHomePage.jsp">Torna alla home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#stats">Statistiche</a></li>
                 <li class="nav-item"><a class="nav-link" href="logout">Esci</a></li>
             </ul>
         </div>
@@ -60,8 +62,13 @@
         </div>-->
     <div class="my-5 card text-black mx-auto" style="width: 70rem">
         <div class="row"> <!-- Inizio Card-->
+            <div class="text-muted">
+                <h3 style="font-weight:bold; text-align:center;">
+                    Qui puoi visualizzare i tuoi parcheggi:
+                </h3>
+            </div>
             <c:forEach items="${list}" var="record"> <!--Ciclo FOR -->
-                <div class="my-4 card bg-light mx-auto" style="width: 20rem;">
+                <div class="my-4 card bg-light mx-auto" style="width: 20rem; height: 15rem">
                     <div class="card-body">
                         <p class="text-muted mb-0 fs-3">
                         <td>
@@ -69,20 +76,24 @@
                         </td>
                         <hr class="text-black">
                         </p><!-- Fine Nome Parcheggio-->
-                        <h5 class="card-text-">
-                            <p class="text-black">
+                        <h5 class="card-text">
+                            <p class="text-black" style="font-family: 'Inter', sans-serif">
                             <td>
+                                <i class="bi bi-geo-fill" style="color: #b60909"></i>
                                     ${record.getIndirizzo()}<br>
-                                Numero Posti Auto: ${record.getPostiAuto()}<br>
-                                Numero Posti Furgone: ${record.getPostiFurgone()}<br>
-                                Numero Posti Moto: ${record.getPostiMoto()}<br>
+                                <i class="fas fa-car-side"></i>
+                                Posti Auto: ${record.getPostiAuto()}<br>
+                                <i class="fas fa-truck"></i>
+                                Posti Furgone: ${record.getPostiFurgone()}<br>
+                                <i class="fas fa-motorcycle"></i>
+                                Posti Moto: ${record.getPostiMoto()}<br>
 
                             </td>
                             </p>
                         </h5> <!-- Fine Indirizzo&NumPosti-->
                         <div>
                             <form action="InfoParkingServlet" method="post">
-                                <input type="hidden" name="idparking" value="${record.getIdParcheggio()}">
+                                <input type="hidden" name="nomeparking" value="${record.getNomeParcheggio()}">
 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-outline-primary">Modifica</button>
@@ -96,20 +107,22 @@
         </div>
     </div>
     </div><!-- FINE SEZIONE CARD-->
+</header>
 
-
+<section class="page-section" id="stats">
     <div class="my-5 card text-black mx-auto" style="width: 60rem">
-        <div class="card-title">
-            <h4 style="font-weight:bold; text-align:left;">
+        <div class="text-muted">
+            <h4 style="font-weight:bold; text-align:center;">
                 Qui puoi visualizzare le statistiche:
             </h4>
         </div>
     </div>
-</header>
+</section>
+
 
 <!-- Footer-->
 <footer class="bg-light py-5">
-    <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2022 - Company Name</div></div>
+    <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2023 - Company Name</div></div>
 </footer>
 
 <!-- Bootstrap core JS-->

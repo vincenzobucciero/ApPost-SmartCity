@@ -12,12 +12,14 @@ public class AStar {
     private int costoDiagonale;
 
     private Nodo[][] searchArea; //Rappresenta la griglia rettangolare di nodi in cui viene effettuata la ricerca.
-    private PriorityQueue<Nodo> openList; //Una PriorityQueue di nodi aperti/openset che vengono ancora valutati dalla ricerca
+    private PriorityQueue<Nodo> openList; //(FIFO) Una PriorityQueue di nodi aperti/openset che vengono ancora valutati dalla ricerca
     private Set<Nodo> closedSet; //Un Set di nodi che sono stati già valutati dalla ricerca e che non sarnno più prelevati
+    //tipo di dato Insieme che non ammette duplicati e non definisce un ordinamento
+    //per i suoi elementi.
     private Nodo nodoIniziale;
     private Nodo nodoFinale;
 
-    private Nodo nodoParcheggio;
+    //private Nodo nodoParcheggio;
 
     /*
         Il codice fornisce due costruttori per la classe AStar:
@@ -42,7 +44,7 @@ public class AStar {
         this.closedSet = new HashSet<>();
     }
 
-    //Secondo Costruttore
+    //Secondo Costruttore chiama il primo costruttore
     public AStar(int rows, int cols, Nodo nodoIniziale, Nodo nodoFinale) {
         this(rows, cols, nodoIniziale, nodoFinale, DEFAULT_HV_COST, DEFAULT_DIAGONAL_COST);
     }
@@ -52,9 +54,8 @@ public class AStar {
          Questa matrice rappresenta la griglia rettangolare di nodi in cui viene
          effettuata la ricerca.
          All'interno del metodo viene creato un nodo per ogni elemento della
-         matrice searchArea e viene calcolata l'euristica per ogni nodo in base
-         al nodo finale. Inoltre, il nodo viene inserito nella posizione corrispondente
-         della matrice searchArea.
+         matrice searchArea e il cui valore è  l'euristica calcolata in base
+         al nodo finale.
      */
     private void setNodi() {
         for (int i = 0; i < searchArea.length; i++){
@@ -92,13 +93,17 @@ public class AStar {
     /*
         ricercaPercorso():
         Viene utilizzato per eseguire l'algoritmo di ricerca del percorso A*.
-        Inizia con l'aggiunta del nodo iniziale all'elenco aperto (openList).
+        Inizia con l'aggiunta del nodo iniziale all'openList.
         Successivamente, viene eseguito un ciclo finché openList non è vuoto.
-        Durante il ciclo, viene estratto il nodo con il punteggio f più basso
-        dall'elenco aperto e viene aggiunto all'elenco chiuso (closedSet).
+        Durante il ciclo, viene estratto il nodo con il punteggio f(stima) più basso
+        dall'opne set mediante il metoso poll e viene aggiunto all'elenco chiuso (closedSet).
         Se il nodo estratto è il nodo finale, il percorso viene restituito
-        chiamando il metodo getPath. Altrimenti, vengono aggiunti i nodi
-        adiacenti al nodo estratto all'elenco aperto.
+        chiamando il metodo getPath.
+        Altrimenti, vengono aggiunti i nodi adiacenti al nodo estratto all'elenco aperto.
+
+        N.B Il metodo poll() recupera il valore del primo elemento della coda rimuovendolo dalla coda stessa.
+        Ad ogni invocazione rimuove il primo elemento della lista e se la lista è già vuota ritorna
+        null ma non scatena nessuna eccezione
      */
     public List<Nodo> ricercaPercorso() {
         openList.add(nodoIniziale);
@@ -106,8 +111,6 @@ public class AStar {
             Nodo nodoCorrente = openList.poll();
             closedSet.add(nodoCorrente);
             if (isFinalNode(nodoCorrente)) {
-                //Location loc = new Location();
-                //loc.setParkIndirizzo();
                 return getPercorso(nodoCorrente);
             }  else {
                 addNodiAdiacente(nodoCorrente);
@@ -119,9 +122,9 @@ public class AStar {
     /*
         getPercorso():
         Restituisce il percorso dal nodo finale al nodo iniziale.
-        Inizia aggiungendo il nodo corrente alla lista di percorso (List<Nodo> percorso)
+        Inizia aggiungendo il nodo corrente alla lista del percorso (che sarà duqneu il nodo finale trovato)
         e successivamente aggiungendo il padre (parent) del nodo corrente, e così via
-        fino a raggiungere il nodo iniziale.
+        fino a raggiungere il padre del nodo iniziale.
      */
     private List<Nodo> getPercorso(Nodo nodoCorrente){
         List<Nodo> percorso = new ArrayList<Nodo>();
@@ -142,63 +145,13 @@ public class AStar {
 
 
     /*
-        addAdjacentLowerRow():
-        controlla la riga inferiore della griglia rispetto al nodo corrente
-        e aggiunge i nodi adiacenti se presenti. Come in precedenza, per ogni
-        nodo adiacente, viene verificato che sia all'interno della griglia e
-        che non sia un blocco (ostacolo). Se tutte le condizioni sono soddisfatte,
-        viene calcolato il costo di movimento per raggiungere il nodo adiacente
-        dal nodo corrente e il nodo adiacente viene aggiunto alla coda di priorità
-        openList se non è già presente in closedSet.
-     */
-    private void addAdjacentLowerRow(Nodo nodoCorrente) {
-        int row = nodoCorrente.getRow();
-        int col = nodoCorrente.getCol();
-        int rigaLow = row + 1;
-        if (rigaLow < getSearchArea().length){
-            if (col - 1  >= 0){
-                checkNodo(nodoCorrente, col - 1, rigaLow, getCostoDiagonale());
-            }
-            if (col + 1 < getSearchArea()[0].length) {
-                checkNodo(nodoCorrente, col + 1, rigaLow, getCostoDiagonale()); // Comment this line if diagonal movements are not allowed
-            }
-            checkNodo(nodoCorrente, col, rigaLow, getHVCosto());
-        }
-    }
-
-    /*
-        addAdjacentMiddleRow():
-        Controlla la riga corrente della griglia rispetto al nodo corrente
-        e aggiunge i nodi adiacenti se presenti. Anche in questo caso, per
-        ogni nodo adiacente, viene verificato che sia all'interno della
-        griglia e che non sia un blocco. Se tutte le condizioni sono
-        soddisfatte, viene calcolato il costo di movimento per raggiungere
-        il nodo adiacente dal nodo corrente e il nodo adiacente viene aggiunto
-        alla coda di priorità openList se non è già presente in closedSet.
-     */
-
-    private void addAdjacentMiddleRow(Nodo nodoCorrente) {
-        int row = nodoCorrente.getRow();
-        int col = nodoCorrente.getCol();
-        int middleRow = row;
-        if (col - 1 >= 0) {
-            checkNodo(nodoCorrente, col - 1, middleRow, getHVCosto());
-        }
-        if (col + 1 < getSearchArea()[0].length) {
-            checkNodo(nodoCorrente, col + 1, middleRow, getHVCosto());
-        }
-    }
-
-    /*
         addAdjacentUpperRow():
-        Controlla la riga superiore della griglia rispetto al nodo corrente
-        e aggiunge i nodi adiacenti se presenti. In particolare, per ogni
-        nodo adiacente, viene verificato che sia all'interno della griglia
-        e che non sia un blocco (ovvero un nodo che non può essere attraversato).
-        Se tutte le condizioni sono soddisfatte, viene calcolato il costo di
-        movimento per raggiungere il nodo adiacente dal nodo corrente e il nodo
-        adiacente viene aggiunto alla coda di priorità openList se non è
-        già presente in closedSet.
+        Controlla che nodi presenti nella diagonale in alto a sx e dx (primi due if) e il nodo in tesa (ultimo check)
+        della griglia, rispetto al nodo corrente, abbiano una stima migliore rispetto al nodo corrente.
+        Ll metodo check nodo controlla quale sia il costo migliore tra il nodo adiacente (le cui coordinate sono passate
+        in input, con i costi lungo le diagonali o le rette verticali e orizzontali)
+        e il nodo corrente e decide se inserirlo nell'open set.
+
      */
     private void addAdjacentUpperRow(Nodo nodoCorrente) {
         int row = nodoCorrente.getRow();
@@ -215,18 +168,62 @@ public class AStar {
         }
     }
 
+    /*
+        addAdjacentMiddleRow():
+        Allo stesso modo ma controlla i nodi alla sua destra e sinistra
+     */
+
+    private void addAdjacentMiddleRow(Nodo nodoCorrente) {
+        int row = nodoCorrente.getRow();
+        int col = nodoCorrente.getCol();
+        int middleRow = row;
+        if (col - 1 >= 0) {
+            checkNodo(nodoCorrente, col - 1, middleRow, getHVCosto());
+        }
+        if (col + 1 < getSearchArea()[0].length) {
+            checkNodo(nodoCorrente, col + 1, middleRow, getHVCosto());
+        }
+    }
+
+
 
     /*
-         checkNodo():
-         è una funzione che prende in input un oggetto nodo e controlla
-         se questo soddisfa determinati criteri. In particolare, la funzione
-         verifica se il nodo è già stato visitato (cioè se nodo.visitato è uguale a true)
-         e se il nodo ha una distanza maggiore di 1 rispetto al nodo di partenza
-         (cioè se nodo.distanza è maggiore di 1). Questi controlli sono importanti perché
-         consentono di evitare cicli e di assicurarsi che la distanza calcolata per il nodo
-         sia sempre quella minima rispetto al nodo di partenza. Se il nodo non soddisfa
-         questi criteri, la funzione restituisce false, altrimenti restituisce true.
+        addAdjacentLowerRow():
+        ancora lo stesso criterio ma considera i nodi nella diagonale in basso a dx e sx e il nodo immediatamente sotto
      */
+    private void addAdjacentLowerRow(Nodo nodoCorrente) {
+        int row = nodoCorrente.getRow();
+        int col = nodoCorrente.getCol();
+        int rigaLow = row + 1;
+        if (rigaLow < getSearchArea().length){
+            if (col - 1  >= 0){
+                checkNodo(nodoCorrente, col - 1, rigaLow, getCostoDiagonale());
+            }
+            if (col + 1 < getSearchArea()[0].length) {
+                checkNodo(nodoCorrente, col + 1, rigaLow, getCostoDiagonale()); // Comment this line if diagonal movements are not allowed
+            }
+            checkNodo(nodoCorrente, col, rigaLow, getHVCosto());
+        }
+    }
+
+
+    /*
+        checkNodo():
+         è una funzione che prende in input un nodo corrente e delle coordinate per calcolare un suo nodo adicante
+         e controlla se questo soddisfa determinati criteri.
+         1. se il nodo adiacente non è un blocco e il closedSet non contiene già questo nodo
+         2. se il nodo adiacente non è stato ancora inserito nell'open list
+          Allora setta il nodo e inseriscilo nell'openList
+
+         Se questi controlli non sono verificati si controlla che il nodo adiacente abbia una stima migliore
+         rispetto il nodo corrente. Se è vero Rimuovi e aggiungi il nodo modificato,
+         in modo che PriorityQueue possa ordinare nuovamente il suo contenuto con il valore "finalCost"
+         modificato del nodo modificato
+
+         Questi controlli sono importanti perché consentono di evitare cicli e di assicurarsi che la distanza
+         calcolata per il nodon sia sempre quella minima rispetto al nodo di partenza.
+     */
+
     private void checkNodo(Nodo nodoCorrente, int col, int row, int cost) {
         Nodo adjacentNode = getSearchArea()[row][col];
         if (!adjacentNode.isBlock() && !getClosedSet().contains(adjacentNode)) {
@@ -236,8 +233,6 @@ public class AStar {
             } else {
                 boolean changed = adjacentNode.checkBetterPath(nodoCorrente, cost);
                 if (changed) {
-                    // Remove and Add the changed node, so that the PriorityQueue can sort again its
-                    // contents with the modified "finalCost" value of the modified node
                     getOpenList().remove(adjacentNode);
                     getOpenList().add(adjacentNode);
                 }
@@ -323,11 +318,11 @@ public class AStar {
     }
 
 
-    public Nodo getNodoParcheggio() {
+   /* public Nodo getNodoParcheggio() {
         return nodoParcheggio;
     }
 
     public void setNodoParcheggio(Nodo nodoParcheggio) {
         this.nodoParcheggio = nodoParcheggio;
-    }
+    }*/
 }

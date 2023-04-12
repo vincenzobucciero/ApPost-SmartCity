@@ -1,12 +1,10 @@
 <%--
   Created by IntelliJ IDEA.
-  User: vincenzo
-  Date: 3/20/23
-  Time: 9:41 AM
+  User: carmine
+  Date: 18/03/23
+  Time: 17:05
   To change this template use File | Settings | File Templates.
 --%>
-
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -28,7 +26,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/styleFormLog.css">
+  <link rel="stylesheet" href="css/styleFormLogin.css">
   <link rel="stylesheet" href="img">
 </head>
 <body id="page-top">
@@ -176,7 +174,7 @@
 <footer class="bg-light py-5">
   <div class="container px-4 px-lg-5">
     <div class="small text-center text-muted">
-      Copyright &copy; 2022 - Company Name
+      Copyright &copy; 2023 - Company Name
     </div>
   </div>
 </footer>
@@ -190,4 +188,3 @@
 
 </body>
 </html>
-

@@ -1,13 +1,12 @@
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
-  User: vincenzo
-  Date: 3/20/23
-  Time: 9:38 AM
+  User: carmine
+  Date: 21/03/23
+  Time: 00:02
   To change this template use File | Settings | File Templates.
 --%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
   <meta charset="utf-8" />
@@ -27,7 +26,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/styleFormLog.css">
+  <link rel="stylesheet" href="css/styleFormLogin.css">
   <link rel="stylesheet" href="img">
 </head>
 
@@ -41,7 +40,7 @@
             aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ms-auto my-2 my-lg-0">
-        <li class="nav-item"><a class="nav-link" href="about.jsp">Chi siamo</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">Chi siamo</a></li>
         <li class="nav-item"><a class="nav-link" href="#services">Servizi</a></li>
         <li class="nav-item"><a class="nav-link" href="registrazione.jsp">Registrati</a></li>
       </ul>
@@ -60,30 +59,18 @@
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
         <div class="form-container">
-          <div class="form-icon"><i class="fa fa-user"></i></div>
+          <div class="form-icon"><i class="bi bi-person-circle"></i></div>
           <h3 class="title">Effettua l'accesso</h3>
           <form class="form-horizontal" action="${pageContext.request.contextPath}/login" method="post">
             <div class="form-group">
               <label>email</label>
               <input name="email" class="form-control" type="email" placeholder="Email">
             </div>
-
-            <!-- Messaggio di errore se l'email inserita non è corretta -->
-            <c:if test="${not empty erroreEmail}">
-              <span style="font-family: 'Cascadia Code'; color: red; text-shadow: red">${erroreEmail}</span>
-            </c:if> <hr>
-
             <div class="form-group">
               <label>password</label>
               <input name="password" class="form-control" type="password" placeholder="Password">
             </div>
-
-            <c:if test="${errorePassword != null}">
-              <span style="font-family: 'Cascadia Code'; color: red; text-shadow: red">${errorePassword}</span>
-            </c:if> <hr>
-
-            <button type="submit" class="btn btn-default">Entra</button>
-
+            <button type="submit" class="btn btn-primary btn-lg text-white">Entra</button>
             <div class="text-center">
               <a href="registrazione.jsp" class="text-secondary">Registrati ora</a>
             </div>
@@ -94,9 +81,95 @@
   </div>
 </div>
 
+
+<!--Parte chi siamo e servizi -->
+<!-- Services-->
+<section class="page-section" id="services">
+  <div class="container px-4 px-lg-5">
+    <h2 class="text-center mt-0">I nostri servizi</h2>
+    <hr class="divider" />
+    <div class="row gx-4 gx-lg-5">
+      <div class="col-lg-3 col-md-6 text-center">
+        <div class="mt-5">
+          <!--<div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>-->
+          <div><img height="50" width="50" src="img/prenotazione.png"></div>
+          <h3 class="h4 mb-2">Prenotazioni</h3>
+          <p class="text-muted mb-0">Prenota il tuo posto auto in anticipo
+            per evitare l'ansia del parcheggio dell'ultimo minuto.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 text-center">
+        <div class="mt-5">
+          <!--<div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>-->
+          <div><img height="50" width="50" src="img/pagamento.png"></div>
+          <h3 class="h4 mb-2">Pagamenti</h3>
+          <p class="text-muted mb-0">Paga il parcheggio direttamente
+            dall'app, senza dover cercare il cambio o la carta di credito.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 text-center">
+        <div class="mt-5">
+          <!--<div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>-->
+          <div><img height="50" width="50" src="img/risparmia.png"></div>
+          <h3 class="h4 mb-2">Risparmia</h3>
+          <p class="text-muted mb-0">Risparmia tempo, fatica e
+            denaro grazie alla nostra app di parcheggio smart.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 text-center">
+        <div class="mt-5">
+          <!--<div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>-->
+          <div><img height="50" width="50" src="img/parcheggio.png"></div>
+          <h3 class="h4 mb-2">Parcheggio</h3>
+          <p class="text-muted mb-0">Trova il parcheggio più vicino a te
+            con un solo click, senza dover girare a vuoto in cerca di un posto auto disponibile.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--About-->
+<section class="page-section" id="about">
+  <div class="container px-4 px-lg-5">
+    <h2 class="text-center mt-0">Chi siamo</h2>
+    <hr class="divider" />
+    <div class="row gx-4 gx-lg-5">
+      <!--<div class="col-lg-3 col-md-6 text-center">-->
+      <div class="mt-5">
+        <p class="text-muted mb-0">Quest'app di parcheggi smart è la soluzione perfetta
+          per tutti coloro che cercano un modo semplice ed efficace per trovare il parcheggio
+          perfetto. Con la tua app, puoi prenotare il parcheggio in anticipo e risparmiare
+          tempo ed energia nella ricerca di un posto auto.
+          Quest'app di parcheggi smart ti consente di cercare parcheggi nelle vicinanze della
+          tua destinazione e di visualizzare il prezzo e la disponibilità in tempo reale.
+          Puoi scegliere il parcheggio più conveniente e prenotarlo direttamente dall'app,
+          senza dover cercare parcheggi a caso.
+          Una volta parcheggiato, la nostra app ti consente di monitorare il tempo di parcheggio
+          e di ricevere avvisi quando il tuo tempo sta per scadere. In questo modo, puoi
+          evitare multe e ulteriori spese, e rimanere tranquillo durante la tua permanenza.
+          Inoltre, la nostra app di parcheggi smart ti permette di guadagnare punti ogni volta
+          che utilizzi la piattaforma. Questi punti possono essere convertiti in sconti sui
+          tuoi prossimi parcheggi o altri premi, rendendo l'esperienza di parcheggio ancora
+          più conveniente e gratificante.
+          In definitiva, la nostra app di parcheggi smart è la soluzione ideale per tutti coloro
+          che cercano un modo semplice e veloce per parcheggiare. Con la sua capacità di
+          trovare parcheggi vicini, di prenotare in anticipo e di monitorare il tempo di
+          parcheggio, questa app è un must-have per ogni automobilista moderno.</p>
+      </div>
+    </div>
+  </div>
+  <!--</div>-->
+</section>
+
+
 <!-- Footer-->
 <footer class="bg-light py-5">
-  <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2022 - Company Name</div></div>
+  <div class="container px-4 px-lg-5">
+    <div class="small text-center text-muted">
+      Copyright &copy; 2023 - Company Name
+    </div>
+  </div>
 </footer>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -104,10 +177,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<!-- * *                               SB Forms JS                               * *-->
-<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
 

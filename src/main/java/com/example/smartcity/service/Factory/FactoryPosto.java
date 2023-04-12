@@ -4,9 +4,9 @@ import com.example.smartcity.model.ParkingBean;
 
 public abstract class FactoryPosto
 {
-    public Posto getPosto(int id, ParkingBean parkingBean) {
+    public Posto getPosto(ParkingBean parkingBean) {
         Posto posto = creaPosto();
-        posto.parcheggia(id, parkingBean);
+        posto.parcheggia(parkingBean);
         return posto;
     }
 

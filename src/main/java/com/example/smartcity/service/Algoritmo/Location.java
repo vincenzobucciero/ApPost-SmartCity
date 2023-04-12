@@ -2,22 +2,20 @@ package com.example.smartcity.service.Algoritmo;
 
 import com.example.smartcity.model.ParkingBean;
 import com.example.smartcity.model.ParkingDao;
+import com.example.smartcity.service.ParkingService;
 
 import java.util.*;
 public class Location {
 
-    private List<Nodo> start = new ArrayList<>();
-    private List<Nodo> end = new ArrayList<>();
+    private List<Nodo> start = new ArrayList<>();   //lista dei nodi contenenti le partenze
+    private List<Nodo> end = new ArrayList<>();     //lista dei nodi contenenti le destinazioni
 
     private List<Nodo> nodopark = new ArrayList<>();
 
 
-    //private int[][]blocksParking;
-
     public Location(){
         setStart();
         setEnd();
-        //setParking();
     }
 
     void setStart(){
@@ -50,9 +48,37 @@ public class Location {
         this.end.add(nodo3);
     }
 
+    //scorre la lista dei nodi partenze cerca quello contenente l'indirizzo dato in input e lo ritorna
+    public Nodo chooseStart(String indirizzo){
+
+        for (Nodo position : this.start) {
+            if(indirizzo.equals(position.getIndirizzo())){
+                return position;
+            }
+        }
+        return null;
+    }
+
+
+    //scorre la lista dei nodi destinazione cerca quello contenente l'indirizzo dato in input e lo ritorna
+    public Nodo chooseEnd(String indirizzo){
+
+        for (Nodo position : this.end) {
+            if(indirizzo.equals(position.getIndirizzo())){
+                return position;
+            }
+        }
+        return null;
+    }
+
+    /*
+        Setto i nodi in cui si trovano i parcheggi con le rispettive coordinate
+        questi nodi li inserisco in una lista di "nodi parcheggio "che mi servirà
+        in questa classe per tener sempre traccia dei parcheggi nei nodi
+        e li inserisco in un array 2D usando lo stesso criterio dei blocchi
+     */
     public int[][] setParking(){
         //int[][] blocksParking = new int[][]{{0,2}, {0,3}, {1,4}};
-        //List<ParkingBean> parking = ParkingDao.getIstanza().;
 
         Nodo park1 = new Nodo(0,2);
         Nodo park2 = new Nodo(0,3);
@@ -67,80 +93,69 @@ public class Location {
                 {park2.getRow(), park2.getCol()},
                 {park3.getRow(),park3.getCol()}};
 
-        this.setParkIndirizzo();
+        this.setParkIndirizzo();        //è un metodo che uso per associare ad ogni nodo gli indirizzi
+        // dei parcheggi presenti nel database
         return blocksParking;
     }
 
+    /*
+        Mi ricavo i parcheggi presenti nel database e li salvo in un'array di stringhe
+        gli elemento dell'array conterrà quindi l'indirizzo di ciascun parcheggio del database
+        per ogni nodo salvato nella lista dei "nodi parcheggio" associo quindi un indirizzo salvbato precedentemente
+        nell'array
+    */
     public void setParkIndirizzo(){
-        int i = 1;
-        ParkingDao parkingDao = ParkingDao.getIstanza();
+        int i = 0;
+        int j = 0;
 
-        for (Nodo nodo: nodopark) {
-            nodo.setIndirizzo(parkingDao.getParkingBean(i).getIndirizzo());
+        List<ParkingBean> parkingBeanList = ParkingService.getAllParkings();
+        String IndirizziP[] = new String[parkingBeanList.size() + 1];
+
+        for (ParkingBean parkingBean: parkingBeanList) {
+            IndirizziP[i] = parkingBean.getIndirizzo();
             i++;
         }
-    }
 
-
-    public Nodo chooseStart(String indirizzo){
-
-        for (Nodo position : this.start) {
-            if(indirizzo.equals(position.getIndirizzo())){
-                return position;
-            }
+        for (Nodo nodo: nodopark) {
+            nodo.setIndirizzo(IndirizziP[j]);
+            j++;
         }
-        return null;
-    }
-
-    public Nodo chooseEnd(String indirizzo){
-
-        for (Nodo position : this.end) {
-            if(indirizzo.equals(position.getIndirizzo())){
-                return position;
-            }
-        }
-        return null;
-    }
-
-    public List<Nodo> getStart(){ return start;}
-
-    public List<Nodo> getEnd(){return end;}
-    public List<Nodo> getNodopark(){
-        return nodopark;
     }
 
 
     public ParkingBean getNodoParkIndirizzo(Nodo nodo){
-        //List<ParkingBean> listaParcheggi = new ArrayList<>();
 
         //per ogni nodo appartenente alla lista dei nodi parcheggi che ho istanziato controllo se è un nodo del percorso trovato
         for (Nodo nodop:nodopark) {
             if(nodo.equals(nodop)) {
                 //se la condizione è vera allora cerco i parcheggi associati a quel nodo
-                //listaParcheggi = getParcheggiDisp(nodop);
                 return getParcheggiDisp(nodop);
-                // System.out.println("Parcheggio trovato alle coordinte " + nodop.getRow() + " " + nodop.getCol() + " indirizzo " + nodop.getIndirizzo());
             }
         }
         return null;
     }
 
     public ParkingBean getParcheggiDisp(Nodo nodoP){
-        System.out.println(nodoP.getIndirizzo());
         List<ParkingBean> parkingBeanList = ParkingDao.getIstanza().getParkings();
-        List<ParkingBean> parkDisp = new ArrayList<>();
 
         //per ogni parcheggio controllo che ci sia un nodo il cui indirizzo è uguale, in quel caso significa che ho trovato
         //un nodo parcheggio e lo metto in una lista
         for (ParkingBean parkingBean: parkingBeanList) {
             if(parkingBean.getIndirizzo().equals(nodoP.getIndirizzo())) {
-                //parkDisp.add(parkingBean);
-                System.out.println("Parcheggio disponibile: "+ parkingBean.getIndirizzo());
                 return parkingBean;
             }
 
         }
         return null;
+    }
+
+
+    public List<Nodo> getStart(){ return start;}
+
+    public List<Nodo> getEnd(){return end;}
+
+    public List<Nodo> getNodopark(){
+        return nodopark;
     }
 
 

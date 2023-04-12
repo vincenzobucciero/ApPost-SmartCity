@@ -123,7 +123,6 @@
                                 </p>
                             </div>
                         </div>
-
                         <div>
                             <form action="ModifyUserServlet" method="post">
                                 <input type="hidden" name="email" value="${usersBean.getEmail()}">
@@ -131,9 +130,7 @@
                                     <button type="submit" class="btn btn-outline-primary">Modifica</button>
                                 </div>
                             </form>
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -147,7 +144,7 @@
 
 <!-- Footer-->
 <footer class="bg-light py-5">
-    <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2022 - Company Name</div></div>
+    <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2023 - Company Name</div></div>
 </footer>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

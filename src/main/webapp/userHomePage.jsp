@@ -1,12 +1,10 @@
 <%--
   Created by IntelliJ IDEA.
-  User: vincenzo
-  Date: 3/20/23
-  Time: 9:39 AM
+  User: carmine
+  Date: 22/03/23
+  Time: 16:27
   To change this template use File | Settings | File Templates.
 --%>
-
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -114,8 +112,6 @@
           con informazioni come data orario e luogo.</p>
         <form action="ShowBookingServlet" method="post">
           <input type="hidden" name="email" value="${email}">
-          <input type="hidden" name="email" value="${list}">
-          <input type="hidden" name="email" value="${size}">
           <button class="btn btn-primary">Visualizza prenotazioni</button>
         </form>
       </div>

@@ -1,7 +1,9 @@
 package com.example.smartcity.model;
 
 import java.io.Serializable;
-
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class BookingBean implements Serializable {
     private String ID_prenotazione;
@@ -12,8 +14,8 @@ public class BookingBean implements Serializable {
     private String targaVeicolo;
     private String tipoVeicolo;
     private double prezzo;
-
     private String pagamento;
+    private String nomeParcheggio;
 
     public String getID_prenotazione() {
         return ID_prenotazione;
@@ -86,5 +88,13 @@ public class BookingBean implements Serializable {
 
     public void setPagamento(String pagamento) {
         this.pagamento = pagamento;
+    }
+
+    public String getNomeParcheggio() {
+        return nomeParcheggio;
+    }
+
+    public void setNomeParcheggio(String nomeParcheggio) {
+        this.nomeParcheggio = nomeParcheggio;
     }
 }

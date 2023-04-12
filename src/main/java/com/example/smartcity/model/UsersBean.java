@@ -1,10 +1,5 @@
 package com.example.smartcity.model;
-
-import java.beans.JavaBean;
 import java.io.Serializable;
-
-
-@JavaBean
 
 public class UsersBean implements Serializable {
 
@@ -13,9 +8,7 @@ public class UsersBean implements Serializable {
     private String email;
     private String password;
 
-    public UsersBean() {
-
-    }
+    public UsersBean(){}
 
     public String getNome() {
         return nome;

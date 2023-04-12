@@ -10,7 +10,8 @@ public class PaypalStrategy implements PaymentStrategy {
 
 
     @Override
-    public void pay(double amount) {
+    public boolean pay(double amount) {
         System.out.println(amount + " paid using Paypal.");
+        return true;
     }
 }

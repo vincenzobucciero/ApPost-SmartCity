@@ -1,11 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: vincenzo
-  Date: 3/20/23
-  Time: 3:14 PM
-  To change this template use File | Settings | File Templates.
---%>
-
 <%@ page import="com.example.smartcity.service.Algoritmo.Location" %>
 <%@ page import="com.example.smartcity.service.Algoritmo.Nodo" %>
 
@@ -116,6 +108,8 @@
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+
 
 
 </body>

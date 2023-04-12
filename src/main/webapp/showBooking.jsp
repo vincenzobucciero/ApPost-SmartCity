@@ -1,12 +1,10 @@
 <%--
   Created by IntelliJ IDEA.
-  User: vincenzo
-  Date: 4/8/23
-  Time: 12:23 PM
+  User: carmine
+  Date: 02/04/23
+  Time: 12:56
   To change this template use File | Settings | File Templates.
 --%>
-
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -34,6 +32,7 @@
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
   <link rel="stylesheet" href="img">
+
   <title>ApPost - Prenotazioni</title>
 </head>
 <body>
@@ -65,13 +64,13 @@
 
             <!-- Qui inizia il div per la lista dei parcheggi-->
 
-            <div class="container mt-5">
+            <div class="container mt-5" style="font-family: 'Inter', sans-serif">
               <div class="row">
                 <div class="col-md-12">
                   <div class="d-flex justify-content-between align-items-center activity">
                     <div>
-                                            <span class="m-lg-4">
-                                                Prenotazioni(${size}):
+                                            <span class="activity-done">
+                                                Prenotazioni(${list.size()})
                                             </span>
                     </div>
                     <div class="icons">
@@ -87,31 +86,29 @@
                             <div class="ml-3"><!--ID Prenotazione-->
                               <h6 class="mb-0">
                                 <td>
-                                  Id Prenotazione: "${record.getID_prenotazione()}"
+                                    ${record.getNomeParcheggio()} ("${record.getID_prenotazione()}")
                                 </td>
+
                               </h6>
                               <div class="d-flex flex-row mt-1 text-black-50 date-time">
                                                             <span class="ml-2">
+
+                                                                <i class="bi bi-check-circle-fill" style="color: #11cc11"></i> Pagato con successo <br>
+
                                                                 <i class="bi bi-calendar-check-fill"></i><!--Data-->
                                                                     <td>
-                                                                        ${record.getData_prenotazione()}<br>
-                                                                    </td>
-                                                                <i class="bi bi-clock-fill"></i><!--Orario-->
-                                                                    <td>
-                                                                        ${record.getOrario_inizio()} - ${record.getOrario_fine()}<br>
+                                                                        ${record.getData_prenotazione()}
+                                                                            <i class="bi bi-clock-fill"></i><!--Orario-->
+                                                                                ${record.getOrario_inizio()} - ${record.getOrario_fine()}<br>
                                                                     </td>
                                                                 <i class="fas fa-car-side"></i><!--Targa-->
                                                                     <td>
-                                                                        ${record.getTargaVeicolo()}<br>
+                                                                        ${record.getTargaVeicolo()} <i class="fas fa-coins" style="color: rgba(150,114,18,0.66)"></i> ${record.getPrezzo()}€<br>
                                                                     </td>
-                                                                <i class="bi bi-currency-exchange"></i><!--Prezzo-->
-                                                                    <td>
-                                                                        ${record.getPrezzo()}€<br>
-                                                                    </td>
-                                                               <i class="bi bi-credit-card-2-back-fill"></i>/<i class="fab fa-paypal mr-2"></i><!--TipoPagamento-->
-                                                                    <td>
-                                                                        ${record.getPagamento()}<br>
-                                                                    </td>
+
+                                                              <!--TipoPagamento-->
+                                                              <!-- <i class="bi bi-credit-card-2-back-fill"></i>/<i class="fab fa-paypal mr-2"></i>-->
+                                                              <!-- <td>${record.getPagamento()}<br></td>-->
                                                             </span>
                               </div>
                             </div>
@@ -119,9 +116,11 @@
                           <div class="d-flex flex-row align-items-center">
                             <div class="d-flex flex-column mr-2">
                               <div class="profile-image">
-                                <form action="" method="get">
+                                <form action="DeleteBookingServlet" method="post">
                                   <div class="text-center">
-                                    <button type="submit" class="btn btn-success btn-sm "><i class="bi bi-currency-dollar"></i></button>
+                                    <input type="hidden" name="id" value="${record.getID_prenotazione()}">
+                                    <input type="hidden" name="parkingBean" value="${parkingBean}">
+
                                     <button type="submit" class="btn btn-danger btn-sm "><i class="bi bi-trash"></i></button>
                                   </div>
                                 </form>
@@ -131,6 +130,7 @@
                         </li>
                       </ul>
                     </c:forEach>
+
                   </div>
                 </div>
               </div>

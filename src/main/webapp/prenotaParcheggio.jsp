@@ -1,11 +1,10 @@
 <%--
   Created by IntelliJ IDEA.
-  User: vincenzo
-  Date: 3/21/23
-  Time: 10:29 PM
+  User: carmine
+  Date: 02/04/23
+  Time: 12:56
   To change this template use File | Settings | File Templates.
 --%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -18,7 +17,11 @@
   <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
   <!-- SimpleLightbox plugin CSS-->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <!-- Core theme CSS (includes Bootstrap)-->
+
+
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/stylePrenotazione.css">
   <link rel="stylesheet" type="text/css" href="css/styleMap.css" />
@@ -62,7 +65,7 @@
 
             <!-- Qui inizia il div per la lista dei parcheggi-->
 
-            <div class="container mt-5">
+            <div class="container mt-5" style="font-family: 'Inter', sans-serif">
               <div class="row">
                 <div class="col-md-12">
                   <div class="d-flex justify-content-between align-items-center activity">
@@ -77,6 +80,7 @@
                                             </span>
                     </div>
                     <div class="icons">
+
                       <i class="bi bi-search"></i>
                       <i class="bi bi-three-dots"></i>
                     </div>
@@ -94,13 +98,13 @@
                               </h6>
                               <div class="d-flex flex-row mt-1 text-black-50 date-time">
                                                             <span class="ml-2"> <!--22 May 2023-->
-                                                                <i class="bi bi-geo-fill"></i>
+                                                                <i class="bi bi-geo-fill" style="color: #b60909"></i>
                                                                 <td>
                                                                     ${record.getIndirizzo()}<br>
-                                                                    <i class="bi bi-cash-stack"></i>
-                                                                    Auto/Furgone:${record.getTariffaAF()}€/h <br>
-                                                                    <i class="bi bi-cash-stack"></i>
-                                                                    Moto:${record.getTariffaM()}€/h
+                                                                    <i class="fas fa-car-side"></i>/<i class="fas fa-truck"></i>
+                                                                    ${record.getTariffaAF()}€/h <br>
+                                                                    <i class="fas fa-motorcycle"></i>
+                                                                    ${record.getTariffaM()}€/h
                                                                 </td>
                                                             </span>
                               </div>
@@ -110,10 +114,10 @@
                             <div class="d-flex flex-column mr-2">
                               <div class="profile-image">
                                 <form action="BookingServlet" method="get">
-                                  <input type="hidden" name="id" value="${record.getIdParcheggio()}">
+                                  <input type="hidden" name="nomeP" value="${record.getNomeParcheggio()}">
                                   <input type="hidden" name="email" value="${usersBean.getEmail()}">
+
                                   <div class="text-center">
-                                    <button type="submit" class="btn btn-primary btn-sm "><i class="bi bi-geo-alt"></i></button>
                                     <button type="submit" class="btn btn-primary btn-sm ">Prenota</button>
                                   </div>
                                 </form>

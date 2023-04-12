@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: vincenzo
-  Date: 4/6/23
-  Time: 4:49 PM
+  User: carmine
+  Date: 4/4/23
+  Time: 9:42 AM
   To change this template use File | Settings | File Templates.
 --%>
 
@@ -77,17 +77,17 @@
             <div id="credit-card" class="tab-pane fade show active pt-3">
               <form action="PayServlet" method="post">
                 <div class="form-group">
-                  <label name="username">
+                  <label name="username"> <!--Intestatario-->
                     <h6>Intestatario Carta</h6>
                   </label>
-                  <input type="text" name="intestatario" placeholder="Mario Rossi" required class="form-control" />
+                  <input type="text" name="intestatario" placeholder="Mario Rossi" style="text-transform: uppercase" required class="form-control" />
                 </div>
                 <div class="form-group">
-                  <label name="cardNumber">
+                  <label name="cardNumber"><!--Numero Carta-->
                     <h6>Numero Carta</h6>
                   </label>
                   <div class="input-group">
-                    <input type="number" name="numCarta" placeholder="5136 1845 5468 3894" class="form-control" required />
+                    <input type="number" name="numCarta" placeholder="5136 1845 5468 3894" maxlength="16" class="form-control" required />
                     <div class="input-group-append">
                                             <span class="input-group-text text-muted">
                                                 <i class="fab fa-cc-visa mx-1"></i>
@@ -101,18 +101,18 @@
                   <div class="col-sm-8">
                     <div class="form-group">
                       <label>
-                                                <span class="hidden-xs">
+                                                <span class="hidden-xs"><!--Data di Scadenza-->
                                                     <h6>Data Scadenza</h6>
                                                 </span>
                       </label>
                       <div class="input-group">
-                        <input type="number" placeholder="MM" name="MM" class="form-control" required />
-                        <input type="number" placeholder="YY" name="YYYY" class="form-control" required />
+                        <input type="number" placeholder="MM" name="MM" class="form-control" value="1" min="1" max="12" required />
+                        <input type="number" placeholder="YY" name="YYYY" class="form-control" value="23" min="23" max="30" required />
                       </div>
                     </div>
                   </div>
                   <div class="col-sm-4">
-                    <div class="form-group mb-4">
+                    <div class="form-group mb-4"> <!--CVV-->
                       <label data-toggle="tooltip" title="Three digit CV code on the back of your card">
                         <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
                       </label>
@@ -120,10 +120,10 @@
                     </div>
                   </div>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer"> <!--Conferma Pagamento-->
                   <input type="hidden" name="bookingBean" value="${bookingBean}">
                   <input type="hidden" name="email" value="${email}">
-                  <input type="hidden" name="id" value="${id}">
+                  <input type="hidden" name="nomeP" value="${nomeP}">
                   <button type="submit" class="subscribe btn btn-primary btn-block shadow-sm">
                     Conferma Pagamento
                   </button>
@@ -131,6 +131,7 @@
               </form>
             </div>
             <!-- End -->
+
 
             <!-- Paypal info -->
             <div id="paypal" class="tab-pane fade pt-3">
@@ -149,8 +150,6 @@
                 </div>
                 <p>
                   <input type="hidden" name="bookingBean" value="${bookingBean}">
-                  <input type="hidden" name="email" value="${email}">
-                  <input type="hidden" name="id" value="${id}">
                   <button type="submit" class="btn btn-primary">
                     <i class="fab fa-paypal mr-2"></i>
                     Accedi in Paypal

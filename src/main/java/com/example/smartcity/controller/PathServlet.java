@@ -3,7 +3,6 @@ import com.example.smartcity.service.Algoritmo.AStar;
 import com.example.smartcity.service.Algoritmo.Location;
 import com.example.smartcity.service.Algoritmo.Nodo;
 import com.example.smartcity.model.ParkingBean;
-import com.example.smartcity.model.ParkingDao;
 import com.example.smartcity.model.UsersBean;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -29,7 +28,7 @@ public class PathServlet extends HttpServlet {
 
         HttpSession session = request.getSession(false);
         if ( session == null ) {
-            session.setAttribute("isLog",1);
+            session.setAttribute("isLog",0);
             request.getRequestDispatcher("login.jsp").forward(request,response);
         } else {
             UsersBean usersBean = (UsersBean) session.getAttribute("usersBean");
@@ -52,7 +51,6 @@ public class PathServlet extends HttpServlet {
         List<Nodo> nodo = start.getNodopark();
         for (Nodo nodoPark: nodo) {
             System.out.println("Parcheggi situati in: " + nodoPark.getIndirizzo());
-            aStar.setNodoParcheggio(nodoPark);
         }
 
 

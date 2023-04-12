@@ -5,9 +5,9 @@ import com.example.smartcity.service.ModifyService;
 
 public class PostoFurgone implements Posto{
     @Override
-    public void parcheggia(int id, ParkingBean parkingBean) {
+    public void parcheggia(ParkingBean parkingBean) {
         int posti = parkingBean.getPostiFurgone();
-        ModifyService.modifyPostiFurgone(id, posti-1);
+        ModifyService.modifyPostiFurgone(parkingBean.getNomeParcheggio(), posti-1);
         System.out.println("Furgone Inserito");
     }
 }
