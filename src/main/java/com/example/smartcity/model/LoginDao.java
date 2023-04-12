@@ -1,9 +1,6 @@
 
 package com.example.smartcity.model;
 
-import com.example.smartcity.handler.*;
-import com.example.smartcity.service.AuthService;
-
 import java.sql.*;
 
 public class LoginDao {

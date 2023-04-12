@@ -25,9 +25,7 @@ public class AdminServlet extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request,response);
         }
         else {
-
             //Gli ripasso la lista poichè aggiornata
-
             List<ParkingBean> list = ParkingService.getAllParkings();
             session.setAttribute("list", list);
             request.getRequestDispatcher("adminHomePage.jsp").forward(request, response);
