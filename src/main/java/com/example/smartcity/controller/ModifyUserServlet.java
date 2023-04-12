@@ -14,6 +14,7 @@ public class ModifyUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
         HttpSession session = request.getSession(false);
         if ( session == null ) {
             session.setAttribute("isLog",0);
@@ -24,6 +25,8 @@ public class ModifyUserServlet extends HttpServlet {
             request.getRequestDispatcher("userHomePage.jsp").forward(request,response);
         }
 
+
+
     }
 
     @Override
@@ -31,21 +34,22 @@ public class ModifyUserServlet extends HttpServlet {
 
         response.setContentType("text/html");
 
-        String email = request.getParameter("email");
-        String nome = request.getParameter("nome");
-        String cognome = request.getParameter("cognome");
-        //String newEmail = request.getParameter("email");
-        String password = request.getParameter("password");        //String tariffaM = request.getParameter("tariffaM");
-        //String postiAuto = request.getParameter("postiAuto");
-        //String postiFurgone = request.getParameter("postiFurgone");
-        //String postiMoto = request.getParameter("postiMoto");
+            String email = request.getParameter("email");
+            String nome = request.getParameter("nome");
+            String cognome = request.getParameter("cognome");
+            //String newEmail = request.getParameter("email");
+            String password = request.getParameter("password");
 
-        ModifyUserService.modifyNome(email, nome);
-        ModifyUserService.modifyCognome(email, cognome);
-        //ModifyUserService.modifyEmail(email, newEmail);
-        ModifyUserService.modifyPassword(email, password);
 
-        request.getRequestDispatcher("modifyUserInfo.jsp").forward(request, response);
+            ModifyUserService.modifyNome(email, nome);
+            ModifyUserService.modifyCognome(email, cognome);
+            //ModifyUserService.modifyEmail(email, newEmail);
+            ModifyUserService.modifyPassword(email, password);
+
+
+
+            request.getRequestDispatcher("modifyUserInfo.jsp").forward(request, response);
+
 
     }
 }

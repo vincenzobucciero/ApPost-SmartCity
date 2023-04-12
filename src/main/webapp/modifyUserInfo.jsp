@@ -1,14 +1,12 @@
 <%--
   Created by IntelliJ IDEA.
-  User: vincenzo
-  Date: 4/6/23
-  Time: 5:36 PM
+  User: carmine
+  Date: 11/04/23
+  Time: 17:23
   To change this template use File | Settings | File Templates.
 --%>
 
-
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -30,7 +28,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/styleFormLog.css">
+  <link rel="stylesheet" href="css/styleFormLogin.css">
   <link rel="stylesheet" href="img">
 </head>
 <body id="page-top">
@@ -43,7 +41,7 @@
             aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ms-auto my-2 my-lg-0">
-        <li class="nav-item"><a class="nav-link" href="ModifyUserServlet">Torna alla Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="userHomePage.jsp">Torna alla Home</a></li>
         <li class="nav-item"><a class="nav-link" href="logout">Esci</a></li>
       </ul>
     </div>
@@ -84,7 +82,7 @@
                   </div>
                   <div class="form-group">
                     <input type="hidden" name="email" value="${usersBean.getEmail()}" >
-                    <button  type="submit" class="btn btn-primary btn-lg "> Modifica </button>
+                    <button  type="submit" class="btn btn-primary btn-lg"> Modifica </button>
                   </div>
                 </form>
               </div>
