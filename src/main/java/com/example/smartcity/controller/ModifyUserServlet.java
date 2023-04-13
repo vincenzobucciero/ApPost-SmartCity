@@ -15,16 +15,6 @@ public class ModifyUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-        HttpSession session = request.getSession(false);
-        if ( session == null ) {
-            session.setAttribute("isLog",0);
-            request.getRequestDispatcher("login.jsp").forward(request,response);
-        } else {
-            UsersBean usersBean = (UsersBean) session.getAttribute("usersBean");
-            request.setAttribute("usersBean",usersBean);
-            request.getRequestDispatcher("userHomePage.jsp").forward(request,response);
-        }
-
 
 
     }
@@ -34,22 +24,30 @@ public class ModifyUserServlet extends HttpServlet {
 
         response.setContentType("text/html");
 
+
+        HttpSession session = request.getSession(false);
+        if ( session == null ) {
+            session.setAttribute("isLog",0);
+            request.getRequestDispatcher("login.jsp").forward(request,response);
+        } else {
+            UsersBean usersBean = (UsersBean) session.getAttribute("usersBean");
+            request.setAttribute("usersBean", usersBean);
+            //request.getRequestDispatcher("userHomePage.jsp").forward(request,response);
+
+
             String email = request.getParameter("email");
             String nome = request.getParameter("nome");
             String cognome = request.getParameter("cognome");
-            //String newEmail = request.getParameter("email");
             String password = request.getParameter("password");
 
 
             ModifyUserService.modifyNome(email, nome);
             ModifyUserService.modifyCognome(email, cognome);
-            //ModifyUserService.modifyEmail(email, newEmail);
             ModifyUserService.modifyPassword(email, password);
 
 
-
             request.getRequestDispatcher("modifyUserInfo.jsp").forward(request, response);
-
+        }
 
     }
 }

@@ -83,7 +83,6 @@ public class ModifyDao {
 
     public void modifyIndirizzo(String nomeParcheggio, String indirizzo) {
         try {
-            
             con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
             PreparedStatement stmt = con.prepareStatement("UPDATE Parcheggio SET indirizzo=(?) WHERE nomeParcheggio = (?)");
             stmt.setString(1, indirizzo);

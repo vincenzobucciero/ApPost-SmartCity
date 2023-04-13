@@ -32,47 +32,50 @@ public class PathServlet extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request,response);
         } else {
             UsersBean usersBean = (UsersBean) session.getAttribute("usersBean");
-            request.setAttribute("usersBean",usersBean);
-        }
-
-        Location start = new Location();
-
-        Nodo initialNode = start.chooseStart(startIndirizzo);
-        Nodo finalNode = start.chooseEnd(endIndirizzo);
-        int rows = 6;
-        int cols = 7;
-
-        AStar aStar = new AStar(rows, cols, initialNode, finalNode);
-        int[][] blocksArray = new int[][]{{1, 3}, {2, 3}, {3, 3}};
-
-        aStar.setBlocchi(blocksArray);
-        aStar.setParking(start.setParking());
-
-        List<Nodo> nodo = start.getNodopark();
-        for (Nodo nodoPark: nodo) {
-            System.out.println("Parcheggi situati in: " + nodoPark.getIndirizzo());
-        }
+            request.setAttribute("usersBean", usersBean);
 
 
-        List<ParkingBean> parcheggioDisp = new ArrayList<>();
-        List<Nodo> path = aStar.ricercaPercorso();
-        for (Nodo node : path) {
-            System.out.println(node);
-            if(node.isPark() && start.getNodoParkIndirizzo(node) != null){
-                System.out.println("dentro");
-                parcheggioDisp.add(start.getNodoParkIndirizzo(node));
-                System.out.println("parcheggio size " + parcheggioDisp.size());
+            Location start = new Location();
+
+            Nodo initialNode = start.chooseStart(startIndirizzo);
+            Nodo finalNode = start.chooseEnd(endIndirizzo);
+            int rows = 6;
+            int cols = 7;
+
+            AStar aStar = new AStar(rows, cols, initialNode, finalNode);
+            int[][] blocksArray = new int[][]{{1, 3}, {2, 3}, {3, 3}};
+
+            aStar.setBlocchi(blocksArray);
+            aStar.setParking(start.setParking());
+
+            List<Nodo> nodo = start.getNodopark();
+            for (Nodo nodoPark : nodo) {
+                System.out.println("Parcheggi situati in: " + nodoPark.getIndirizzo());
             }
+
+
+            List<ParkingBean> parcheggioDisp = new ArrayList<>();
+            List<Nodo> path = aStar.ricercaPercorso();
+            for (Nodo node : path) {
+                System.out.println(node);
+                if (node.isPark() && start.getNodoParkIndirizzo(node) != null) {
+                    System.out.println("dentro");
+                    parcheggioDisp.add(start.getNodoParkIndirizzo(node));
+                    System.out.println("parcheggio size " + parcheggioDisp.size());
+                }
+            }
+
+            request.setAttribute("start", startIndirizzo);
+            request.setAttribute("dest", endIndirizzo);
+
+            int size = parcheggioDisp.size();
+            request.setAttribute("size", size);
+
+            request.setAttribute("parcheggioDisp", parcheggioDisp);
+
+            request.getRequestDispatcher("prenotaParcheggio.jsp").forward(request,response);
+
         }
-
-        request.setAttribute("start",startIndirizzo);
-        request.setAttribute("dest",endIndirizzo);
-
-        int size = parcheggioDisp.size();
-        request.setAttribute("size",size);
-
-        request.setAttribute("parcheggioDisp", parcheggioDisp);
-        request.getRequestDispatcher("prenotaParcheggio.jsp").forward(request,response);
 
     }
 

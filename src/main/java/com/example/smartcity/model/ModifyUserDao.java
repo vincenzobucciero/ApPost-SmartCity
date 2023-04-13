@@ -62,6 +62,8 @@ public class ModifyUserDao {
         }
     }
 
+
+    /*
     public void modifyEmail(String email, String newEmail) {
         try {
             con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
@@ -83,6 +85,8 @@ public class ModifyUserDao {
             }
         }
     }
+
+     */
 
 
     public void modifyPassword(String email, String password) {
