@@ -14,7 +14,17 @@ public class BookingDao {
     private static BookingDao istanza;
     private static final String url = "jdbc:mysql://localhost:3306/smartcity";
     private static Connection con;
+
+    /**
+     *
+     *
+     */
     private BookingDao(){}
+
+    /**
+     *
+     * @return
+     */
     public static BookingDao getIstanza() {
         if (istanza == null) {
             istanza = new BookingDao();
@@ -22,7 +32,10 @@ public class BookingDao {
         return istanza;
     }
 
-
+    /**
+     *
+     * @param bookingBean
+     */
     public void addBooking(BookingBean bookingBean) {
         try {
             con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
@@ -54,6 +67,12 @@ public class BookingDao {
         }
     }
 
+
+    /**
+     *
+     * @param email
+     * @return
+     */
 
     //Ritorna tutte le prenotazioni fatte nel tempo da un certo utente
     public List<BookingBean> getBooking(String email){
@@ -99,7 +118,11 @@ public class BookingDao {
     }
 
 
-
+    /**
+     *
+     * @param id
+     * @return
+     */
 
     //Ritorna una specifica prenotazione dato il suo ID
     public BookingBean getBookingBean(String id){

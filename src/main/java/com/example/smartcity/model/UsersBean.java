@@ -1,6 +1,10 @@
 package com.example.smartcity.model;
 import java.io.Serializable;
 
+/**
+ *
+ *
+ */
 public class UsersBean implements Serializable {
 
     private String nome;
@@ -8,8 +12,16 @@ public class UsersBean implements Serializable {
     private String email;
     private String password;
 
+    /**
+     *
+     *
+     */
     public UsersBean(){}
 
+    /**
+     *
+     * @return
+     */
     public String getNome() {
         return nome;
     }
@@ -18,6 +30,10 @@ public class UsersBean implements Serializable {
         this.nome = nome;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCognome() {
         return cognome;
     }
@@ -26,6 +42,10 @@ public class UsersBean implements Serializable {
         this.cognome = cognome;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmail() {
         return email;
     }
@@ -34,6 +54,10 @@ public class UsersBean implements Serializable {
         this.email = email;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return password;
     }

@@ -3,11 +3,26 @@ package com.example.smartcity.model;
 
 import java.sql.*;
 
+/**
+ *
+ *
+ */
+
 public class LoginDao {
     private static LoginDao istanza;
     private static final String url = "jdbc:mysql://localhost:3306/smartcity";
     private static Connection con;
+
+    /**
+     *
+     *
+     */
     private LoginDao(){}
+
+    /**
+     *
+     * @return
+     */
     public static LoginDao getIstanza(){
         if (istanza == null){
             istanza = new LoginDao();
@@ -16,6 +31,12 @@ public class LoginDao {
     }
 
 
+    /**
+     *
+     * @param email
+     * @param password
+     * @return
+     */
     public static boolean controllaDB(String email, String password) {
         try {
             con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
@@ -38,6 +59,11 @@ public class LoginDao {
     }
 
 
+    /**
+     *
+     * @param email
+     * @return
+     */
     public static boolean controllaLogin(String email) {
         try {
             con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
@@ -59,7 +85,11 @@ public class LoginDao {
     }
 
 
-
+    /**
+     *
+     * @param email
+     * @return
+     */
     public UsersBean getUserBean(String email){
         UsersBean usersBean = new UsersBean();
         try {
@@ -87,7 +117,11 @@ public class LoginDao {
     }
 
 
-
+    /**
+     *
+     * @param usersBean
+     * @return
+     */
     public boolean addRegistrazione(UsersBean usersBean) {
         try {
             con = DriverManager.getConnection(url, "vincenzo", "vincenzo");

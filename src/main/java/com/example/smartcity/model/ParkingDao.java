@@ -4,13 +4,28 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ *
+ *
+ */
 public class ParkingDao {
 
     private static ParkingDao istanza;
     private final String url = "jdbc:mysql://localhost:3306/smartcity";
 
     Connection con;
+
+    /**
+     *
+     *
+     */
     private ParkingDao(){}
+
+    /**
+     *
+     * @return
+     */
     public static ParkingDao getIstanza(){
         if (istanza == null){
             istanza = new ParkingDao();
@@ -18,11 +33,15 @@ public class ParkingDao {
         return istanza;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<ParkingBean> getParkings(){
+
         List<ParkingBean> list = new ArrayList<ParkingBean>();
 
         try{
-             
             con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
             PreparedStatement stmt = con.prepareStatement("SELECT nomeParcheggio, indirizzo, tariffaAF, tariffaM, postiAuto, postiFurgone, postiMoto  FROM Parcheggio ");
             ResultSet resultSet = stmt.executeQuery();
@@ -53,10 +72,17 @@ public class ParkingDao {
         return list;
     }
 
+
+    /**
+     *
+     * @param nomeParcheggio
+     * @return
+     */
     public ParkingBean getParkingBean(String nomeParcheggio){
+
         ParkingBean parkingBean = new ParkingBean();
+
         try {
-             
             con = DriverManager.getConnection(url, "vincenzo", "vincenzo");
             PreparedStatement stmt = con.prepareStatement("SELECT * FROM Parcheggio WHERE nomeParcheggio = (?) ");
             stmt.setString(1, nomeParcheggio);

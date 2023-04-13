@@ -1,9 +1,6 @@
 package com.example.smartcity.model;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class BookingBean implements Serializable {
     private String ID_prenotazione;
@@ -17,6 +14,10 @@ public class BookingBean implements Serializable {
     private String pagamento;
     private String nomeParcheggio;
 
+    /**
+     *
+     * @return
+     */
     public String getID_prenotazione() {
         return ID_prenotazione;
     }
@@ -25,6 +26,10 @@ public class BookingBean implements Serializable {
         this.ID_prenotazione = ID_prenotazione;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getData_prenotazione() {
         return data_prenotazione;
     }
@@ -33,6 +38,10 @@ public class BookingBean implements Serializable {
         this.data_prenotazione = data_prenotazione;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getOrario_inizio() {
         return orario_inizio;
     }
@@ -41,6 +50,10 @@ public class BookingBean implements Serializable {
         this.orario_inizio = orario_inizio;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getOrario_fine() {
         return orario_fine;
     }
@@ -49,7 +62,10 @@ public class BookingBean implements Serializable {
         this.orario_fine = orario_fine;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public String getTargaVeicolo() {
         return targaVeicolo;
     }
@@ -58,6 +74,10 @@ public class BookingBean implements Serializable {
         this.targaVeicolo = targaVeicolo;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTipoVeicolo() {
         return tipoVeicolo;
     }
@@ -66,6 +86,10 @@ public class BookingBean implements Serializable {
         this.tipoVeicolo = tipoVeicolo;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmail() {
         return email;
     }
@@ -74,6 +98,10 @@ public class BookingBean implements Serializable {
         this.email = email;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getPrezzo() {
         return prezzo;
     }
@@ -82,6 +110,10 @@ public class BookingBean implements Serializable {
         this.prezzo = prezzo;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPagamento() {
         return pagamento;
     }
@@ -90,6 +122,10 @@ public class BookingBean implements Serializable {
         this.pagamento = pagamento;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNomeParcheggio() {
         return nomeParcheggio;
     }

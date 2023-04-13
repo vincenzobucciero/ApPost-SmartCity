@@ -1,24 +1,33 @@
 package com.example.smartcity.controller;
 
 import com.example.smartcity.model.UsersBean;
-import com.example.smartcity.service.ModifyService;
 import com.example.smartcity.service.ModifyUserService;
+
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+/**
+ *
+ *
+ */
 @WebServlet(name = "ModifyUserServlet", value = "/ModifyUserServlet")
 public class ModifyUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-
-
     }
 
+
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

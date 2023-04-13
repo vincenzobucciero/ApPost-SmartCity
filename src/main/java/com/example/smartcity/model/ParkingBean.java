@@ -2,6 +2,10 @@ package com.example.smartcity.model;
 
 import java.io.Serializable;
 
+/**
+ *
+ *
+ */
 public class ParkingBean implements Serializable {
     private String nomeParcheggio;
     private String indirizzo;
@@ -11,8 +15,16 @@ public class ParkingBean implements Serializable {
     private double tariffaAF;
     private double tariffaM;
 
+    /**
+     *
+     *
+     */
     public ParkingBean(){}
 
+    /**
+     *
+     * @return
+     */
     public int getPostiAuto() {
         return postiAuto;
     }
@@ -21,6 +33,10 @@ public class ParkingBean implements Serializable {
         this.postiAuto = postiAuto;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getIndirizzo() {
         return indirizzo;
     }
@@ -29,6 +45,10 @@ public class ParkingBean implements Serializable {
         this.indirizzo = indirizzo;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNomeParcheggio() {
         return nomeParcheggio;
     }
@@ -37,10 +57,14 @@ public class ParkingBean implements Serializable {
         this.nomeParcheggio = nomeParcheggio;
     }
 
-
     public void setTariffaAF(double tariffaAF) {
         this.tariffaAF = tariffaAF;
     }
+
+    /**
+     *
+     * @return
+     */
     public double getTariffaM() {
         return tariffaM;
     }
@@ -48,10 +72,19 @@ public class ParkingBean implements Serializable {
     public void setTariffaM(double tariffaM) {
         this.tariffaM = tariffaM;
     }
+
+    /**
+     *
+     * @return
+     */
     public double getTariffaAF() {
         return tariffaAF;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPostiFurgone() {
         return postiFurgone;
     }
@@ -60,6 +93,10 @@ public class ParkingBean implements Serializable {
         this.postiFurgone = postiFurgone;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPostiMoto() {
         return postiMoto;
     }
