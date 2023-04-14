@@ -1,7 +1,6 @@
 package com.example.smartcity.controller;
 
-import com.example.smartcity.service.ModifyService;
-
+import com.example.smartcity.model.DAO.ModifyDao;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -10,7 +9,7 @@ import java.io.IOException;
 
 /**
  * La classe ModifyServlet implementa la funzionalità di modifica di un parcheggio attraverso
- * l'utilizzo dei metodi di ModifyService. Viene richiamata mediante una richiesta HTTP POST e riceve come
+ * l'utilizzo dei metodi di ModifyDao. Viene richiamata mediante una richiesta HTTP POST e riceve come
  * parametri del body le informazioni relative alla modifica del parcheggio.
  * In caso di successo nella modifica delle informazioni,
  * l'utente viene reindirizzato alla pagina confermaModificaP.jsp .
@@ -34,7 +33,7 @@ public class ModifyServlet extends HttpServlet {
 
     /**
      * Questo metodo viene richiamato quando viene effettuata una richiesta HTTP POST.
-     * Riceve come parametri del body le informazioni relative alla modifica del parcheggio e utilizza i metodi di ModifyService
+     * Riceve come parametri del body le informazioni relative alla modifica del parcheggio e utilizza i metodi di ModifyDao
      * per modificare le informazioni del parcheggio.
      * In caso di successo, l'utente viene reindirizzato alla pagina confermaModificaP.jsp .
      * Se la sessione non è valida, l'utente viene reindirizzato alla pagina di login.
@@ -63,12 +62,12 @@ public class ModifyServlet extends HttpServlet {
             String postiFurgone = request.getParameter("postiFurgone");
             String postiMoto = request.getParameter("postiMoto");
 
-            ModifyService.modifyIndirizzo(nome, indirizzo);
-            ModifyService.modifyTariffaAF(nome, Double.parseDouble(tariffaAF));
-            ModifyService.modifyTariffaM(nome, Double.parseDouble(tariffaM));
-            ModifyService.modifyPostiAuto(nome, Integer.parseInt(postiAuto));
-            ModifyService.modifyPostiFurgone(nome, Integer.parseInt(postiFurgone));
-            ModifyService.modifyPostiMoto(nome, Integer.parseInt(postiMoto));
+            ModifyDao.modifyIndirizzo(nome, indirizzo);
+            ModifyDao.modifyTariffaAF(nome, Double.parseDouble(tariffaAF));
+            ModifyDao.modifyTariffaM(nome, Double.parseDouble(tariffaM));
+            ModifyDao.modifyPostiAuto(nome, Integer.parseInt(postiAuto));
+            ModifyDao.modifyPostiFurgone(nome, Integer.parseInt(postiFurgone));
+            ModifyDao.modifyPostiMoto(nome, Integer.parseInt(postiMoto));
 
 
             request.getRequestDispatcher("confermaModificaP.jsp").forward(request, response);

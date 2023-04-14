@@ -1,16 +1,7 @@
-package com.example.smartcity.handler;
+package com.example.smartcity.service.ChainOfResponsability;
 
-import com.example.smartcity.model.AccessoLogin;
 
-public class RoleHandler extends Handler {
-
-    /**
-     *
-     * @param email
-     * @param password
-     * @return
-     */
-    @Override
+public class RoleHandler extends Handler{
     public AccessoLogin handle(String email, String password) {
         if("admin@admin.com".equals(email)){
             System.out.println("Caricamento Pagina Admin...");

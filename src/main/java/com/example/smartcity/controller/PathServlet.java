@@ -3,8 +3,8 @@ package com.example.smartcity.controller;
 import com.example.smartcity.service.Algoritmo.AStar;
 import com.example.smartcity.service.Algoritmo.Location;
 import com.example.smartcity.service.Algoritmo.Nodo;
-import com.example.smartcity.model.ParkingBean;
-import com.example.smartcity.model.UsersBean;
+import com.example.smartcity.model.Bean.ParkingBean;
+import com.example.smartcity.model.Bean.UserBean;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -29,7 +29,7 @@ public class PathServlet extends HttpServlet {
      * @param request l'oggetto HttpServletRequest che contiene la richiesta HTTP
      * @param response l'oggetto HttpServletResponse che contiene la risposta HTTP
      * @throws ServletException se si verifica un'eccezione di servlet
-     * @throws IOException se si verifica un'eccezione di I/O
+     * @throws IOException se si verifica un'eccezione d'I/O
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -60,8 +60,8 @@ public class PathServlet extends HttpServlet {
             session.setAttribute("isLog",0);
             request.getRequestDispatcher("login.jsp").forward(request,response);
         } else {
-            UsersBean usersBean = (UsersBean) session.getAttribute("usersBean");
-            request.setAttribute("usersBean", usersBean);
+            UserBean userBean = (UserBean) session.getAttribute("userBean");
+            request.setAttribute("userBean", userBean);
 
             Location start = new Location();
 

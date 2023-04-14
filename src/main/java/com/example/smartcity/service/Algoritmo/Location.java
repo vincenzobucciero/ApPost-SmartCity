@@ -1,8 +1,7 @@
 package com.example.smartcity.service.Algoritmo;
 
-import com.example.smartcity.model.ParkingBean;
-import com.example.smartcity.model.ParkingDao;
-import com.example.smartcity.service.ParkingService;
+import com.example.smartcity.model.Bean.ParkingBean;
+import com.example.smartcity.model.DAO.ParkingDao;
 
 import java.util.*;
 
@@ -158,7 +157,7 @@ public class Location {
         int i = 0;
         int j = 0;
 
-        List<ParkingBean> parkingBeanList = ParkingService.getAllParkings();
+        List<ParkingBean> parkingBeanList = ParkingDao.getListParking();
         String[] IndirizziP = new String[parkingBeanList.size() + 1];
 
         for (ParkingBean parkingBean: parkingBeanList) {
@@ -198,8 +197,8 @@ public class Location {
      * @param nodoP
      * @return
      */
-    public ParkingBean getParcheggiDisp(Nodo nodoP){
-        List<ParkingBean> parkingBeanList = ParkingDao.getIstanza().getParkings();
+    protected ParkingBean getParcheggiDisp(Nodo nodoP){
+        List<ParkingBean> parkingBeanList = ParkingDao.getListParking();
 
         //per ogni parcheggio controllo che ci sia un nodo il cui indirizzo è uguale, in quel caso significa che ho trovato
         //un nodo parcheggio e lo metto in una lista

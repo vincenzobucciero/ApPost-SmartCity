@@ -55,7 +55,7 @@
     <div class="container">
       <div class="row">
         <c:choose>
-          <c:when test="${usersBean != null}">
+          <c:when test="${userBean != null}">
             <div class="col-md-4 col-md-offset-4">
               <div class="form-container">
                 <h3 class="title">
@@ -65,23 +65,23 @@
                   <div class="form-group row">
                     <div class="col-md-4">
                       <label name="nome">Nome:</label>
-                      <input type="text" class="form-control" name="nome" value="${usersBean.getNome()}"><br />
+                      <input type="text" class="form-control" name="nome" value="${userBean.getNome()}"><br />
                     </div>
                     <div class="col-md-4">
                       <label name="indirizzo">Cognome:</label>
-                      <input type="text" class="form-control" name="cognome" value="${usersBean.getCognome()}"><br />
+                      <input type="text" class="form-control" name="cognome" value="${userBean.getCognome()}"><br />
                     </div>
                   </div>
                   <div class="form-group">
                     <label name="tariffaAF">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" value="${usersBean.getEmail()}" readonly >
+                    <input type="text" class="form-control" id="email" name="email" value="${userBean.getEmail()}" readonly >
                   </div>
                   <div class="form-group">
                     <label name="tariffaAF">Password</label>
-                    <input type="text" class="form-control" id="password" name="password" value="${usersBean.getPassword()}">
+                    <input type="text" class="form-control" id="password" name="password" value="${userBean.getPassword()}">
                   </div>
                   <div class="form-group">
-                    <input type="hidden" name="email" value="${usersBean.getEmail()}" >
+                    <input type="hidden" name="email" value="${userBean.getEmail()}" >
                     <button  type="submit" class="btn btn-primary btn-lg"> Modifica </button>
                   </div>
                 </form>

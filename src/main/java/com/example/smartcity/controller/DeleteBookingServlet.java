@@ -1,9 +1,9 @@
 package com.example.smartcity.controller;
 
-import com.example.smartcity.model.UsersBean;
-import com.example.smartcity.service.BookingService;
-import com.example.smartcity.service.LogService;
+import com.example.smartcity.model.Bean.BookingBean;
+import com.example.smartcity.model.Bean.UserBean;
 
+import com.example.smartcity.model.DAO.BookingDao;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -59,13 +59,13 @@ public class DeleteBookingServlet extends HttpServlet {
             String idPrenotazione = request.getParameter( "id" );
             System.out.println( "Cancella: " + idPrenotazione );
 
-            BookingService.deleteBooking( idPrenotazione );
+            BookingDao.deleteBooking(idPrenotazione);
 
             String email = request.getParameter("email");
-            UsersBean usersBean = LogService.getUserBean(email);
+            //UserBean userBean = LogService.getUserBean(email);
 
             // Passiamo l'email visualizzare le prenotazioni
-            request.setAttribute("email", usersBean.getEmail());
+            //request.setAttribute("email", userBean.getEmail());
             request.getRequestDispatcher( "cancelPage.jsp" ).forward(request, response);
 
         }

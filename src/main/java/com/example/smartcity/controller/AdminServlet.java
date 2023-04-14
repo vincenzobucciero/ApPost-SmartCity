@@ -1,7 +1,7 @@
 package com.example.smartcity.controller;
 
-import com.example.smartcity.model.ParkingBean;
-import com.example.smartcity.service.ParkingService;
+import com.example.smartcity.model.Bean.ParkingBean;
+import com.example.smartcity.model.DAO.ParkingDao;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -51,7 +51,7 @@ public class AdminServlet extends HttpServlet {
         }
         else {
             //Gli ripasso la lista poichè aggiornata
-            List<ParkingBean> list = ParkingService.getAllParkings();
+            List<ParkingBean> list = ParkingDao.getListParking();
             session.setAttribute("list", list);
             request.getRequestDispatcher("adminHomePage.jsp").forward(request, response);
         }

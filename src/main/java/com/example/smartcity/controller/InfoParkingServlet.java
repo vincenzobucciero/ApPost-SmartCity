@@ -1,8 +1,8 @@
 package com.example.smartcity.controller;
 
-import com.example.smartcity.model.ParkingBean;
-import com.example.smartcity.service.ParkingService;
+import com.example.smartcity.model.Bean.ParkingBean;
 
+import com.example.smartcity.model.DAO.ParkingDao;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -62,7 +62,7 @@ public class InfoParkingServlet extends HttpServlet {
         } else {
 
             String nomeParcheggio = request.getParameter("nomeparking");
-            ParkingBean parkingBean = ParkingService.getParkingBean(nomeParcheggio);
+            ParkingBean parkingBean = ParkingDao.getParkingBean(nomeParcheggio);
 
             parkingBean.setNomeParcheggio(nomeParcheggio);
 

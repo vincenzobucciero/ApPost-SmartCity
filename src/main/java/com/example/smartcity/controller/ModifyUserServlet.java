@@ -1,7 +1,7 @@
+/*
 package com.example.smartcity.controller;
 
-import com.example.smartcity.model.UsersBean;
-import com.example.smartcity.service.ModifyUserService;
+import com.example.smartcity.model.Bean.UserBean;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -13,6 +13,8 @@ import java.io.IOException;
  *
  *
  */
+
+/*
 @WebServlet(name = "ModifyUserServlet", value = "/ModifyUserServlet")
 public class ModifyUserServlet extends HttpServlet {
     @Override
@@ -28,6 +30,8 @@ public class ModifyUserServlet extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
+
+/*
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -39,8 +43,8 @@ public class ModifyUserServlet extends HttpServlet {
             session.setAttribute("isLog",0);
             request.getRequestDispatcher("login.jsp").forward(request,response);
         } else {
-            UsersBean usersBean = (UsersBean) session.getAttribute("usersBean");
-            request.setAttribute("usersBean", usersBean);
+            UserBean userBean = (UserBean) session.getAttribute("usersBean");
+            request.setAttribute("usersBean", userBean);
             //request.getRequestDispatcher("userHomePage.jsp").forward(request,response);
 
 
@@ -60,3 +64,5 @@ public class ModifyUserServlet extends HttpServlet {
 
     }
 }
+
+*/

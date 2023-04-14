@@ -1,9 +1,9 @@
 package com.example.smartcity.controller;
 
-import com.example.smartcity.model.*;
-import com.example.smartcity.service.BookingService;
-import com.example.smartcity.service.ParkingService;
-
+import com.example.smartcity.model.Bean.BookingBean;
+import com.example.smartcity.model.Bean.ParkingBean;
+import com.example.smartcity.model.DAO.BookingDao;
+import com.example.smartcity.model.DAO.ParkingDao;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -72,7 +72,8 @@ public class BookingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String nomeParcheggio = request.getParameter("nomeP");
-        ParkingBean parkingBean = ParkingService.getParkingBean(nomeParcheggio);
+
+        ParkingBean parkingBean = ParkingDao.getParkingBean(nomeParcheggio);
 
         String email = request.getParameter("email");
         String dataPrenotazione = request.getParameter("dataP");
@@ -102,15 +103,16 @@ public class BookingServlet extends HttpServlet {
             bookingBean.setPagamento( metodoP );
             bookingBean.setNomeParcheggio( nomeParcheggio );
 
+            double prezzo = 0;
 
             switch (tipoVeicolo){
                 case "Auto":
-                    bookingBean.setPrezzo(parkingBean.getTariffaAF());
-                    break;
                 case "Furgone":
+                    prezzo = BookingDao.getTotPrice(parkingBean.getTariffaAF(), bookingBean);
                     bookingBean.setPrezzo(parkingBean.getTariffaAF());
                     break;
                 case "Moto":
+                    prezzo = BookingDao.getTotPrice(parkingBean.getTariffaAF(), bookingBean);
                     bookingBean.setPrezzo(parkingBean.getTariffaM());
                     break;
                 default:
@@ -125,7 +127,7 @@ public class BookingServlet extends HttpServlet {
                     request.getRequestDispatcher("pagamento.jsp").forward(request, response);
                     break;
                 case "Al parcheggio":
-                    BookingService.Booking(bookingBean);
+                    BookingDao.addBooking(bookingBean);
                     session.setAttribute("bookingBean", bookingBean);
                     session.setAttribute("email", bookingBean.getEmail());
 

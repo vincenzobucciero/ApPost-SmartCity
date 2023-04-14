@@ -1,11 +1,11 @@
-package com.example.smartcity.model;
+package com.example.smartcity.model.Bean;
 import java.io.Serializable;
 
 /**
  *
  *
  */
-public class UsersBean implements Serializable {
+public class UserBean implements Serializable {
 
     private String nome;
     private String cognome;
@@ -16,7 +16,7 @@ public class UsersBean implements Serializable {
      *
      *
      */
-    public UsersBean(){}
+    public UserBean(){}
 
     /**
      *

@@ -81,10 +81,10 @@
         <p class="card-text">Qui vengono visualizzati i dati personali di </p>
         <p>
           <c:choose>
-          <c:when test="${usersBean != null}">
+          <c:when test="${userBean != null}">
         <p class="text-muted mb-0">
-            ${usersBean.getNome()}
-            ${usersBean.getCognome()}
+            ${userBean.getNome()}
+            ${userBean.getCognome()}
         </p>
         </c:when>
         </c:choose>

@@ -1,40 +1,19 @@
-package com.example.smartcity.handler;
+package com.example.smartcity.service.ChainOfResponsability;
 
-import com.example.smartcity.model.AccessoLogin;
 
-/**
- *
- *
- */
+import java.sql.SQLException;
+
 public abstract class Handler {
     private Handler next;
-
-    /**
-     *
-     * @param next
-     * @return
-     */
     public Handler setNextHandler(Handler next){
         this.next = next;
         return  next;
     }
 
-    /**
-     *
-     * @param username
-     * @param password
-     * @return
-     */
     public abstract AccessoLogin handle(String username, String password);
 
-    /**
-     *
-     * @param username
-     * @param password
-     * @return
-     */
     protected AccessoLogin handleNext(String username, String password){
-        if(this.next == null){
+        if(next == null){
             return AccessoLogin.SUCCESSO;
         }
         return next.handle(username, password);

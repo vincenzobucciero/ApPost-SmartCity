@@ -1,6 +1,6 @@
 package com.example.smartcity.controller;
 
-import com.example.smartcity.model.UsersBean;
+import com.example.smartcity.model.Bean.UserBean;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -31,8 +31,8 @@ public class SearchServlet extends HttpServlet {
             session.setAttribute( "isLog",0 );
             request.getRequestDispatcher( "login.jsp" ).forward(request,response);
         } else {
-            UsersBean usersBean = ( UsersBean ) session.getAttribute( "usersBean" );
-            request.setAttribute( "usersBean",usersBean );
+            UserBean userBean = (UserBean) session.getAttribute( "userBean" );
+            request.setAttribute( "userBean", userBean);
             request.getRequestDispatcher( "findPath.jsp" ).forward(request,response);
         }
 

@@ -1,9 +1,11 @@
 package com.example.smartcity.controller;
 
-import com.example.smartcity.model.*;
-import com.example.smartcity.service.LogService;
-import com.example.smartcity.service.ParkingService;
-
+import com.example.smartcity.model.Bean.ParkingBean;
+import com.example.smartcity.model.Bean.UserBean;
+import com.example.smartcity.model.DAO.ParkingDao;
+import com.example.smartcity.model.DAO.UserDao;
+import com.example.smartcity.service.ChainOfResponsability.AccessoLogin;
+import com.example.smartcity.service.ChainOfResponsability.UserService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -25,12 +27,11 @@ public class LoginServlet extends HttpServlet {
      * @param request  l'oggetto HttpServletRequest che contiene la richiesta del client.
      * @param response l'oggetto HttpServletResponse che contiene la risposta del server.
      * @throws ServletException se la richiesta non può essere gestita.
-     * @throws IOException se si verifica un errore di I/O mentre si gestisce la richiesta.
+     * @throws IOException se si verifica un errore d'I/O mentre si gestisce la richiesta.
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+
     }
 
     /**
@@ -50,9 +51,11 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        UsersBean usersBean = LogService.getUserBean(email);
+        UserBean userBean = UserDao.getUserBean(email);
 
-        AccessoLogin accessoLogIn = LogService.logHandler(email,password);
+        AccessoLogin accessoLogIn = UserService.logHandler(email, password);
+
+        List<ParkingBean> list = ParkingDao.getListParking();
 
         switch (accessoLogIn) {
 
@@ -76,12 +79,12 @@ public class LoginServlet extends HttpServlet {
                 HttpSession newSession = request.getSession();
                 newSession.setMaxInactiveInterval(20*60);
 
-                newSession.setAttribute("usersBean",usersBean);
+                newSession.setAttribute("userBean", userBean);
                 newSession.setAttribute("isLog",1);     //1 = sono un utente normale
 
                 request.setAttribute("loggato",1);
                 request.setAttribute("stato", "SUCCESSO");
-                request.setAttribute("email", usersBean.getEmail()); // Passiamo l'email visualizzare le prenotazioni
+                request.setAttribute("email", userBean.getEmail()); // Passiamo l'email visualizzare le prenotazioni
 
                 request.getRequestDispatcher("userHomePage.jsp").forward(request, response);
                 break;
@@ -97,13 +100,11 @@ public class LoginServlet extends HttpServlet {
                 HttpSession newSessionAd = request.getSession();
 
                 newSessionAd.setMaxInactiveInterval(20*60);
-                newSessionAd.setAttribute("usersBean",usersBean);
+                newSessionAd.setAttribute("userBean", userBean);
                 newSessionAd.setAttribute("isLog",2);       //2 = sono un admin
 
                 request.setAttribute("loggato",2);
                 request.setAttribute("stato", "SUCCESSO_ADMIN");
-
-                List<ParkingBean> list = ParkingService.getAllParkings();
 
                 newSessionAd.setAttribute("list", list);
 

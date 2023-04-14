@@ -115,7 +115,7 @@
                               <div class="profile-image">
                                 <form action="BookingServlet" method="get">
                                   <input type="hidden" name="nomeP" value="${record.getNomeParcheggio()}">
-                                  <input type="hidden" name="email" value="${usersBean.getEmail()}">
+                                  <input type="hidden" name="email" value="${userBean.getEmail()}">
 
                                   <div class="text-center">
                                     <button type="submit" class="btn btn-primary btn-sm ">Prenota</button>

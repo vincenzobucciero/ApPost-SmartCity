@@ -1,4 +1,4 @@
-package com.example.smartcity.model;
+package com.example.smartcity.service.ChainOfResponsability;
 
 /**
  *

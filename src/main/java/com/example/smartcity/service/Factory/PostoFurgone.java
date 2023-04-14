@@ -1,13 +1,13 @@
 package com.example.smartcity.service.Factory;
 
-import com.example.smartcity.model.ParkingBean;
-import com.example.smartcity.service.ModifyService;
+import com.example.smartcity.model.Bean.ParkingBean;
+import com.example.smartcity.model.DAO.ModifyDao;
 
 public class PostoFurgone implements Posto{
     @Override
     public void parcheggia(ParkingBean parkingBean) {
         int posti = parkingBean.getPostiFurgone();
-        ModifyService.modifyPostiFurgone(parkingBean.getNomeParcheggio(), posti-1);
+        ModifyDao.modifyPostiFurgone(parkingBean.getNomeParcheggio(), posti-1);
         System.out.println("Furgone Inserito");
     }
 }
