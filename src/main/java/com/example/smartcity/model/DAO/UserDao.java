@@ -1,10 +1,14 @@
 package com.example.smartcity.model.DAO;
 
+import com.example.smartcity.model.Bean.BookingBean;
 import com.example.smartcity.model.Bean.UserBean;
+import com.example.smartcity.service.CommandPrezzo.VeicoliEnum;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDao {
     public static boolean controllaEmail(String email){
@@ -142,6 +146,44 @@ public class UserDao {
             }
         }
         return false;
+    }
+
+    public static List<UserBean> getListUsers(){
+        PreparedStatement stmt = null;
+        ResultSet result = null;
+        List<UserBean> list = new ArrayList<UserBean>();
+        try {
+            stmt = DatabaseConnection.getInstance().getConnection().prepareStatement("SELECT * " +
+                    "FROM Utenti " +
+                    "WHERE email != 'admin@admin.com'");
+            result = stmt.executeQuery();
+            list = new ArrayList<>();
+            while (result.next()) {
+                UserBean userBean = new UserBean();
+                userBean.setNome(result.getString(1));
+                userBean.setCognome(result.getString(2));
+                userBean.setEmail(result.getString(3));
+                userBean.setPassword(result.getString(4));
+                list.add(userBean);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try{
+                if (stmt!=null)
+                    stmt.close();
+
+                if ( result != null ) {
+                    result.close();
+                }
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return list;
     }
 
 }
