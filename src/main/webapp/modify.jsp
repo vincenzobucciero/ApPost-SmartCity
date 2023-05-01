@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
-  User: carmine
+  User: vincenzo
   Date: 18/03/23
   Time: 17:05
   To change this template use File | Settings | File Templates.
@@ -58,26 +58,28 @@
                                     <div class="col-md-4 col-md-offset-4">
                                           <div class="form-container">
                                                 <h3 class="title">
-                                                      Modifica i dati <br> del parcheggio
+                                                      <svg fill="#ff6a00" height="100px" width="100px" style="position: center" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-117.76 -117.76 747.53 747.53" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <g> <path d="M437.024,74.984c-8.331-8.331-21.839-8.331-30.17,0s-8.331,21.839,0,30.17c83.317,83.317,83.317,218.394,0.002,301.69 c-8.332,8.33-8.334,21.838-0.003,30.17c8.33,8.332,21.838,8.334,30.17,0.003C537.004,337.059,537.004,174.964,437.024,74.984z"></path> <path d="M105.153,105.165c8.332-8.33,8.334-21.838,0.003-30.17c-8.33-8.332-21.838-8.334-30.17-0.004 c-99.981,99.958-99.981,262.054-0.002,362.033c8.331,8.331,21.839,8.331,30.17,0c8.331-8.331,8.331-21.839,0-30.17 C21.838,323.538,21.838,188.46,105.153,105.165z"></path> <path d="M256.004,85.338c-94.257,0-170.667,76.41-170.667,170.667s76.41,170.667,170.667,170.667s170.667-76.41,170.667-170.667 S350.261,85.338,256.004,85.338z M256.004,384.004c-70.693,0-128-57.307-128-128s57.307-128,128-128s128,57.307,128,128 S326.697,384.004,256.004,384.004z"></path> <path d="M277.338,149.338h-42.667c-11.782,0-21.333,9.551-21.333,21.333v85.333v85.333c0,11.782,9.551,21.333,21.333,21.333 c11.782,0,21.333-9.551,21.333-21.333v-64h21.333c35.355,0,64-28.645,64-64S312.693,149.338,277.338,149.338z M277.338,234.671 h-21.333v-42.667h21.333c11.791,0,21.333,9.542,21.333,21.333S289.129,234.671,277.338,234.671z"></path> </g> </g> </g> </g></svg>
                                                 </h3>
                                                 <form class="form-horizontal" action="ModifyServlet" method="post">
                                                       <div class="form-group row">
                                                             <div class="col-md-4">
                                                                   <label name="nome">Nome parcheggio:</label>
-                                                                  <input type="text" class="form-control" name="nome" value="${parkingBean.getNomeParcheggio()}"><br />
+                                                                  <input type="text" class="form-control text-muted" name="nome" value="${parkingBean.getNomeParcheggio()}" readonly><br />
                                                             </div>
                                                             <div class="col-md-4">
                                                                   <label name="indirizzo">Indirizzo:</label>
                                                                   <input type="text" class="form-control" name="indirizzo" value="${parkingBean.getIndirizzo()}"><br />
                                                             </div>
                                                       </div>
-                                                      <div class="form-group">
-                                                            <label name="tariffaAF">Tariffa Auto/Furgone:</label>
-                                                            <input type="number" class="form-control" id="tariffaAF" name="tariffaAF" value="${parkingBean.getTariffaAF()}">
-                                                      </div>
-                                                      <div class="form-group">
-                                                            <label name="tariffaM">Tariffa Moto:</label>
-                                                            <input type="number" class="form-control" id="tariffaM" name="tariffaM" value="${parkingBean.getTariffaM()}">
+                                                      <div class="form-group row">
+                                                            <div class="col-md-4">
+                                                                  <label name="tariffaAF">Tariffa Auto/Furgone:</label>
+                                                                  <input type="number" class="form-control" id="tariffaAF" name="tariffaAF" value="${parkingBean.getTariffaAF()}">
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                  <label name="tariffaM">Tariffa Moto:</label>
+                                                                  <input type="number" class="form-control" id="tariffaM" name="tariffaM" value="${parkingBean.getTariffaM()}">
+                                                            </div>
                                                       </div>
                                                       <div class="form-group row">
                                                             <div class="col-md-4">
@@ -94,7 +96,7 @@
                                                             </div>
                                                       </div>
                                                       <input type="hidden" name="nomeparking" value="${parkingBean.getNomeParcheggio()}" >
-                                                      <button  type="submit" class="btn btn-primary btn-lg "> Modifica </button>
+                                                      <button  type="submit" class="btn btn-primary btn-lg text-light "> Modifica </button>
                                                 </form>
 
                                           </div>
@@ -110,7 +112,7 @@
 <footer class="bg-light py-5">
       <div class="container px-4 px-lg-5">
             <div class="small text-center text-muted">
-                  Copyright &copy; 2023 - Company Name
+                  Copyright &copy; 2023 - ApPost
             </div>
       </div>
 </footer>

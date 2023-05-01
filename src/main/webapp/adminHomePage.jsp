@@ -15,21 +15,18 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>ApPost-Home Page</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="img/iconMoney.png" />
-    <link rel="icon" type="image/x-icon" href="img/wallpaperCar.jpg" />
     <!-- Bootstrap Icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
     <!-- SimpleLightbox plugin CSS-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
     <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="css/styleAdmin.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="img">
+
 </head>
 <body id="page-top">
 <!-- Navigation-->
@@ -41,88 +38,63 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                <li class="nav-item"><a class="nav-link" href="adminHomePage.jsp">Torna alla home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#stats">Statistiche</a></li>
+                <li class="nav-item"><a class="nav-link" href="homepage">Torna alla home</a></li>
                 <li class="nav-item"><a class="nav-link" href="logout">Esci</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- Masthead-->
 <header class="masthead">
 
-    <!--Card di sfondo per i parcheggi-->
-    <!--<div class="my-5 card text-light mx-auto" style="width: 70rem;
-                background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 80%), url('img/imgCard/CardAdmin.jpg'); background-size: cover;">
-        <div class="card-title">
-            <h3 style="font-weight:bold; text-align:left;">
-                Qui puoi visualizzare i tuoi parcheggi:
-            </h3>
-        </div>-->
-    <div class="my-5 card text-black mx-auto" style="width: 70rem">
-        <div class="row"> <!-- Inizio Card-->
-            <div class="text-muted">
-                <h3 style="font-weight:bold; text-align:center;">
-                    Qui puoi visualizzare i tuoi parcheggi:
-                </h3>
-            </div>
-            <c:forEach items="${list}" var="record"> <!--Ciclo FOR -->
-                <div class="my-4 card bg-light mx-auto" style="width: 20rem; height: 15rem">
-                    <div class="card-body">
-                        <p class="text-muted mb-0 fs-3">
-                        <td>
-                                ${record.getNomeParcheggio()}
-                        </td>
-                        <hr class="text-black">
-                        </p><!-- Fine Nome Parcheggio-->
-                        <h5 class="card-text">
-                            <p class="text-black" style="font-family: 'Inter', sans-serif">
-                            <td>
-                                <i class="bi bi-geo-fill" style="color: #b60909"></i>
-                                    ${record.getIndirizzo()}<br>
-                                <i class="fas fa-car-side"></i>
-                                Posti Auto: ${record.getPostiAuto()}<br>
-                                <i class="fas fa-truck"></i>
-                                Posti Furgone: ${record.getPostiFurgone()}<br>
-                                <i class="fas fa-motorcycle"></i>
-                                Posti Moto: ${record.getPostiMoto()}<br>
-
-                            </td>
-                            </p>
-                        </h5> <!-- Fine Indirizzo&NumPosti-->
-                        <div>
-                            <form action="InfoParkingServlet" method="post">
-                                <input type="hidden" name="nomeparking" value="${record.getNomeParcheggio()}">
-
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-outline-primary">Modifica</button>
-                                </div>
-                            </form>
-
-                        </div>
-                    </div>
-                </div><!-- Fine Card-->
-            </c:forEach>
-        </div>
+    <div class="col-lg-10 mx-auto mb-4">
+        <h2 class="text-center mt-0" style="color: white">Gestione</h2>
+        <hr class="divider" />
     </div>
+    <!--INIZIO SEZIONE CARD-->
+    <div class="row" style="padding: 4rem">
+        <!-- Inizio Prima Card-->
+        <div class="my-3 card bg-light" style="width: 20rem;">
+            <img src="img/park2.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Parcheggi</h4>
+                <p class="card-text">Viene visualizzata la lista dei parcheggi con le proprie informazioni.</p>
+                <form action="ShowParkingServlet" method="post">
+                    <button class="btn btn-primary text-center">Visualizza parcheggi</button>
+                </form>
+            </div>
+        </div><!-- Fine Prima Card-->
+
+        <!-- Inizio Seconda Card-->
+        <div class="my-3 card bg-light mx-auto" style="width: 20rem;">
+            <img src="img/statistiche.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Statistiche</h4>
+                <p class="card-text">Potrai vedere le statistiche relative a ogni mese e per ogni parcheggio </p>
+                <a href="statistiche.jsp" class="btn btn-primary text-center">Visualizza statistiche</a>
+            </div>
+        </div><!-- Fine Seconda Card-->
+
+        <!-- Inizio Terza Card-->
+        <div class="my-3 card bg-light mx-auto" style="width: 20rem;">
+            <img src="img/booking.jpg">
+            <div class="card-body">
+                <h4 class="card-title">Prenotazioni</h4>
+                <p class="card-text">Qui vengono visualizzate le prenotazioni effettuate,
+                    con informazioni come data orario e luogo.</p>
+                <form action="ShowBookingServlet" method="post">
+                    <input type="hidden" name="email" value="${email}">
+                    <button class="btn btn-primary">Visualizza prenotazioni</button>
+                </form>
+            </div>
+        </div><!-- Fine Seconda Card-->
     </div><!-- FINE SEZIONE CARD-->
 </header>
-
-<section class="page-section" id="stats">
-    <div class="my-5 card text-black mx-auto" style="width: 60rem">
-        <div class="text-muted">
-            <h4 style="font-weight:bold; text-align:center;">
-                Qui puoi visualizzare le statistiche:
-            </h4>
-        </div>
-    </div>
-</section>
 
 
 <!-- Footer-->
 <footer class="bg-light py-5">
-    <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2023 - Company Name</div></div>
+    <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2023 - ApPost</div></div>
 </footer>
 
 <!-- Bootstrap core JS-->
@@ -130,9 +102,9 @@
 <!-- SimpleLightbox plugin JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 <!-- Core theme JS-->
-<script src="js/scripts.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
+<script src="js/scripts.js"></script>
 
 </body>
 </html>

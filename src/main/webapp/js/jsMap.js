@@ -29,51 +29,61 @@ function initMap() {
     const marker1 = new google.maps.Marker({
         position: park1,
         map: map,
+        title: "Parcheggio Duomo"
     });
 
     const marker2 = new google.maps.Marker({
         position: park2,
         map: map,
+        title: "Parcheggio Centro Direzionale"
     });
 
     const marker3 = new google.maps.Marker({
         position: park3,
         map: map,
+        title: "Parcheggio Municipio"
     });
 
     const marker4 = new google.maps.Marker({
         position: park4,
         map: map,
+        title: "Parcheggio Toledo"
     });
 
     const marker5 = new google.maps.Marker({
         position: park5,
         map: map,
+        title: "Parcheggio Vomero"
     });
 
     const marker6 = new google.maps.Marker({
         position: park6,
         map: map,
+        title: "Parcheggio Medina"
     });
 
 
     //Per la descrizione del Marker (ogni parcheggio)
     const infowindow1 = new google.maps.InfoWindow({
-        content: "Parcheggio di Via Toledo",
+        content: "Via Medina, 27\n" +
+            "80142 Napoli NA\n" +
+            "Italia",
     });
 
     marker1.addListener("click", () => {
         infowindow1.open(map, marker1);
     });
 
-    //Prova secondo parcheggio
+    //Prova secodno parcheggio
     const infowindow2 = new google.maps.InfoWindow({
-        content: "Via dei Tribunali",
+        content: "Via dei tribunali, 27\n" +
+            "80142 Napoli NA\n",
     });
 
     marker2.addListener("click", () => {
         infowindow2.open(map, marker2);
     });
+
 
 }
 

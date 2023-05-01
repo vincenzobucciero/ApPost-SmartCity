@@ -7,60 +7,38 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-/**
- * La classe ModifyServlet implementa la funzionalità di modifica di un parcheggio attraverso
- * l'utilizzo dei metodi di ModifyDao. Viene richiamata mediante una richiesta HTTP POST e riceve come
- * parametri del body le informazioni relative alla modifica del parcheggio.
- * In caso di successo nella modifica delle informazioni,
- * l'utente viene reindirizzato alla pagina confermaModificaP.jsp .
- * Se la sessione non è valida, l'utente viene reindirizzato alla pagina di login.
- */
 @WebServlet(name = "ModifyServlet", value = "/ModifyServlet")
 public class ModifyServlet extends HttpServlet {
-
-    /**
-     * Questo metodo viene richiamato quando viene effettuata una richiesta HTTP GET.
-     * Non viene utilizzato in questa implementazione.
-     * @param request L'oggetto HttpServletRequest che contiene la richiesta HTTP del client.
-     * @param response L'oggetto HttpServletResponse che contiene la risposta HTTP al client.
-     * @throws ServletException Se si verifica un errore nella servlet.
-     * @throws IOException Se si verifica un errore di input o output.
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
-    /**
-     * Questo metodo viene richiamato quando viene effettuata una richiesta HTTP POST.
-     * Riceve come parametri del body le informazioni relative alla modifica del parcheggio e utilizza i metodi di ModifyDao
-     * per modificare le informazioni del parcheggio.
-     * In caso di successo, l'utente viene reindirizzato alla pagina confermaModificaP.jsp .
-     * Se la sessione non è valida, l'utente viene reindirizzato alla pagina di login.
-     *
-     * @param request L'oggetto HttpServletRequest che contiene la richiesta HTTP del client.
-     * @param response L'oggetto HttpServletResponse che contiene la risposta HTTP al client.
-     * @throws ServletException Se si verifica un errore nella servlet.
-     * @throws IOException Se si verifica un errore d'input o output.
-     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/html");
 
         HttpSession session = request.getSession(false);
-
         if ( session == null ) {
             session.setAttribute("isLog",0);
             request.getRequestDispatcher("login.jsp").forward(request,response);
-        } else {
+        }
+        else {
 
             String nome = request.getParameter("nomeparking");
+            System.out.println("Nome:" + nome);
             String indirizzo = request.getParameter("indirizzo");
+            System.out.println("Ind:" + indirizzo);
             String tariffaAF = request.getParameter("tariffaAF");
+            System.out.println("tA:" + tariffaAF);
             String tariffaM = request.getParameter("tariffaM");
+            System.out.println("TM:" + tariffaM);
             String postiAuto = request.getParameter("postiAuto");
+            System.out.println("PA:" + postiAuto);
             String postiFurgone = request.getParameter("postiFurgone");
+            System.out.println("PF:" + postiFurgone);
             String postiMoto = request.getParameter("postiMoto");
+            System.out.println("PM:" + postiMoto);
 
             ModifyDao.modifyIndirizzo(nome, indirizzo);
             ModifyDao.modifyTariffaAF(nome, Double.parseDouble(tariffaAF));
@@ -68,7 +46,6 @@ public class ModifyServlet extends HttpServlet {
             ModifyDao.modifyPostiAuto(nome, Integer.parseInt(postiAuto));
             ModifyDao.modifyPostiFurgone(nome, Integer.parseInt(postiFurgone));
             ModifyDao.modifyPostiMoto(nome, Integer.parseInt(postiMoto));
-
 
             request.getRequestDispatcher("confermaModificaP.jsp").forward(request, response);
         }

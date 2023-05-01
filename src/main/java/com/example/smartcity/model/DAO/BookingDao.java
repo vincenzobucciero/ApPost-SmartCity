@@ -1,8 +1,8 @@
 package com.example.smartcity.model.DAO;
 
 import com.example.smartcity.model.Bean.BookingBean;
+import com.example.smartcity.service.CommandPrezzo.VeicoliEnum;
 
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +25,7 @@ public class BookingDao {
             query.setString(3, bookingBean.getOrario_inizio());
             query.setString(4, bookingBean.getOrario_fine());
             query.setString(5, bookingBean.getTargaVeicolo());
-            query.setString(6, bookingBean.getTipoVeicolo());
+            query.setString(6, String.valueOf(bookingBean.getTipoVeicolo()));
             query.setString(7, bookingBean.getEmail());
             query.setDouble(8, bookingBean.getPrezzo());
             query.setString(9, bookingBean.getPagamento());
@@ -67,7 +67,7 @@ public class BookingDao {
                 bookingBean.setOrario_inizio(result.getString("orario_inizio"));
                 bookingBean.setOrario_fine(result.getString("orario_fine"));
                 bookingBean.setTargaVeicolo(result.getString("targaVeicolo"));
-                bookingBean.setTipoVeicolo(result.getString("tipoVeicolo"));
+                bookingBean.setTipoVeicolo(VeicoliEnum.valueOf(result.getString("tipoVeicolo")));
                 bookingBean.setEmail(result.getString("email"));
                 bookingBean.setPrezzo(result.getDouble("prezzo"));
                 bookingBean.setPagamento(result.getString("pagamento"));
@@ -93,50 +93,6 @@ public class BookingDao {
         }
 
         return list;
-    }
-
-
-
-    //ritorna una specifica prenotazione dato il suo ID
-    public static BookingBean getBookingBean(String id){
-        BookingBean bookingBean = new BookingBean();
-        PreparedStatement stmt = null;
-        ResultSet result = null;
-        try {
-            stmt = DatabaseConnection.getInstance().getConnection().prepareStatement("SELECT * " +
-                    "FROM Prenotazione " +
-                    "WHERE Id_prenotazione = (?) ");
-            stmt.setString(1, id);
-            result = stmt.executeQuery();
-            if (result.next()) {
-                bookingBean.setID_prenotazione(result.getString("Id_prenotazione"));
-                bookingBean.setData_prenotazione(result.getString("data_prenotazione"));
-                bookingBean.setOrario_inizio(result.getString("orario_inizio"));
-                bookingBean.setOrario_fine(result.getString("orario_fine"));
-                bookingBean.setTargaVeicolo(result.getString("targaVeicolo"));
-                bookingBean.setTipoVeicolo(result.getString("tipoVeicolo"));
-                bookingBean.setEmail(result.getString("email"));
-                bookingBean.setPrezzo(result.getDouble("prezzo"));
-                bookingBean.setPagamento(result.getString("pagamento"));
-                bookingBean.setNomeParcheggio(result.getString("nomeParcheggio"));
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try{
-                if (stmt!=null)
-                    stmt.close();
-
-                if ( result != null ) {
-                    result.close();
-                }
-            }
-            catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return bookingBean;
     }
 
 
@@ -187,7 +143,10 @@ public class BookingDao {
             if(minuti > 0){
                 tot = price*ore + price;
             }
-            else {
+            else if (ore > 5){
+                tot = 20.00;
+            }
+            else{
                 tot = price*ore;
             }
 
@@ -198,5 +157,49 @@ public class BookingDao {
 
 
         return tot;
+    }
+
+
+    public static List<BookingBean> getListBooking(){
+        PreparedStatement stmt = null;
+        ResultSet result = null;
+        List<BookingBean> list = new ArrayList<BookingBean>();
+        try {
+            stmt = DatabaseConnection.getInstance().getConnection().prepareStatement("SELECT * FROM Prenotazione ");
+            result = stmt.executeQuery();
+            list = new ArrayList<>();
+            while (result.next()) {
+                BookingBean bookingBean = new BookingBean();
+                bookingBean.setID_prenotazione(result.getString(1));
+                bookingBean.setData_prenotazione(result.getString(2));
+                bookingBean.setOrario_inizio(result.getString(3));
+                bookingBean.setOrario_fine(result.getString(4));
+                bookingBean.setEmail(result.getString(5));
+                bookingBean.setTargaVeicolo(result.getString(6));
+                bookingBean.setTipoVeicolo(VeicoliEnum.valueOf(result.getString(7)));
+                bookingBean.setPrezzo(result.getDouble(8));
+                bookingBean.setPagamento(result.getString(9));
+                bookingBean.setNomeParcheggio(result.getString(10));
+
+                list.add(bookingBean);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try{
+                if (stmt!=null)
+                    stmt.close();
+
+                if ( result != null ) {
+                    result.close();
+                }
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return list;
     }
 }

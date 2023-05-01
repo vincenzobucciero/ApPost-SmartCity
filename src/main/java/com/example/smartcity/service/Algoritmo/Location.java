@@ -4,40 +4,20 @@ import com.example.smartcity.model.Bean.ParkingBean;
 import com.example.smartcity.model.DAO.ParkingDao;
 
 import java.util.*;
-
-/**
- * Classe Location
- * Utilizzata per istanziare oggetti all'interno della griglia come gli
- * oggetti Blocco attraverso i quali il percorso non può passare, gli oggetti
- * Parcheggio che sarebbero i nodi dove si trovano i parcheggi e le due liste start ed end
- * che contengono rispettivamente i nodi di partenza e di destinazione.
- */
 public class Location {
 
-    //lista dei nodi contenenti le partenze
-    private List<Nodo> start = new ArrayList<>();
-
-    //lista dei nodi contenenti le destinazioni
-    private List<Nodo> end = new ArrayList<>();
+    private List<Nodo> start = new ArrayList<>();   //lista dei nodi contenenti le partenze
+    private List<Nodo> end = new ArrayList<>();     //lista dei nodi contenenti le destinazioni
 
     private List<Nodo> nodopark = new ArrayList<>();
 
 
-    /**
-     * Metodo costruttore che setta i nodi di partenza e i nodi di destinazione
-     * all'interno della griglia di nodi
-     */
     public Location(){
         setStart();
         setEnd();
     }
 
-
-    /**
-     * Metodo che inizializza i nodi di partenza
-     */
     void setStart(){
-
         Nodo nodo1 = new Nodo(2,1);
         nodo1.setIndirizzo("San Giorgio");
 
@@ -47,16 +27,19 @@ public class Location {
         Nodo nodo3 = new Nodo(0,1);
         nodo3.setIndirizzo("Pomigliano");
 
-        //Aggiungo i nodi sopra definiti nella lista start
+        Nodo nodo4 = new Nodo(3,1);
+        nodo4.setIndirizzo("Centro Direzionale");
+
+        Nodo nodo5 = new Nodo(6,3);
+        nodo5.setIndirizzo("Volla");
+
         this.start.add(nodo1);
         this.start.add(nodo2);
         this.start.add(nodo3);
+        this.start.add(nodo4);
+        this.start.add(nodo5);
     }
 
-
-    /**
-     * Metodo che inizializza i nodi di partenza
-     */
     public void setEnd() {
         Nodo nodo1 = new Nodo(2,5);
         nodo1.setIndirizzo("Napoli");
@@ -67,20 +50,20 @@ public class Location {
         Nodo nodo3 = new Nodo(5,5);
         nodo3.setIndirizzo("Casoria");
 
-        //Aggiungo i nodi sopra definiti nella lista end
+        Nodo nodo4 = new Nodo(6,7);
+        nodo4.setIndirizzo("Vomero");
+
+        Nodo nodo5 = new Nodo(6,7);
+        nodo5.setIndirizzo("Centro Storico");
+
         this.end.add(nodo1);
         this.end.add(nodo2);
         this.end.add(nodo3);
+        this.end.add(nodo4);
+        this.end.add(nodo5);
     }
 
-
-    /**
-     * Metodo che scorre la lista dei nodi appartenenti alla lista dei nodi start
-     * e cerca quello contenente l'indirizzo dato in ingresso e lo restituisce
-     *
-     * @param indirizzo indirizzo del nodo
-     * @return la posizione del nodo start
-     */
+    //scorre la lista dei nodi partenze cerca quello contenente l'indirizzo dato in input e lo ritorna
     public Nodo chooseStart(String indirizzo){
 
         for (Nodo position : this.start) {
@@ -92,14 +75,7 @@ public class Location {
     }
 
 
-    /**
-     * Metodo che scorre la lista dei nodi appartenenti alla lista dei nodi end
-     * e cerca quello contenente l'indirizzo dato in ingresso e lo restituisce
-     *
-     * @param indirizzo indirizzo del nodo
-     * @return la posizione del nodo start
-     */
-
+    //scorre la lista dei nodi destinazione cerca quello contenente l'indirizzo dato in input e lo ritorna
     public Nodo chooseEnd(String indirizzo){
 
         for (Nodo position : this.end) {
@@ -110,35 +86,39 @@ public class Location {
         return null;
     }
 
-
-    /**
-     * Metodo che setta i nodi in cui si trovano i parcheggi con le rispettive coordinate.
-     * In questo modo si può tenere sempre traccia dei parcheggi nei nodi
-     * e li inserisco in un array 2D usando lo stesso criterio dei blocchi
-     *
-     * @return matrice bidimensionale di parcheggi
+    /*
+        Setto i nodi in cui si trovano i parcheggi con le rispettive coordinate
+        questi nodi li inserisco in una lista di "nodi parcheggio "che mi servirà
+        in questa classe per tener sempre traccia dei parcheggi nei nodi
+        e li inserisco in un array 2D usando lo stesso criterio dei blocchi
      */
     public int[][] setParking(){
 
-        //setto i parcheggi
         Nodo park1 = new Nodo(0,2);
         Nodo park2 = new Nodo(0,3);
         Nodo park3 = new Nodo(1,4);
+        Nodo park4 = new Nodo(3, 2);
+        Nodo park5 = new Nodo(4, 4);
+        Nodo park6 = new Nodo(6, 5); //p
 
-        //Aggiungo parcheggi a una lista di nodi parcheggio
         nodopark.add(park1);
         nodopark.add(park2);
         nodopark.add(park3);
+        nodopark.add(park4);
+        nodopark.add(park5);
+        nodopark.add(park6);
 
-        //Matrice bidimensionale
-        int[][] blocksParking = new int[][]{{park1.getRow(), park1.getCol()},
+        int[][] blocksParking = new int[][]{
+                {park1.getRow(), park1.getCol()},
                 {park2.getRow(), park2.getCol()},
-                {park3.getRow(),park3.getCol()}};
+                {park3.getRow(), park3.getCol()},
+                {park4.getRow(), park4.getCol()},
+                {park5.getRow(), park5.getCol()},
+                {park6.getRow(), park6.getCol()}
+        };
 
-        //Metodo che uso per associare a ogni nodo gli indirizzi dei parcheggi presenti nel database
-        this.setParkIndirizzo();
-
-
+        this.setParkIndirizzo();        //è un metodo che uso per associare ad ogni nodo gli indirizzi
+        // dei parcheggi presenti nel database
         return blocksParking;
     }
 
@@ -148,17 +128,12 @@ public class Location {
         per ogni nodo salvato nella lista dei "nodi parcheggio" associo quindi un indirizzo salvbato precedentemente
         nell'array
     */
-
-    /**
-     * Metodo che ricava i parcheggi presenti nel database e li salva in un vettore di stringhe.
-     */
-    public void setParkIndirizzo(){
-
+    public void setParkIndirizzo(){    //dovrebbe essere privato
         int i = 0;
         int j = 0;
 
         List<ParkingBean> parkingBeanList = ParkingDao.getListParking();
-        String[] IndirizziP = new String[parkingBeanList.size() + 1];
+        String IndirizziP[] = new String[parkingBeanList.size() + 1];
 
         for (ParkingBean parkingBean: parkingBeanList) {
             IndirizziP[i] = parkingBean.getIndirizzo();
@@ -172,19 +147,11 @@ public class Location {
     }
 
 
-    /**
-     * Metodo che ritorna i parcheggi associati al nodo trovato
-     *
-     * @param nodo nodo di tipo Nodo che è stato trovato
-     * @return parcheggi associati al nodo appena trovato
-     */
     public ParkingBean getNodoParkIndirizzo(Nodo nodo){
 
         //per ogni nodo appartenente alla lista dei nodi parcheggi che ho istanziato controllo se è un nodo del percorso trovato
         for (Nodo nodop:nodopark) {
-
             if(nodo.equals(nodop)) {
-
                 //se la condizione è vera allora cerco i parcheggi associati a quel nodo
                 return getParcheggiDisp(nodop);
             }
@@ -192,11 +159,6 @@ public class Location {
         return null;
     }
 
-    /**
-     *
-     * @param nodoP
-     * @return
-     */
     protected ParkingBean getParcheggiDisp(Nodo nodoP){
         List<ParkingBean> parkingBeanList = ParkingDao.getListParking();
 
@@ -211,22 +173,11 @@ public class Location {
         return null;
     }
 
-    /**
-     * Metodo che restituisce lista dei nodi di partenza
-     * @return lista dei nodi di partenza
-     */
+
     public List<Nodo> getStart(){ return start;}
 
-    /**
-     * Metodo che restituisce lista dei nodi di destinazione
-     * @return lista dei nodi di destinazione
-     */
     public List<Nodo> getEnd(){return end;}
 
-    /**
-     * Metodo che restituisce lista dei nodi parcheggio
-     * @return lista dei nodi parcheggio
-     */
     public List<Nodo> getNodopark(){
         return nodopark;
     }

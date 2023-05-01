@@ -32,13 +32,10 @@ public class LogoutServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         if ( session != null ) {
-
-            //invalido la sessione rendendo nulli tutti gli attributi presenti nella sessione
-            session.invalidate();
+            session.invalidate(); // invalido la sessione rendendo nulli tutti gli attributi presenti nella sessione
         }
 
         request.getRequestDispatcher("index.jsp").forward(request,response);
-
     }
 
     /**

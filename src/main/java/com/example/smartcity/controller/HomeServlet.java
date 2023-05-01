@@ -27,20 +27,23 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 
         HttpSession session = request.getSession(false);
-
         int isLog = 0;
-
-        if (session == null) {
-             session = request.getSession();
-             session.setAttribute("isLog", 0);
+        if (session == null){
+            session = request.getSession();
+            session.setAttribute("isLog",0);
         } else {
-             isLog = (int) session.getAttribute("isLog");
+            isLog = (int) session.getAttribute("isLog");
         }
-
+        request.setAttribute("loggato",isLog);
         response.setContentType("text/html");
-        request.setAttribute("loggato", isLog);
         request.setAttribute("users", "LogIn");
-        request.getRequestDispatcher("userHomePage.jsp").forward(request, response);
+
+        if (isLog == 1){
+            request.getRequestDispatcher("userHomePage.jsp").forward(request,response);
+        }
+        else {
+            request.getRequestDispatcher("adminHomePage.jsp").forward(request, response);
+        }
     }
 
 

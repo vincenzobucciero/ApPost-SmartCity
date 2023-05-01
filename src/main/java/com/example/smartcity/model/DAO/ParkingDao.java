@@ -1,5 +1,6 @@
 package com.example.smartcity.model.DAO;
 import com.example.smartcity.model.Bean.ParkingBean;
+import com.example.smartcity.service.CommandPrezzo.VeicoliEnum;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -86,7 +87,7 @@ public class ParkingDao {
         return parkingBean;
     }
 
-    public static double getStatisticheAccessi(String nome, String tipoVeicolo, String mese, String settimana) {
+    public static double getStatisticheAccessi(String nome, VeicoliEnum tipoVeicolo, int mese, int settimana) {
         double countStat = 0;
         PreparedStatement stmt = null;
         ResultSet result = null;
@@ -99,10 +100,10 @@ public class ParkingDao {
                     "      MONTH(data_prenotazione) = (?) and " +
                     "      WEEK(data_prenotazione) - WEEK(DATE_FORMAT(data_prenotazione,'%Y-%m-01')) + 1 = (?)" +
                     "GROUP BY tipoVeicolo");
-            stmt.setString(1, tipoVeicolo);
+            stmt.setString(1, String.valueOf(tipoVeicolo));
             stmt.setString(2, nome);
-            stmt.setString(3, mese);
-            stmt.setString(4, settimana);
+            stmt.setInt(3, mese);
+            stmt.setInt(4, settimana);
             result = stmt.executeQuery();
             if (result.next()) {
                 countStat = result.getDouble("numeroPrenotati");
@@ -128,7 +129,7 @@ public class ParkingDao {
     }
 
 
-    public static double getStatisticheOre(String nome, String tipoVeicolo, String mese, String settimana) {
+    public static double getStatisticheOre(String nome, VeicoliEnum tipoVeicolo, int mese, int settimana) {
         double countStat = 0;
         PreparedStatement stmt = null;
         ResultSet result = null;
@@ -140,10 +141,10 @@ public class ParkingDao {
                     "      YEAR(data_prenotazione) = YEAR(CURDATE()) and " +
                     "      MONTH(data_prenotazione) = (?) and " +
                     "      WEEK(data_prenotazione) - WEEK(DATE_FORMAT(data_prenotazione,'%Y-%m-01')) + 1 = (?)");
-            stmt.setString(1, tipoVeicolo);
+            stmt.setString(1, String.valueOf(tipoVeicolo));
             stmt.setString(2, nome);
-            stmt.setString(3, mese);
-            stmt.setString(4, settimana);
+            stmt.setInt(3, mese);
+            stmt.setInt(4, settimana);
             result = stmt.executeQuery();
             if (result.next()) {
                 countStat = result.getDouble("orePark");
