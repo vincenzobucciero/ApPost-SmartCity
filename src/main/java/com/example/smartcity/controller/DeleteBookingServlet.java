@@ -25,6 +25,7 @@ public class DeleteBookingServlet extends HttpServlet {
 
     /**
      * Metodo che gestisce le richieste HTTP GET.
+     *
      * @param request l'oggetto HttpServletRequest che contiene la richiesta HTTP
      * @param response l'oggetto HttpServletResponse che contiene la risposta HTTP
      * @throws ServletException se si verifica un errore nella gestione della richiesta
@@ -39,6 +40,7 @@ public class DeleteBookingServlet extends HttpServlet {
     /**
      * Metodo che gestisce le richieste HTTP POST. Questo metodo si occupa di cancellare la
      * prenotazione e visualizzare una pagina di conferma cancellazione prenotazione.
+     *
      * @param request l'oggetto HttpServletRequest che contiene la richiesta HTTP
      * @param response l'oggetto HttpServletResponse che contiene la risposta HTTP
      * @throws ServletException se si verifica un errore nella gestione della richiesta
@@ -60,7 +62,10 @@ public class DeleteBookingServlet extends HttpServlet {
             BookingDao.deleteBooking(idPrenotazione);
 
             String email = request.getParameter("email");
+            //UserBean userBean = LogService.getUserBean(email);
 
+            // Passiamo l'email visualizzare le prenotazioni
+            //request.setAttribute("email", userBean.getEmail());
             request.getRequestDispatcher( "cancelPage.jsp" ).forward(request, response);
 
         }

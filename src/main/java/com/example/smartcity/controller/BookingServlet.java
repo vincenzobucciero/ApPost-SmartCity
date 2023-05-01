@@ -4,12 +4,9 @@ import com.example.smartcity.model.Bean.BookingBean;
 import com.example.smartcity.model.Bean.ParkingBean;
 import com.example.smartcity.model.DAO.BookingDao;
 import com.example.smartcity.model.DAO.ParkingDao;
-import com.example.smartcity.service.CommandPrezzo.Invoker;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-
-import com.example.smartcity.service.CommandPrezzo.VeicoliEnum;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
@@ -42,6 +39,7 @@ public class BookingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        response.setContentType("text/html");
         response.setContentType("text/html");
 
         String email = request.getParameter("email");
@@ -100,44 +98,44 @@ public class BookingServlet extends HttpServlet {
             bookingBean.setOrario_inizio( orarioInizio );
             bookingBean.setOrario_fine( orarioFine );
             bookingBean.setTargaVeicolo( targaVeicolo );
-            bookingBean.setTipoVeicolo(VeicoliEnum.valueOf(tipoVeicolo));
+            bookingBean.setTipoVeicolo( tipoVeicolo );
             bookingBean.setEmail( email );
             bookingBean.setPagamento( metodoP );
             bookingBean.setNomeParcheggio( nomeParcheggio );
 
-            Invoker invoker = new Invoker();
+            double prezzo = 0;
 
-            switch (metodoP){
-                case "Carta di Credito/PayPal":
-                    if(invoker.getPosti(bookingBean.getTipoVeicolo(), parkingBean, bookingBean) > 0)
-                    {
-                        double price = invoker.getTot(bookingBean.getTipoVeicolo(), parkingBean, bookingBean);
-                        bookingBean.setPrezzo(price);
-
-                        session.setAttribute("bookingBean", bookingBean);
-                        request.getRequestDispatcher("pagamento.jsp").forward(request, response);
-                    }
-                    else
-                        request.getRequestDispatcher("errorPage.jsp").forward(request, response);
+            switch (tipoVeicolo){
+                case "Auto":
+                case "Furgone":
+                    prezzo = BookingDao.getTotPrice(parkingBean.getTariffaAF(), bookingBean);
+                    bookingBean.setPrezzo(parkingBean.getTariffaAF());
                     break;
-                case "Al parcheggio":
-                    if(invoker.getPosti(bookingBean.getTipoVeicolo(), parkingBean, bookingBean) > 0)
-                    {
-                        double price = invoker.getTot(bookingBean.getTipoVeicolo(), parkingBean, bookingBean);
-                        bookingBean.setPrezzo(price);
-                        BookingDao.addBooking(bookingBean);
-
-                        session.setAttribute("bookingBean", bookingBean);
-                        session.setAttribute("email", bookingBean.getEmail());
-                        request.getRequestDispatcher("thankYouPage.jsp").forward(request, response);
-                    }
-                    else
-                        request.getRequestDispatcher("errorPage.jsp").forward(request, response);
+                case "Moto":
+                    prezzo = BookingDao.getTotPrice(parkingBean.getTariffaAF(), bookingBean);
+                    bookingBean.setPrezzo(parkingBean.getTariffaM());
                     break;
                 default:
                     break;
             }
 
+
+            System.out.println("pagamento: " + metodoP);
+            switch (metodoP){
+                case "Carta di Credito/PayPal":
+                    session.setAttribute("bookingBean", bookingBean);
+                    request.getRequestDispatcher("pagamento.jsp").forward(request, response);
+                    break;
+                case "Al parcheggio":
+                    BookingDao.addBooking(bookingBean);
+                    session.setAttribute("bookingBean", bookingBean);
+                    session.setAttribute("email", bookingBean.getEmail());
+
+                    request.getRequestDispatcher("thankYouPage.jsp").forward(request, response);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

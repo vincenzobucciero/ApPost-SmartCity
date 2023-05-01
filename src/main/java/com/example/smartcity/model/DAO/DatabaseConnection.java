@@ -10,8 +10,8 @@ public class DatabaseConnection {
     private DatabaseConnection() throws SQLException {
         try {
             Class.forName( "com.mysql.cj.jdbc.Driver" );
-            String url = "jdbc:mysql://localhost:3306/smartcity";
-            this.connection = DriverManager.getConnection( url, "vincenzo", "vincenzo" );
+            String url = "jdbc:mysql://localhost:3306/smartCity";
+            this.connection = DriverManager.getConnection( url, "vincenzo", "vincenzo");
         } catch ( ClassNotFoundException ex ) {
             System.out.println( "Database Connection Creation Failed : " + ex.getMessage() );
         }

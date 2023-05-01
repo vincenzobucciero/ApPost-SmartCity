@@ -13,7 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ChartsServlet", value = "/ChartsServlet")
+<<<<<<< HEAD
 public class ChartsServlet extends HttpServlet  {
+=======
+public class ChartsServlet extends HttpServlet {
+>>>>>>> origin/master
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

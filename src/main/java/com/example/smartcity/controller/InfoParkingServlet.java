@@ -66,8 +66,6 @@ public class InfoParkingServlet extends HttpServlet {
 
             parkingBean.setNomeParcheggio(nomeParcheggio);
 
-            System.out.println("indirizzo " + parkingBean.getIndirizzo());
-
             request.setAttribute("parkingBean", parkingBean);
             request.getRequestDispatcher("modify.jsp").forward(request, response);
 

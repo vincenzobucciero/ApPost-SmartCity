@@ -11,7 +11,7 @@ import java.util.List;
 
 
 /**
- * La classe AdminServlet è una servlet che gestisce la pagina di amministrazione dell'applicazione.
+ * La classe AdminServlet è una servlet che gestisce la pagina di amministrazione del sito SmartCity.
  * Viene utilizzata per aggiornare la lista dei parcheggi nel sistema.
  */
 
@@ -21,6 +21,7 @@ public class AdminServlet extends HttpServlet {
     /**
      * Questo metodo viene chiamato quando le informazioni personali
      * dell'utente vengono aggiornate tramite una richiesta GET.
+
      * @param request l'oggetto HttpServletRequest che contiene la richiesta effettuata dal client alla servlet
      * @param response l'oggetto HttpServletResponse che contiene la risposta inviata dalla servlet al client
      * @throws ServletException se la richiesta non può essere gestita
@@ -34,8 +35,7 @@ public class AdminServlet extends HttpServlet {
 
     /**
      * Metodo POST per l'aggiornamento della lista dei parcheggi
-     * Controlla se la sessione è valida e, in caso contrario, reindirizza alla pagina di login.
-     * In caso contrario, ottiene la lista dei parcheggi dal database e la passa alla pagina home dell'amministratore.
+     *
      * @param request l'oggetto HttpServletRequest che contiene la richiesta effettuata dal client alla servlet
      * @param response l'oggetto HttpServletResponse che contiene la risposta inviata dalla servlet al client
      * @throws ServletException se si verifica una eccezione di servlet
