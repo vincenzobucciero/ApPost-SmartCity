@@ -25,7 +25,6 @@ public class PathServlet extends HttpServlet {
 
     /**
      * Gestisce una richiesta GET
-     *
      * @param request l'oggetto HttpServletRequest che contiene la richiesta HTTP
      * @param response l'oggetto HttpServletResponse che contiene la risposta HTTP
      * @throws ServletException se si verifica un'eccezione di servlet
@@ -38,7 +37,6 @@ public class PathServlet extends HttpServlet {
 
     /**
      * Gestisce una richiesta POST, individua i parcheggi disponibili e li passa alla pagina prenotaParcheggio.jsp.
-     *
      * @param request l'oggetto HttpServletRequest che contiene la richiesta HTTP
      * @param response l'oggetto HttpServletResponse che contiene la risposta HTTP
      * @throws ServletException se si verifica un'eccezione di servlet

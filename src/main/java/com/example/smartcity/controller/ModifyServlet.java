@@ -7,13 +7,35 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+/**
+ * La servlet "ModifyServlet" è responsabile per la modifica dei dati di un parcheggio.
+ * Quando l'utente compila e invia il form di modifica del parcheggio, i dati vengono inviati al server attraverso
+ * una richiesta HTTP POST. La servlet riceve la richiesta POST e recupera i dati del
+ * parcheggio che sono stati inseriti dal form.
+ */
 @WebServlet(name = "ModifyServlet", value = "/ModifyServlet")
 public class ModifyServlet extends HttpServlet {
+
+    /**
+     * Metodo che gestisce una richiesta HTTP GET alla servlet.
+     * @param request l'oggetto HttpServletRequest che contiene le informazioni della richiesta HTTP
+     * @param response l'oggetto HttpServletResponse che contiene le informazioni per la risposta HTTP
+     * @throws ServletException in caso di eccezione durante l'esecuzione della servlet
+     * @throws IOException in caso di eccezione durante la gestione della richiesta HTTP
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
+
+    /**
+     * Metodo che gestisce una richiesta HTTP POST alla servlet.
+     * @param request l'oggetto HttpServletRequest che contiene le informazioni della richiesta HTTP
+     * @param response l'oggetto HttpServletResponse che contiene le informazioni per la risposta HTTP
+     * @throws ServletException in caso di eccezione durante l'esecuzione della servlet
+     * @throws IOException in caso di eccezione durante la gestione della richiesta HTTP
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/html");

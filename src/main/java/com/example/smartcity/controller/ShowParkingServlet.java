@@ -9,13 +9,34 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Questa classe rappresenta una servlet che viene utilizzata per visualizzare
+ * la lista dei parcheggi disponibili.
+ */
+
 @WebServlet(name = "ShowParkingServlet", value = "/ShowParkingServlet")
 public class ShowParkingServlet extends HttpServlet {
+
+    /**
+     * Questo metodo gestisce le richieste HTTP di tipo GET.
+     * @param request HttpServletRequest contenente i parametri della richiesta HTTP.
+     * @param response HttpServletResponse utilizzata per inviare la risposta HTTP.
+     * @throws ServletException se si verifica un errore durante l'esecuzione della servlet.
+     * @throws IOException se si verifica un errore d'I/O durante l'esecuzione della servlet.
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
+
+    /**
+     * Questo metodo gestisce le richieste HTTP di tipo POST.
+     * @param request HttpServletRequest contenente i parametri della richiesta HTTP.
+     * @param response HttpServletResponse utilizzata per inviare la risposta HTTP.
+     * @throws ServletException se si verifica un errore durante l'esecuzione della servlet.
+     * @throws IOException se si verifica un errore d'I/O durante l'esecuzione della servlet.
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");

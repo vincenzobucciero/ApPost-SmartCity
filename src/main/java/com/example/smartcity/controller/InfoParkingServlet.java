@@ -17,7 +17,6 @@ import java.io.IOException;
  * L'oggetto ParkingBean viene quindi passato come attributo alla richiesta per la successiva
  * visualizzazione delle informazioni di modifica del parcheggio.
  */
-
 @WebServlet(name = "InfoParkingServlet", value = "/InfoParkingServlet")
 public class InfoParkingServlet extends HttpServlet {
 
@@ -25,7 +24,6 @@ public class InfoParkingServlet extends HttpServlet {
      * Gestisce la richiesta GET d'informazioni relative a un parcheggio.
      * Questo metodo viene utilizzato solo per ottenere informazioni sulla servlet stessa,
      * ma in questo caso non viene utilizzato per eseguire nessuna azione.
-     *
      * @param request l'oggetto HttpServletRequest che contiene la richiesta del client
      * @param response l'oggetto HttpServletResponse che contiene la risposta del server
      * @throws ServletException se si verifica un errore di servlet
@@ -43,7 +41,6 @@ public class InfoParkingServlet extends HttpServlet {
      * verifica la sessione dell'utente e recupera l'oggetto ParkingBean corrispondente al parcheggio richiesto
      * tramite il servizio ParkingService. Infine, l'oggetto ParkingBean viene passato
      * come attributo alla richiesta per la visualizzazione delle informazioni di modifica del parcheggio.
-     *
      * @param request l'oggetto HttpServletRequest che contiene la richiesta del client
      * @param response l'oggetto HttpServletResponse che contiene la risposta del server
      * @throws ServletException se si verifica un errore di servlet

@@ -1,8 +1,5 @@
 package com.example.smartcity.controller;
 
-import com.example.smartcity.model.Bean.BookingBean;
-import com.example.smartcity.model.Bean.UserBean;
-
 import com.example.smartcity.model.DAO.BookingDao;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -12,13 +9,12 @@ import java.io.IOException;
 
 
 /**
- * Questa classe rappresenta una servlet che gestisce la cancellazione di una prenotazione.
+ * La seguente classe rappresenta una servlet che gestisce la cancellazione di una prenotazione.
  * La classe si occupa di ricevere richieste HTTP POST e, dopo aver effettuato alcuni controlli sulla sessione,
  * recupera l'ID della prenotazione da cancellare tramite il parametro "id" presente nella richiesta HTTP.
- * Successivamente, la classe chiama il metodo "deleteBooking" della classe BookingService, che cancella la prenotazione
- * dal database.
- * Infine, la servlet recupera l'email dell'utente che ha effettuato la richiesta e visualizza una pagina di conferma
- * cancellazione prenotazione.
+ * Successivamente, la classe chiama il metodo "deleteBooking" della classe BookingService,
+ * che cancella la prenotazione dal database. Infine, la servlet recupera l'email dell'utente che ha effettuato
+ * la richiesta e visualizza una pagina di conferma cancellazione prenotazione.
  */
 @WebServlet(name = "DeleteBookingServlet", value = "/DeleteBookingServlet")
 public class DeleteBookingServlet extends HttpServlet {
@@ -29,7 +25,7 @@ public class DeleteBookingServlet extends HttpServlet {
      * @param request l'oggetto HttpServletRequest che contiene la richiesta HTTP
      * @param response l'oggetto HttpServletResponse che contiene la risposta HTTP
      * @throws ServletException se si verifica un errore nella gestione della richiesta
-     * @throws IOException se si verifica un errore di input/output
+     * @throws IOException se si verifica un errore d'input/output
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,28 +40,31 @@ public class DeleteBookingServlet extends HttpServlet {
      * @param request l'oggetto HttpServletRequest che contiene la richiesta HTTP
      * @param response l'oggetto HttpServletResponse che contiene la risposta HTTP
      * @throws ServletException se si verifica un errore nella gestione della richiesta
-     * @throws IOException se si verifica un errore di input/output
+     * @throws IOException se si verifica un errore d'input/output
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession( false );
 
+        // Verifica se la sessione esiste
         if ( session == null ) {
+            // Imposta il parametro "isLog" a 0
             session.setAttribute( "isLog",0 );
+            // Reindirizza l'utente alla pagina di login
             request.getRequestDispatcher( "login.jsp" ).forward(request,response);
         } else {
-
+            // Recupera l'ID della prenotazione da cancellare tramite il parametro "id" presente nella richiesta HTTP
             String idPrenotazione = request.getParameter( "id" );
             System.out.println( "Cancella: " + idPrenotazione );
 
+            // Chiama il metodo "deleteBooking" della classe BookingService per cancellare la prenotazione dal database
             BookingDao.deleteBooking(idPrenotazione);
 
+            // Recupera l'email dell'utente che ha effettuato la richiesta
             String email = request.getParameter("email");
-            //UserBean userBean = LogService.getUserBean(email);
 
-            // Passiamo l'email visualizzare le prenotazioni
-            //request.setAttribute("email", userBean.getEmail());
+            // Visualizza una pagina di conferma cancellazione prenotazione
             request.getRequestDispatcher( "cancelPage.jsp" ).forward(request, response);
 
         }

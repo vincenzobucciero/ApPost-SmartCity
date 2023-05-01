@@ -12,12 +12,36 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+/**
+ * Questa servlet gestisce la transazione di pagamento con carta di credito.
+ * Riceve i dati della carta di credito dal form di pagamento, effettua il pagamento
+ * e in caso di esito positivo aggiunge la prenotazione al database.
+ */
 @WebServlet(name = "PayServlet", value = "/PayServlet")
 public class PayServlet extends HttpServlet {
+
+    /**
+     * Metodo chiamato quando la servlet viene richiamata tramite una richiesta GET.
+     * Non fa nulla e restituisce una risposta vuota.
+     * @param request la richiesta HTTP ricevuta
+     * @param response la risposta HTTP da inviare
+     * @throws ServletException se si verifica un errore durante la gestione della richiesta
+     * @throws IOException se si verifica un errore d'I/O durante la gestione della richiesta
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 
+    /**
+     * Metodo chiamato quando la servlet viene richiamata tramite una richiesta POST.
+     * Riceve i dati della carta di credito dal form di pagamento, effettua il pagamento
+     * e in caso di esito positivo aggiunge la prenotazione al database.
+     * @param request la richiesta HTTP ricevuta
+     * @param response la risposta HTTP da inviare
+     * @throws ServletException se si verifica un errore durante la gestione della richiesta
+     * @throws IOException se si verifica un errore d'I/O durante la gestione della richiesta
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
