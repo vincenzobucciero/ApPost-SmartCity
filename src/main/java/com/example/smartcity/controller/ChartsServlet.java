@@ -25,6 +25,7 @@ public class ChartsServlet extends HttpServlet  {
     /**
      * Gestisce le richieste HTTP GET in arrivo dal client.
      * Questo metodo non esegue alcuna operazione e semplicemente restituisce una pagina vuota.
+     *
      * @param request La richiesta HTTP in arrivo dal client.
      * @param response La risposta HTTP inviata al client.
      * @throws ServletException se si verifica un errore nella gestione della richiesta.
@@ -45,6 +46,8 @@ public class ChartsServlet extends HttpServlet  {
      * Vengono inoltre creati un ArrayList <Double> e un ciclo for per ottenere le statistiche di accesso ai parcheggi
      * in base ai parametri inseriti nella richiesta. I dati ottenuti vengono salvati nell'ArrayList e
      * inviati alla pagina statistiche.jsp tramite il metodo setAttribute() della request.
+     * Prima di qualsiasi operazione viene verificato se l'utente ha una sessione aperta.
+     *
      * @param request La richiesta HTTP in arrivo dal client.
      * @param response La risposta HTTP inviata al client.
      * @throws ServletException se si verifica un errore nella gestione della richiesta.

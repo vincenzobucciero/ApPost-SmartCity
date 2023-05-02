@@ -19,10 +19,12 @@ public class SearchServlet extends HttpServlet {
 
     /**
      * Metodo invocato quando viene effettuata una richiesta GET alla servlet.
+     * Prima di qualsiasi operazione viene verificato se l'utente ha una sessione aperta.
+     *
      * @param request l'oggetto HttpServletRequest che contiene le informazioni sulla richiesta HTTP
      * @param response l'oggetto HttpServletResponse che contiene le informazioni sulla risposta HTTP
      * @throws ServletException se si verifica un errore durante l'esecuzione della servlet
-     * @throws IOException se si verifica un errore di I/O durante l'esecuzione della servlet
+     * @throws IOException se si verifica un errore d'I/O durante l'esecuzione della servlet
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,10 +46,11 @@ public class SearchServlet extends HttpServlet {
     /**
      * Metodo invocato quando viene effettuata una richiesta POST alla servlet.
      * Non viene utilizzato in questa classe.
+     *
      * @param request l'oggetto HttpServletRequest che contiene le informazioni sulla richiesta HTTP
      * @param response l'oggetto HttpServletResponse che contiene le informazioni sulla risposta HTTP
      * @throws ServletException se si verifica un errore durante l'esecuzione della servlet
-     * @throws IOException se si verifica un errore di I/O durante l'esecuzione della servlet
+     * @throws IOException se si verifica un errore d'I/O durante l'esecuzione della servlet
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

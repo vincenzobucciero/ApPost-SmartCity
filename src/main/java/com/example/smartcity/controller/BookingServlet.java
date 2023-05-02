@@ -28,6 +28,8 @@ public class BookingServlet extends HttpServlet {
     /**
      * Metodo che gestisce la richiesta GET della servlet, che viene utilizzata per
      * visualizzare la pagina di prenotazione.
+     * Prima di qualsiasi operazione viene verificato se l'utente ha una sessione aperta.
+     *
      * @param request l'oggetto HttpServletRequest che contiene la richiesta HTTP del client
      * @param response l'oggetto HttpServletResponse che contiene la risposta HTTP del server
      * @throws ServletException se si verifica un'eccezione durante l'esecuzione della servlet
@@ -59,6 +61,8 @@ public class BookingServlet extends HttpServlet {
  * Questo metodo viene chiamato quando viene effettuata una richiesta HTTP POST al servlet.
  * In base ai parametri della richiesta, crea una nuova prenotazione di parcheggio
  * e la salva nel database o la mostra all'utente per il pagamento.
+ * Prima di qualsiasi operazione viene verificato se l'utente ha una sessione aperta.
+ *
  * @param request l'oggetto HttpServletRequest che contiene la richiesta HTTP del client
  * @param response l'oggetto HttpServletResponse che contiene la risposta HTTP del server
  * @throws ServletException se si verifica un'eccezione durante l'esecuzione della servlet

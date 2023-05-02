@@ -19,6 +19,7 @@ public class ShowParkingServlet extends HttpServlet {
 
     /**
      * Questo metodo gestisce le richieste HTTP di tipo GET.
+     *
      * @param request HttpServletRequest contenente i parametri della richiesta HTTP.
      * @param response HttpServletResponse utilizzata per inviare la risposta HTTP.
      * @throws ServletException se si verifica un errore durante l'esecuzione della servlet.
@@ -32,6 +33,8 @@ public class ShowParkingServlet extends HttpServlet {
 
     /**
      * Questo metodo gestisce le richieste HTTP di tipo POST.
+     * Prima di qualsiasi operazione viene verificato se l'utente ha una sessione aperta.
+     *
      * @param request HttpServletRequest contenente i parametri della richiesta HTTP.
      * @param response HttpServletResponse utilizzata per inviare la risposta HTTP.
      * @throws ServletException se si verifica un errore durante l'esecuzione della servlet.

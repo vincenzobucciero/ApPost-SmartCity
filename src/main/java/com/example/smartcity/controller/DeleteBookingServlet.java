@@ -12,7 +12,7 @@ import java.io.IOException;
  * La seguente classe rappresenta una servlet che gestisce la cancellazione di una prenotazione.
  * La classe si occupa di ricevere richieste HTTP POST e, dopo aver effettuato alcuni controlli sulla sessione,
  * recupera l'ID della prenotazione da cancellare tramite il parametro "id" presente nella richiesta HTTP.
- * Successivamente, la classe chiama il metodo "deleteBooking" della classe BookingService,
+ * Successivamente, la classe chiama il metodo "deleteBooking" della classe BookingDao,
  * che cancella la prenotazione dal database. Infine, la servlet recupera l'email dell'utente che ha effettuato
  * la richiesta e visualizza una pagina di conferma cancellazione prenotazione.
  */
@@ -36,6 +36,7 @@ public class DeleteBookingServlet extends HttpServlet {
     /**
      * Metodo che gestisce le richieste HTTP POST. Questo metodo si occupa di cancellare la
      * prenotazione e visualizzare una pagina di conferma cancellazione prenotazione.
+     * Prima di qualsiasi operazione viene verificato se l'utente ha una sessione aperta.
      *
      * @param request l'oggetto HttpServletRequest che contiene la richiesta HTTP
      * @param response l'oggetto HttpServletResponse che contiene la risposta HTTP
@@ -58,7 +59,7 @@ public class DeleteBookingServlet extends HttpServlet {
             String idPrenotazione = request.getParameter( "id" );
             System.out.println( "Cancella: " + idPrenotazione );
 
-            // Chiama il metodo "deleteBooking" della classe BookingService per cancellare la prenotazione dal database
+            // Chiama il metodo "deleteBooking" della classe BookingDao per cancellare la prenotazione dal database
             BookingDao.deleteBooking(idPrenotazione);
 
             // Recupera l'email dell'utente che ha effettuato la richiesta

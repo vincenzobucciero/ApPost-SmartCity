@@ -18,6 +18,7 @@ public class LogoutServlet extends HttpServlet {
      * Questo metodo gestisce la richiesta HTTP GET e invalida la sessione dell'utente,
      * rendendo nulli tutti gli attributi presenti nella sessione.
      * In seguito, reindirizza alla homepage del sito.
+     *
      * @param request l'oggetto HttpServletRequest che contiene la richiesta del client.
      * @param response l'oggetto HttpServletResponse che contiene la risposta del server.
      * @throws ServletException se la richiesta non può essere gestita.
@@ -38,6 +39,7 @@ public class LogoutServlet extends HttpServlet {
     /**
      * Questo metodo gestisce la richiesta HTTP POST e non fa nulla, in quanto la richiesta di logout
      * è gestita con una richiesta HTTP GET.
+     *
      * @param request l'oggetto HttpServletRequest che contiene la richiesta del client.
      * @param response l'oggetto HttpServletResponse che contiene la risposta del server.
      * @throws ServletException se la richiesta non può essere gestita.

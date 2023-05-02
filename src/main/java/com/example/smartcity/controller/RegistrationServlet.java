@@ -18,6 +18,7 @@ public class RegistrationServlet extends HttpServlet {
 
     /**
      * Metodo che gestisce la richiesta GET, ovvero l'accesso alla pagina di registrazione.
+     *
      * @param request  la richiesta HTTP ricevuta
      * @param response la risposta HTTP da restituire
      * @throws ServletException se si verifica un errore di servlet
@@ -32,6 +33,7 @@ public class RegistrationServlet extends HttpServlet {
 
     /**
      * Metodo che gestisce la richiesta POST, ovvero la registrazione di un nuovo utente.
+     *
      * @param request  la richiesta HTTP ricevuta
      * @param response la risposta HTTP da restituire
      * @throws ServletException se si verifica un errore di servlet

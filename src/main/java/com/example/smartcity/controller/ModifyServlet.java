@@ -31,6 +31,8 @@ public class ModifyServlet extends HttpServlet {
 
     /**
      * Metodo che gestisce una richiesta HTTP POST alla servlet.
+     * Prima di qualsiasi operazione viene verificato se l'utente ha una sessione aperta.
+     *
      * @param request l'oggetto HttpServletRequest che contiene le informazioni della richiesta HTTP
      * @param response l'oggetto HttpServletResponse che contiene le informazioni per la risposta HTTP
      * @throws ServletException in caso di eccezione durante l'esecuzione della servlet

@@ -21,6 +21,7 @@ public class AdminServlet extends HttpServlet {
     /**
      * Questo metodo viene chiamato quando le informazioni personali
      * dell'utente vengono aggiornate tramite una richiesta GET.
+     *
      * @param request l'oggetto HttpServletRequest che contiene la richiesta effettuata dal client alla servlet
      * @param response l'oggetto HttpServletResponse che contiene la risposta inviata dalla servlet al client
      * @throws ServletException se la richiesta non può essere gestita
@@ -34,6 +35,8 @@ public class AdminServlet extends HttpServlet {
 
     /**
      * Metodo POST per l'aggiornamento della lista dei parcheggi
+     * Prima di qualsiasi operazione viene verificato se l'utente ha una sessione aperta.
+     *
      * @param request l'oggetto HttpServletRequest che contiene la richiesta effettuata dal client alla servlet
      * @param response l'oggetto HttpServletResponse che contiene la risposta inviata dalla servlet al client
      * @throws ServletException se si verifica una eccezione di servlet

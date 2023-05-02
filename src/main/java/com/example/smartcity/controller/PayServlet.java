@@ -23,6 +23,7 @@ public class PayServlet extends HttpServlet {
     /**
      * Metodo chiamato quando la servlet viene richiamata tramite una richiesta GET.
      * Non fa nulla e restituisce una risposta vuota.
+     *
      * @param request la richiesta HTTP ricevuta
      * @param response la risposta HTTP da inviare
      * @throws ServletException se si verifica un errore durante la gestione della richiesta
@@ -37,6 +38,8 @@ public class PayServlet extends HttpServlet {
      * Metodo chiamato quando la servlet viene richiamata tramite una richiesta POST.
      * Riceve i dati della carta di credito dal form di pagamento, effettua il pagamento
      * e in caso di esito positivo aggiunge la prenotazione al database.
+     * Prima di qualsiasi operazione viene verificato se l'utente ha una sessione aperta.
+     *
      * @param request la richiesta HTTP ricevuta
      * @param response la risposta HTTP da inviare
      * @throws ServletException se si verifica un errore durante la gestione della richiesta

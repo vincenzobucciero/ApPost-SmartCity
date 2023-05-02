@@ -26,6 +26,7 @@ public class PayPalServlet extends HttpServlet {
 
     /**
      * Gestisce una richiesta GET
+     *
      * @param request HttpServletRequest
      * @param response HttpServletResponse
      * @throws ServletException Eccezione lanciata in caso di errore durante l'esecuzione della servlet
@@ -42,6 +43,8 @@ public class PayPalServlet extends HttpServlet {
      * recupera la prenotazione e il parcheggio relativi, definisce il tipo di veicolo
      * e la strategia di pagamento, e se il pagamento va a buon fine aggiunge la prenotazione
      * al database e mostra una pagina di ringraziamento, altrimenti mostra una pagina di errore.
+     * Prima di qualsiasi operazione viene verificato se l'utente ha una sessione aperta.
+     *
      * @param request HttpServletRequest
      * @param response HttpServletResponse
      * @throws ServletException Eccezione lanciata in caso di errore durante l'esecuzione della servlet

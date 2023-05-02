@@ -25,6 +25,7 @@ public class PathServlet extends HttpServlet {
 
     /**
      * Gestisce una richiesta GET
+     *
      * @param request l'oggetto HttpServletRequest che contiene la richiesta HTTP
      * @param response l'oggetto HttpServletResponse che contiene la risposta HTTP
      * @throws ServletException se si verifica un'eccezione di servlet
@@ -37,10 +38,12 @@ public class PathServlet extends HttpServlet {
 
     /**
      * Gestisce una richiesta POST, individua i parcheggi disponibili e li passa alla pagina prenotaParcheggio.jsp.
+     * Prima di qualsiasi operazione viene verificato se l'utente ha una sessione aperta.
+     *
      * @param request l'oggetto HttpServletRequest che contiene la richiesta HTTP
      * @param response l'oggetto HttpServletResponse che contiene la risposta HTTP
      * @throws ServletException se si verifica un'eccezione di servlet
-     * @throws IOException se si verifica un'eccezione di I/O
+     * @throws IOException se si verifica un'eccezione d'I/O
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

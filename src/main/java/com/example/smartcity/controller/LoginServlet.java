@@ -23,6 +23,7 @@ public class LoginServlet extends HttpServlet {
 
     /**
      * Questo metodo gestisce la richiesta HTTP GET e inoltra la richiesta alla pagina di login.
+     *
      * @param request  l'oggetto HttpServletRequest che contiene la richiesta del client.
      * @param response l'oggetto HttpServletResponse che contiene la risposta del server.
      * @throws ServletException se la richiesta non può essere gestita.
@@ -35,6 +36,9 @@ public class LoginServlet extends HttpServlet {
 
     /**
      * Questo metodo gestisce la richiesta HTTP POST che riceve i dati di login dell'utente.
+     * In caso di login effettuato con successo, prima che venga effettuata
+     * alcuna operazione, viene verificato se l'utente ha una sessione aperta.
+     *
      * @param request  l'oggetto HttpServletRequest che contiene la richiesta del client.
      * @param response l'oggetto HttpServletResponse che contiene la risposta del server.
      * @throws ServletException se la richiesta non può essere gestita.
