@@ -46,6 +46,7 @@ public class DatabaseConnection {
      * Metodo pubblico che restituisce l'unica istanza di DatabaseConnection, utilizzando il design pattern Singleton.
      * Se l'istanza non è stata ancora creata, viene creata.
      * In caso di errori durante la creazione della connessione, viene sollevata un'eccezione SQLException.
+     *
      * @return l'unica istanza di DatabaseConnection
      */
     public static DatabaseConnection getInstance() throws SQLException {

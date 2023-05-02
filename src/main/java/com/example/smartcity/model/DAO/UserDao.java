@@ -19,8 +19,10 @@ public class UserDao {
 
     /**
      * Controlla se un'email è presente nel database.
+     *
      * @param email l'email da controllare
      * @return true se l'email è presente nel database, false altrimenti
+     * @throws SQLException errore generico
      */
     public static boolean controllaEmail(String email){
         PreparedStatement stmt = null;
@@ -54,9 +56,11 @@ public class UserDao {
 
     /**
      * Controlla se una determinata coppia email/password è presente nel database.
+     *
      * @param email l'email da controllare
      * @param password la password da controllare
      * @return true se la coppia email/password è presente nel database, false altrimenti
+     * @throws SQLException errore generico
      */
     public static boolean controllaPassword(String email, String password){
         PreparedStatement stmt = null;
@@ -90,8 +94,10 @@ public class UserDao {
 
     /**
      * Restituisce un UserBean corrispondente a una determinata email.
+     *
      * @param email l'email dell'utente di cui si vuole ottenere il bean
      * @return il UserBean corrispondente all'email specificata, null se l'email non è presente nel database
+     * @throws SQLException errore generico
      */
     public static UserBean getUserBean(String email){
         UserBean userBean = new UserBean();
@@ -131,8 +137,10 @@ public class UserDao {
 
     /**
      * Aggiunge una nuova registrazione utente al database, se non esiste già un utente con la stessa email.
+     *
      * @param userBean l'oggetto UserBean contenente i dati dell'utente da registrare
      * @return true se la registrazione è stata aggiunta con successo, false se l'utente esiste già nel database
+     * @throws SQLException errore generico
      */
     public static boolean addRegistrazione(UserBean userBean) {
         PreparedStatement stmt = null;
@@ -181,9 +189,10 @@ public class UserDao {
 
     /**
      * Questo metodo recupera una lista di oggetti UserBean che rappresentano gli utenti registrati nel sistema.
+     *
      * L'elenco degli utenti esclude l'utente amministratore predefinito, identificato dall'indirizzo email "admin@admin.com".
      * @return Una lista di oggetti UserBean contenenti i dati degli utenti registrati nel sistema
-     * @throws SQLException se si verifica un errore durante l'esecuzione della query SQL
+     * @throws SQLException errore generico
      */
     public static List<UserBean> getListUsers(){
         PreparedStatement stmt = null;

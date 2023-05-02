@@ -31,6 +31,7 @@ public class BookingDao {
 
     /**
      * Metodo utilizzato per aggiungere una prenotazione al database.
+     *
      * @param bookingBean rappresenta l'oggetto BookingBean da inserire nel database
      * @throws SQLException in caso di errore SQL durante l'aggiunta della prenotazione nel database
      */
@@ -70,6 +71,7 @@ public class BookingDao {
 
     /**
      * Metodo utilizzato per ottenere tutte le prenotazioni fatte da un certo utente.
+     *
      * @param email rappresenta l'email dell'utente di cui si vogliono ottenere le prenotazioni
      * @return List<BookingBean> la lista delle prenotazioni effettuate dall'utente con l'email specificata
      * @throws SQLException in caso di errore SQL durante l'ottenimento delle prenotazioni dal database
@@ -124,6 +126,7 @@ public class BookingDao {
 
     /**
      * Metodo utilizzato per eliminare una prenotazione dal database.
+     *
      * @param idPrenotazione l'identificatore della prenotazione da eliminare
      * @throws SQLException se si verifica un errore durante l'esecuzione della query
      */
@@ -152,10 +155,11 @@ public class BookingDao {
 
     /**
      * Calcola il totale da pagare in base al prezzo orario e alla durata della prenotazione.
+     *
      * @param price il prezzo orario della prenotazione
      * @param bookingBean l'oggetto BookingBean contenente le informazioni sulla prenotazione
      * @return il totale da pagare
-     * @throws RuntimeException se ci sono errori nel parsing dell'orario di inizio o fine prenotazione
+     * @throws RuntimeException se ci sono errori nel parsing dell'orario d'inizio o fine prenotazione
      */
     public static double getTotPrice(double price, BookingBean bookingBean){
         String oraInizio = bookingBean.getOrario_inizio();
@@ -203,6 +207,7 @@ public class BookingDao {
 
     /**
      * Questo metodo restituisce una lista di oggetti BookingBean contenente tutte le prenotazioni presenti nel database.
+     *
      * @return una lista di oggetti BookingBean contenente tutte le prenotazioni presenti nel database
      * @throws RuntimeException se si verifica un errore nel parsing delle date o se si verifica
      * un'eccezione SQL durante l'esecuzione della query.

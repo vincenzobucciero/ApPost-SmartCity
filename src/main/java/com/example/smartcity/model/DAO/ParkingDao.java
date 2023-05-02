@@ -18,7 +18,9 @@ public class ParkingDao {
 
     /**
      * Metodo che restituisce la lista di tutti i parcheggi presenti nel sistema.
+     *
      * @return lista di tutti i parcheggi presenti nel sistema
+     * @throws SQLException errore generico
      */
     public static List<ParkingBean> getListParking() {
         PreparedStatement stmt = null;
@@ -63,8 +65,10 @@ public class ParkingDao {
 
     /**
      * Metodo che restituisce un oggetto ParkingBean relativo al parcheggio con il nome specificato.
+     *
      * @param nomeParcheggio nome del parcheggio di cui si vuole ottenere le informazioni
      * @return oggetto ParkingBean relativo al parcheggio con il nome specificato
+     * @throws SQLException errore generico
      */
     public static ParkingBean getParkingBean(String nomeParcheggio){
         ParkingBean parkingBean = new ParkingBean();
@@ -108,14 +112,15 @@ public class ParkingDao {
     /**
      * Restituisce il numero di prenotazioni effettuate per un determinato parcheggio,
      * di un certo tipo di veicolo, in una determinata settimana di un certo mese dell'anno corrente.
-     * Il risultato è dato dalla media del numero di prenotazioni effettuate in ciascuno dei sette giorni della settimana specificata.
+     * Il risultato è dato dalla media del numero di prenotazioni totali effettuate in una settimana, scelta in input.
+     *
      * @param nome il nome del parcheggio di cui si vogliono ottenere le statistiche di accesso
      * @param tipoVeicolo il tipo di veicolo per cui si vogliono ottenere le statistiche di accesso
      * @param mese il mese per cui si vogliono ottenere le statistiche di accesso
      * @param settimana il numero della settimana per cui si vogliono ottenere le statistiche di accesso
      * @return la media del numero di prenotazioni effettuate per il tipo di veicolo specificato nel parcheggio specificato
      * durante la settimana e il mese specificati
-     * @throws SQLException se si verifica un errore durante l'accesso al database
+     * @throws SQLException errore generico
      */
     public static double getStatisticheAccessi(String nome, VeicoliEnum tipoVeicolo, int mese, int settimana) {
         double countStat = 0;
@@ -161,13 +166,15 @@ public class ParkingDao {
 
 
     /**
-     * Questo metodo restituisce il numero di ore totali di parcheggio per un determinato parcheggio,
+     * Questo metodo restituisce il numero di ore effettive di parcheggio per un determinato parcheggio,
      * veicolo, mese e settimana.
+     *
      * @param nome Il nome del parcheggio per il quale si vuole ottenere la statistica delle ore di parcheggio.
      * @param tipoVeicolo Il tipo di veicolo (auto o moto) per il quale si vuole ottenere la statistica delle ore di parcheggio.
      * @param mese Il numero del mese per il quale si vuole ottenere la statistica delle ore di parcheggio.
      * @param settimana Il numero della settimana nell'anno per la quale si vuole ottenere la statistica delle ore di parcheggio.
      * @return Il numero di ore totali di parcheggio per il parcheggio, il veicolo, il mese e la settimana specificati.
+     * @throws SQLException errore generico
      */
     public static double getStatisticheOre(String nome, VeicoliEnum tipoVeicolo, int mese, int settimana) {
         double countStat = 0;
