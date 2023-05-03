@@ -3,11 +3,10 @@ package com.example.smartcity.service.CommandPrezzo;
 import com.example.smartcity.model.Bean.BookingBean;
 import com.example.smartcity.model.Bean.ParkingBean;
 
-
 /**
- * Questa interfaccia rappresenta un comando generico da eseguire sulla prenotazione di un parcheggio.
- *
- * @param <T> il tipo di valore di ritorno dell'esecuzione del comando.
+ * Classe interfaccia in cui è presente il metodo per eseguire la richiesta.
+ * La casse è stata realizzata utilizzando dei template affinché le classi concrete, che implementano tale interfaccia, 
+ * possano far ritornare da execute un tipo diverso in base alle necessità.
  */
 public interface Command <T>{
 
