@@ -5,7 +5,7 @@ import com.example.smartcity.model.Bean.ParkingBean;
 
 
 /**
- * La classe PrezzoMCommand implementa l'interfaccia Command<Double> e rappresenta un comando per ottenere il prezzo
+ * La classe PrezzoAFCommand implementa l'interfaccia Command<Double> e rappresenta un comando per ottenere il prezzo
  * di un parcheggio con un veicolo di tipo auto/furgone. Il prezzo è calcolato utilizzando un oggetto Receiver prezzo
  * che esegue la logica di calcolo del prezzo in base al tipo di veicolo.
  */
