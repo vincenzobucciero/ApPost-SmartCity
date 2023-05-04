@@ -9,7 +9,7 @@ import java.util.*;
  * stima euristica che classifica ogni nodo attraverso una stima del percorso migliore che passa 
  * attraverso tale nodo. L’algoritmo A* è un esempio di ricerca best-first.
  * L'algoritmo è stato utilizzato al fine di calcolare il percorso più breve dati due input, 
- * punto di partenza e punto di arrivo, e sono stati restituiti tutti i parcheggi presenti in tale percorso, se presenti.
+ * punto di partenza e punto di arrivo, e sono stati restituiti tutti i parcheggi in tale percorso, se presenti.
  */
 public class AStar {
 
@@ -22,8 +22,7 @@ public class AStar {
     private Nodo[][] searchArea; //Rappresenta la griglia rettangolare di nodi in cui viene effettuata la ricerca.
     private PriorityQueue<Nodo> openList; //(FIFO) Una PriorityQueue di nodi aperti/openset che vengono ancora valutati dalla ricerca
     private Set<Nodo> closedSet; //Un Set di nodi che sono stati già valutati dalla ricerca e che non sarnno più prelevati
-    //tipo di dato Insieme che non ammette duplicati e non definisce un ordinamento
-    //per i suoi elementi.
+    //Set: tipo di dato Insieme che non ammette duplicati e non definisce un ordinamento per i suoi elementi.
     private Nodo nodoIniziale;
     private Nodo nodoFinale;
     
@@ -39,7 +38,7 @@ public class AStar {
      * @param HVCosto costo orizzontale/verticale
      * @param costoDiagonale costo diagonale
      */
-    public AStar(int rows, int cols,  Nodo nodoIniziale, Nodo nodoFinale ,int HVCosto, int costoDiagonale) {
+    public AStar(int rows, int cols,  Nodo nodoIniziale, Nodo nodoFinale, int HVCosto, int costoDiagonale) {
         this.HVCosto = HVCosto;
         this.costoDiagonale = costoDiagonale;
         setNodoIniziale(nodoIniziale);
@@ -90,9 +89,8 @@ public class AStar {
     
     
     /**
-     * Metodo che viene utilizzato per impostare i nodi bloccati nella griglia di ricerca. (Quindi gli ostacoli).
-     * Prende in input una matrice di coordinate (riga, colonna) che rappresentano i nodi bloccati
-     * nella griglia. In altre parole, questi sono i nodi attraverso i quali il percorso non può passare.
+     * Metodo che viene utilizzato per impostare i nodi "blocchi" nella griglia di ricerca (quindi gli ostacoli).
+     * Prende in input una matrice di coordinate (riga, colonna) che rappresentano i blocchi nella griglia. 
      */
     public void setBlocchi(int[][] blocksArray){
         for (int i = 0; i < blocksArray.length; i++){
@@ -120,8 +118,8 @@ public class AStar {
     
     /** 
      * Metodo pubblico che viene utilizzato per eseguire l'algoritmo di ricerca del percorso A*.
-     * Viene eseguito un ciclo finché openList non è vuoto. Durante il ciclo,
-     * viene estratto il nodo con il punteggio f(stima) più basso dall’openset
+     * Viene eseguito un ciclo finché openList non è vuoto. 
+     * Durante il ciclo, viene estratto il nodo con il punteggio f (stima) più basso dall’openset
      * mediante il metodo poll e viene aggiunto all’elenco chiuso (closedSet).
      * Se il nodo estratto è il nodo finale, il percorso viene restituito chiamando il metodo getPath.
      * Altrimenti, vengono aggiunti i nodi adiacenti al nodo estratto all’elenco aperto.
@@ -173,8 +171,8 @@ public class AStar {
     
     
     /**
-     * Metodo privato che he si occupa di calcolare le stime
-     * aggiornate grazie a tre metodi: addAdjacentUpperRow, addAdjacentMiddleRow, addAdjacentLowerRow
+     * Metodo privato che si occupa di calcolare le stime aggiornate grazie a tre metodi: 
+     * addAdjacentUpperRow, addAdjacentMiddleRow, addAdjacentLowerRow
      *
      * @see addAdjacentUpperRow(Nodo nodoCorrente)
      * @see addAdjacentMiddleRow(Nodo nodoCorrente)
@@ -189,8 +187,8 @@ public class AStar {
 
     
     /**
-     * Metodo privato che controlla che nodi presenti nella diagonale
-     * in alto a sinistra e destra e il nodo in testa alla griglia, rispetto al
+     * Metodo privato che controlla che i nodi presenti nella diagonale
+     * in alto a sinistra e destra, e il nodo in testa alla griglia, rispetto al
      * nodo corrente, abbiano una stima migliore rispetto al nodo corrente.
      *
      * @param nodoCorrente nodo corrente che si sta visitando
@@ -214,7 +212,7 @@ public class AStar {
     
     
     /**
-     * Metodo che controlla che nodi presenti a sinistra e destra e il nodo in testa alla griglia, rispetto al
+     * Metodo che controlla che nodi presenti a sinistra e destra, rispetto al
      * nodo corrente, abbiano una stima migliore rispetto al nodo corrente.
      *
      * @param nodoCorrente nodo corrente che si sta visitando
