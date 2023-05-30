@@ -7,10 +7,9 @@ import java.util.*;
 
 
 /**
- * La classe Location rappresenta un algoritmo di calcolo del percorso più breve
- * tra due punti in una mappa, utilizzando una matrice. In particolare, la classe
- * definisce i nodi della mappa e le loro connessioni, e fornisce metodi per scegliere
- * il nodo di partenza e di arrivo del percorso, e per calcolare il percorso stesso.
+ * La classe Location è una classe che sfrutta la struttura dell'algoritmo A* per poter gestire
+ * la disposizione dei parcheggi, quindi poterli inserire, associarli ai nodi ed ottenere informazioni.
+ * La classe Location è stata anche utilizzata per settare partenze e destinazioni predefinite.
  */
 public class Location {
 

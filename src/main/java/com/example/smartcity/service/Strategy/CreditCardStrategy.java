@@ -75,7 +75,11 @@ public class CreditCardStrategy implements PaymentStrategy {
 
     }
 
-    //controlla che il cvv sia valido
+    /**
+     * Metodo che controlla se il codice CVV della carta di credito sia valido.
+     *
+     * @return true se il codice CVV è valido, false altrimenti
+     */
     private boolean checkCreditCardCVV() {
 
         if (cvv == null || cvv.length() != 3)
@@ -89,7 +93,8 @@ public class CreditCardStrategy implements PaymentStrategy {
 
 
     /**
-     * Metodo che controlla se il codice CVV della carta di credito sia valido.
+     * Metodo che controlla se tutte le condizioni per il controllo della validità della carta siano validi.
+     * Se una sola delle condizioni risulta false, allora la carta non è valida
      *
      * @return true se il codice CVV è valido, false altrimenti
      */

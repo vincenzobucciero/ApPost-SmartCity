@@ -1,8 +1,16 @@
 package com.example.smartcity.service.Algoritmo;
 
-
 import java.util.*;
 
+
+/**
+ * L’algoritmo A* è un algoritmo di ricerca su grafi o mappe che individua un
+ * percorso da un dato nodo iniziale verso un dato nodo obiettivo, utilizzando una
+ * stima euristica che classifica ogni nodo attraverso una stima del percorso migliore che passa 
+ * attraverso tale nodo. L’algoritmo A* è un esempio di ricerca best-first.
+ * L'algoritmo è stato utilizzato al fine di calcolare il percorso più breve dati due input, 
+ * punto di partenza e punto di arrivo, e sono stati restituiti tutti i parcheggi presenti in tale percorso, se presenti.
+ */
 public class AStar {
 
     private static int DEFAULT_HV_COST = 10; // Costo Orizzontale e Verticale
@@ -18,16 +26,19 @@ public class AStar {
     //per i suoi elementi.
     private Nodo nodoIniziale;
     private Nodo nodoFinale;
-
-    //private Nodo nodoParcheggio;
-
-    /*
-        Il codice fornisce due costruttori per la classe AStar:
-         1.Uno che accetta tutti i parametri necessari,
-         2.Uno che utilizza i valori predefiniti per i costi orizzontali/verticali e diagonali.
-    */
-
-    //Primo Costruttore:
+    
+    
+    /** 
+     * Primo metodo costruttore per la classe A*.
+     * Fornisce e imposta tutti i parametri necessari.
+     *
+     * @param rows numero di righe della matrice
+     * @param cols numero di colonne della matrice
+     * @param nodoIniziale nodo iniziale dal quale si ricerca il percorso
+     * @param nodoFinale nodo destinazione al quale si deve arrivare
+     * @param HVCosto costo orizzontale/verticale
+     * @param costoDiagonale costo diagonale
+     */
     public AStar(int rows, int cols,  Nodo nodoIniziale, Nodo nodoFinale ,int HVCosto, int costoDiagonale) {
         this.HVCosto = HVCosto;
         this.costoDiagonale = costoDiagonale;
@@ -44,18 +55,26 @@ public class AStar {
         this.closedSet = new HashSet<>();
     }
 
-    //Secondo Costruttore chiama il primo costruttore
+    
+    /** 
+     * Secondo metodo costruttore per la classe A*.
+     * Viene richiamato il primo costruttore e vengono utilizzati i valori predefiniti per i costi orizzontali/verticali e diagonali.
+     *
+     * @param rows numero di righe della matrice
+     * @param cols numero di colonne della matrice
+     * @param nodoIniziale nodo iniziale dal quale si ricerca il percorso
+     * @param nodoFinale nodo destinazione al quale si deve arrivare
+     */
     public AStar(int rows, int cols, Nodo nodoIniziale, Nodo nodoFinale) {
         this(rows, cols, nodoIniziale, nodoFinale, DEFAULT_HV_COST, DEFAULT_DIAGONAL_COST);
     }
 
-    /*  SetNodi():
-         Viene utilizzato per creare e impostare la matrice di nodi searchArea.
-         Questa matrice rappresenta la griglia rettangolare di nodi in cui viene
-         effettuata la ricerca.
-         All'interno del metodo viene creato un nodo per ogni elemento della
-         matrice searchArea e il cui valore è  l'euristica calcolata in base
-         al nodo finale.
+    
+    /** 
+     * Metodo privato che viene utilizzato per creare e impostare una matrice di nodi searchArea.
+     * Questa matrice rappresenta la griglia rettangolare di nodi in cui viene
+     * effettuata la ricerca. All'interno del metodo viene creato un nodo per ogni elemento della
+     * matrice searchArea e il cui valore è  l'euristica calcolata in base al nodo finale.
      */
     private void setNodi() {
         for (int i = 0; i < searchArea.length; i++){
@@ -68,10 +87,12 @@ public class AStar {
 
     }
 
-    /*  setBlocchi():
-        Viene utilizzato per impostare i nodi bloccati nella griglia di ricerca. (Quindi gli ostacoli).
-        Prende in input una matrice di coordinate (riga, colonna) che rappresentano i nodi bloccati
-        nella griglia. In altre parole, questi sono i nodi attraverso i quali il percorso non può passare.
+    
+    
+    /**
+     * Metodo che viene utilizzato per impostare i nodi bloccati nella griglia di ricerca. (Quindi gli ostacoli).
+     * Prende in input una matrice di coordinate (riga, colonna) che rappresentano i nodi bloccati
+     * nella griglia. In altre parole, questi sono i nodi attraverso i quali il percorso non può passare.
      */
     public void setBlocchi(int[][] blocksArray){
         for (int i = 0; i < blocksArray.length; i++){
@@ -82,6 +103,11 @@ public class AStar {
     }
 
 
+    
+    /**
+     * Metodo che viene utilizzato per impostare i nodi parcheggio nella griglia di ricerca.
+     * Prende in input una matrice di coordinate (riga, colonna) che rappresentano i nodi parcheggio nella griglia.
+     */
     public void setParking(int[][] blocksParking){
         for(int i = 0; i < blocksParking.length; i++){
             int row = blocksParking[i][0];
@@ -90,24 +116,27 @@ public class AStar {
         }
     }
 
-    /*
-        ricercaPercorso():
-        Viene utilizzato per eseguire l'algoritmo di ricerca del percorso A*.
-        Inizia con l'aggiunta del nodo iniziale all'openList.
-        Successivamente, viene eseguito un ciclo finché openList non è vuoto.
-        Durante il ciclo, viene estratto il nodo con il punteggio f(stima) più basso
-        dall'opne set mediante il metoso poll e viene aggiunto all'elenco chiuso (closedSet).
-        Se il nodo estratto è il nodo finale, il percorso viene restituito
-        chiamando il metodo getPath.
-        Altrimenti, vengono aggiunti i nodi adiacenti al nodo estratto all'elenco aperto.
-
-        N.B Il metodo poll() recupera il valore del primo elemento della coda rimuovendolo dalla coda stessa.
-        Ad ogni invocazione rimuove il primo elemento della lista e se la lista è già vuota ritorna
-        null ma non scatena nessuna eccezione
-     */
+    
+    
+    /** 
+     * Metodo pubblico che viene utilizzato per eseguire l'algoritmo di ricerca del percorso A*.
+     * Viene eseguito un ciclo finché openList non è vuoto. Durante il ciclo,
+     * viene estratto il nodo con il punteggio f(stima) più basso dall’openset
+     * mediante il metodo poll e viene aggiunto all’elenco chiuso (closedSet).
+     * Se il nodo estratto è il nodo finale, il percorso viene restituito chiamando il metodo getPath.
+     * Altrimenti, vengono aggiunti i nodi adiacenti al nodo estratto all’elenco aperto.
+     *
+     * @see getPath
+     * @return ArrayList<Nodo> la lista dei nodi che formano il percorso trovato dall'algoritmo 
+     */ 
     public List<Nodo> ricercaPercorso() {
         openList.add(nodoIniziale);
         while (!isEmpty(openList)) {
+            /*
+                Il metodo poll() recupera il valore del primo elemento della coda rimuovendolo dalla coda stessa.
+                Ad ogni invocazione rimuove il primo elemento della lista e se la lista è già vuota ritorna
+                null ma non scatena nessuna eccezione
+            */
             Nodo nodoCorrente = openList.poll();
             closedSet.add(nodoCorrente);
             if (isFinalNode(nodoCorrente)) {
@@ -119,12 +148,16 @@ public class AStar {
         return new ArrayList<Nodo>();
     }
 
-    /*
-        getPercorso():
-        Restituisce il percorso dal nodo finale al nodo iniziale.
-        Inizia aggiungendo il nodo corrente alla lista del percorso (che sarà duqneu il nodo finale trovato)
-        e successivamente aggiungendo il padre (parent) del nodo corrente, e così via
-        fino a raggiungere il padre del nodo iniziale.
+    
+    
+    /**
+     * Metodo privato che restituisce il percorso dal nodo finale al nodo iniziale.
+     * Inizia aggiungendo il nodo corrente alla lista del percorso (che sarà dunque il nodo finale trovato)
+     * e successivamente aggiungendo il padre (parent) del nodo corrente, e così via
+     * fino a raggiungere il padre del nodo iniziale.
+     *
+     * @param nodoCorrente nodo corrente che si sta visitando
+     * @return percorso una lista che rappresenta il percorso finale da un nodo finale al nodo iniziale
      */
     private List<Nodo> getPercorso(Nodo nodoCorrente){
         List<Nodo> percorso = new ArrayList<Nodo>();
@@ -137,6 +170,16 @@ public class AStar {
         return percorso;
     }
 
+    
+    
+    /**
+     * Metodo privato che he si occupa di calcolare le stime
+     * aggiornate grazie a tre metodi: addAdjacentUpperRow, addAdjacentMiddleRow, addAdjacentLowerRow
+     *
+     * @see addAdjacentUpperRow(Nodo nodoCorrente)
+     * @see addAdjacentMiddleRow(Nodo nodoCorrente)
+     * @see addAdjacentLowerRow(Nodo nodoCorrente)
+     */
     private void addNodiAdiacente(Nodo nodoCorrente){
         addAdjacentUpperRow(nodoCorrente);
         addAdjacentMiddleRow(nodoCorrente);
@@ -144,14 +187,14 @@ public class AStar {
     }
 
 
-    /*
-        addAdjacentUpperRow():
-        Controlla che nodi presenti nella diagonale in alto a sx e dx (primi due if) e il nodo in tesa (ultimo check)
-        della griglia, rispetto al nodo corrente, abbiano una stima migliore rispetto al nodo corrente.
-        Ll metodo check nodo controlla quale sia il costo migliore tra il nodo adiacente (le cui coordinate sono passate
-        in input, con i costi lungo le diagonali o le rette verticali e orizzontali)
-        e il nodo corrente e decide se inserirlo nell'open set.
-
+    
+    /**
+     * Metodo privato che controlla che nodi presenti nella diagonale
+     * in alto a sinistra e destra e il nodo in testa alla griglia, rispetto al
+     * nodo corrente, abbiano una stima migliore rispetto al nodo corrente.
+     *
+     * @param nodoCorrente nodo corrente che si sta visitando
+     * @see checkNodo(Nodo nodoCorrente, int col, int row, int cost)
      */
     private void addAdjacentUpperRow(Nodo nodoCorrente) {
         int row = nodoCorrente.getRow();
@@ -168,11 +211,15 @@ public class AStar {
         }
     }
 
-    /*
-        addAdjacentMiddleRow():
-        Allo stesso modo ma controlla i nodi alla sua destra e sinistra
+    
+    
+    /**
+     * Metodo che controlla che nodi presenti a sinistra e destra e il nodo in testa alla griglia, rispetto al
+     * nodo corrente, abbiano una stima migliore rispetto al nodo corrente.
+     *
+     * @param nodoCorrente nodo corrente che si sta visitando
+     * @see checkNodo(Nodo nodoCorrente, int col, int row, int cost)
      */
-
     private void addAdjacentMiddleRow(Nodo nodoCorrente) {
         int row = nodoCorrente.getRow();
         int col = nodoCorrente.getCol();
@@ -187,9 +234,13 @@ public class AStar {
 
 
 
-    /*
-        addAdjacentLowerRow():
-        ancora lo stesso criterio ma considera i nodi nella diagonale in basso a dx e sx e il nodo immediatamente sotto
+    /**
+     * Metodo che Controlla che nodi presenti nella diagonale
+     * in basso a sinistra e destra e il nodo immediatamente sotto, rispetto al
+     * nodo corrente, abbiano una stima migliore rispetto al nodo corrente.
+     *
+     * @param nodoCorrente nodo corrente che si sta visitando
+     * @see checkNodo(Nodo nodoCorrente, int col, int row, int cost)
      */
     private void addAdjacentLowerRow(Nodo nodoCorrente) {
         int row = nodoCorrente.getRow();
@@ -207,21 +258,18 @@ public class AStar {
     }
 
 
-    /*
-        checkNodo():
-         è una funzione che prende in input un nodo corrente e delle coordinate per calcolare un suo nodo adicante
-         e controlla se questo soddisfa determinati criteri.
-         1. se il nodo adiacente non è un blocco e il closedSet non contiene già questo nodo
-         2. se il nodo adiacente non è stato ancora inserito nell'open list
-          Allora setta il nodo e inseriscilo nell'openList
-
-         Se questi controlli non sono verificati si controlla che il nodo adiacente abbia una stima migliore
-         rispetto il nodo corrente. Se è vero Rimuovi e aggiungi il nodo modificato,
-         in modo che PriorityQueue possa ordinare nuovamente il suo contenuto con il valore "finalCost"
-         modificato del nodo modificato
-
-         Questi controlli sono importanti perché consentono di evitare cicli e di assicurarsi che la distanza
-         calcolata per il nodon sia sempre quella minima rispetto al nodo di partenza.
+    
+    
+    /**
+     * Metodo che controlla quale sia il costo migliore tra il nodo
+     * adiacente (le cui coordinate sono passate in input, con i costi lungo le
+     * diagonali o le rette verticali e orizzontali) e il nodo corrente, e decide
+     * se inserirlo nell’open set.
+     *
+     * @param nodoCorrente nodo corrente che si sta visitando
+     * @param col indice di colonna
+     * @param row indice di riga
+     * @param cost costo del nodo corrente
      */
 
     private void checkNodo(Nodo nodoCorrente, int col, int row, int cost) {
