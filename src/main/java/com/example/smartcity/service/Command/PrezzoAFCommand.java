@@ -1,8 +1,7 @@
-package com.example.smartcity.service.CommandPrezzo;
+package com.example.smartcity.service.Command;
 
 import com.example.smartcity.model.Bean.BookingBean;
 import com.example.smartcity.model.Bean.ParkingBean;
-
 
 /**
  * La classe PrezzoAFCommand implementa l'interfaccia Command<Double> e rappresenta un comando per ottenere il prezzo
@@ -23,7 +22,6 @@ public class PrezzoAFCommand implements Command<Double>{
      * @param prezzo il riferimento al Receiver.
      */
     public PrezzoAFCommand(Receiver prezzo){ this.prezzo = prezzo; }
-
 
     /**
      * Calcola il prezzo totale di un posto auto per un veicolo di tipo auto/furgone.

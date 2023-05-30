@@ -3,6 +3,8 @@ package com.example.smartcity.service.ChainOfResponsability;
 import com.example.smartcity.model.DAO.UserDao;
 
 
+import java.sql.SQLException;
+
 /**
  * Questa classe rappresenta un handler della catena di gestione delle richieste di accesso
  * al sistema che gestisce le richieste di accesso degli utenti in base all'email fornita come parametro.
@@ -10,7 +12,6 @@ import com.example.smartcity.model.DAO.UserDao;
 public class MailHandler extends Handler{
     private String email;
     private String password;
-
 
     /**
      * Costruisce un nuovo handler che gestirà le richieste di accesso degli utenti con l'email fornita come parametro.

@@ -1,14 +1,17 @@
 package com.example.smartcity.controller;
-
 import com.example.smartcity.model.Bean.BookingBean;
 
+import com.example.smartcity.model.Bean.UserBean;
 import com.example.smartcity.model.DAO.BookingDao;
+import com.example.smartcity.model.DAO.UserDao;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
+
+
 
 /**
  * Questa classe rappresenta una servlet per mostrare le prenotazioni dell'utente loggato.
@@ -30,7 +33,6 @@ public class ShowBookingServlet extends HttpServlet {
 
     }
 
-
     /**
      * Gestisce una richiesta POST alla servlet. Recupera l'email dell'utente dalla richiesta
      * e richiama il metodo getBooking della classe BookingDao, che restituisce la lista di
@@ -44,25 +46,29 @@ public class ShowBookingServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         response.setContentType("text/html");
+
+
         HttpSession session = request.getSession(false);
         if ( session == null ) {
             session.setAttribute("isLog",0);
             request.getRequestDispatcher("login.jsp").forward(request,response);
         } else {
 
-            String email = request.getParameter("email");
+            UserBean userBean = (UserBean) session.getAttribute("userBean");
+            String email = userBean.getEmail();
 
-            List<BookingBean> list = BookingDao.getBooking(email);
+            if(email.equals("admin@admin.com")) {
+                List<BookingBean> list1 = BookingDao.getListBooking();
+                session.setAttribute("list1", list1);
+                request.getRequestDispatcher("listaPrenotazioneAdmin.jsp").forward(request, response);
+            }
+            else {
+                List<BookingBean> list = BookingDao.getBooking( email );
+                session.setAttribute("list", list);
+                request.getRequestDispatcher("showBooking.jsp").forward(request, response);
 
-            int size = list.size();
-
-            session.setAttribute( "email", email);
-            session.setAttribute("list", list);
-
-            request.getRequestDispatcher("showBooking.jsp").forward(request, response);
-
+            }
         }
 
     }

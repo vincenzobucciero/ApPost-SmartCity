@@ -13,7 +13,6 @@ import java.util.List;
  * Questa classe rappresenta una servlet che viene utilizzata per visualizzare
  * la lista dei parcheggi disponibili.
  */
-
 @WebServlet(name = "ShowParkingServlet", value = "/ShowParkingServlet")
 public class ShowParkingServlet extends HttpServlet {
 
@@ -49,7 +48,6 @@ public class ShowParkingServlet extends HttpServlet {
             session.setAttribute("isLog",0);
             request.getRequestDispatcher("login.jsp").forward(request,response);
         } else {
-
             List<ParkingBean> parkingBeanList = ParkingDao.getListParking();
             request.setAttribute("list", parkingBeanList);
             request.getRequestDispatcher("listaParking.jsp").forward(request, response);

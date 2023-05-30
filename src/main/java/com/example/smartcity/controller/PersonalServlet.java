@@ -11,6 +11,7 @@ import java.io.IOException;
  * La classe PersonalServlet implementa una servlet responsabile della gestione della pagina
  * delle informazioni personali dell'utente.
  */
+
 @WebServlet(name = "PersonalServlet", value = "/PersonalServlet")
 public class PersonalServlet extends HttpServlet {
 
@@ -29,19 +30,14 @@ public class PersonalServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         HttpSession session = request.getSession(false);
-
         if ( session == null ) {
             session.setAttribute("isLog",0);
             request.getRequestDispatcher("login.jsp").forward(request,response);
         } else {
-            UserBean userBean = (UserBean) session.getAttribute("userBean");
-            request.setAttribute("userBean", userBean);
             request.getRequestDispatcher("infoUtente.jsp").forward(request,response);
         }
     }
-
 
     /**
      * Questo metodo viene chiamato quando le informazioni personali
@@ -52,6 +48,7 @@ public class PersonalServlet extends HttpServlet {
      * @throws ServletException se la richiesta non può essere gestita
      * @throws IOException se viene rilevato un errore di input o output quando la servlet gestisce la richiesta
      */
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

@@ -6,7 +6,6 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
 
-
 /**
  * Questa classe rappresenta la servlet per la ricerca del percorso.
  * Viene invocata quando un utente richiede di visualizzare la pagina per la ricerca del percorso tramite una richiesta GET.
@@ -35,8 +34,6 @@ public class SearchServlet extends HttpServlet {
             session.setAttribute( "isLog",0 );
             request.getRequestDispatcher( "login.jsp" ).forward(request,response);
         } else {
-            UserBean userBean = (UserBean) session.getAttribute( "userBean" );
-            request.setAttribute( "userBean", userBean);
             request.getRequestDispatcher( "findPath.jsp" ).forward(request,response);
         }
 
@@ -54,6 +51,7 @@ public class SearchServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
     }
 }

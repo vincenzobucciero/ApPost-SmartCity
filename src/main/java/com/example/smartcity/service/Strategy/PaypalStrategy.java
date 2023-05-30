@@ -1,6 +1,5 @@
 package com.example.smartcity.service.Strategy;
 
-
 /**
  * Questa classe rappresenta una strategia di pagamento con Paypal. Implementa l'interfaccia PaymentStrategy.
  */
@@ -18,7 +17,6 @@ public class PaypalStrategy implements PaymentStrategy {
         this.emailId = email;
         this.password = password;
     }
-
 
     /**
      * Implementazione del metodo pay() dell'interfaccia PaymentStrategy.

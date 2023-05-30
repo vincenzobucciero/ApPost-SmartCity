@@ -6,11 +6,11 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+
 /**
  * La servlet LogoutServlet si occupa della gestione della richiesta di logout degli utenti.
  * In particolare, invalida la sessione dell'utente e reindirizza alla homepage del sito.
  */
-
 @WebServlet(name = "LogoutServlet", value = "/logout")
 public class LogoutServlet extends HttpServlet {
 
@@ -26,7 +26,6 @@ public class LogoutServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         response.setContentType("text/html");
 
         HttpSession session = request.getSession(false);
@@ -34,7 +33,9 @@ public class LogoutServlet extends HttpServlet {
             session.invalidate(); // invalido la sessione rendendo nulli tutti gli attributi presenti nella sessione
         }
         request.getRequestDispatcher("index.jsp").forward(request,response);
+
     }
+
 
     /**
      * Questo metodo gestisce la richiesta HTTP POST e non fa nulla, in quanto la richiesta di logout

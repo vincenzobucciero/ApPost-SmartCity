@@ -1,11 +1,11 @@
 package com.example.smartcity.service.ChainOfResponsability;
 
-
 /**
  * Questa classe rappresenta un servizio di autenticazione che utilizza il design pattern Chain of Responsibility
  * per gestire le richieste di accesso al sistema.
  */
 public class AuthService {
+
     private Handler handler;
 
     /**
@@ -14,7 +14,6 @@ public class AuthService {
      * @param handler handler che verrà utilizzato per gestire le richieste di accesso al sistema.
      */
     public AuthService(Handler handler){this.handler = handler;}
-
 
     /**
      * Effettua il login al sistema con l'email e la password fornite come parametro.

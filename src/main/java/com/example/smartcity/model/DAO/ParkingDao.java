@@ -1,6 +1,6 @@
 package com.example.smartcity.model.DAO;
 import com.example.smartcity.model.Bean.ParkingBean;
-import com.example.smartcity.service.CommandPrezzo.VeicoliEnum;
+import com.example.smartcity.service.Command.VeicoliEnum;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,11 +10,9 @@ import java.util.List;
 
 
 /**
- * La classe ParkingDao gestisce l'accesso ai dati dei parcheggi del sistema,
- * recuperandoli dal database.
+ * La classe ParkingDao gestisce l'accesso ai dati dei parcheggi del sistema, recuperandoli dal database.
  */
 public class ParkingDao {
-
 
     /**
      * Metodo che restituisce la lista di tutti i parcheggi presenti nel sistema.
@@ -107,8 +105,6 @@ public class ParkingDao {
         return parkingBean;
     }
 
-
-
     /**
      * Restituisce il numero di prenotazioni effettuate per un determinato parcheggio,
      * di un certo tipo di veicolo, in una determinata settimana di un certo mese dell'anno corrente.
@@ -162,7 +158,6 @@ public class ParkingDao {
         }
         return countStat;
     }
-
 
 
     /**

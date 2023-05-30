@@ -1,8 +1,7 @@
-package com.example.smartcity.service.CommandPrezzo;
+package com.example.smartcity.service.Command;
 
 import com.example.smartcity.model.Bean.BookingBean;
 import com.example.smartcity.model.Bean.ParkingBean;
-
 
 /**
  * La classe PostiMCommand rappresenta un comando che implementa l'interfaccia Command.
@@ -12,9 +11,8 @@ public class PostiMCommand implements Command<Integer>{
     Receiver posti;
 
     /**
-     * Costruttore della classe PostiMCommand
-     *
-     * @param posti oggetto della classe Receiver che rappresenta il destinatario del comando
+     * La classe PostiMCommand rappresenta un comando che implementa l'interfaccia Command.
+     * Questa classe è utilizzata per ottenere il numero di posti disponibili per i veicoli di tipo moto in un parcheggio.
      */
     public PostiMCommand(Receiver posti){
         this.posti = posti;

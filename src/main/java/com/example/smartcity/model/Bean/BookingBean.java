@@ -1,9 +1,8 @@
 package com.example.smartcity.model.Bean;
 
-import com.example.smartcity.service.CommandPrezzo.VeicoliEnum;
+import com.example.smartcity.service.Command.VeicoliEnum;
 
 import java.io.Serializable;
-
 
 /**
  * Questa classe rappresenta un oggetto di prenotazione di un parcheggio.
@@ -51,7 +50,6 @@ public class BookingBean implements Serializable {
         return ID_prenotazione;
     }
 
-
     /**
      * Imposta l'ID della prenotazione
      * @param ID_prenotazione l'ID della prenotazione
@@ -59,7 +57,6 @@ public class BookingBean implements Serializable {
     public void setID_prenotazione(String ID_prenotazione) {
         this.ID_prenotazione = ID_prenotazione;
     }
-
 
     /**
      * Restituisce la data della prenotazione.
@@ -69,7 +66,6 @@ public class BookingBean implements Serializable {
         return data_prenotazione;
     }
 
-
     /**
      * Imposta la data della prenotazione
      * @param data_prenotazione la data della prenotazione
@@ -77,7 +73,6 @@ public class BookingBean implements Serializable {
     public void setData_prenotazione(String data_prenotazione) {
         this.data_prenotazione = data_prenotazione;
     }
-
 
     /**
      * Restituisce l'orario d'inizio della prenotazione.
@@ -87,7 +82,6 @@ public class BookingBean implements Serializable {
         return orario_inizio;
     }
 
-
     /**
      * Imposta l'orario d'inizio della prenotazione.
      * @param orario_inizio l'orario d'inizio della prenotazione.
@@ -95,7 +89,6 @@ public class BookingBean implements Serializable {
     public void setOrario_inizio(String orario_inizio) {
         this.orario_inizio = orario_inizio;
     }
-
 
     /**
      * Restituisce l'orario di fine della prenotazione.
@@ -105,7 +98,6 @@ public class BookingBean implements Serializable {
         return orario_fine;
     }
 
-
     /**
      * Imposta l'orario di fine della prenotazione.
      * @param orario_fine l'orario di fine della prenotazione.
@@ -113,7 +105,6 @@ public class BookingBean implements Serializable {
     public void setOrario_fine(String orario_fine) {
         this.orario_fine = orario_fine;
     }
-
 
     /**
      * Restituisce la targa del veicolo di cui si vuole effettuare
@@ -124,7 +115,6 @@ public class BookingBean implements Serializable {
         return targaVeicolo;
     }
 
-
     /**
      * Imposta la targa del veicolo di cui si vuole effettuare
      * la prenotazione al parcheggio
@@ -133,7 +123,6 @@ public class BookingBean implements Serializable {
     public void setTargaVeicolo(String targaVeicolo) {
         this.targaVeicolo = targaVeicolo;
     }
-
 
     /**
      * Restituisce il tipo del veicolo di cui si vuole effettuare
@@ -144,7 +133,6 @@ public class BookingBean implements Serializable {
         return tipoVeicolo;
     }
 
-
     /**
      * Imposta il tipo del veicolo di cui si vuole effettuare
      * la prenotazione al parcheggio
@@ -154,7 +142,6 @@ public class BookingBean implements Serializable {
         this.tipoVeicolo = tipoVeicolo;
     }
 
-
     /**
      * Restituisce email dell'utente che effettua la prenotazione
      * @return email dell'utente
@@ -162,7 +149,6 @@ public class BookingBean implements Serializable {
     public String getEmail() {
         return email;
     }
-
 
     /**
      * Imposta l'email dell'utente che ha effettuato la prenotazione
@@ -172,7 +158,6 @@ public class BookingBean implements Serializable {
         this.email = email;
     }
 
-
     /**
      * Restituisce il prezzo della prenotazione
      * @return il prezzo della prenotazione
@@ -180,7 +165,6 @@ public class BookingBean implements Serializable {
     public double getPrezzo() {
         return prezzo;
     }
-
 
     /**
      * Imposta il prezzo della prenotazione
@@ -190,7 +174,6 @@ public class BookingBean implements Serializable {
         this.prezzo = prezzo;
     }
 
-
     /**
      * Restituisce il metodo di pagamento utilizzato per la prenotazione.
      * @return una stringa rappresentante il metodo di pagamento utilizzato per la prenotazione
@@ -198,7 +181,6 @@ public class BookingBean implements Serializable {
     public String getPagamento() {
         return pagamento;
     }
-
 
     /**
      * Imposta il metodo di pagamento utilizzato per la prenotazione.
@@ -208,23 +190,19 @@ public class BookingBean implements Serializable {
         this.pagamento = pagamento;
     }
 
-
     /**
      * Restituisce il nome del parcheggio presso il quale si vuole
      * effettuare la prenotazione.
-     * @return il nome del parcheggio presso il quale si vuole
-     * effettuare la prenotazione.
+     * @return il nome del parcheggio presso il quale si vuole effettuare la prenotazione.
      */
     public String getNomeParcheggio() {
         return nomeParcheggio;
     }
 
-
     /**
      * Restituisce il nome del parcheggio presso il quale si vuole
      * effettuare la prenotazione.
-     * @param nomeParcheggio  il nome del parcheggio presso il quale si vuole
-     * effettuare la prenotazione.
+     * @param nomeParcheggio  il nome del parcheggio presso il quale si vuole effettuare la prenotazione.
      */
     public void setNomeParcheggio(String nomeParcheggio) {
         this.nomeParcheggio = nomeParcheggio;

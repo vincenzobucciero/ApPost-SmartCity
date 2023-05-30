@@ -1,7 +1,7 @@
 package com.example.smartcity.model.DAO;
 
 import com.example.smartcity.model.Bean.BookingBean;
-import com.example.smartcity.service.CommandPrezzo.VeicoliEnum;
+import com.example.smartcity.service.Command.VeicoliEnum;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +12,6 @@ import java.util.*;
 
 import static java.util.Calendar.HOUR_OF_DAY;
 import static java.util.Calendar.MINUTE;
-
 
 /**
  * Questa classe rappresenta il DAO per la prenotazione.
@@ -27,6 +26,7 @@ import static java.util.Calendar.MINUTE;
  * getListBooking(): List<BookingBean>
  * Metodo utilizzato per ottenere tutte le prenotazioni presenti nel database
  */
+
 public class BookingDao {
 
     /**
@@ -123,7 +123,6 @@ public class BookingDao {
     }
 
 
-
     /**
      * Metodo utilizzato per eliminare una prenotazione dal database.
      *
@@ -150,7 +149,6 @@ public class BookingDao {
             }
         }
     }
-
 
 
     /**
@@ -201,8 +199,6 @@ public class BookingDao {
 
         return tot;
     }
-
-
 
 
     /**

@@ -1,6 +1,5 @@
 package com.example.smartcity.service.ChainOfResponsability;
 
-
 /**
  * Questa classe astratta rappresenta un handler base del design pattern Chain of Responsibility
  * che fornisce un'implementazione comune per gestire le richieste di accesso al sistema.
@@ -18,7 +17,6 @@ public abstract class Handler {
         this.next = next;
         return  next;
     }
-
 
     /**
      * Gestisce la richiesta di accesso al sistema per l'utente specificato.

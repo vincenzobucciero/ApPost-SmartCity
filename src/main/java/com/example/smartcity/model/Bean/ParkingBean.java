@@ -2,7 +2,6 @@ package com.example.smartcity.model.Bean;
 
 import java.io.Serializable;
 
-
 /**
  * Questa classe rappresenta un oggetto di tipo Parcheggio.
  * Un parcheggio è definito da un nome, un indirizzo, il numero di posti disponibili per auto, furgoni e moto,
@@ -14,36 +13,28 @@ public class ParkingBean implements Serializable {
     /** Nome del parcheggio */
     private String nomeParcheggio;
 
-
     /** Indirizzo del parcheggio */
     private String indirizzo;
-
 
     /** Numero di posto auto nel parcheggio */
     private int postiAuto;
 
-
     /** Numero di posto furgone nel parcheggio */
     private int postiFurgone;
-
 
     /** Numero di posto moto nel parcheggio */
     private int postiMoto;
 
-
     /** Tariffa per il tipo di veicolo auto/furgone */
     private double tariffaAF;
 
-
     /** Tariffa per il tipo di veicolo moto */
     private double tariffaM;
-
 
     /**
      * Costruttore vuoto della classe ParkingBean.
      */
     public ParkingBean(){}
-
 
     /**
      * Restituisce il numero di posti disponibili per auto.
@@ -53,7 +44,6 @@ public class ParkingBean implements Serializable {
         return postiAuto;
     }
 
-
     /**
      * Imposta il numero di posti disponibili per auto.
      * @param postiAuto  Il numero di posti disponibili per auto.
@@ -61,7 +51,6 @@ public class ParkingBean implements Serializable {
     public void setPostiAuto(int postiAuto) {
         this.postiAuto = postiAuto;
     }
-
 
     /**
      * Restituisce l'indirizzo del parcheggio.
@@ -71,7 +60,6 @@ public class ParkingBean implements Serializable {
         return indirizzo;
     }
 
-
     /**
      * Imposta l'indirizzo del parcheggio.
      * @param indirizzo L'indirizzo del parcheggio.
@@ -79,7 +67,6 @@ public class ParkingBean implements Serializable {
     public void setIndirizzo(String indirizzo) {
         this.indirizzo = indirizzo;
     }
-
 
     /**
      * Restituisce il nome del parcheggio.
@@ -89,7 +76,6 @@ public class ParkingBean implements Serializable {
         return nomeParcheggio;
     }
 
-
     /**
      * Imposta il nome del parcheggio.
      * @param nomeParcheggio Il nome del parcheggio.
@@ -97,16 +83,6 @@ public class ParkingBean implements Serializable {
     public void setNomeParcheggio(String nomeParcheggio) {
         this.nomeParcheggio = nomeParcheggio;
     }
-
-
-    /**
-     * Restituisce il prezzo della tariffa per tipo auto/furgone
-     * @return il prezzo della tariffa per tipo auto/furgone
-     */
-    public double getTariffaAF() {
-        return tariffaAF;
-    }
-
 
     /**
      * Imposta il prezzo della tariffa per tipo auto/furgone
@@ -116,6 +92,13 @@ public class ParkingBean implements Serializable {
         this.tariffaAF = tariffaAF;
     }
 
+    /**
+     * Restituisce il prezzo della tariffa per tipo auto/furgone
+     * @return il prezzo della tariffa per tipo auto/furgone
+     */
+    public double getTariffaAF() {
+        return tariffaAF;
+    }
 
     /**
      * Restituisce il prezzo della tariffa per tipo moto
@@ -125,7 +108,6 @@ public class ParkingBean implements Serializable {
         return tariffaM;
     }
 
-
     /**
      * Imposta il prezzo della tariffa per tipo moto
      * @param tariffaM  il prezzo della tariffa per tipo moto
@@ -133,7 +115,6 @@ public class ParkingBean implements Serializable {
     public void setTariffaM(double tariffaM) {
         this.tariffaM = tariffaM;
     }
-
 
     /**
      * Restituisce il numero di posti disponibili per furgone.
@@ -143,7 +124,6 @@ public class ParkingBean implements Serializable {
         return postiFurgone;
     }
 
-
     /**
      * Imposta il numero di posti disponibili per furgone.
      * @param postiFurgone Il numero di posti disponibili per furgone.
@@ -152,7 +132,6 @@ public class ParkingBean implements Serializable {
         this.postiFurgone = postiFurgone;
     }
 
-
     /**
      * Restituisce il numero di posti disponibili per moto.
      * @return Il numero di posti disponibili per moto.
@@ -160,7 +139,6 @@ public class ParkingBean implements Serializable {
     public int getPostiMoto() {
         return postiMoto;
     }
-
 
     /**
      * Imposta il numero di posti disponibili per moto.

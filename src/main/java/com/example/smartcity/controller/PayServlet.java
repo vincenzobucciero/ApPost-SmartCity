@@ -12,11 +12,13 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+
 /**
  * Questa servlet gestisce la transazione di pagamento con carta di credito.
  * Riceve i dati della carta di credito dal form di pagamento, effettua il pagamento
  * e in caso di esito positivo aggiunge la prenotazione al database.
  */
+
 @WebServlet(name = "PayServlet", value = "/PayServlet")
 public class PayServlet extends HttpServlet {
 
@@ -31,8 +33,8 @@ public class PayServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
+
 
     /**
      * Metodo chiamato quando la servlet viene richiamata tramite una richiesta POST.
@@ -49,7 +51,6 @@ public class PayServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
 
-        String email = request.getParameter("email");
         String nome = request.getParameter("intestatario");
         String numeroCarta = request.getParameter("numCarta");
         String cvv = request.getParameter("cvv");
@@ -68,7 +69,7 @@ public class PayServlet extends HttpServlet {
             String nomeParcheggio = bookingBean.getNomeParcheggio();
             ParkingBean parkingBean = ParkingDao.getParkingBean(nomeParcheggio);
 
-            PaymentStrategy paymentMethod = new CreditCardStrategy( nome, numeroCarta, cvv,dataScadenza );
+            PaymentStrategy paymentMethod = new CreditCardStrategy( nome, numeroCarta, cvv, dataScadenza );
 
             if(paymentMethod.pay(bookingBean.getPrezzo())) {
                 session.setAttribute("email", bookingBean.getEmail());

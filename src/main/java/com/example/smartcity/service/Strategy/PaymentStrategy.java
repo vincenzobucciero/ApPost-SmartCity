@@ -1,6 +1,5 @@
 package com.example.smartcity.service.Strategy;
 
-
 /**
  * Questa interfaccia definisce il contratto che ogni strategia di pagamento deve rispettare.
  * Ha un metodo 'pay' che prende come parametro l'ammontare da pagare e restituisce un valore booleano
@@ -14,6 +13,7 @@ public interface PaymentStrategy {
      * @param amount l'ammontare da pagare.
      * @return true se il pagamento è andato a buon fine, false altrimenti.
      */
-    public boolean pay(double amount);
+    boolean pay(double amount);
+
 
 }

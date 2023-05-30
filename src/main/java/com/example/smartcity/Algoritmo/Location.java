@@ -1,4 +1,4 @@
-package com.example.smartcity.service.Algoritmo;
+package com.example.smartcity.Algoritmo;
 
 import com.example.smartcity.model.Bean.ParkingBean;
 import com.example.smartcity.model.DAO.ParkingDao;

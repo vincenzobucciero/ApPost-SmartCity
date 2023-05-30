@@ -1,13 +1,13 @@
-package com.example.smartcity.service.CommandPrezzo;
+package com.example.smartcity.service.Command;
 
 import com.example.smartcity.model.Bean.BookingBean;
 import com.example.smartcity.model.Bean.ParkingBean;
-
 
 /**
  * La classe PostiFCommand rappresenta un comando che implementa l'interfaccia Command.
  * Questa classe è utilizzata per ottenere il numero di posti disponibili per i veicoli di tipo furgone in un parcheggio.
  */
+
 public class PostiFCommand implements Command<Integer>{
     Receiver posti;
 

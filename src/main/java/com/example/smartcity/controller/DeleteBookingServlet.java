@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+import com.example.smartcity.model.Bean.UserBean;
 
 /**
  * La seguente classe rappresenta una servlet che gestisce la cancellazione di una prenotazione.
@@ -16,6 +17,7 @@ import java.io.IOException;
  * che cancella la prenotazione dal database. Infine, la servlet recupera l'email dell'utente che ha effettuato
  * la richiesta e visualizza una pagina di conferma cancellazione prenotazione.
  */
+
 @WebServlet(name = "DeleteBookingServlet", value = "/DeleteBookingServlet")
 public class DeleteBookingServlet extends HttpServlet {
 
@@ -27,10 +29,13 @@ public class DeleteBookingServlet extends HttpServlet {
      * @throws ServletException se si verifica un errore nella gestione della richiesta
      * @throws IOException se si verifica un errore d'input/output
      */
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
+
+
 
 
     /**
@@ -57,16 +62,22 @@ public class DeleteBookingServlet extends HttpServlet {
         } else {
             // Recupera l'ID della prenotazione da cancellare tramite il parametro "id" presente nella richiesta HTTP
             String idPrenotazione = request.getParameter( "id" );
-            System.out.println( "Cancella: " + idPrenotazione );
 
             // Chiama il metodo "deleteBooking" della classe BookingDao per cancellare la prenotazione dal database
-            BookingDao.deleteBooking(idPrenotazione);
+            BookingDao.deleteBooking( idPrenotazione );
 
             // Recupera l'email dell'utente che ha effettuato la richiesta
             String email = request.getParameter("email");
 
-            // Visualizza una pagina di conferma cancellazione prenotazione
-            request.getRequestDispatcher( "cancelPage.jsp" ).forward(request, response);
+            // Controlla se è un amministratore o meno
+            if (email.equals("admin@admin.com")){
+                // Visualizza una pagina di conferma cancellazione prenotazione
+                request.getRequestDispatcher("cancelPageAdmin.jsp").forward(request,response);
+            }
+            else {
+                // Visualizza una pagina di conferma cancellazione prenotazione
+                request.getRequestDispatcher("cancelPage.jsp").forward(request, response);
+            }
 
         }
 

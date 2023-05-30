@@ -1,12 +1,10 @@
 package com.example.smartcity.service.ChainOfResponsability;
 
-
 /**
  * Questa classe rappresenta un'enumerazione che descrive i possibili
  * esiti di un tentativo di accesso al sistema di login.
  */
 public enum AccessoLogin {
-
     /** L'utente specificato non esiste nel sistema di login. */
     UTENTE_INESISTENTE,
 

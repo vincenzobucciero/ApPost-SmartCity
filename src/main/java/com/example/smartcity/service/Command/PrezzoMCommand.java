@@ -1,8 +1,7 @@
-package com.example.smartcity.service.CommandPrezzo;
+package com.example.smartcity.service.Command;
 
 import com.example.smartcity.model.Bean.BookingBean;
 import com.example.smartcity.model.Bean.ParkingBean;
-
 
 /**
  * La classe PrezzoMCommand implementa l'interfaccia Command<Double> e rappresenta un comando per ottenere il prezzo
@@ -23,6 +22,7 @@ public class PrezzoMCommand implements Command<Double>{
      * @param prezzo oggetto Receiver che esegue la logica di calcolo del prezzo in base al tipo di veicolo.
      */
     public PrezzoMCommand(Receiver prezzo){ this.prezzo = prezzo; }
+
 
     /**
      * Implementazione del metodo execute dell'interfaccia Command.

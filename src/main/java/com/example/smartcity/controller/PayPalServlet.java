@@ -4,7 +4,7 @@ import com.example.smartcity.model.Bean.BookingBean;
 import com.example.smartcity.model.Bean.ParkingBean;
 import com.example.smartcity.model.DAO.BookingDao;
 import com.example.smartcity.model.DAO.ParkingDao;
-import com.example.smartcity.service.CommandPrezzo.VeicoliEnum;
+import com.example.smartcity.service.Command.VeicoliEnum;
 import com.example.smartcity.service.Strategy.PaypalStrategy;
 import com.example.smartcity.service.Strategy.PaymentStrategy;
 import jakarta.servlet.*;
@@ -13,6 +13,7 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+
 /**
  * La classe PayPalServlet gestisce le richieste per effettuare un pagamento tramite PayPal.
  * Riceve come parametro l'email e la password del proprio account PayPal, e utilizza una
@@ -20,7 +21,6 @@ import java.io.IOException;
  * va a buon fine, viene aggiunto il prenotazione al database e viene visualizzata una pagina
  * di ringraziamento, altrimenti viene mostrata una pagina di errore.
  */
-
 @WebServlet(name = "PayPalServlet", value = "/PayPalServlet")
 public class PayPalServlet extends HttpServlet {
 
@@ -52,7 +52,6 @@ public class PayPalServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         response.setContentType("text/html");
 
         String emailPP = request.getParameter("emailPP");
@@ -65,9 +64,6 @@ public class PayPalServlet extends HttpServlet {
         } else {
 
             BookingBean bookingBean = (BookingBean) session.getAttribute("bookingBean");
-            String nomeParcheggio = bookingBean.getNomeParcheggio();
-            ParkingBean parkingBean = ParkingDao.getParkingBean(nomeParcheggio);
-
             VeicoliEnum tipoVeicolo = bookingBean.getTipoVeicolo();
             System.out.println("veicolo " + tipoVeicolo);
 

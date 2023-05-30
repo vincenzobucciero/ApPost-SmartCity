@@ -2,6 +2,7 @@ package com.example.smartcity.service.ChainOfResponsability;
 
 import com.example.smartcity.model.DAO.UserDao;
 
+import java.sql.SQLException;
 
 /**
  * Questa classe rappresenta un handler della catena di gestione delle richieste di accesso al sistema
@@ -10,7 +11,6 @@ import com.example.smartcity.model.DAO.UserDao;
 public class PasswordHandler extends Handler{
     private String email;
     private String password;
-
 
     /**
      * Costruisce un nuovo handler che gestirà le richieste di accesso degli utenti
@@ -23,7 +23,6 @@ public class PasswordHandler extends Handler{
         this.email = email;
         this.password = password;
     }
-
 
     /**
      * Gestisce la richiesta di accesso al sistema per l'utente specificato in base alla password.

@@ -74,9 +74,9 @@ public class ModifyDao {
     }
 
 
-
     /**
      * Modifica l'indirizzo di un parcheggio nel database.
+     *
      * @param nomeParcheggio nome del parcheggio da modificare
      * @param indirizzo nuovo indirizzo del parcheggio
      * @throws SQLException errore generico
@@ -103,7 +103,6 @@ public class ModifyDao {
             }
         }
     }
-
 
 
     /**

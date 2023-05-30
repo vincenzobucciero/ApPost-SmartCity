@@ -1,5 +1,4 @@
-package com.example.smartcity.service.CommandPrezzo;
-
+package com.example.smartcity.service.Command;
 
 /**
  * L'enumerazione VeicoliEnum rappresenta i diversi tipi di veicoli supportati dal sistema e associa a ciascuno
@@ -22,6 +21,7 @@ public enum VeicoliEnum {
      */
     Moto(new PrezzoMCommand(new Receiver()), new PostiMCommand(new Receiver()));
 
+
     /**
      * Costante di tipo Command<Double> che rappresenta il comando per calcolare il prezzo del posto.
      */
@@ -43,7 +43,6 @@ public enum VeicoliEnum {
         this.PREZZO = prezzo;
         this.POSTI = posti;
     }
-
 
     /**
      * Metodo che restituisce il comando per calcolare il prezzo del posto.

@@ -1,4 +1,3 @@
-
 package com.example.smartcity.controller;
 
 import jakarta.servlet.*;
@@ -7,12 +6,15 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+
 /**
  * Questa classe rappresenta una servlet per la home page del sito.
  * Viene utilizzata per mostrare la pagina iniziale del sito e gestire la sessione dell'utente.
  */
+
 @WebServlet(name = "HomeServlet", value = "/homepage")
 public class HomeServlet extends HttpServlet {
+
 
     /**
      * Metodo doGet che gestisce la richiesta GET della home page.
@@ -25,22 +27,24 @@ public class HomeServlet extends HttpServlet {
      * @throws IOException Se si verifica un errore d'input/output
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-
         HttpSession session = request.getSession(false);
-
         int isLog = 0;
-
-        if (session == null) {
-             session = request.getSession();
-             session.setAttribute("isLog", 0);
+        if (session == null){
+            session = request.getSession();
+            session.setAttribute("isLog",0);
         } else {
-             isLog = (int) session.getAttribute("isLog");
+            isLog = (int) session.getAttribute("isLog");
         }
-
+        request.setAttribute("loggato",isLog);
         response.setContentType("text/html");
-        request.setAttribute("loggato", isLog);
         request.setAttribute("users", "LogIn");
-        request.getRequestDispatcher("userHomePage.jsp").forward(request, response);
+
+        if (isLog == 1){
+            request.getRequestDispatcher("userHomePage.jsp").forward(request,response);
+        }
+        else {
+            request.getRequestDispatcher("adminHomePage.jsp").forward(request, response);
+        }
     }
 
 
@@ -52,8 +56,8 @@ public class HomeServlet extends HttpServlet {
      * @throws ServletException Se si verifica un errore nella servlet
      * @throws IOException Se si verifica un errore d'input/output
      */
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 
     }
 }
-

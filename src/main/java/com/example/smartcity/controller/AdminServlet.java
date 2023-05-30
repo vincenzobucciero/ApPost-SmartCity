@@ -51,9 +51,13 @@ public class AdminServlet extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request,response);
         }
         else {
-            //Gli ripasso la lista poichè aggiornata
+
+            /*Ripassiamo la lista dei parcheggi cosi che quando viene effettuata una
+              modifica avremmo la lista aggiornata istantaneamente */
+
             List<ParkingBean> list = ParkingDao.getListParking();
             session.setAttribute("list", list);
+
             request.getRequestDispatcher("adminHomePage.jsp").forward(request, response);
         }
 

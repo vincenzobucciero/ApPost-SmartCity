@@ -3,7 +3,6 @@ package com.example.smartcity.service.ChainOfResponsability;
 import com.example.smartcity.model.Bean.UserBean;
 import com.example.smartcity.model.DAO.UserDao;
 
-
 /**
  * Questa classe rappresenta un servizio che gestisce la richiesta di accesso al sistema degli utenti.
  */

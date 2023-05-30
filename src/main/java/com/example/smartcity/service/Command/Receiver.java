@@ -1,9 +1,8 @@
-package com.example.smartcity.service.CommandPrezzo;
+package com.example.smartcity.service.Command;
 
 import com.example.smartcity.model.Bean.BookingBean;
 import com.example.smartcity.model.Bean.ParkingBean;
 import com.example.smartcity.model.DAO.BookingDao;
-
 
 /**
  * La classe Receiver si occupa di eseguire le operazioni richieste dai comandi del pattern Command.
@@ -21,9 +20,8 @@ public class Receiver {
         return BookingDao.getTotPrice(parkingBean.getTariffaAF(), bookingBean);
     }
 
-
     /**
-     * Restituisce il prezzo totale di una prenotazione per un posto moto.
+     * Restituisce il prezzo totale di una prenotazione per un posto auto/furgone.
      *
      * @param parkingBean oggetto ParkingBean che rappresenta il parcheggio.
      * @param bookingBean oggetto BookingBean che rappresenta la prenotazione.
@@ -55,10 +53,10 @@ public class Receiver {
     }
 
     /**
-     * Restituisce il numero di posti moto disponibili nel parcheggio.
+     * Restituisce il numero di posti furgone disponibili nel parcheggio.
      *
      * @param parkingBean oggetto ParkingBean che rappresenta il parcheggio.
-     * @return il numero di posti moto disponibili nel parcheggio.
+     * @return il numero di posti furgone disponibili nel parcheggio.
      */
     public int getNumPostiM(ParkingBean parkingBean) {
         return parkingBean.getPostiMoto();

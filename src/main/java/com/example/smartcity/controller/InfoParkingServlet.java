@@ -1,7 +1,6 @@
 package com.example.smartcity.controller;
 
 import com.example.smartcity.model.Bean.ParkingBean;
-
 import com.example.smartcity.model.DAO.ParkingDao;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -17,6 +16,7 @@ import java.io.IOException;
  * L'oggetto ParkingBean viene quindi passato come attributo alla richiesta per la successiva
  * visualizzazione delle informazioni di modifica del parcheggio.
  */
+
 @WebServlet(name = "InfoParkingServlet", value = "/InfoParkingServlet")
 public class InfoParkingServlet extends HttpServlet {
 
@@ -51,23 +51,21 @@ public class InfoParkingServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         response.setContentType("text/html");
 
         HttpSession session = request.getSession(false);
-
         if ( session == null ) {
             session.setAttribute("isLog",0);
-            request.getRequestDispatcher("login.jsp").forward(request,response);
-        } else {
+            request.getRequestDispatcher("login.jsp").forward( request,response );
+        }
+        else {
 
             String nomeParcheggio = request.getParameter("nomeparking");
-            ParkingBean parkingBean = ParkingDao.getParkingBean(nomeParcheggio);
+            ParkingBean parkingBean = ParkingDao.getParkingBean( nomeParcheggio );
+            parkingBean.setNomeParcheggio( nomeParcheggio );
 
-            parkingBean.setNomeParcheggio(nomeParcheggio);
-
-            request.setAttribute("parkingBean", parkingBean);
-            request.getRequestDispatcher("modify.jsp").forward(request, response);
+            request.setAttribute( "parkingBean", parkingBean );
+            request.getRequestDispatcher( "modify.jsp" ).forward(request, response);
 
         }
     }

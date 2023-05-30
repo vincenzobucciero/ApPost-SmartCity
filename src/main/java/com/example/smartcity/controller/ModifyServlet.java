@@ -13,6 +13,7 @@ import java.io.IOException;
  * una richiesta HTTP POST. La servlet riceve la richiesta POST e recupera i dati del
  * parcheggio che sono stati inseriti dal form.
  */
+
 @WebServlet(name = "ModifyServlet", value = "/ModifyServlet")
 public class ModifyServlet extends HttpServlet {
 
@@ -27,6 +28,7 @@ public class ModifyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
+
 
 
     /**
