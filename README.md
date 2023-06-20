@@ -27,14 +27,14 @@ Technologies Used:
 
 To get a local copy of the project up and running, follow these steps:
 
-    1. Clone the repository: 
+1. Clone the repository: 
 ```
 git clone https://github.com/carminecoppola/ApPost-SmartCity.git
 ```
-    2. Set up the required dependencies (JDK, MySQL, Apache Tomcat).
-    3. Import the project into your preferred IDE.
-    4. Configure the database connection in config.properties file.
-    5. Build and run the project on your local server.
+2. Set up the required dependencies (JDK, MySQL, Apache Tomcat).
+3. Import the project into your preferred IDE.
+4. Configure the database connection in config.properties file.
+5. Build and run the project on your local server.
 
 # Contributors
 
