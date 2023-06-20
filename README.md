@@ -1,40 +1,42 @@
 # ApPost - SmartCity
 Project Programming III
 
-ApPost
-
+# ApPost
 ApPost is a web application for managing a smart parking system. It utilizes the AStar algorithm to provide parking spots along the chosen route. The project incorporates various design patterns such as Chain of Responsibility, Strategy, MVC, and Command.
-Technologies Used
+Technologies Used:
 
-    Java Development Kit (JDK) version 17
-    MySQL 8.0
-    Apache Tomcat 10.1.71
-    JSTL 1.2.1
-    Bootstrap 5.0.0
-    Google Maps API
+* Java Development Kit (JDK) version 17
+* MySQL 8.0
+* Apache Tomcat 10.1.71
+* JSTL 1.2.1
+* Bootstrap 5.0.0
+* Google Maps API
 
-Features
+# Features
 
-    Smart parking management system
-    AStar algorithm for parking spot recommendations
-    Integration with Google Maps API for route planning
-    Implementation of design patterns:
-        Chain of Responsibility
-        Strategy
-        MVC
-        Command
+* Smart parking management system
+* AStar algorithm for parking spot recommendations
+* Integration with Google Maps API for route planning
+* Implementation of design patterns:
+      1. Chain of Responsibility
+      2. Strategy
+      3. MVC
+      4. Command
 
-Getting Started
+# Getting Started
 
 To get a local copy of the project up and running, follow these steps:
 
-    Clone the repository: git clone https://github.com/carminecoppola/ApPost-SmartCity.git
-    Set up the required dependencies (JDK, MySQL, Apache Tomcat).
-    Import the project into your preferred IDE.
-    Configure the database connection in config.properties file.
-    Build and run the project on your local server.
+    1. Clone the repository: 
+    ```
+    git clone https://github.com/carminecoppola/ApPost-SmartCity.git
+    ```
+    2. Set up the required dependencies (JDK, MySQL, Apache Tomcat).
+    3. Import the project into your preferred IDE.
+    4. Configure the database connection in config.properties file.
+    5. Build and run the project on your local server.
 
-Contributors
+# Contributors
 
 This project was developed by:
 
@@ -42,7 +44,7 @@ This project was developed by:
     Coppola Carmine
     De Martino Camilla
 
-License
+# License
 
 Copyright (c) [2023] [ApPost-SmartCity]
 
